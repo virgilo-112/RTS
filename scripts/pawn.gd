@@ -9,7 +9,6 @@ var is_selected = false
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_sprite: AnimatedSprite2D = $AreaSelection/SelectionSprite
 
-#test git
 
 func _ready() -> void:
 	click_position = position
