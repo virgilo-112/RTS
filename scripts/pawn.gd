@@ -7,12 +7,12 @@ var mouse_inside = false
 var is_selected = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var selection_sprite: AnimatedSprite2D = $AreaSelection/SelectionSprite
+@onready var selection_icon: Sprite2D = $SelectionIcon
 
 
 func _ready() -> void:
 	click_position = position
-	selection_sprite.set_frame_and_progress(1,1)
+	selection_icon.visible = false
 
 
 func _physics_process(delta: float) -> void:
@@ -60,7 +60,7 @@ func select():
 	if Input.is_action_just_pressed("left_click"):
 		if mouse_inside :
 			is_selected = true
-			selection_sprite.set_frame_and_progress(0,0)
+			selection_icon.visible = true
 		elif !mouse_inside :
 			is_selected = false
-			selection_sprite.set_frame_and_progress(1,1)
+			selection_icon.visible = false
