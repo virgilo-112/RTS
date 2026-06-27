@@ -1,13 +1,9 @@
-[gd_scene format=3 uid="uid://c7umb5ea53c6u"]
+[gd_scene format=3 uid="uid://bjed7rq65fw0g"]
 
 [ext_resource type="Texture2D" uid="uid://rdamx1fspvhs" path="res://assets/Units/Blue Units/Pawn/Pawn_Idle.png" id="1_ccfo0"]
-[ext_resource type="Script" uid="uid://dttl8bl5n80tl" path="res://scripts/pawn.gd" id="1_eqwak"]
+[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/Unit.tscn" id="1_eqwak"]
 [ext_resource type="Texture2D" uid="uid://6fn2w3tgqwap" path="res://assets/Units/Blue Units/Pawn/Pawn_Run.png" id="2_eqwak"]
-[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_w61pg"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccfo0"]
-radius = 6.0
-height = 36.0
+[ext_resource type="Script" uid="uid://dttl8bl5n80tl" path="res://scripts/pawn.gd" id="2_w61pg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w61pg"]
 atlas = ExtResource("1_ccfo0")
@@ -65,7 +61,7 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("2_eqwak")
 region = Rect2(960, 0, 192, 192)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_usog2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_w61pg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -120,42 +116,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqwak"]
-size = Vector2(49, 68)
+[node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
+script = ExtResource("2_w61pg")
 
-[node name="Pawn" type="CharacterBody2D" unique_id=1256312482]
-collision_layer = 4
-script = ExtResource("1_eqwak")
-
-[node name="SelectionIcon" type="Sprite2D" parent="." unique_id=193086596]
-z_index = 1
-position = Vector2(-2, -30)
-scale = Vector2(0.53125, 0.6640625)
-texture = ExtResource("4_w61pg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=398875827]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ccfo0")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2062829683]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
-position = Vector2(-1, -31)
-sprite_frames = SubResource("SpriteFrames_usog2")
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_w61pg")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.068218745
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=805899648]
-path_postprocessing = 1
-
-[node name="AreaSelection" type="Area2D" parent="." unique_id=1553397965]
-
-[node name="SelectionShape" type="CollisionShape2D" parent="AreaSelection" unique_id=130369885]
-position = Vector2(-1, -29)
-shape = SubResource("RectangleShape2D_eqwak")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="area_entered" from="AreaSelection" to="." method="_on_area_selection_area_entered"]
-[connection signal="input_event" from="AreaSelection" to="." method="_on_area_selection_input_event"]
-[connection signal="mouse_entered" from="AreaSelection" to="." method="_on_area_selection_mouse_entered"]
-[connection signal="mouse_exited" from="AreaSelection" to="." method="_on_area_selection_mouse_exited"]
