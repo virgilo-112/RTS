@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	select()
 	if is_selected and Input.is_action_just_pressed("right_click"):
 		click_position = assign_move()
 	move(click_position)
