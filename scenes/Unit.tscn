@@ -36,6 +36,7 @@ scale = Vector2(0.53125, 0.6640625)
 texture = ExtResource("4_ikoli")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=367792685]
+visible = false
 rotation = 1.5707964
 vertices = PackedVector2Array(2.0000012, 26, 1.9999989, -24, -63, -23.999998, -63, 26.000002)
 
