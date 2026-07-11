@@ -15,6 +15,7 @@ z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_nqku5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=398875827]
@@ -41,6 +42,7 @@ rotation = 1.5707964
 vertices = PackedVector2Array(2.0000012, 26, 1.9999989, -24, -63, -23.999998, -63, 26.000002)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="area_entered" from="AreaSelection" to="." method="_on_area_selection_area_entered"]
 [connection signal="input_event" from="AreaSelection" to="." method="_on_area_selection_input_event"]
 [connection signal="mouse_entered" from="AreaSelection" to="." method="_on_area_selection_mouse_entered"]

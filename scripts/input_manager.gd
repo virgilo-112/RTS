@@ -6,6 +6,7 @@ var drag_start:Vector2
 var selection_rectangle:RectangleShape2D = RectangleShape2D.new()
 
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
 		if event.button_index == MOUSE_BUTTON_LEFT :

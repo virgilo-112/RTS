@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://do2tnx0wm38rj"]
+
+[ext_resource type="Texture2D" uid="uid://drf0s4b2nex8c" path="res://assets/UI Elements/UI Elements/Icons/Icon_02.png" id="1_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://dw5psooolx8e1" path="res://assets/UI Elements/UI Elements/Icons/Icon_03.png" id="2_047uy"]
+[ext_resource type="Texture2D" uid="uid://k4pvvj3jgrin" path="res://assets/UI Elements/UI Elements/Icons/Icon_04.png" id="3_5pdws"]
+[ext_resource type="Texture2D" uid="uid://cwc4ij1m7a1xv" path="res://assets/UI Elements/UI Elements/Icons/Icon_10.png" id="4_hd3ao"]
+[ext_resource type="Texture2D" uid="uid://betb65eaor0hk" path="res://assets/UI Elements/UI Elements/Icons/Icon_12.png" id="5_0i1j5"]
+
+[node name="HUD" type="CanvasLayer" unique_id=165254352]
+
+[node name="Icon02" type="Sprite2D" parent="." unique_id=1954150838]
+position = Vector2(33, 117)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_uo2fv")
+
+[node name="Icon03" type="Sprite2D" parent="." unique_id=953612915]
+position = Vector2(33, 77)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_047uy")
+
+[node name="Icon04" type="Sprite2D" parent="." unique_id=384685265]
+position = Vector2(33, 37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5pdws")
+
+[node name="Icon10" type="Sprite2D" parent="." unique_id=322314228]
+position = Vector2(1126, 27)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_hd3ao")
+
+[node name="Icon12" type="Sprite2D" parent="." unique_id=2117567820]
+position = Vector2(1086, 27)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_0i1j5")
+
+[node name="Label" type="Label" parent="." unique_id=1441920608]
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.069000006
+anchor_right = 0.067
+anchor_bottom = 0.069000006
+offset_left = -20.184006
+offset_top = -11.712006
+offset_right = 19.815994
+offset_bottom = 11.287994
+text = "0"
+
+[node name="Label2" type="Label" parent="." unique_id=552428277]
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.124000005
+anchor_right = 0.067
+anchor_bottom = 0.124000005
+offset_left = -20.184006
+offset_top = -11.352005
+offset_right = 19.815994
+offset_bottom = 11.647995
+text = "0"
+
+[node name="Label3" type="Label" parent="." unique_id=529189943]
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.18100001
+anchor_right = 0.067
+anchor_bottom = 0.18100001
+offset_left = -20.184006
+offset_top = -11.28801
+offset_right = 19.815994
+offset_bottom = 11.71199
+text = "0"

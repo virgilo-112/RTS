@@ -1,7 +1,7 @@
 extends Unit
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-var is_pickaxing : bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,11 +20,5 @@ func update_facing(dir):
 func update_anim(vel):
 	if vel != Vector2.ZERO :
 		animated_sprite_2d.play("Run")
-	elif vel == Vector2.ZERO and is_pickaxing :
-		animated_sprite_2d.play("Pickaxe_Interact")
 	else :
 		animated_sprite_2d.play("Idle")
-
-
-func interact_gold():
-	is_pickaxing = true

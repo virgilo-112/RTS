@@ -43,3 +43,15 @@ func update_facing(_dir: float):
 
 func update_anim(_velocity: Vector2):
 	pass
+	
+func check_if_something_at_position(target: Vector2):
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = target
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.collision_mask = 1
+	#print(query.position)
+	var result = space.intersect_point(query)
+	#print(result)
+	return result

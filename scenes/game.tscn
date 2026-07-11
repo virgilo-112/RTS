@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dchb7ykxpx0lg"]
 
+[ext_resource type="PackedScene" uid="uid://do2tnx0wm38rj" path="res://scenes/hud.tscn" id="1_ir15t"]
 [ext_resource type="Script" uid="uid://baganaa60cjjn" path="res://scripts/input_manager.gd" id="1_kvuet"]
 [ext_resource type="Texture2D" uid="uid://d1yv7y66co5jc" path="res://assets/Terrain/Tileset/Shadow.png" id="1_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bgm68cc8hkdlj" path="res://assets/Terrain/Tileset/Tilemap_color1.png" id="2_gee14"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bg07abj3uo8kc" path="res://scenes/warrior.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://b3ojixovxl1lo" path="res://scenes/archer.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c5slc284xtkuu" path="res://scenes/lancer.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://d4l3s4iv7tbc" path="res://scenes/monk.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone.tscn" id="16_ca42v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("1_u5sy4")
@@ -3778,6 +3781,8 @@ sources/7 = SubResource("TileSetAtlasSource_qnb83")
 z_as_relative = false
 y_sort_enabled = true
 
+[node name="HUD" parent="." unique_id=165254352 instance=ExtResource("1_ir15t")]
+
 [node name="InputManager" type="Node2D" parent="." unique_id=976987581]
 z_index = 2
 script = ExtResource("1_kvuet")
@@ -3812,13 +3817,60 @@ zoom = Vector2(0.7, 0.7)
 
 [node name="Warrior" parent="." unique_id=314852935 instance=ExtResource("11_kvpfn")]
 position = Vector2(261, -100)
+collision_mask = 12
 
 [node name="Pawn" parent="." unique_id=1256312482 instance=ExtResource("9_0tnpc")]
+collision_mask = 13
 
 [node name="Archer" parent="." unique_id=1736408985 instance=ExtResource("12_dinhu")]
 position = Vector2(211, 149)
+collision_mask = 12
 
 [node name="Lancer" parent="." unique_id=705701080 instance=ExtResource("13_kvuet")]
 position = Vector2(-90, 330)
+collision_mask = 12
+
+[node name="Monk" parent="." unique_id=590560197 instance=ExtResource("14_trtic")]
+position = Vector2(-334, 343)
+collision_mask = 12
+
+[node name="GoldStone" parent="." unique_id=729183247 instance=ExtResource("16_ca42v")]
+position = Vector2(318, 345)
+
+[node name="GoldStone2" parent="." unique_id=1569472686 instance=ExtResource("16_ca42v")]
+position = Vector2(-391, -175)
+id = 4
+
+[node name="GoldStone3" parent="." unique_id=791796894 instance=ExtResource("16_ca42v")]
+position = Vector2(78, -210)
+id = 5
+
+[node name="GoldStone4" parent="." unique_id=2021829152 instance=ExtResource("16_ca42v")]
+position = Vector2(366, 57)
+id = 6
+
+[node name="Lancer2" parent="." unique_id=1453624297 instance=ExtResource("13_kvuet")]
+position = Vector2(161, 363)
+
+[node name="Lancer3" parent="." unique_id=423729333 instance=ExtResource("13_kvuet")]
+position = Vector2(-246, -18)
+
+[node name="Lancer4" parent="." unique_id=1177484238 instance=ExtResource("13_kvuet")]
+position = Vector2(-428, 28)
+
+[node name="Lancer5" parent="." unique_id=1564401101 instance=ExtResource("13_kvuet")]
+position = Vector2(448, 221)
+
+[node name="Lancer6" parent="." unique_id=2041518487 instance=ExtResource("13_kvuet")]
+position = Vector2(208, -250)
+
+[node name="Lancer7" parent="." unique_id=1804064651 instance=ExtResource("13_kvuet")]
+position = Vector2(399, -181)
+
+[node name="Lancer8" parent="." unique_id=1733725791 instance=ExtResource("13_kvuet")]
+position = Vector2(-358, -250)
+
+[node name="Lancer9" parent="." unique_id=1770416896 instance=ExtResource("13_kvuet")]
+position = Vector2(-25, -197)
 
 [connection signal="mouse_entered" from="Pawn" to="InputManager" method="_on_pawn_mouse_entered"]

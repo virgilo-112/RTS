@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqp518mfe77aw" path="res://assets/Units/Blue Units/Archer/Archer_Idle.png" id="2_cctdm"]
 [ext_resource type="Script" uid="uid://bglufig1ruldn" path="res://scripts/archer.gd" id="2_ejvcm"]
 [ext_resource type="Texture2D" uid="uid://d2nv3hhe0fx4" path="res://assets/Units/Blue Units/Archer/Archer_Run.png" id="3_ejvcm"]
+[ext_resource type="Texture2D" uid="uid://dhskdeoo1y5pg" path="res://assets/Units/Blue Units/Archer/Archer_Shoot.png" id="5_ejvcm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c85qa"]
 atlas = ExtResource("2_cctdm")
@@ -44,6 +45,38 @@ region = Rect2(384, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4usjs"]
 atlas = ExtResource("3_ejvcm")
 region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfv7"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s538n"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3krgg"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_811sq"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bw2e"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkhc8"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqcfa"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7ncp"]
+atlas = ExtResource("5_ejvcm")
+region = Rect2(1344, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gnfv7"]
 animations = [{
@@ -86,6 +119,35 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnfv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s538n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3krgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_811sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bw2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkhc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqcfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7ncp")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 10.0
 }]
 
 [node name="Archer" unique_id=1256312482 instance=ExtResource("1_orquw")]
@@ -94,5 +156,6 @@ script = ExtResource("2_ejvcm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1723388655]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_gnfv7")
-animation = &"Idle"
+animation = &"Shoot"
 autoplay = "Idle"
+frame_progress = 0.23988855

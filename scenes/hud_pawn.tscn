@@ -1,0 +1,119 @@
+[gd_scene format=4 uid="uid://clmxhax4ot3mh"]
+
+[ext_resource type="Texture2D" uid="uid://bnfwg50lrxmu5" path="res://assets/UI Elements/UI Elements/Banners/Banner.png" id="1_fhl7k"]
+[ext_resource type="Texture2D" uid="uid://byotx6skay62x" path="res://assets/UI Elements/UI Elements/Papers/SpecialPaper.png" id="2_8gag8"]
+[ext_resource type="Texture2D" uid="uid://32arca3oefj7" path="res://assets/UI Elements/UI Elements/Papers/RegularPaper.png" id="3_w3ptg"]
+[ext_resource type="Texture2D" uid="uid://dj1p2qsqfe5cc" path="res://assets/UI Elements/UI Elements/Wood Table/WoodTable.png" id="4_00phe"]
+[ext_resource type="Texture2D" uid="uid://bbgtj6510pwxl" path="res://assets/Terrain/Resources/Gold/Gold Stones/Gold Stone 1.png" id="5_8gag8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v8l2o"]
+texture = ExtResource("1_fhl7k")
+texture_region_size = Vector2i(64, 64)
+3:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+1:6/0 = 0
+3:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+1:1/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+0:1/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+3:1/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1asxs"]
+texture = ExtResource("2_8gag8")
+texture_region_size = Vector2i(64, 64)
+0:2/0 = 0
+2:2/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+4:2/0 = 0
+4:0/0 = 0
+2:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdxqt"]
+texture = ExtResource("3_w3ptg")
+texture_region_size = Vector2i(64, 64)
+0:2/0 = 0
+2:2/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+4:2/0 = 0
+4:0/0 = 0
+2:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxdci"]
+texture = ExtResource("4_00phe")
+texture_region_size = Vector2i(64, 64)
+3:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+3:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+1:6/0 = 0
+0:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_y4khm"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_v8l2o")
+sources/1 = SubResource("TileSetAtlasSource_1asxs")
+sources/2 = SubResource("TileSetAtlasSource_fdxqt")
+sources/3 = SubResource("TileSetAtlasSource_mxdci")
+
+[node name="HUDPawn" type="CanvasLayer" unique_id=136188735]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=832290460]
+tile_map_data = PackedByteArray("AAAAAAgAAQAAAAIAAAABAAgAAQACAAIAAAABAAkAAQACAAQAAAACAAgAAQACAAIAAAACAAkAAQACAAQAAAADAAgAAQACAAIAAAADAAkAAQACAAQAAAAEAAgAAQACAAIAAAAEAAkAAQACAAQAAAAFAAgAAQAEAAIAAAAFAAkAAQAEAAQAAAAGAAgAAQAAAAIAAAAGAAkAAQAAAAQAAAAHAAgAAQACAAIAAAAHAAkAAQACAAQAAAAIAAgAAQAEAAIAAAAIAAkAAQAEAAQAAAAIAAcAAQAEAAAAAAAAAAcAAQAAAAAAAAABAAcAAQACAAAAAAACAAcAAQACAAAAAAADAAcAAQACAAAAAAAEAAcAAQACAAAAAAAFAAcAAQAEAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQACAAAAAAAAAAkAAQAAAAQAAAA=")
+tile_set = SubResource("TileSet_y4khm")
+
+[node name="GoldStone1" type="Sprite2D" parent="." unique_id=1657751250]
+position = Vector2(82, 539)
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("5_8gag8")
+
+[node name="Label" type="Label" parent="." unique_id=1244603815]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 157.0
+offset_top = 493.0
+offset_right = 276.68
+offset_bottom = 526.32
+text = "Gold : "
