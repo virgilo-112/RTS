@@ -3,35 +3,48 @@ extends CharacterBody2D
 class_name Unit
 
 var speed = 300
-var click_position = Vector2()
-var target_position = Vector2()
+var destination = Vector2()
 var mouse_inside = false
 var is_selected = false
+var av = Vector2.ZERO
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_icon: Sprite2D = $SelectionIcon
 
 
-func assign_move() -> Vector2:
-	click_position = get_global_mouse_position()
-	return click_position
+func _ready():
+	navigation_agent.velocity_computed.connect(_on_velocity_computed)
+	navigation_agent.avoidance_enabled = true
+	navigation_agent.radius = 20
+	navigation_agent.max_speed = speed
+	navigation_agent.neighbor_distance = 120
+	navigation_agent.time_horizon_agents = 2.0
+	navigation_agent.target_desired_distance = 30
+	navigation_agent.avoidance_priority = 0.5
 
 
-func move(click_pos):
+func assign_move() :
+	destination = get_global_mouse_position()
+	navigation_agent.target_position = destination
+	
+	navigation_agent.avoidance_priority = 1.0
 
-	if position.distance_to(click_pos) > 3:
-		
-		navigation_agent.target_position = click_pos
-		var nav_point_direction = to_local(navigation_agent.get_next_path_position()).normalized()
-		velocity = nav_point_direction * speed 
-		update_anim(velocity)
-		move_and_slide()
-		update_facing(velocity.x)
-	else:
+
+func move():
+	if navigation_agent.is_navigation_finished() :
 		velocity = Vector2.ZERO
-		update_anim(velocity)
+		return
 		
-		
+	var dir = global_position.direction_to(navigation_agent.get_next_path_position())
+	navigation_agent.set_velocity(dir * speed)
+
+func _on_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+	move_and_slide()
+
+	update_anim()
+	update_facing(velocity.x)
+
 
 func toggle_selection(value:bool):
 	is_selected = value
@@ -41,17 +54,6 @@ func toggle_selection(value:bool):
 func update_facing(_dir: float):
 	pass
 
-func update_anim(_velocity: Vector2):
+func update_anim():
 	pass
 	
-func check_if_something_at_position(target: Vector2):
-	var space = get_world_2d().direct_space_state
-	var query = PhysicsPointQueryParameters2D.new()
-	query.position = target
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
-	query.collision_mask = 1
-	#print(query.position)
-	var result = space.intersect_point(query)
-	#print(result)
-	return result

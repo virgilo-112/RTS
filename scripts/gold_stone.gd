@@ -53,7 +53,7 @@ func toggle_selection(value:bool):
 	selection_icon.visible = value
 	hud_gold.visible = value
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	gold_count.text = ": "+var_to_str(gold)
 
 		

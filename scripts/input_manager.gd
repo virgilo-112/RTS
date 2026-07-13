@@ -56,6 +56,7 @@ func rectangular_selection(from:Vector2, to:Vector2):
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
+	query.collision_mask = 1
 	query.set_shape(selection_rectangle)
 	query.transform = Transform2D(0, (to + from)/2)
 	intercepted_units = space.intersect_shape(query)
@@ -68,10 +69,8 @@ func check_if_something_at_position(target: Vector2):
 	query.position = target
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
-	query.collision_mask = 1
 	#print(query.position)
 	var result = space.intersect_point(query)
-	#print(result)
 	return result
 
 func _draw():

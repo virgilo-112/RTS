@@ -153,6 +153,10 @@ animations = [{
 [node name="Archer" unique_id=1256312482 instance=ExtResource("1_orquw")]
 script = ExtResource("2_ejvcm")
 
+[node name="NavigationAgent2D" parent="." index="1" unique_id=805899648]
+radius = 20.0
+neighbor_distance = 60.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1723388655]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_gnfv7")

@@ -383,6 +383,8 @@ visible = false
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_uloe6")
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Gold2Collision" unique_id=446225679]
+
 [node name="Gold3" type="AnimatedSprite2D" parent="." unique_id=424304429]
 visible = false
 position = Vector2(1, -1)
@@ -425,6 +427,7 @@ shape = SubResource("CapsuleShape2D_vys01")
 
 [node name="MiningArea" type="Area2D" parent="." unique_id=896358025]
 position = Vector2(-44, 8)
+collision_layer = 4
 collision_mask = 0
 
 [node name="BigStone" type="CollisionShape2D" parent="MiningArea" unique_id=280067173]
