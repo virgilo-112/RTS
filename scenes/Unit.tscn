@@ -40,6 +40,7 @@ texture = ExtResource("4_ikoli")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="area_entered" from="Detect" to="." method="_on_area_selection_area_entered"]
 [connection signal="input_event" from="Detect" to="." method="_on_area_selection_input_event"]

@@ -234,6 +234,7 @@ animations = [{
 
 [node name="Warrior" unique_id=1256312482 instance=ExtResource("1_fvbna")]
 script = ExtResource("2_kkak1")
+abilities = Array[String](["move", "attack"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1548176055]
 position = Vector2(0, -30)

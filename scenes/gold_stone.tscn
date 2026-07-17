@@ -334,12 +334,6 @@ animations = [{
 radius = 34.0
 height = 70.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_paicx"]
-radius = 53.009434
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2pnrn"]
-radius = 37.12142
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ptb0"]
 texture = ExtResource("9_2pnrn")
 texture_region_size = Vector2i(64, 64)
@@ -357,9 +351,13 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_2ptb0")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pnrn"]
+radius = 37.054016
+
 [node name="GoldStone" type="StaticBody2D" unique_id=729183247]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_kmq0r")
 id = 1
@@ -375,6 +373,7 @@ position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_2jwxs")
 
 [node name="Gold2" type="AnimatedSprite2D" parent="." unique_id=941634382]
+visible = false
 sprite_frames = SubResource("SpriteFrames_p1srp")
 frame_progress = 0.16048959
 
@@ -382,8 +381,6 @@ frame_progress = 0.16048959
 visible = false
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_uloe6")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Gold2Collision" unique_id=446225679]
 
 [node name="Gold3" type="AnimatedSprite2D" parent="." unique_id=424304429]
 visible = false
@@ -416,7 +413,6 @@ position = Vector2(1, -7)
 shape = SubResource("CapsuleShape2D_yptph")
 
 [node name="Gold6" type="AnimatedSprite2D" parent="." unique_id=1799287188]
-visible = false
 sprite_frames = SubResource("SpriteFrames_bo7bk")
 frame_progress = 0.14562145
 
@@ -424,21 +420,6 @@ frame_progress = 0.14562145
 visible = false
 position = Vector2(-1, -10)
 shape = SubResource("CapsuleShape2D_vys01")
-
-[node name="MiningArea" type="Area2D" parent="." unique_id=896358025]
-position = Vector2(-44, 8)
-collision_layer = 4
-collision_mask = 0
-
-[node name="BigStone" type="CollisionShape2D" parent="MiningArea" unique_id=280067173]
-visible = false
-position = Vector2(43, -12)
-shape = SubResource("CircleShape2D_paicx")
-
-[node name="SmallStone" type="CollisionShape2D" parent="MiningArea" unique_id=1240317841]
-visible = false
-position = Vector2(45, -7)
-shape = SubResource("CircleShape2D_2pnrn")
 
 [node name="SelectionIcon" type="Sprite2D" parent="." unique_id=900379215]
 visible = false
@@ -466,4 +447,27 @@ position = Vector2(52.000008, 544)
 scale = Vector2(1.4296875, 1.4296875)
 texture = ExtResource("10_5kelj")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1466141144]
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=660396081]
+
+[node name="S" type="Marker2D" parent="InteractionPoints" unique_id=254483894]
+position = Vector2(0, 35)
+
+[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1256829871]
+position = Vector2(-32, 25)
+
+[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1602519216]
+position = Vector2(-51, 0)
+
+[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=1465631765]
+position = Vector2(45, 0)
+
+[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=1858217784]
+position = Vector2(32, 24)
+
+[node name="SelectionArea" type="Area2D" parent="." unique_id=76157974]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=129888956]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_2pnrn")

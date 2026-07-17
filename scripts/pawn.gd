@@ -1,17 +1,19 @@
 extends Unit
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var abilities: Array[String] = []
 var is_pickaxing : bool = false
 
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	super._ready()
 	selection_icon.visible = false
 
+func has_ability(ability: String) -> bool:
+	return ability in abilities
 
 func _physics_process(_delta: float) -> void:
-	if is_selected and Input.is_action_just_pressed("right_click"):
-		assign_move()
 	move()
 
 func update_facing(dir):
@@ -26,5 +28,5 @@ func update_anim():
 		animated_sprite_2d.play("Idle")
 
 
-func interact_gold():
+func start_mining():
 	is_pickaxing = true

@@ -1,5 +1,8 @@
 extends StaticBody2D
 
+class_name GoldStone
+
+
 @export var id : int
 @onready var gold_1: AnimatedSprite2D = $Gold1
 @onready var gold_1_collision: CollisionShape2D = $Gold1Collision
@@ -20,7 +23,20 @@ var gold : int
 var is_selected = false
 @onready var selection_icon: Sprite2D = $SelectionIcon
 
-# Called when the node enters the scene tree for the first time.
+@onready var interaction_points: Node2D = $InteractionPoints
+
+
+
+func get_closest_point(unit_pos):
+	var best = null
+	var best_distance = INF
+	for point in interaction_points.get_children():
+		var d = point.global_position.distance_to(unit_pos)
+		if d < best_distance :
+			best_distance = d
+			best = point
+	return best.global_position
+
 func _ready() -> void:
 	if id == 1 :
 		gold_1.visible = true
@@ -46,12 +62,16 @@ func _ready() -> void:
 		gold_6.visible = true
 		gold_6_collision.visible = true
 		gold = 800
-	
-		
+
+func can_receive_command():
+	return false
+
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
 	hud_gold.visible = value
+	
+
 	
 func _process(_delta: float) -> void:
 	gold_count.text = ": "+var_to_str(gold)

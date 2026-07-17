@@ -1045,6 +1045,7 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
+abilities = Array[String](["move", "mine", "build"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true

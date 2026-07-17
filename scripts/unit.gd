@@ -11,9 +11,12 @@ var av = Vector2.ZERO
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_icon: Sprite2D = $SelectionIcon
 
+var current_command: Command
+
 
 func _ready():
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
+	navigation_agent.navigation_finished.connect(_on_navigation_finished)
 	navigation_agent.avoidance_enabled = true
 	navigation_agent.radius = 20
 	navigation_agent.max_speed = speed
@@ -22,12 +25,18 @@ func _ready():
 	navigation_agent.target_desired_distance = 30
 	navigation_agent.avoidance_priority = 0.5
 
-
-func assign_move() :
-	destination = get_global_mouse_position()
-	navigation_agent.target_position = destination
-	
+func set_destination(pos: Vector2):
+	destination = pos
+	navigation_agent.target_position = pos
 	navigation_agent.avoidance_priority = 1.0
+
+
+func assign_command(command) :
+	current_command = command
+	command.start(self)
+
+func _on_navigation_finished() -> void:
+	current_command.on_arrived(self)
 
 
 func move():
@@ -46,6 +55,10 @@ func _on_velocity_computed(safe_velocity):
 	update_facing(velocity.x)
 
 
+func can_receive_command():
+	return true
+
+
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
@@ -56,4 +69,3 @@ func update_facing(_dir: float):
 
 func update_anim():
 	pass
-	

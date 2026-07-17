@@ -173,6 +173,7 @@ animations = [{
 
 [node name="Monk" unique_id=1256312482 instance=ExtResource("1_3q81k")]
 script = ExtResource("2_lynu3")
+abilities = Array[String](["move"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1951986490]
 position = Vector2(-1, -31)
