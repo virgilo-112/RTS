@@ -7,6 +7,8 @@ var destination = Vector2()
 var mouse_inside = false
 var is_selected = false
 var av = Vector2.ZERO
+var facing := 1 # 1 = droite, -1 = gauche
+
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_icon: Sprite2D = $SelectionIcon
@@ -31,14 +33,6 @@ func set_destination(pos: Vector2):
 	navigation_agent.avoidance_priority = 1.0
 
 
-func assign_command(command) :
-	current_command = command
-	command.start(self)
-
-func _on_navigation_finished() -> void:
-	current_command.on_arrived(self)
-
-
 func move():
 	if navigation_agent.is_navigation_finished() :
 		velocity = Vector2.ZERO
@@ -52,8 +46,22 @@ func _on_velocity_computed(safe_velocity):
 	move_and_slide()
 
 	update_anim()
-	update_facing(velocity.x)
 
+	if velocity.x > 0.1:
+		facing = 1
+	elif velocity.x < -0.1:
+		facing = -1
+
+	update_facing(facing)
+
+
+func assign_command(command) :
+	current_command = command
+	command.start(self)
+
+func _on_navigation_finished() -> void:
+	current_command.on_arrived(self)
+	
 
 func can_receive_command():
 	return true
@@ -68,4 +76,7 @@ func update_facing(_dir: float):
 	pass
 
 func update_anim():
+	pass
+	
+func reset_action():
 	pass

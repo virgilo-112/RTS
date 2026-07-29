@@ -8,4 +8,5 @@ func _init(pos):
 	
 
 func start(unit):
+	unit.reset_action()
 	unit.set_destination(destination)

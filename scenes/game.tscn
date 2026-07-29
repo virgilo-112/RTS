@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c5slc284xtkuu" path="res://scenes/lancer.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://d4l3s4iv7tbc" path="res://scenes/monk.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://cgnch0ni7hqta" path="res://scenes/tree.tscn" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bbnxql577evxg" path="res://scenes/sheep.tscn" id="18_ssvqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("1_u5sy4")
@@ -3821,7 +3823,6 @@ collision_layer = 1
 
 [node name="Pawn" parent="." unique_id=1256312482 instance=ExtResource("9_0tnpc")]
 collision_layer = 1
-collision_mask = 13
 
 [node name="Archer" parent="." unique_id=1736408985 instance=ExtResource("12_dinhu")]
 position = Vector2(211, 149)
@@ -3837,21 +3838,52 @@ collision_layer = 1
 
 [node name="GoldStone" parent="." unique_id=729183247 instance=ExtResource("16_ca42v")]
 position = Vector2(318, 345)
-collision_layer = 4
 
 [node name="GoldStone2" parent="." unique_id=1569472686 instance=ExtResource("16_ca42v")]
 position = Vector2(-391, -175)
-collision_layer = 4
 id = 4
 
 [node name="GoldStone3" parent="." unique_id=791796894 instance=ExtResource("16_ca42v")]
 position = Vector2(78, -210)
-collision_layer = 4
 id = 5
 
 [node name="GoldStone4" parent="." unique_id=2021829152 instance=ExtResource("16_ca42v")]
 position = Vector2(366, 57)
-collision_layer = 4
 id = 6
+
+[node name="Tree" parent="." unique_id=1019794889 instance=ExtResource("17_rysoc")]
+position = Vector2(-460, 433)
+id = 2
+
+[node name="Tree2" parent="." unique_id=1692597375 instance=ExtResource("17_rysoc")]
+position = Vector2(94, 381)
+id = 1
+
+[node name="Tree3" parent="." unique_id=178229567 instance=ExtResource("17_rysoc")]
+position = Vector2(-258, 7)
+id = 4
+
+[node name="Tree4" parent="." unique_id=793267479 instance=ExtResource("17_rysoc")]
+position = Vector2(403, -123)
+id = 3
+
+[node name="Tree5" parent="." unique_id=1053408264 instance=ExtResource("17_rysoc")]
+position = Vector2(346, -164)
+id = 4
+
+[node name="CharacterBody2D" parent="." unique_id=279528964 instance=ExtResource("18_ssvqc")]
+position = Vector2(341, 194)
+
+[node name="CharacterBody2D2" parent="." unique_id=1919024990 instance=ExtResource("18_ssvqc")]
+position = Vector2(374, 239)
+
+[node name="CharacterBody2D3" parent="." unique_id=1007277361 instance=ExtResource("18_ssvqc")]
+position = Vector2(399, 193)
+
+[node name="CharacterBody2D4" parent="." unique_id=2123201374 instance=ExtResource("18_ssvqc")]
+position = Vector2(323, 226)
+
+[node name="CharacterBody2D5" parent="." unique_id=1401342152 instance=ExtResource("18_ssvqc")]
+position = Vector2(-435, 0)
 
 [connection signal="mouse_entered" from="Pawn" to="InputManager" method="_on_pawn_mouse_entered"]

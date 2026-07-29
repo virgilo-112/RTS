@@ -1045,12 +1045,12 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
-abilities = Array[String](["move", "mine", "build"])
+abilities = Array[String](["move", "mine", "build", "chop"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_w61pg")
-animation = &"Wood_Idle"
+animation = &"Axe_Interact"
 autoplay = "Idle"
-frame_progress = 0.9818477
+frame_progress = 0.99034566

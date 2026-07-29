@@ -16,12 +16,13 @@ class_name GoldStone
 @onready var gold_5_collision: CollisionShape2D = $Gold5Collision
 @onready var gold_6: AnimatedSprite2D = $Gold6
 @onready var gold_6_collision: CollisionShape2D = $Gold6Collision
+@onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 
 var gold : int 
 @onready var gold_count: Label = $HUDGold/GoldCount
 @onready var hud_gold: CanvasLayer = $HUDGold
 var is_selected = false
-@onready var selection_icon: Sprite2D = $SelectionIcon
+
 
 @onready var interaction_points: Node2D = $InteractionPoints
 
@@ -70,10 +71,6 @@ func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
 	hud_gold.visible = value
-	
 
-	
 func _process(_delta: float) -> void:
 	gold_count.text = ": "+var_to_str(gold)
-
-		
