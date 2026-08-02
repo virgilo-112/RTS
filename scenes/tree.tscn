@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="8_5yujg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m26wl"]
-radius = 14.0
-height = 28.0
+radius = 7.999666
+height = 40.6715
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yujg"]
 atlas = ExtResource("1_qd6xs")
@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l31us")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -136,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fpj3y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -200,7 +200,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pcsm8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -264,12 +264,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ex3jh")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yujg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m26wl"]
 texture = ExtResource("6_dmmp0")
 texture_region_size = Vector2i(64, 64)
 0:2/0 = 0
@@ -284,7 +284,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_r7adx"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_5yujg")
+sources/1 = SubResource("TileSetAtlasSource_m26wl")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xprpn"]
 radius = 20.0
@@ -292,6 +292,7 @@ height = 134.0
 
 [node name="Tree" type="StaticBody2D" unique_id=1019794889]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -299,34 +300,36 @@ script = ExtResource("1_ake3r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526280546]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
-position = Vector2(0, 1)
+position = Vector2(2.980232e-08, -8)
+rotation = 1.5519438
 shape = SubResource("CapsuleShape2D_m26wl")
 
 [node name="Tree1" type="AnimatedSprite2D" parent="." unique_id=1478166530]
 visible = false
-position = Vector2(-1, -93)
+position = Vector2(0, -106)
 sprite_frames = SubResource("SpriteFrames_223ge")
 autoplay = "default"
 frame_progress = 0.3292932
 
 [node name="Tree2" type="AnimatedSprite2D" parent="." unique_id=570129336]
 visible = false
-position = Vector2(0, -99)
+position = Vector2(0, -111)
 sprite_frames = SubResource("SpriteFrames_d1r0r")
 autoplay = "default"
 frame_progress = 0.34350467
 
 [node name="Tree3" type="AnimatedSprite2D" parent="." unique_id=1475574681]
 visible = false
-position = Vector2(-1, -57)
+position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_ubrq3")
 autoplay = "default"
 frame_progress = 0.95769
 
 [node name="Tree4" type="AnimatedSprite2D" parent="." unique_id=491931797]
 visible = false
-position = Vector2(-2, -56)
+position = Vector2(-2, -66)
 sprite_frames = SubResource("SpriteFrames_1k76w")
 autoplay = "default"
 
@@ -352,11 +355,8 @@ texture = ExtResource("7_m26wl")
 
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
 
-[node name="S" type="Marker2D" parent="InteractionPoints" unique_id=83503824]
-position = Vector2(0, 25)
-
 [node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1745904542]
-position = Vector2(-24, 20)
+position = Vector2(-17, 13)
 
 [node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1966604128]
 position = Vector2(-33, 0)
@@ -365,14 +365,17 @@ position = Vector2(-33, 0)
 position = Vector2(34, 0)
 
 [node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=753779127]
-position = Vector2(24, 15)
+position = Vector2(15, 14)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=313827255]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=1244780675]
-position = Vector2(0, -56)
+position = Vector2(0, -67)
 shape = SubResource("CapsuleShape2D_xprpn")
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=1365704985]

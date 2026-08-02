@@ -13,4 +13,9 @@ func start(unit):
 	unit.reset_action()
 
 func on_arrived(unit):
-	unit.start_mining()
+	unit.start_mining(gold_stone)
+
+func on_mining_tick(unit):
+	if is_instance_valid(gold_stone):
+		var mined = gold_stone.mine(1)
+		unit.owner_player.add_gold(mined)

@@ -5,6 +5,9 @@ extends Unit
 var is_pickaxing : bool = false
 var is_choping : bool = false
 
+@onready var mining_timer: Timer = $MiningTimer
+@onready var choping_timer: Timer = $ChopingTimer
+
 
 func _ready() -> void:
 	super._ready()
@@ -30,13 +33,41 @@ func update_anim():
 		animated_sprite_2d.play("Idle")
 
 
-func start_mining():
+func start_mining(stone: GoldStone):
 	is_pickaxing = true
+	if !stone.depleted.is_connected(stop_mining):
+		stone.depleted.connect(stop_mining)
+	mining_timer.start()
+
+func _on_mining_timer_timeout() -> void:
+	if current_command is MineCommand:
+		current_command.on_mining_tick(self)
+
+func stop_mining():
+	is_pickaxing = false
+	mining_timer.stop()
+	current_command = null
+	update_anim()
 
 
-func start_choping():
+func start_choping(tree: WoodTree):
 	is_choping = true
+	if !tree.depleted.is_connected(stop_choping):
+		tree.depleted.connect(stop_choping)
+	choping_timer.start()
+
+
+func _on_choping_timer_timeout() -> void:
+	if current_command is ChopCommand:
+		current_command.on_choping_tick(self)
+
+func stop_choping():
+	is_choping = false
+	choping_timer.stop()
+	current_command = null
+	update_anim()
 	
 func reset_action():
 	is_pickaxing = false
 	is_choping = false
+	

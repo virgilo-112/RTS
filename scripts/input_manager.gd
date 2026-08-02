@@ -40,13 +40,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func selection(event):
+	selected_objects = selected_objects.filter(is_instance_valid)
 	if event.pressed :
 		# check si on clique sur un objet
 		var result = check_if_something_at_position(get_global_mouse_position())
 		# non -> deselect les objets sélectionnés
 		if result == null :
 			for object in selected_objects :
-				object.toggle_selection(false)
+				if is_instance_valid(object):
+					object.toggle_selection(false)
 			selected_objects = []
 			# commence le dragging
 			is_dragging = true
@@ -57,13 +59,15 @@ func selection(event):
 			# si pas sélectionné ou plusieurs units sélectionnées -> sélection unique de l'unit
 			if !is_selected or (is_selected and selected_objects.size()>1):
 				for object in selected_objects :
-					object.toggle_selection(false)
+					if is_instance_valid(object):
+						object.toggle_selection(false)
 				selected_objects = []
 				result.toggle_selection(true)
 				selected_objects.append(result)
 			# si sélectionné mais unique -> déselection
 			elif is_selected and selected_objects.size() == 1 :
-				selected_objects[0].toggle_selection(false)
+				if is_instance_valid(selected_objects[0]):
+					selected_objects[0].toggle_selection(false)
 				selected_objects = []
 	# si on lache la souris -> fin du dragging, dessine le rectangle, sélectionne les units dans le rectangle
 	elif is_dragging :

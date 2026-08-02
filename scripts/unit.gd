@@ -9,6 +9,8 @@ var is_selected = false
 var av = Vector2.ZERO
 var facing := 1 # 1 = droite, -1 = gauche
 
+@export var owner_player : Player
+
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_icon: Sprite2D = $SelectionIcon
@@ -26,7 +28,8 @@ func _ready():
 	navigation_agent.time_horizon_agents = 2.0
 	navigation_agent.target_desired_distance = 30
 	navigation_agent.avoidance_priority = 0.5
-
+	
+	
 func set_destination(pos: Vector2):
 	destination = pos
 	navigation_agent.target_position = pos

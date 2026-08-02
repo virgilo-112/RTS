@@ -16,27 +16,17 @@ class_name GoldStone
 @onready var gold_5_collision: CollisionShape2D = $Gold5Collision
 @onready var gold_6: AnimatedSprite2D = $Gold6
 @onready var gold_6_collision: CollisionShape2D = $Gold6Collision
-@onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 
-var gold : int 
+@onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
+@onready var interaction_points: Node2D = $InteractionPoints
 @onready var gold_count: Label = $HUDGold/GoldCount
 @onready var hud_gold: CanvasLayer = $HUDGold
+
+var gold : int 
 var is_selected = false
 
+signal depleted
 
-@onready var interaction_points: Node2D = $InteractionPoints
-
-
-
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
 
 func _ready() -> void:
 	if id == 1 :
@@ -63,6 +53,18 @@ func _ready() -> void:
 		gold_6.visible = true
 		gold_6_collision.visible = true
 		gold = 800
+	gold_count.text = ": "+var_to_str(gold)
+
+
+func get_closest_point(unit_pos):
+	var best = null
+	var best_distance = INF
+	for point in interaction_points.get_children():
+		var d = point.global_position.distance_to(unit_pos)
+		if d < best_distance :
+			best_distance = d
+			best = point
+	return best.global_position
 
 func can_receive_command():
 	return false
@@ -72,5 +74,12 @@ func toggle_selection(value:bool):
 	selection_icon.visible = value
 	hud_gold.visible = value
 
-func _process(_delta: float) -> void:
+
+func mine(amount : int) -> int :
+	var mined = min(amount, gold)
+	gold -= mined
 	gold_count.text = ": "+var_to_str(gold)
+	if gold == 0 :
+		depleted.emit()
+		queue_free()
+	return mined

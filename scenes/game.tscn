@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://mjryl67t62q7" path="res://assets/Terrain/Tileset/Tilemap_color5.png" id="6_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dxifqlv4x70uw" path="res://assets/Terrain/Tileset/Water Background color.png" id="7_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjed7rq65fw0g" path="res://scenes/pawn.tscn" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://d3w2h33gnq2he" path="res://scripts/player.gd" id="9_264po"]
 [ext_resource type="PackedScene" uid="uid://bg07abj3uo8kc" path="res://scenes/warrior.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://b3ojixovxl1lo" path="res://scenes/archer.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://c5slc284xtkuu" path="res://scenes/lancer.tscn" id="13_kvuet"]
@@ -3783,12 +3784,6 @@ sources/7 = SubResource("TileSetAtlasSource_qnb83")
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="HUD" parent="." unique_id=165254352 instance=ExtResource("1_ir15t")]
-
-[node name="InputManager" type="Node2D" parent="." unique_id=976987581]
-z_index = 2
-script = ExtResource("1_kvuet")
-
 [node name="TileMapLayer" type="Node2D" parent="." unique_id=666832494]
 z_as_relative = false
 y_sort_enabled = true
@@ -3811,79 +3806,131 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD3//z/AgAAAAEAAAD3//3/AgAAAAEAAAD3//7/AgAAAAEAAAD4//z/AgABAAEAAAD4//3/AgABAAEAAAD4//7/AgABAAEAAAD5//z/AgABAAEAAAD5//3/AgABAAEAAAD5//7/AgABAAEAAAD3//v/AgAAAAEAAAD3////AgAAAAEAAAD3/wAAAgAAAAEAAAD3/wEAAgAFAAIAAAD4//v/AgABAAEAAAD4////AgABAAEAAAD4/wAAAgABAAEAAAD4/wEAAgAGAAIAAAD5//v/AgABAAEAAAD5////AgABAAEAAAD5/wAAAgABAAEAAAD5/wEAAgAGAAIAAAD6//v/AgABAAEAAAD6//z/AgABAAEAAAD6//3/AgABAAEAAAD6//7/AgABAAEAAAD6////AgABAAEAAAD6/wAAAgABAAEAAAD6/wEAAgAGAAIAAAD7//v/AgABAAEAAAD7//z/AgABAAEAAAD7//3/AgABAAEAAAD7//7/AgABAAEAAAD7////AgABAAEAAAD7/wAAAgABAAEAAAD7/wEAAgAGAAIAAAD8//v/AgABAAEAAAD8//z/AgABAAEAAAD8//3/AgABAAEAAAD8//7/AgABAAEAAAD8////AgABAAEAAAD8/wAAAgABAAEAAAD8/wEAAgAGAAIAAAD9//v/AgAHAAEAAAD9//z/AgAHAAEAAAD9//3/AgAHAAEAAAD9//7/AgAGAAEAAAD9////AgAHAAEAAAD9/wAAAgAHAAEAAAD9/wEAAgAHAAIAAAD4/wIAAgAGAAQAAAD5/wIAAgAGAAQAAAD6/wIAAgAGAAQAAAD7/wIAAgAGAAQAAAD8/wIAAgAGAAQAAAD9/wIAAgAHAAQAAAD3/wIAAgAFAAQAAAD3//r/AgAAAAAAAAD9//r/AgAHAAAAAAD4//r/AgAGAAAAAAD5//r/AgAGAAAAAAD6//r/AgAGAAAAAAD7//r/AgAGAAAAAAD8//r/AgAGAAAAAAD+////AgADAAUAAAD+//7/AgADAAQAAAA=")
 tile_set = SubResource("TileSet_sww3w")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1594978793]
+[node name="Players" type="Node" parent="." unique_id=458926859]
+
+[node name="Player1" type="Node" parent="Players" unique_id=1144874508]
+script = ExtResource("9_264po")
+
+[node name="Units" type="Node2D" parent="." unique_id=1617043740]
+y_sort_enabled = true
+
+[node name="Warrior" parent="Units" unique_id=314852935 node_paths=PackedStringArray("owner_player") instance=ExtResource("11_kvpfn")]
+z_as_relative = true
+position = Vector2(261, -100)
+collision_layer = 1
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Pawn" parent="Units" unique_id=1256312482 node_paths=PackedStringArray("owner_player") instance=ExtResource("9_0tnpc")]
+z_as_relative = true
+collision_layer = 1
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Pawn2" parent="Units" unique_id=1113388896 node_paths=PackedStringArray("owner_player") instance=ExtResource("9_0tnpc")]
+z_as_relative = true
+position = Vector2(16, 255)
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Archer" parent="Units" unique_id=1736408985 node_paths=PackedStringArray("owner_player") instance=ExtResource("12_dinhu")]
+z_as_relative = true
+position = Vector2(211, 149)
+collision_layer = 1
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Lancer" parent="Units" unique_id=705701080 node_paths=PackedStringArray("owner_player") instance=ExtResource("13_kvuet")]
+z_as_relative = true
+position = Vector2(-90, 330)
+collision_layer = 1
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Monk" parent="Units" unique_id=590560197 node_paths=PackedStringArray("owner_player") instance=ExtResource("14_trtic")]
+z_as_relative = true
+position = Vector2(-334, 343)
+collision_layer = 1
+owner_player = NodePath("../../Players/Player1")
+
+[node name="Resources" type="Node2D" parent="." unique_id=1501197533]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="Resources" unique_id=1475837722]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Tree" parent="Resources/Trees" unique_id=1019794889 instance=ExtResource("17_rysoc")]
+position = Vector2(-460, 433)
+id = 2
+
+[node name="Tree2" parent="Resources/Trees" unique_id=1692597375 instance=ExtResource("17_rysoc")]
+position = Vector2(94, 381)
+id = 1
+
+[node name="Tree3" parent="Resources/Trees" unique_id=178229567 instance=ExtResource("17_rysoc")]
+position = Vector2(-258, 7)
+id = 4
+
+[node name="Tree4" parent="Resources/Trees" unique_id=793267479 instance=ExtResource("17_rysoc")]
+position = Vector2(403, -123)
+id = 3
+
+[node name="Tree5" parent="Resources/Trees" unique_id=1053408264 instance=ExtResource("17_rysoc")]
+position = Vector2(346, -164)
+id = 4
+
+[node name="Sheeps" type="Node2D" parent="Resources" unique_id=411658342]
+
+[node name="Sheep" parent="Resources/Sheeps" unique_id=279528964 instance=ExtResource("18_ssvqc")]
+position = Vector2(285, 205)
+
+[node name="Sheep2" parent="Resources/Sheeps" unique_id=1562165916 instance=ExtResource("18_ssvqc")]
+position = Vector2(322, 255)
+
+[node name="Sheep3" parent="Resources/Sheeps" unique_id=1894802175 instance=ExtResource("18_ssvqc")]
+position = Vector2(352, 169)
+
+[node name="Sheep4" parent="Resources/Sheeps" unique_id=84156822 instance=ExtResource("18_ssvqc")]
+position = Vector2(389, 223)
+
+[node name="Sheep5" parent="Resources/Sheeps" unique_id=1732977033 instance=ExtResource("18_ssvqc")]
+position = Vector2(-478, 42)
+
+[node name="Sheep6" parent="Resources/Sheeps" unique_id=37068395 instance=ExtResource("18_ssvqc")]
+position = Vector2(-423, 7)
+
+[node name="GoldStones" type="Node2D" parent="Resources" unique_id=1757342122]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="GoldStone" parent="Resources/GoldStones" unique_id=729183247 instance=ExtResource("16_ca42v")]
+position = Vector2(318, 345)
+
+[node name="GoldStone2" parent="Resources/GoldStones" unique_id=1569472686 instance=ExtResource("16_ca42v")]
+position = Vector2(-391, -175)
+id = 4
+
+[node name="GoldStone3" parent="Resources/GoldStones" unique_id=791796894 instance=ExtResource("16_ca42v")]
+position = Vector2(78, -210)
+id = 5
+
+[node name="GoldStone4" parent="Resources/GoldStones" unique_id=2021829152 instance=ExtResource("16_ca42v")]
+position = Vector2(366, 57)
+id = 6
+
+[node name="LocalPlayer" type="Node" parent="." unique_id=161367731]
+
+[node name="Camera2D" type="Camera2D" parent="LocalPlayer" unique_id=1594978793]
 position = Vector2(-67, 118)
 rotation = 3.1415925
 scale = Vector2(2.0208054, 105.32147)
 zoom = Vector2(0.7, 0.7)
 
-[node name="Warrior" parent="." unique_id=314852935 instance=ExtResource("11_kvpfn")]
-position = Vector2(261, -100)
-collision_layer = 1
+[node name="HUD" parent="LocalPlayer" unique_id=165254352 node_paths=PackedStringArray("owner_player") instance=ExtResource("1_ir15t")]
+owner_player = NodePath("../../Players/Player1")
 
-[node name="Pawn" parent="." unique_id=1256312482 instance=ExtResource("9_0tnpc")]
-collision_layer = 1
+[node name="InputManager" type="Node2D" parent="LocalPlayer" unique_id=976987581]
+z_index = 2
+script = ExtResource("1_kvuet")
 
-[node name="Archer" parent="." unique_id=1736408985 instance=ExtResource("12_dinhu")]
-position = Vector2(211, 149)
-collision_layer = 1
-
-[node name="Lancer" parent="." unique_id=705701080 instance=ExtResource("13_kvuet")]
-position = Vector2(-90, 330)
-collision_layer = 1
-
-[node name="Monk" parent="." unique_id=590560197 instance=ExtResource("14_trtic")]
-position = Vector2(-334, 343)
-collision_layer = 1
-
-[node name="GoldStone" parent="." unique_id=729183247 instance=ExtResource("16_ca42v")]
-position = Vector2(318, 345)
-
-[node name="GoldStone2" parent="." unique_id=1569472686 instance=ExtResource("16_ca42v")]
-position = Vector2(-391, -175)
-id = 4
-
-[node name="GoldStone3" parent="." unique_id=791796894 instance=ExtResource("16_ca42v")]
-position = Vector2(78, -210)
-id = 5
-
-[node name="GoldStone4" parent="." unique_id=2021829152 instance=ExtResource("16_ca42v")]
-position = Vector2(366, 57)
-id = 6
-
-[node name="Tree" parent="." unique_id=1019794889 instance=ExtResource("17_rysoc")]
-position = Vector2(-460, 433)
-id = 2
-
-[node name="Tree2" parent="." unique_id=1692597375 instance=ExtResource("17_rysoc")]
-position = Vector2(94, 381)
-id = 1
-
-[node name="Tree3" parent="." unique_id=178229567 instance=ExtResource("17_rysoc")]
-position = Vector2(-258, 7)
-id = 4
-
-[node name="Tree4" parent="." unique_id=793267479 instance=ExtResource("17_rysoc")]
-position = Vector2(403, -123)
-id = 3
-
-[node name="Tree5" parent="." unique_id=1053408264 instance=ExtResource("17_rysoc")]
-position = Vector2(346, -164)
-id = 4
-
-[node name="CharacterBody2D" parent="." unique_id=279528964 instance=ExtResource("18_ssvqc")]
-position = Vector2(341, 194)
-
-[node name="CharacterBody2D2" parent="." unique_id=1919024990 instance=ExtResource("18_ssvqc")]
-position = Vector2(374, 239)
-
-[node name="CharacterBody2D3" parent="." unique_id=1007277361 instance=ExtResource("18_ssvqc")]
-position = Vector2(399, 193)
-
-[node name="CharacterBody2D4" parent="." unique_id=2123201374 instance=ExtResource("18_ssvqc")]
-position = Vector2(323, 226)
-
-[node name="CharacterBody2D5" parent="." unique_id=1401342152 instance=ExtResource("18_ssvqc")]
-position = Vector2(-435, 0)
-
-[connection signal="mouse_entered" from="Pawn" to="InputManager" method="_on_pawn_mouse_entered"]
+[connection signal="mouse_entered" from="Units/Pawn" to="LocalPlayer/InputManager" method="_on_pawn_mouse_entered"]

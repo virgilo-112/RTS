@@ -574,7 +574,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ikfjc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Axe_Idle",
 "speed": 10.0
 }, {
@@ -597,7 +597,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kgnnv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Axe_Interact",
 "speed": 10.0
 }, {
@@ -620,7 +620,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ejapi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Axe_Run",
 "speed": 10.0
 }, {
@@ -649,7 +649,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gly51")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Gold_Idle",
 "speed": 10.0
 }, {
@@ -672,7 +672,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5oj3t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Gold_Run",
 "speed": 10.0
 }, {
@@ -701,7 +701,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_heigp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hammer_Idle",
 "speed": 10.0
 }, {
@@ -715,7 +715,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4coey")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hammer_Interact",
 "speed": 10.0
 }, {
@@ -738,7 +738,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lscly")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hammer_Run",
 "speed": 10.0
 }, {
@@ -767,7 +767,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lgtdx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 10.0
 }, {
@@ -796,7 +796,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8j0lc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Knife_Idle",
 "speed": 10.0
 }, {
@@ -813,7 +813,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kqotn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Knife_Interact",
 "speed": 10.0
 }, {
@@ -836,7 +836,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lwfro")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Knife_Run",
 "speed": 10.0
 }, {
@@ -865,7 +865,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jm71u")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Meat_Idle",
 "speed": 10.0
 }, {
@@ -888,7 +888,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2eb7j")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Meat_Run",
 "speed": 10.0
 }, {
@@ -917,7 +917,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h1om1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Pickaxe_Idle",
 "speed": 10.0
 }, {
@@ -940,7 +940,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vguuw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Pickaxe_Interact",
 "speed": 10.0
 }, {
@@ -963,7 +963,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l5hyf")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Pickaxe_Run",
 "speed": 10.0
 }, {
@@ -986,7 +986,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jofin")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Run",
 "speed": 10.0
 }, {
@@ -1015,7 +1015,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l4be6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Wood_Idle",
 "speed": 10.0
 }, {
@@ -1038,7 +1038,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pftx7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Wood_Run",
 "speed": 10.0
 }]
@@ -1047,10 +1047,28 @@ animations = [{
 script = ExtResource("2_w61pg")
 abilities = Array[String](["move", "mine", "build", "chop"])
 
+[node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="Detect" parent="." index="2" unique_id=1553397965]
+z_as_relative = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_w61pg")
-animation = &"Axe_Interact"
+animation = &"Knife_Interact"
 autoplay = "Idle"
-frame_progress = 0.99034566
+frame_progress = 0.13954918
+
+[node name="MiningTimer" type="Timer" parent="." index="5" unique_id=1796811755]
+wait_time = 0.15
+
+[node name="ChopingTimer" type="Timer" parent="." index="6" unique_id=1444050948]
+wait_time = 0.15
+
+[connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
+[connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]

@@ -56,13 +56,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u8x0n")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2jwxs"]
-radius = 12.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m26wl"]
+radius = 7.0176992
+height = 23.999031
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyn6j"]
 atlas = ExtResource("2_kmq0r")
@@ -109,13 +110,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2y6s")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uloe6"]
-radius = 11.0
+radius = 6.999567
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gisgc"]
@@ -163,14 +164,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xj3yp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obxtg"]
-radius = 19.0
-height = 46.0
+radius = 10.995549
+height = 39.994545
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq4n3"]
 atlas = ExtResource("4_paicx")
@@ -217,13 +218,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q2cub")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_27hw6"]
-radius = 22.0
+radius = 11.003793
 height = 48.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yd2k"]
@@ -271,14 +272,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gnvk8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yptph"]
-radius = 31.0
-height = 62.0
+radius = 12.004555
+height = 58.2726
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ottty"]
 atlas = ExtResource("6_5kelj")
@@ -325,14 +326,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jy6ie")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vys01"]
-radius = 34.0
-height = 70.0
+radius = 17.99058
+height = 74.15535
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2pnrn"]
 texture = ExtResource("9_2pnrn")
@@ -356,6 +357,7 @@ radius = 37.054016
 
 [node name="GoldStone" type="StaticBody2D" unique_id=729183247]
 z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -364,68 +366,78 @@ id = 1
 
 [node name="Gold1" type="AnimatedSprite2D" parent="." unique_id=1693634492]
 visible = false
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_b530g")
 autoplay = "default"
 frame_progress = 0.18793276
 
 [node name="Gold1Collision" type="CollisionShape2D" parent="." unique_id=561090580]
 visible = false
-position = Vector2(1, -1)
-shape = SubResource("CircleShape2D_2jwxs")
+position = Vector2(2, -7.0000005)
+rotation = 1.5797877
+shape = SubResource("CapsuleShape2D_m26wl")
 
 [node name="Gold2" type="AnimatedSprite2D" parent="." unique_id=941634382]
 visible = false
+position = Vector2(-1, -12)
 sprite_frames = SubResource("SpriteFrames_p1srp")
 autoplay = "default"
 frame_progress = 0.16048959
 
 [node name="Gold2Collision" type="CollisionShape2D" parent="." unique_id=640331526]
 visible = false
-position = Vector2(0, -3)
+position = Vector2(0, -7)
+rotation = 1.5579736
 shape = SubResource("CapsuleShape2D_uloe6")
 
 [node name="Gold3" type="AnimatedSprite2D" parent="." unique_id=424304429]
 visible = false
-position = Vector2(1, -1)
+position = Vector2(1, -20)
 sprite_frames = SubResource("SpriteFrames_bbwpp")
 autoplay = "default"
 frame_progress = 0.3898548
 
 [node name="Gold3Collision" type="CollisionShape2D" parent="." unique_id=622890156]
 visible = false
-position = Vector2(1, -5)
+position = Vector2(5.684342e-14, -10.999999)
+rotation = 1.5751445
 shape = SubResource("CapsuleShape2D_obxtg")
 
 [node name="Gold4" type="AnimatedSprite2D" parent="." unique_id=1461118411]
 visible = false
-position = Vector2(1, -1)
+position = Vector2(-2, -19)
 sprite_frames = SubResource("SpriteFrames_dccmq")
 autoplay = "default"
 
 [node name="Gold4Collision" type="CollisionShape2D" parent="." unique_id=1406796191]
 visible = false
-position = Vector2(1, -9)
+position = Vector2(0, -11)
+rotation = 1.5746719
 shape = SubResource("CapsuleShape2D_27hw6")
 
 [node name="Gold5" type="AnimatedSprite2D" parent="." unique_id=954895916]
 visible = false
+position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_mfqum")
 autoplay = "default"
 
 [node name="Gold5Collision" type="CollisionShape2D" parent="." unique_id=1964782719]
 visible = false
-position = Vector2(1, -7)
+position = Vector2(0, -12)
+rotation = 1.56611
 shape = SubResource("CapsuleShape2D_yptph")
 
 [node name="Gold6" type="AnimatedSprite2D" parent="." unique_id=1799287188]
 visible = false
+position = Vector2(1, -25)
 sprite_frames = SubResource("SpriteFrames_bo7bk")
 autoplay = "default"
 frame_progress = 0.13377097
 
 [node name="Gold6Collision" type="CollisionShape2D" parent="." unique_id=2028032033]
 visible = false
-position = Vector2(-1, -10)
+position = Vector2(3.7252903e-09, -18)
+rotation = 1.5757769
 shape = SubResource("CapsuleShape2D_vys01")
 
 [node name="HUDGold" type="CanvasLayer" parent="." unique_id=520042579]
@@ -450,20 +462,17 @@ texture = ExtResource("10_5kelj")
 
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=660396081]
 
-[node name="S" type="Marker2D" parent="InteractionPoints" unique_id=254483894]
-position = Vector2(0, 35)
-
 [node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1256829871]
-position = Vector2(-32, 25)
+position = Vector2(-41, 7)
 
 [node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1602519216]
-position = Vector2(-51, 0)
+position = Vector2(-53, -19)
 
 [node name="E" type="Marker2D" parent="InteractionPoints" unique_id=1465631765]
-position = Vector2(45, 0)
+position = Vector2(50, -19)
 
 [node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=1858217784]
-position = Vector2(32, 24)
+position = Vector2(36, 8)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=76157974]
 collision_layer = 4
@@ -471,8 +480,8 @@ collision_mask = 0
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=900379215]
 visible = false
-position = Vector2(-1.5000019, -8.000001)
-scale = Vector2(0.67968744, 0.640625)
+position = Vector2(-1, -34)
+scale = Vector2(0.7460937, 0.7032148)
 texture = ExtResource("8_u7c2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=129888956]
