@@ -4,9 +4,11 @@ extends Unit
 @export var abilities: Array[String] = []
 var is_pickaxing : bool = false
 var is_choping : bool = false
+var is_knifing : bool = false
 
 @onready var mining_timer: Timer = $MiningTimer
 @onready var choping_timer: Timer = $ChopingTimer
+@onready var knifing_timer: Timer = $KnifingTimer
 
 
 func _ready() -> void:
@@ -29,6 +31,8 @@ func update_anim():
 		animated_sprite_2d.play("Pickaxe_Interact")
 	elif velocity == Vector2.ZERO and is_choping :
 		animated_sprite_2d.play("Axe_Interact")
+	elif velocity == Vector2.ZERO and is_knifing :
+		animated_sprite_2d.play("Knife_Interact")
 	else :
 		animated_sprite_2d.play("Idle")
 
@@ -66,8 +70,24 @@ func stop_choping():
 	choping_timer.stop()
 	current_command = null
 	update_anim()
+
+func start_knifing(sheep: Sheep):
+	is_knifing = true
+	if !sheep.depleted.is_connected(stop_knifing):
+		sheep.depleted.connect(stop_knifing)
+	knifing_timer.start()
+
+func _on_knifing_timer_timeout() -> void:
+	if current_command is KnifeCommand:
+		current_command.on_knifing_tick(self)
 	
+func stop_knifing():
+	is_knifing = false
+	knifing_timer.stop()
+	current_command = null
+	update_anim()
+
 func reset_action():
+	is_knifing = false
 	is_pickaxing = false
 	is_choping = false
-	

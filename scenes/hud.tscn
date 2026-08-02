@@ -11,52 +11,40 @@
 script = ExtResource("1_047uy")
 
 [node name="WoodIcon" type="Sprite2D" parent="." unique_id=1954150838]
-position = Vector2(33, 117)
+position = Vector2(-24, 115)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_uo2fv")
 
 [node name="CoinIcon" type="Sprite2D" parent="." unique_id=953612915]
-position = Vector2(33, 77)
+position = Vector2(-24, 75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_047uy")
 
 [node name="MeatIcon" type="Sprite2D" parent="." unique_id=384685265]
-position = Vector2(33, 37)
+position = Vector2(-24, 39)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_5pdws")
 
 [node name="CogIcon" type="Sprite2D" parent="." unique_id=322314228]
-position = Vector2(1126, 27)
+position = Vector2(1069, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_hd3ao")
 
 [node name="MusicIcon" type="Sprite2D" parent="." unique_id=2117567820]
-position = Vector2(1086, 27)
+position = Vector2(1029, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_0i1j5")
 
-[node name="MeatLabel" type="Label" parent="." unique_id=1441920608]
+[node name="FoodLabel" type="Label" parent="." unique_id=1441920608]
 anchors_preset = -1
 anchor_left = 0.067
 anchor_top = 0.069000006
 anchor_right = 0.067
 anchor_bottom = 0.069000006
-offset_left = -20.184006
-offset_top = -11.712006
-offset_right = 19.815994
-offset_bottom = 11.287994
-text = "0"
-
-[node name="CoinLabel" type="Label" parent="." unique_id=552428277]
-anchors_preset = -1
-anchor_left = 0.067
-anchor_top = 0.124000005
-anchor_right = 0.067
-anchor_bottom = 0.124000005
-offset_left = -20.184006
-offset_top = -11.352005
-offset_right = 19.815994
-offset_bottom = 11.647995
+offset_left = -2.6800003
+offset_top = -7.9850044
+offset_right = 37.32
+offset_bottom = 15.014996
 text = "0"
 
 [node name="WoodLabel" type="Label" parent="." unique_id=529189943]
@@ -65,8 +53,20 @@ anchor_left = 0.067
 anchor_top = 0.18100001
 anchor_right = 0.067
 anchor_bottom = 0.18100001
-offset_left = -20.184006
-offset_top = -11.28801
-offset_right = 19.815994
-offset_bottom = 11.71199
+offset_left = -2.6800003
+offset_top = 1.734993
+offset_right = 37.32
+offset_bottom = 24.735
+text = "0"
+
+[node name="CoinLabel" type="Label" parent="." unique_id=552428277]
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.124000005
+anchor_right = 0.067
+anchor_bottom = 0.124000005
+offset_left = -2.6800003
+offset_top = -3.0600052
+offset_right = 37.32
+offset_bottom = 19.939995
 text = "0"

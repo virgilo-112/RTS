@@ -8,27 +8,31 @@ class_name Sheep
 @onready var hud_sheep: CanvasLayer = $HUDSheep
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 var is_selected: bool = false
-var meat:int
-@onready var meat_count: Label = $HUDSheep/MeatCount
+var food:int
+@onready var food_count: Label = $HUDSheep/FoodCount
 
 const SPEED = 30.0
 var direction = 1
 
+signal depleted
+
 func _ready() -> void:
-	meat = 1000
+	food = 1000
+	food_count.text = ": "+var_to_str(food)
 
-func _physics_process(_delta: float) -> void:
-	meat_count.text = ": "+var_to_str(meat)
-	animated_sprite.play("Run")
-	velocity.x = direction * SPEED
+#func _physics_process(_delta: float) -> void:
+	#animated_sprite.play("Run")
+	#velocity.x = direction * SPEED
+#
+	#move_and_slide()
+#
+#
+#func _on_timer_timeout() -> void:
+	#direction = -direction
+	#animated_sprite.flip_h = direction < 0
 
-	move_and_slide()
-
-
-func _on_timer_timeout() -> void:
-	direction = -direction
-	animated_sprite.flip_h = direction < 0
-
+func can_receive_command():
+	return false
 
 func get_closest_point(unit_pos):
 	var best = null
@@ -39,8 +43,17 @@ func get_closest_point(unit_pos):
 			best_distance = d
 			best = point
 	return best.global_position
-
+	
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
 	hud_sheep.visible = value
+
+func knife(amount: int) -> int:
+	var knifed = min(amount, food)
+	food -= knifed
+	food_count.text = ": "+var_to_str(food)
+	if food == 0 :
+		depleted.emit()
+		queue_free()
+	return knifed

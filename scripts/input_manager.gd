@@ -13,25 +13,32 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed :
 			var target = check_if_something_at_position(get_global_mouse_position())
+			var mouse_pos = get_global_mouse_position()
 			if target == null :
-				var mouse_pos = get_global_mouse_position()
+				
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("move"):
 							object.assign_command(MoveCommand.new(mouse_pos))
 							
 			elif target is GoldStone :
-				var mouse_pos = get_global_mouse_position()
+				
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("mine"):
 							object.assign_command(MineCommand.new(check_if_something_at_position(mouse_pos)))
 			elif target is WoodTree :
-				var mouse_pos = get_global_mouse_position()
+				
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("chop"):
 							object.assign_command(ChopCommand.new(check_if_something_at_position(mouse_pos)))
+			elif target is Sheep :
+				
+				for object in selected_objects:
+					if object.can_receive_command():
+						if object.has_ability("chop"):
+							object.assign_command(KnifeCommand.new(check_if_something_at_position(mouse_pos)))
 				
 				
 	# si souris en motion et dragging -> dessin du rectangle

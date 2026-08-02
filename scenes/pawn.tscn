@@ -1045,7 +1045,7 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
-abilities = Array[String](["move", "mine", "build", "chop"])
+abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
 z_index = 1
@@ -1069,6 +1069,10 @@ wait_time = 0.15
 [node name="ChopingTimer" type="Timer" parent="." index="6" unique_id=1444050948]
 wait_time = 0.15
 
+[node name="KnifingTimer" type="Timer" parent="." index="7" unique_id=305695869]
+wait_time = 0.15
+
 [connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
+[connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]

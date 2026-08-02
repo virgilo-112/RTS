@@ -13,4 +13,9 @@ func start(unit):
 	unit.reset_action()
 
 func on_arrived(unit):
-	unit.start_knifing()
+	unit.start_knifing(sheep)
+
+func on_knifing_tick(unit):
+	if is_instance_valid(sheep):
+		var knifed = sheep.knife(1)
+		unit.owner_player.add_food(knifed)
