@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="Petit-Empire"
-run/main_scene="uid://dchb7ykxpx0lg"
+run/main_scene="uid://5uq61jjuk5w"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=2560
+window/size/viewport_height=1340
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://crycvdxmnjoni"
+mouse_cursor/custom_image_hotspot=Vector2(20, 18)
 
 [editor]
 

@@ -1055,6 +1055,10 @@ y_sort_enabled = true
 [node name="Detect" parent="." index="2" unique_id=1553397965]
 z_as_relative = false
 
+[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
+z_index = 1
+z_as_relative = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
 position = Vector2(0, -30)

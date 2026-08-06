@@ -9,7 +9,8 @@ class_name Sheep
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 var is_selected: bool = false
 var food:int
-@onready var food_count: Label = $HUDSheep/FoodCount
+
+@onready var food_count: Label = $HUDSheep/Control/PanelContainer/HBoxContainer/FoodCount
 
 const SPEED = 30.0
 var direction = 1
@@ -17,7 +18,7 @@ var direction = 1
 signal depleted
 
 func _ready() -> void:
-	food = 1000
+	food = 200
 	food_count.text = ": "+var_to_str(food)
 
 #func _physics_process(_delta: float) -> void:

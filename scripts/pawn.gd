@@ -77,6 +77,7 @@ func start_knifing(sheep: Sheep):
 		sheep.depleted.connect(stop_knifing)
 	knifing_timer.start()
 
+
 func _on_knifing_timer_timeout() -> void:
 	if current_command is KnifeCommand:
 		current_command.on_knifing_tick(self)

@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bprkgg8aej06o"]
+
+[ext_resource type="Script" uid="uid://ckbh1s5ed0mfk" path="res://scripts/house.gd" id="1_f74lx"]
+[ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="1_rk7hg"]
+[ext_resource type="Texture2D" uid="uid://ownrpe0nlpew" path="res://assets/Buildings/Blue Buildings/House2.png" id="2_se78b"]
+[ext_resource type="Texture2D" uid="uid://cupbb5xeauiub" path="res://assets/Buildings/Blue Buildings/House3.png" id="3_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="4_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="5_f74lx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(78, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptc3g"]
+size = Vector2(111, 157)
+
+[node name="house" type="StaticBody2D" unique_id=1715711342]
+y_sort_enabled = true
+script = ExtResource("1_f74lx")
+
+[node name="House1" type="Sprite2D" parent="." unique_id=1727123810]
+visible = false
+position = Vector2(0, -68)
+texture = ExtResource("1_rk7hg")
+
+[node name="House2" type="Sprite2D" parent="." unique_id=965853223]
+visible = false
+position = Vector2(0, -66)
+texture = ExtResource("2_se78b")
+
+[node name="House3" type="Sprite2D" parent="." unique_id=577299783]
+visible = false
+position = Vector2(0, -66)
+texture = ExtResource("3_3bgk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821181112]
+position = Vector2(0, -20.5)
+shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="HUDHouse" type="CanvasLayer" parent="." unique_id=840554855]
+visible = false
+
+[node name="Control" type="Control" parent="HUDHouse" unique_id=1415983151]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUDHouse/Control" unique_id=1328500621]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -202.0
+offset_right = 431.0
+offset_bottom = -93.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDHouse/Control/PanelContainer" unique_id=1367510026]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="HUDHouse/Control/PanelContainer/HBoxContainer" unique_id=1970751393]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Health : "
+
+[node name="PawnButton" type="Button" parent="HUDHouse/Control/PanelContainer/HBoxContainer" unique_id=1318357809]
+layout_mode = 2
+icon = ExtResource("4_3bgk5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=570469816]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1455006845]
+position = Vector2(-0.5, -69.5)
+shape = SubResource("RectangleShape2D_ptc3g")
+
+[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=405222671]
+visible = false
+z_index = 1
+z_as_relative = false
+position = Vector2(-1.9073486e-06, -62)
+scale = Vector2(1.3833007, 1.3833007)
+texture = ExtResource("5_f74lx")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=1047519547]
+position = Vector2(0, 7)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="HUDHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

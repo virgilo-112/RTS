@@ -1,72 +1,139 @@
 [gd_scene format=3 uid="uid://do2tnx0wm38rj"]
 
 [ext_resource type="Script" uid="uid://qo074ycrbexd" path="res://scripts/hud.gd" id="1_047uy"]
-[ext_resource type="Texture2D" uid="uid://drf0s4b2nex8c" path="res://assets/UI Elements/UI Elements/Icons/Icon_02.png" id="1_uo2fv"]
 [ext_resource type="Texture2D" uid="uid://dw5psooolx8e1" path="res://assets/UI Elements/UI Elements/Icons/Icon_03.png" id="2_047uy"]
-[ext_resource type="Texture2D" uid="uid://k4pvvj3jgrin" path="res://assets/UI Elements/UI Elements/Icons/Icon_04.png" id="3_5pdws"]
+[ext_resource type="Texture2D" uid="uid://dl37ye8byh571" path="res://assets/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="4_047uy"]
 [ext_resource type="Texture2D" uid="uid://cwc4ij1m7a1xv" path="res://assets/UI Elements/UI Elements/Icons/Icon_10.png" id="4_hd3ao"]
 [ext_resource type="Texture2D" uid="uid://betb65eaor0hk" path="res://assets/UI Elements/UI Elements/Icons/Icon_12.png" id="5_0i1j5"]
+[ext_resource type="Texture2D" uid="uid://8snaubhxf3os" path="res://assets/Terrain/Resources/Meat/Meat Resource/Meat Resource.png" id="5_5pdws"]
+[ext_resource type="Texture2D" uid="uid://cao3mn1goi662" path="res://assets/UI Elements/UI Elements/Icons/Icon_11.png" id="6_5pdws"]
+[ext_resource type="Texture2D" uid="uid://dydg2jjbo5sb4" path="res://assets/UI Elements/UI Elements/Icons/Icon_09.png" id="8_hd3ao"]
+[ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="9_0i1j5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0i1j5"]
+font_size = 25
 
 [node name="HUD" type="CanvasLayer" unique_id=165254352]
 script = ExtResource("1_047uy")
 
-[node name="WoodIcon" type="Sprite2D" parent="." unique_id=1954150838]
-position = Vector2(-24, 115)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_uo2fv")
+[node name="Control" type="Control" parent="." unique_id=626221473]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 2
 
-[node name="CoinIcon" type="Sprite2D" parent="." unique_id=953612915]
-position = Vector2(-24, 75)
-scale = Vector2(0.5, 0.5)
+[node name="ResourcePanelContainer" type="PanelContainer" parent="Control" unique_id=1178892659]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 30.0
+offset_right = 216.0
+offset_bottom = 230.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ResourcePanelContainer" unique_id=1796861253]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1061810623]
+layout_mode = 2
+
+[node name="WoodIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer" unique_id=394474417]
+layout_mode = 2
+texture = ExtResource("4_047uy")
+
+[node name="WoodLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer" unique_id=174799534]
+layout_mode = 2
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1437313777]
+layout_mode = 2
+
+[node name="FoodIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2" unique_id=427715681]
+layout_mode = 2
+texture = ExtResource("5_5pdws")
+
+[node name="FoodLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2" unique_id=866923428]
+layout_mode = 2
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1746824927]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3" unique_id=1193261330]
+layout_mode = 2
 texture = ExtResource("2_047uy")
 
-[node name="MeatIcon" type="Sprite2D" parent="." unique_id=384685265]
-position = Vector2(-24, 39)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_5pdws")
+[node name="CoinLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3" unique_id=309903628]
+layout_mode = 2
+text = "0"
+metadata/_edit_use_anchors_ = true
 
-[node name="CogIcon" type="Sprite2D" parent="." unique_id=322314228]
-position = Vector2(1069, 25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_hd3ao")
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1030766979]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -351.0
+offset_top = 43.0
+offset_right = -148.0
+offset_bottom = 107.0
+grow_horizontal = 0
+mouse_filter = 1
 
-[node name="MusicIcon" type="Sprite2D" parent="." unique_id=2117567820]
-position = Vector2(1029, 25)
-scale = Vector2(0.5, 0.5)
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer" unique_id=1361906961]
+layout_mode = 2
+
+[node name="MusicIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=795329756]
+layout_mode = 2
 texture = ExtResource("5_0i1j5")
 
-[node name="FoodLabel" type="Label" parent="." unique_id=1441920608]
-anchors_preset = -1
-anchor_left = 0.067
-anchor_top = 0.069000006
-anchor_right = 0.067
-anchor_bottom = 0.069000006
-offset_left = -2.6800003
-offset_top = -7.9850044
-offset_right = 37.32
-offset_bottom = 15.014996
-text = "0"
+[node name="InfoIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=324648074]
+layout_mode = 2
+texture = ExtResource("6_5pdws")
 
-[node name="WoodLabel" type="Label" parent="." unique_id=529189943]
-anchors_preset = -1
-anchor_left = 0.067
-anchor_top = 0.18100001
-anchor_right = 0.067
-anchor_bottom = 0.18100001
-offset_left = -2.6800003
-offset_top = 1.734993
-offset_right = 37.32
-offset_bottom = 24.735
-text = "0"
+[node name="CogIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=133041771]
+layout_mode = 2
+texture = ExtResource("4_hd3ao")
 
-[node name="CoinLabel" type="Label" parent="." unique_id=552428277]
-anchors_preset = -1
-anchor_left = 0.067
-anchor_top = 0.124000005
-anchor_right = 0.067
-anchor_bottom = 0.124000005
-offset_left = -2.6800003
-offset_top = -3.0600052
-offset_right = 37.32
-offset_bottom = 19.939995
+[node name="PanelContainer2" type="PanelContainer" parent="Control" unique_id=1188267730]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="QuitButton" type="Button" parent="Control/PanelContainer2" unique_id=2103909955]
+layout_mode = 2
+mouse_filter = 1
+icon = ExtResource("8_hd3ao")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=752303708]
+offset_left = 52.0
+offset_top = 248.0
+offset_right = 120.0
+offset_bottom = 343.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1553415065]
+layout_mode = 2
+
+[node name="PawnIcon" type="TextureRect" parent="PanelContainer/VBoxContainer" unique_id=97576773]
+layout_mode = 2
+texture = ExtResource("9_0i1j5")
+expand_mode = 4
+
+[node name="PawnCountLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=2087666774]
+layout_mode = 2
 text = "0"
+label_settings = SubResource("LabelSettings_0i1j5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/PanelContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

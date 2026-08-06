@@ -19,8 +19,8 @@ class_name GoldStone
 
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 @onready var interaction_points: Node2D = $InteractionPoints
-@onready var gold_count: Label = $HUDGold/GoldCount
 @onready var hud_gold: CanvasLayer = $HUDGold
+@onready var gold_count: Label = $HUDGold/Control/PanelContainer/HBoxContainer/GoldCount
 
 var gold : int 
 var is_selected = false

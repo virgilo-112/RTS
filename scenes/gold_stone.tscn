@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b1o7bijk73ojg"]
+[gd_scene format=3 uid="uid://b1o7bijk73ojg"]
 
 [ext_resource type="Texture2D" uid="uid://xxed308laiwt" path="res://assets/Terrain/Resources/Gold/Gold Stones/Gold Stone 1_Highlight.png" id="1_7qp61"]
 [ext_resource type="Script" uid="uid://bo85k8xrlf5rk" path="res://scripts/gold_stone.gd" id="1_kmq0r"]
@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bi01itxeurse1" path="res://assets/Terrain/Resources/Gold/Gold Stones/Gold Stone 5_Highlight.png" id="5_2pnrn"]
 [ext_resource type="Texture2D" uid="uid://d1qljp7xlotgf" path="res://assets/Terrain/Resources/Gold/Gold Stones/Gold Stone 6_Highlight.png" id="6_5kelj"]
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="8_u7c2b"]
-[ext_resource type="Texture2D" uid="uid://byotx6skay62x" path="res://assets/UI Elements/UI Elements/Papers/SpecialPaper.png" id="9_2pnrn"]
-[ext_resource type="Texture2D" uid="uid://dtfiekbxawigd" path="res://assets/Terrain/Resources/Gold/Gold Resource/Gold_Resource.png" id="10_5kelj"]
+[ext_resource type="Texture2D" uid="uid://dw5psooolx8e1" path="res://assets/UI Elements/UI Elements/Icons/Icon_03.png" id="9_paicx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ptb0"]
 atlas = ExtResource("1_7qp61")
@@ -335,29 +334,10 @@ animations = [{
 radius = 17.99058
 height = 74.15535
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2pnrn"]
-texture = ExtResource("9_2pnrn")
-texture_region_size = Vector2i(64, 64)
-0:2/0 = 0
-2:2/0 = 0
-0:0/0 = 0
-2:0/0 = 0
-4:0/0 = 0
-4:2/0 = 0
-0:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_v7jne"]
-tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_2pnrn")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pnrn"]
 radius = 37.054016
 
 [node name="GoldStone" type="StaticBody2D" unique_id=729183247]
-z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -440,26 +420,6 @@ position = Vector2(3.7252903e-09, -18)
 rotation = 1.5757769
 shape = SubResource("CapsuleShape2D_vys01")
 
-[node name="HUDGold" type="CanvasLayer" parent="." unique_id=520042579]
-visible = false
-
-[node name="TileMapLayer" type="TileMapLayer" parent="HUDGold" unique_id=290186465]
-tile_map_data = PackedByteArray("AAAAAAcAAQAAAAAAAAAAAAgAAQAAAAIAAAAAAAkAAQAAAAQAAAABAAgAAQACAAIAAAACAAgAAQACAAIAAAADAAgAAQAEAAIAAAADAAcAAQAEAAAAAAABAAcAAQACAAAAAAACAAcAAQACAAAAAAADAAkAAQAEAAQAAAABAAkAAQACAAQAAAACAAkAAQACAAQAAAA=")
-tile_set = SubResource("TileSet_v7jne")
-
-[node name="GoldCount" type="Label" parent="HUDGold" unique_id=1559123054]
-offset_left = 74.0
-offset_top = 515.0
-offset_right = 196.0
-offset_bottom = 570.0
-text = " :"
-vertical_alignment = 1
-
-[node name="GoldResource" type="Sprite2D" parent="HUDGold" unique_id=456480079]
-position = Vector2(52.000008, 544)
-scale = Vector2(1.4296875, 1.4296875)
-texture = ExtResource("10_5kelj")
-
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=660396081]
 
 [node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1256829871]
@@ -480,6 +440,8 @@ collision_mask = 0
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=900379215]
 visible = false
+z_index = 1
+z_as_relative = false
 position = Vector2(-1, -34)
 scale = Vector2(0.7460937, 0.7032148)
 texture = ExtResource("8_u7c2b")
@@ -487,3 +449,39 @@ texture = ExtResource("8_u7c2b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=129888956]
 position = Vector2(1, -7)
 shape = SubResource("CircleShape2D_2pnrn")
+
+[node name="HUDGold" type="CanvasLayer" parent="." unique_id=520042579]
+visible = false
+
+[node name="Control" type="Control" parent="HUDGold" unique_id=409216445]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="HUDGold/Control" unique_id=1431042200]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -145.0
+offset_right = 176.0
+offset_bottom = -81.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDGold/Control/PanelContainer" unique_id=1765474787]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUDGold/Control/PanelContainer/HBoxContainer" unique_id=276708203]
+layout_mode = 2
+texture = ExtResource("9_paicx")
+
+[node name="GoldCount" type="Label" parent="HUDGold/Control/PanelContainer/HBoxContainer" unique_id=2043319212]
+layout_mode = 2
+text = ":"

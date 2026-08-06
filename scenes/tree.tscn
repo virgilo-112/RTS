@@ -1,11 +1,10 @@
-[gd_scene format=4 uid="uid://cgnch0ni7hqta"]
+[gd_scene format=3 uid="uid://cgnch0ni7hqta"]
 
 [ext_resource type="Script" uid="uid://biyoerp5mnfc0" path="res://scripts/tree.gd" id="1_ake3r"]
 [ext_resource type="Texture2D" uid="uid://byug7bbf0g7ld" path="res://assets/Terrain/Resources/Wood/Trees/Tree1.png" id="1_qd6xs"]
 [ext_resource type="Texture2D" uid="uid://cbb6enb7fxjl0" path="res://assets/Terrain/Resources/Wood/Trees/Tree2.png" id="2_ake3r"]
 [ext_resource type="Texture2D" uid="uid://drlfj7nv6vl0g" path="res://assets/Terrain/Resources/Wood/Trees/Tree3.png" id="3_18mvg"]
 [ext_resource type="Texture2D" uid="uid://dgr6snmp458pr" path="res://assets/Terrain/Resources/Wood/Trees/Tree4.png" id="4_dmmp0"]
-[ext_resource type="Texture2D" uid="uid://byotx6skay62x" path="res://assets/UI Elements/UI Elements/Papers/SpecialPaper.png" id="6_dmmp0"]
 [ext_resource type="Texture2D" uid="uid://dl37ye8byh571" path="res://assets/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="7_m26wl"]
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="8_5yujg"]
 
@@ -269,30 +268,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m26wl"]
-texture = ExtResource("6_dmmp0")
-texture_region_size = Vector2i(64, 64)
-0:2/0 = 0
-2:2/0 = 0
-0:0/0 = 0
-2:0/0 = 0
-4:0/0 = 0
-4:2/0 = 0
-0:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_r7adx"]
-tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_m26wl")
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xprpn"]
 radius = 20.0
 height = 134.0
 
 [node name="Tree" type="StaticBody2D" unique_id=1019794889]
-z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -311,7 +291,7 @@ visible = false
 position = Vector2(0, -106)
 sprite_frames = SubResource("SpriteFrames_223ge")
 autoplay = "default"
-frame_progress = 0.3292932
+frame_progress = 0.7803295
 
 [node name="Tree2" type="AnimatedSprite2D" parent="." unique_id=570129336]
 visible = false
@@ -333,26 +313,6 @@ position = Vector2(-2, -66)
 sprite_frames = SubResource("SpriteFrames_1k76w")
 autoplay = "default"
 
-[node name="HUDTree" type="CanvasLayer" parent="." unique_id=1461014969]
-visible = false
-
-[node name="TileMapLayer" type="TileMapLayer" parent="HUDTree" unique_id=638189553]
-tile_map_data = PackedByteArray("AAAAAAcAAQAAAAAAAAAAAAgAAQAAAAIAAAAAAAkAAQAAAAQAAAABAAgAAQACAAIAAAACAAgAAQACAAIAAAADAAgAAQAEAAIAAAADAAcAAQAEAAAAAAABAAcAAQACAAAAAAACAAcAAQACAAAAAAADAAkAAQAEAAQAAAABAAkAAQACAAQAAAACAAkAAQACAAQAAAA=")
-tile_set = SubResource("TileSet_r7adx")
-
-[node name="WoodCount" type="Label" parent="HUDTree" unique_id=2005247882]
-offset_left = 74.0
-offset_top = 515.0
-offset_right = 196.0
-offset_bottom = 570.0
-text = " :"
-vertical_alignment = 1
-
-[node name="WoodResource" type="Sprite2D" parent="HUDTree" unique_id=471463956]
-position = Vector2(49, 544)
-scale = Vector2(1.0585936, 1.0585936)
-texture = ExtResource("7_m26wl")
-
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
 
 [node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1745904542]
@@ -368,9 +328,6 @@ position = Vector2(34, 0)
 position = Vector2(15, 14)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=313827255]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 
@@ -380,6 +337,45 @@ shape = SubResource("CapsuleShape2D_xprpn")
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=1365704985]
 visible = false
+z_index = 1
+z_as_relative = false
 position = Vector2(1, -63)
 scale = Vector2(0.7421875, 1.296875)
 texture = ExtResource("8_5yujg")
+
+[node name="HUDTree" type="CanvasLayer" parent="." unique_id=1461014969]
+visible = false
+
+[node name="Control" type="Control" parent="HUDTree" unique_id=1651481108]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="HUDTree/Control" unique_id=1546965289]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -145.0
+offset_right = 176.0
+offset_bottom = -81.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDTree/Control/PanelContainer" unique_id=621401953]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUDTree/Control/PanelContainer/HBoxContainer" unique_id=160850238]
+layout_mode = 2
+texture = ExtResource("7_m26wl")
+
+[node name="WoodCount" type="Label" parent="HUDTree/Control/PanelContainer/HBoxContainer" unique_id=1633092796]
+layout_mode = 2
+text = " :"
+vertical_alignment = 1

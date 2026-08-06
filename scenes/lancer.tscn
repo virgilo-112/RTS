@@ -116,7 +116,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_63x76")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 10.0
 }, {
@@ -139,7 +139,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r5pfp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Run",
 "speed": 10.0
 }]
@@ -147,6 +147,10 @@ animations = [{
 [node name="Lancer" unique_id=1256312482 instance=ExtResource("1_ho7g4")]
 script = ExtResource("2_5etia")
 abilities = Array[String](["move", "attack"])
+
+[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
+z_index = 1
+z_as_relative = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1153652307]
 position = Vector2(0, -30)
