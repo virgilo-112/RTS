@@ -32,7 +32,7 @@ position = Vector2(-1, -29)
 shape = SubResource("RectangleShape2D_eqwak")
 
 [node name="SelectionIcon" type="Sprite2D" parent="." unique_id=193086596]
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(-2, -30)
 scale = Vector2(0.53125, 0.6640625)
