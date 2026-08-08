@@ -5360,7 +5360,7 @@ owner_player = NodePath("../../../../Players/Player1")
 y_sort_enabled = true
 
 [node name="Archery" parent="World/Buildings/Archeries" unique_id=1408408083 node_paths=PackedStringArray("owner_player", "archer_container") instance=ExtResource("15_yc10j")]
-position = Vector2(-996, 244)
+position = Vector2(-1090, 378)
 owner_player = NodePath("../../../../Players/Player1")
 archer_container = NodePath("..")
 
