@@ -24,10 +24,10 @@ texture = ExtResource("1_a2mic")
 position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_xrivr")
 
-[node name="HUDCasern" type="CanvasLayer" parent="." unique_id=1963882660]
+[node name="UICasern" type="CanvasLayer" parent="." unique_id=1963882660]
 visible = false
 
-[node name="Control" type="Control" parent="HUDCasern" unique_id=1959797082]
+[node name="Control" type="Control" parent="UICasern" unique_id=1959797082]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HUDCasern/Control" unique_id=1448787311]
+[node name="PanelContainer" type="PanelContainer" parent="UICasern/Control" unique_id=1448787311]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -47,21 +47,21 @@ offset_right = 431.0
 offset_bottom = -93.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUDCasern/Control/PanelContainer" unique_id=1769665768]
+[node name="HBoxContainer" type="HBoxContainer" parent="UICasern/Control/PanelContainer" unique_id=1769665768]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="HUDCasern/Control/PanelContainer/HBoxContainer" unique_id=868394151]
+[node name="Label" type="Label" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=868394151]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Health : "
 
-[node name="WarriorButton" type="Button" parent="HUDCasern/Control/PanelContainer/HBoxContainer" unique_id=157944498]
+[node name="WarriorButton" type="Button" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=157944498]
 layout_mode = 2
 icon = ExtResource("3_7xwg8")
 
-[node name="LancerButton" type="Button" parent="HUDCasern/Control/PanelContainer/HBoxContainer" unique_id=212932430]
+[node name="LancerButton" type="Button" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=212932430]
 layout_mode = 2
 icon = ExtResource("4_6l34y")
 
@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_13qdw")
 
 [node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=1308359525]
 visible = false
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(-1.7881393e-07, -87)
 scale = Vector2(1.7822263, 1.7822263)
@@ -82,5 +82,5 @@ texture = ExtResource("5_dnq0g")
 [node name="Spawn" type="Marker2D" parent="." unique_id=915140740]
 position = Vector2(0, 7)
 
-[connection signal="pressed" from="HUDCasern/Control/PanelContainer/HBoxContainer/WarriorButton" to="." method="_on_warrior_button_pressed"]
-[connection signal="pressed" from="HUDCasern/Control/PanelContainer/HBoxContainer/LancerButton" to="." method="_on_lancer_button_pressed"]
+[connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/WarriorButton" to="." method="_on_warrior_button_pressed"]
+[connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/LancerButton" to="." method="_on_lancer_button_pressed"]

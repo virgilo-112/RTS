@@ -224,16 +224,16 @@ shape = SubResource("CapsuleShape2D_4uhln")
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=267485068]
 visible = false
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(-1.9073486e-06, -4.344629)
 scale = Vector2(0.359375, 0.38038486)
 texture = ExtResource("5_vbo3h")
 
-[node name="HUDSheep" type="CanvasLayer" parent="." unique_id=563365415]
+[node name="UISheep" type="CanvasLayer" parent="." unique_id=563365415]
 visible = false
 
-[node name="Control" type="Control" parent="HUDSheep" unique_id=826764003]
+[node name="Control" type="Control" parent="UISheep" unique_id=826764003]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -244,7 +244,7 @@ grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="HUDSheep/Control" unique_id=1348201314]
+[node name="PanelContainer" type="PanelContainer" parent="UISheep/Control" unique_id=1348201314]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -255,14 +255,14 @@ offset_right = 176.0
 offset_bottom = -81.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUDSheep/Control/PanelContainer" unique_id=1991587669]
+[node name="HBoxContainer" type="HBoxContainer" parent="UISheep/Control/PanelContainer" unique_id=1991587669]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUDSheep/Control/PanelContainer/HBoxContainer" unique_id=932577819]
+[node name="TextureRect" type="TextureRect" parent="UISheep/Control/PanelContainer/HBoxContainer" unique_id=932577819]
 layout_mode = 2
 texture = ExtResource("7_s32ju")
 
-[node name="FoodCount" type="Label" parent="HUDSheep/Control/PanelContainer/HBoxContainer" unique_id=21500075]
+[node name="FoodCount" type="Label" parent="UISheep/Control/PanelContainer/HBoxContainer" unique_id=21500075]
 layout_mode = 2
 text = " :"
 vertical_alignment = 1

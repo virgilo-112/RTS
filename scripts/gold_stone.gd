@@ -19,8 +19,8 @@ class_name GoldStone
 
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 @onready var interaction_points: Node2D = $InteractionPoints
-@onready var hud_gold: CanvasLayer = $HUDGold
-@onready var gold_count: Label = $HUDGold/Control/PanelContainer/HBoxContainer/GoldCount
+@onready var gold_count: Label = $UIGold/Control/PanelContainer/HBoxContainer/GoldCount
+@onready var ui_gold: CanvasLayer = $UIGold
 
 var gold : int 
 var is_selected = false
@@ -72,7 +72,7 @@ func can_receive_command():
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
-	hud_gold.visible = value
+	ui_gold.visible = value
 
 
 func mine(amount : int) -> int :

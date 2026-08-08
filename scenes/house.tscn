@@ -36,10 +36,10 @@ texture = ExtResource("3_3bgk5")
 position = Vector2(0, -20.5)
 shape = SubResource("RectangleShape2D_b1lj4")
 
-[node name="HUDHouse" type="CanvasLayer" parent="." unique_id=840554855]
+[node name="UIHouse" type="CanvasLayer" parent="." unique_id=840554855]
 visible = false
 
-[node name="Control" type="Control" parent="HUDHouse" unique_id=1415983151]
+[node name="Control" type="Control" parent="UIHouse" unique_id=1415983151]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HUDHouse/Control" unique_id=1328500621]
+[node name="PanelContainer" type="PanelContainer" parent="UIHouse/Control" unique_id=1328500621]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -59,17 +59,17 @@ offset_right = 431.0
 offset_bottom = -93.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUDHouse/Control/PanelContainer" unique_id=1367510026]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHouse/Control/PanelContainer" unique_id=1367510026]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="HUDHouse/Control/PanelContainer/HBoxContainer" unique_id=1970751393]
+[node name="Label" type="Label" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1970751393]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Health : "
 
-[node name="PawnButton" type="Button" parent="HUDHouse/Control/PanelContainer/HBoxContainer" unique_id=1318357809]
+[node name="PawnButton" type="Button" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1318357809]
 layout_mode = 2
 icon = ExtResource("4_3bgk5")
 
@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_ptc3g")
 
 [node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=405222671]
 visible = false
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(-1.9073486e-06, -62)
 scale = Vector2(1.3833007, 1.3833007)
@@ -91,4 +91,4 @@ texture = ExtResource("5_f74lx")
 position = Vector2(0, 7)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="pressed" from="HUDHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]
+[connection signal="pressed" from="UIHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

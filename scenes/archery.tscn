@@ -23,10 +23,10 @@ texture = ExtResource("1_ea1b2")
 position = Vector2(-5.5, -35.5)
 shape = SubResource("RectangleShape2D_13qdw")
 
-[node name="HUDArchery" type="CanvasLayer" parent="." unique_id=1949146341]
+[node name="UIArchery" type="CanvasLayer" parent="." unique_id=1949146341]
 visible = false
 
-[node name="Control" type="Control" parent="HUDArchery" unique_id=1661188532]
+[node name="Control" type="Control" parent="UIArchery" unique_id=1661188532]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HUDArchery/Control" unique_id=1711292685]
+[node name="PanelContainer" type="PanelContainer" parent="UIArchery/Control" unique_id=1711292685]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -46,17 +46,17 @@ offset_right = 431.0
 offset_bottom = -93.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUDArchery/Control/PanelContainer" unique_id=995981285]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIArchery/Control/PanelContainer" unique_id=995981285]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="HUDArchery/Control/PanelContainer/HBoxContainer" unique_id=1887502622]
+[node name="Label" type="Label" parent="UIArchery/Control/PanelContainer/HBoxContainer" unique_id=1887502622]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Health : "
 
-[node name="ArcherButton" type="Button" parent="HUDArchery/Control/PanelContainer/HBoxContainer" unique_id=64791136]
+[node name="ArcherButton" type="Button" parent="UIArchery/Control/PanelContainer/HBoxContainer" unique_id=64791136]
 layout_mode = 2
 icon = ExtResource("3_0woum")
 
@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_rjcxb")
 
 [node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=925949586]
 visible = false
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(-1.7881393e-07, -87)
 scale = Vector2(1.7822263, 1.7822263)
@@ -77,4 +77,4 @@ texture = ExtResource("4_6ip5i")
 [node name="Spawn" type="Marker2D" parent="." unique_id=1240952815]
 position = Vector2(43, 6)
 
-[connection signal="pressed" from="HUDArchery/Control/PanelContainer/HBoxContainer/ArcherButton" to="." method="_on_archer_button_pressed"]
+[connection signal="pressed" from="UIArchery/Control/PanelContainer/HBoxContainer/ArcherButton" to="." method="_on_archer_button_pressed"]

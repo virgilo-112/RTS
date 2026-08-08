@@ -6,7 +6,7 @@ extends StaticBody2D
 
 @onready var selection_icon: Sprite2D = $Area2D/SelectionIcon
 @onready var spawn: Marker2D = $Spawn
-@onready var hud_casern: CanvasLayer = $HUDCasern
+@onready var ui_casern: CanvasLayer = $UICasern
 
 var is_selected: bool = false
 
@@ -16,7 +16,7 @@ func can_receive_command():
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
-	hud_casern.visible = value
+	ui_casern.visible = value
 
 
 func _on_warrior_button_pressed() -> void:

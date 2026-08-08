@@ -236,10 +236,6 @@ animations = [{
 script = ExtResource("2_kkak1")
 abilities = Array[String](["move", "attack"])
 
-[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
-z_index = 1
-z_as_relative = false
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1548176055]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_64u8w")

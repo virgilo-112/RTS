@@ -11,8 +11,9 @@ class_name WoodTree
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 @onready var interaction_points: Node2D = $InteractionPoints
-@onready var hud_tree: CanvasLayer = $HUDTree
-@onready var wood_count: Label = $HUDTree/Control/PanelContainer/HBoxContainer/WoodCount
+@onready var ui_tree: CanvasLayer = $UITree
+@onready var wood_count: Label = $UITree/Control/PanelContainer/HBoxContainer/WoodCount
+
 
 var wood : int 
 var is_selected = false
@@ -50,7 +51,7 @@ func can_receive_command():
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
-	hud_tree.visible = value
+	ui_tree.visible = value
 
 func chop(amount : int) -> int :
 	var choped = min(amount, wood)

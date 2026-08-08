@@ -132,4 +132,4 @@ func _draw():
 	if is_dragging:
 		var start = drag_start
 		var end = get_global_mouse_position()
-		draw_rect(Rect2(start, end - start).abs(),Color.WHITE_SMOKE,false,1.5)
+		draw_rect(Rect2(start, end - start).abs(),Color.WHITE,false,5.5)

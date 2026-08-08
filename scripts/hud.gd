@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var wood_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer/WoodLabel
 @onready var food_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2/FoodLabel
 @onready var coin_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3/CoinLabel
-@onready var pawn_count_label: Label = $PanelContainer/VBoxContainer/PawnCountLabel
+@onready var pawn_count_label: Label = $Control/PanelContainer4/VBoxContainer/PawnCountLabel
 
 func _ready() -> void:
 	owner_player.gold_changed.connect(_on_gold_changed)

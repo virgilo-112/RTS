@@ -5,12 +5,12 @@ class_name Sheep
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 @onready var interaction_points: Node2D = $InteractionPoints
-@onready var hud_sheep: CanvasLayer = $HUDSheep
+@onready var ui_sheep: CanvasLayer = $UISheep
 @onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
 var is_selected: bool = false
 var food:int
 
-@onready var food_count: Label = $HUDSheep/Control/PanelContainer/HBoxContainer/FoodCount
+@onready var food_count: Label = $UISheep/Control/PanelContainer/HBoxContainer/FoodCount
 
 const SPEED = 30.0
 var direction = 1
@@ -48,7 +48,7 @@ func get_closest_point(unit_pos):
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
-	hud_sheep.visible = value
+	ui_sheep.visible = value
 
 func knife(amount: int) -> int:
 	var knifed = min(amount, food)

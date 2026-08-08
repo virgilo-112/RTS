@@ -337,16 +337,16 @@ shape = SubResource("CapsuleShape2D_xprpn")
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=1365704985]
 visible = false
-z_index = 1
+z_index = 5
 z_as_relative = false
 position = Vector2(1, -63)
 scale = Vector2(0.7421875, 1.296875)
 texture = ExtResource("8_5yujg")
 
-[node name="HUDTree" type="CanvasLayer" parent="." unique_id=1461014969]
+[node name="UITree" type="CanvasLayer" parent="." unique_id=1461014969]
 visible = false
 
-[node name="Control" type="Control" parent="HUDTree" unique_id=1651481108]
+[node name="Control" type="Control" parent="UITree" unique_id=1651481108]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -357,7 +357,7 @@ grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="HUDTree/Control" unique_id=1546965289]
+[node name="PanelContainer" type="PanelContainer" parent="UITree/Control" unique_id=1546965289]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -368,14 +368,14 @@ offset_right = 176.0
 offset_bottom = -81.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUDTree/Control/PanelContainer" unique_id=621401953]
+[node name="HBoxContainer" type="HBoxContainer" parent="UITree/Control/PanelContainer" unique_id=621401953]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUDTree/Control/PanelContainer/HBoxContainer" unique_id=160850238]
+[node name="TextureRect" type="TextureRect" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=160850238]
 layout_mode = 2
 texture = ExtResource("7_m26wl")
 
-[node name="WoodCount" type="Label" parent="HUDTree/Control/PanelContainer/HBoxContainer" unique_id=1633092796]
+[node name="WoodCount" type="Label" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=1633092796]
 layout_mode = 2
 text = " :"
 vertical_alignment = 1

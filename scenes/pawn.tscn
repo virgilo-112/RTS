@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://bo6sq8l12dq3i" path="res://assets/Units/Blue Units/Pawn/Pawn_Run Meat.png" id="16_d1deg"]
 [ext_resource type="Texture2D" uid="uid://ih07x2rmi0gs" path="res://assets/Units/Blue Units/Pawn/Pawn_Idle Wood.png" id="21_5fred"]
 [ext_resource type="Texture2D" uid="uid://djdwnl4rbcd8d" path="res://assets/Units/Blue Units/Pawn/Pawn_Run Wood.png" id="22_4666p"]
+[ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="23_h1om1"]
+[ext_resource type="Texture2D" uid="uid://bp6osmwq42ygy" path="res://assets/Buildings/Blue Buildings/Barracks.png" id="24_ldq0g"]
+[ext_resource type="Texture2D" uid="uid://dy6e03bppxj1v" path="res://assets/Buildings/Blue Buildings/Archery.png" id="25_85cqe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sam1c"]
 atlas = ExtResource("3_4hrlu")
@@ -1055,10 +1058,6 @@ y_sort_enabled = true
 [node name="Detect" parent="." index="2" unique_id=1553397965]
 z_as_relative = false
 
-[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
-z_index = 1
-z_as_relative = false
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
 position = Vector2(0, -30)
@@ -1076,7 +1075,51 @@ wait_time = 0.15
 [node name="KnifingTimer" type="Timer" parent="." index="7" unique_id=305695869]
 wait_time = 0.15
 
-[connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
+[node name="UIPawn" type="CanvasLayer" parent="." index="8" unique_id=1553202362]
+
+[node name="Control" type="Control" parent="UIPawn" index="0" unique_id=827019391]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UIPawn/Control" index="0" unique_id=2085938729]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -202.0
+offset_right = 431.0
+offset_bottom = -93.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIPawn/Control/PanelContainer" index="0" unique_id=224834680]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="0" unique_id=256160179]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Health : "
+
+[node name="HouseButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="1" unique_id=1624925792]
+layout_mode = 2
+icon = ExtResource("23_h1om1")
+
+[node name="CasernButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="2" unique_id=652075344]
+layout_mode = 2
+icon = ExtResource("24_ldq0g")
+
+[node name="ArcheryButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="3" unique_id=112460513]
+layout_mode = 2
+icon = ExtResource("25_85cqe")
+
 [connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
+[connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
 [connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]

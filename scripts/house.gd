@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 @onready var selection_icon: Sprite2D = $Area2D/SelectionIcon
-@onready var hud_house: CanvasLayer = $HUDHouse
 @onready var spawn: Marker2D = $Spawn
+@onready var ui_house: CanvasLayer = $UIHouse
 
 @onready var house_1: Sprite2D = $House1
 @onready var house_2: Sprite2D = $House2
@@ -29,7 +29,7 @@ func can_receive_command():
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
-	hud_house.visible = value
+	ui_house.visible = value
 
 func _on_pawn_button_pressed() -> void:
 	var new_pawn = preload("res://scenes/pawn.tscn").instantiate()
