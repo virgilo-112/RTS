@@ -5273,7 +5273,7 @@ y_sort_enabled = true
 position = Vector2(1, 0)
 
 [node name="Monk" parent="World/Units/Monks" unique_id=1263447855 node_paths=PackedStringArray("owner_player") instance=ExtResource("17_kmb1v")]
-position = Vector2(-1531, 698)
+position = Vector2(-2393, 1188)
 collision_layer = 1
 owner_player = NodePath("../../../../Players/Player1")
 
@@ -5351,7 +5351,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Casern" parent="World/Buildings/Caserns" unique_id=135393825 node_paths=PackedStringArray("warrior_container", "lancer_container", "owner_player") instance=ExtResource("20_gqmmt")]
-position = Vector2(-418, -512)
+position = Vector2(-2894, 1072)
 warrior_container = NodePath("../../../Units/Warriors")
 lancer_container = NodePath("../../../Units/Lancers")
 owner_player = NodePath("../../../../Players/Player1")
@@ -5360,7 +5360,7 @@ owner_player = NodePath("../../../../Players/Player1")
 y_sort_enabled = true
 
 [node name="Archery" parent="World/Buildings/Archeries" unique_id=1408408083 node_paths=PackedStringArray("owner_player", "archer_container") instance=ExtResource("15_yc10j")]
-position = Vector2(-1090, 378)
+position = Vector2(-2617, 800)
 owner_player = NodePath("../../../../Players/Player1")
 archer_container = NodePath("..")
 
@@ -5368,13 +5368,13 @@ archer_container = NodePath("..")
 y_sort_enabled = true
 
 [node name="house" parent="World/Buildings/Houses" unique_id=1715711342 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("20_jscy8")]
-position = Vector2(-1572, -18)
+position = Vector2(-2218, 1042)
 sprite_id = 1
 owner_player = NodePath("../../../../Players/Player1")
 pawn_container = NodePath("../../../Units/Pawns")
 
 [node name="house2" parent="World/Buildings/Houses" unique_id=351107529 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("20_jscy8")]
-position = Vector2(-1469, 53)
+position = Vector2(-2125, 1105)
 sprite_id = 2
 owner_player = NodePath("../../../../Players/Player1")
 pawn_container = NodePath("../../../Units/Pawns")

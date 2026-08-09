@@ -1076,6 +1076,7 @@ wait_time = 0.15
 wait_time = 0.15
 
 [node name="UIPawn" type="CanvasLayer" parent="." index="8" unique_id=1553202362]
+visible = false
 
 [node name="Control" type="Control" parent="UIPawn" index="0" unique_id=827019391]
 layout_mode = 3

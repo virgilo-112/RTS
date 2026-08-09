@@ -451,6 +451,7 @@ position = Vector2(1, -7)
 shape = SubResource("CircleShape2D_2pnrn")
 
 [node name="UIGold" type="CanvasLayer" parent="." unique_id=520042579]
+visible = false
 
 [node name="Control" type="Control" parent="UIGold" unique_id=409216445]
 layout_mode = 3
