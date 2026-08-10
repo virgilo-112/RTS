@@ -1,25 +1,33 @@
 extends Unit
 
+class_name Pawn
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var abilities: Array[String] = []
 var is_pickaxing : bool = false
 var is_choping : bool = false
 var is_knifing : bool = false
+var is_building : bool = false
 
 @onready var mining_timer: Timer = $MiningTimer
 @onready var choping_timer: Timer = $ChopingTimer
 @onready var knifing_timer: Timer = $KnifingTimer
+@onready var building_timer: Timer = $BuildingTimer
+
+@onready var ui_pawn: CanvasLayer = $UIPawn
+
 
 
 func _ready() -> void:
 	super._ready()
 	selection_icon.visible = false
 
-func has_ability(ability: String) -> bool:
-	return ability in abilities
 
 func _physics_process(_delta: float) -> void:
 	move()
+
+func has_ability(ability: String) -> bool:
+	return ability in abilities
 
 func update_facing(dir):
 	animated_sprite_2d.flip_h = dir < 0
@@ -33,9 +41,35 @@ func update_anim():
 		animated_sprite_2d.play("Axe_Interact")
 	elif velocity == Vector2.ZERO and is_knifing :
 		animated_sprite_2d.play("Knife_Interact")
+	elif velocity == Vector2.ZERO and is_building :
+		animated_sprite_2d.play("Hammer_Interact")
 	else :
 		animated_sprite_2d.play("Idle")
+		
+func toggle_selection(value:bool):
+	super.toggle_selection(value)
+	ui_pawn.visible = value
 
+func start_building(building_scene: PackedScene, position: Vector2):
+	is_building = true
+	building_timer.start()
+	
+func _on_building_timer_timeout() -> void:
+	if current_command is BuildCommand:
+		current_command.on_building_tick(self)
+
+func finish_building(building_scene: PackedScene, position: Vector2):
+	var new_building = building_scene.instantiate()
+	new_building.global_position = position
+	new_building.owner_player = owner_player
+	owner_player.add_building(new_building)
+	stop_building()
+	
+	
+func stop_building():
+	is_building = false
+	current_command = null
+	update_anim()
 
 func start_mining(stone: GoldStone):
 	is_pickaxing = true
@@ -92,3 +126,4 @@ func reset_action():
 	is_knifing = false
 	is_pickaxing = false
 	is_choping = false
+	is_building = false

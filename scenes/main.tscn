@@ -12,13 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bp4jo0rrch2lr" path="res://assets/Terrain/Tileset/Tilemap_color4.png" id="11_fv21b"]
 [ext_resource type="Texture2D" uid="uid://mjryl67t62q7" path="res://assets/Terrain/Tileset/Tilemap_color5.png" id="12_tel4y"]
 [ext_resource type="PackedScene" uid="uid://5tpqeux2jvkd" path="res://scenes/archery.tscn" id="15_yc10j"]
+[ext_resource type="PackedScene" uid="uid://baf8npqinbyyw" path="res://scenes/house.tscn" id="16_gqmmt"]
 [ext_resource type="Script" uid="uid://dn55f6sk0a3cq" path="res://scripts/camera_main.gd" id="17_0ld40"]
 [ext_resource type="PackedScene" uid="uid://d4l3s4iv7tbc" path="res://scenes/monk.tscn" id="17_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://cgnch0ni7hqta" path="res://scenes/tree.tscn" id="18_fuf3a"]
 [ext_resource type="PackedScene" uid="uid://bbnxql577evxg" path="res://scenes/sheep.tscn" id="19_pibwh"]
 [ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone.tscn" id="20_c6pm6"]
 [ext_resource type="PackedScene" uid="uid://i1eqsvs1jhnn" path="res://scenes/casern.tscn" id="20_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://bprkgg8aej06o" path="res://scenes/house.tscn" id="20_jscy8"]
+[ext_resource type="Script" uid="uid://djr7yof37wx52" path="res://scripts/placement_manager.gd" id="20_yc10j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5poiv"]
 texture = ExtResource("6_og1vs")
@@ -5285,62 +5286,62 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Tree" parent="World/Resources/Trees" unique_id=1019794889 instance=ExtResource("18_fuf3a")]
-position = Vector2(-505, 334)
+position = Vector2(-1292, 1113)
 id = 2
 
 [node name="Tree2" parent="World/Resources/Trees" unique_id=549070720 instance=ExtResource("18_fuf3a")]
-position = Vector2(103, -161)
+position = Vector2(-1295, 621)
 id = 1
 
 [node name="Tree3" parent="World/Resources/Trees" unique_id=1927940071 instance=ExtResource("18_fuf3a")]
-position = Vector2(961, 184)
+position = Vector2(-1011, 689)
 id = 4
 
 [node name="Tree4" parent="World/Resources/Trees" unique_id=29465317 instance=ExtResource("18_fuf3a")]
-position = Vector2(580, -323)
+position = Vector2(-1158, 738)
 id = 3
 
 [node name="Tree5" parent="World/Resources/Trees" unique_id=1638812160 instance=ExtResource("18_fuf3a")]
-position = Vector2(648, -126)
+position = Vector2(-1095, 1035)
 id = 4
 
 [node name="Sheeps" type="Node2D" parent="World/Resources" unique_id=1433152522]
 y_sort_enabled = true
 
 [node name="Sheep" parent="World/Resources/Sheeps" unique_id=279528964 instance=ExtResource("19_pibwh")]
-position = Vector2(-309, -764)
+position = Vector2(-1053, -455)
 
 [node name="Sheep2" parent="World/Resources/Sheeps" unique_id=1592245179 instance=ExtResource("19_pibwh")]
-position = Vector2(218, -469)
+position = Vector2(-1169, -385)
 
 [node name="Sheep3" parent="World/Resources/Sheeps" unique_id=652579151 instance=ExtResource("19_pibwh")]
-position = Vector2(-796, 242)
+position = Vector2(-1627, 276)
 
 [node name="Sheep4" parent="World/Resources/Sheeps" unique_id=1838954603 instance=ExtResource("19_pibwh")]
-position = Vector2(368, -555)
+position = Vector2(-1136, -313)
 
 [node name="Sheep5" parent="World/Resources/Sheeps" unique_id=608899379 instance=ExtResource("19_pibwh")]
-position = Vector2(-658, 77)
+position = Vector2(-1582, 225)
 
 [node name="Sheep6" parent="World/Resources/Sheeps" unique_id=1076403609 instance=ExtResource("19_pibwh")]
-position = Vector2(692, -682)
+position = Vector2(-1042, -365)
 
 [node name="GoldStones" type="Node2D" parent="World/Resources" unique_id=464750378]
 y_sort_enabled = true
 
 [node name="GoldStone" parent="World/Resources/GoldStones" unique_id=729183247 instance=ExtResource("20_c6pm6")]
-position = Vector2(207, -669)
+position = Vector2(-1606, 576)
 
 [node name="GoldStone2" parent="World/Resources/GoldStones" unique_id=611354200 instance=ExtResource("20_c6pm6")]
-position = Vector2(-541, 612)
+position = Vector2(-1741, 1228)
 id = 4
 
 [node name="GoldStone3" parent="World/Resources/GoldStones" unique_id=1072037142 instance=ExtResource("20_c6pm6")]
-position = Vector2(-660, 295)
+position = Vector2(-1587, 558)
 id = 5
 
 [node name="GoldStone4" parent="World/Resources/GoldStones" unique_id=1536206345 instance=ExtResource("20_c6pm6")]
-position = Vector2(861, -304)
+position = Vector2(-1697, 1202)
 id = 6
 
 [node name="Buildings" type="Node2D" parent="World" unique_id=538640229]
@@ -5367,15 +5368,13 @@ archer_container = NodePath("..")
 [node name="Houses" type="Node2D" parent="World/Buildings" unique_id=1086045638]
 y_sort_enabled = true
 
-[node name="house" parent="World/Buildings/Houses" unique_id=1715711342 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("20_jscy8")]
-position = Vector2(-2218, 1042)
-sprite_id = 1
+[node name="house" parent="World/Buildings/Houses" unique_id=1028856893 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("16_gqmmt")]
+position = Vector2(-2201, 940)
 owner_player = NodePath("../../../../Players/Player1")
 pawn_container = NodePath("../../../Units/Pawns")
 
-[node name="house2" parent="World/Buildings/Houses" unique_id=351107529 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("20_jscy8")]
-position = Vector2(-2125, 1105)
-sprite_id = 2
+[node name="house1" parent="World/Buildings/Houses" unique_id=239222430 node_paths=PackedStringArray("owner_player", "pawn_container") instance=ExtResource("16_gqmmt")]
+position = Vector2(-1958, 1169)
 owner_player = NodePath("../../../../Players/Player1")
 pawn_container = NodePath("../../../Units/Pawns")
 
@@ -5399,3 +5398,6 @@ script = ExtResource("3_jscy8")
 
 [node name="HUD" parent="." unique_id=165254352 node_paths=PackedStringArray("owner_player") instance=ExtResource("2_yc10j")]
 owner_player = NodePath("../Players/Player1")
+
+[node name="PlacementManager" type="Node2D" parent="." unique_id=667704544]
+script = ExtResource("20_yc10j")

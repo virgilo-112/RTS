@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ih07x2rmi0gs" path="res://assets/Units/Blue Units/Pawn/Pawn_Idle Wood.png" id="21_5fred"]
 [ext_resource type="Texture2D" uid="uid://djdwnl4rbcd8d" path="res://assets/Units/Blue Units/Pawn/Pawn_Run Wood.png" id="22_4666p"]
 [ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="23_h1om1"]
+[ext_resource type="Script" uid="uid://dmjvhdq1pakxy" path="res://scripts/pawn_ui.gd" id="23_ldq0g"]
 [ext_resource type="Texture2D" uid="uid://bp6osmwq42ygy" path="res://assets/Buildings/Blue Buildings/Barracks.png" id="24_ldq0g"]
 [ext_resource type="Texture2D" uid="uid://dy6e03bppxj1v" path="res://assets/Buildings/Blue Buildings/Archery.png" id="25_85cqe"]
 
@@ -1075,7 +1076,11 @@ wait_time = 0.15
 [node name="KnifingTimer" type="Timer" parent="." index="7" unique_id=305695869]
 wait_time = 0.15
 
-[node name="UIPawn" type="CanvasLayer" parent="." index="8" unique_id=1553202362]
+[node name="BuildingTimer" type="Timer" parent="." index="8" unique_id=1778342448]
+wait_time = 10.0
+one_shot = true
+
+[node name="UIPawn" type="CanvasLayer" parent="." index="9" unique_id=1553202362]
 visible = false
 
 [node name="Control" type="Control" parent="UIPawn" index="0" unique_id=827019391]
@@ -1086,6 +1091,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("23_ldq0g")
 
 [node name="PanelContainer" type="PanelContainer" parent="UIPawn/Control" index="0" unique_id=2085938729]
 layout_mode = 1
@@ -1124,3 +1130,5 @@ icon = ExtResource("25_85cqe")
 [connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
 [connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]
+[connection signal="timeout" from="BuildingTimer" to="." method="_on_building_timer_timeout"]
+[connection signal="pressed" from="UIPawn/Control/PanelContainer/HBoxContainer/HouseButton" to="." method="_on_house_button_pressed"]

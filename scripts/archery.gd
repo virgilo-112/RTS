@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name Archery
+
 @onready var selection_icon: Sprite2D = $Area2D/SelectionIcon
 @onready var spawn: Marker2D = $Spawn
 @onready var ui_archery: CanvasLayer = $UIArchery

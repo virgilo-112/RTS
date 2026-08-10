@@ -1,6 +1,6 @@
 extends Camera2D
 
-const threshold: int = 100
+const threshold: int = 50
 var step: int = 30
 @onready var viewport_size = get_viewport().size
 

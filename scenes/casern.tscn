@@ -16,7 +16,7 @@ size = Vector2(157, 173)
 y_sort_enabled = true
 script = ExtResource("1_b6g2c")
 
-[node name="Casern" type="Sprite2D" parent="." unique_id=533730372]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=533730372]
 position = Vector2(0, -108)
 texture = ExtResource("1_a2mic")
 

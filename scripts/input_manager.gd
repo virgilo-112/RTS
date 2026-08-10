@@ -5,6 +5,9 @@ var selected_objects:Array =[]
 var drag_start:Vector2
 var selection_rectangle:RectangleShape2D = RectangleShape2D.new()
 
+func set_enabled(value: bool):
+	set_process_input(value)
+	set_process_unhandled_input(value)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :

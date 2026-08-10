@@ -1,45 +1,32 @@
-[gd_scene format=3 uid="uid://bprkgg8aej06o"]
+[gd_scene format=3 uid="uid://baf8npqinbyyw"]
 
-[ext_resource type="Script" uid="uid://ckbh1s5ed0mfk" path="res://scripts/house.gd" id="1_f74lx"]
-[ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="1_rk7hg"]
-[ext_resource type="Texture2D" uid="uid://ownrpe0nlpew" path="res://assets/Buildings/Blue Buildings/House2.png" id="2_se78b"]
-[ext_resource type="Texture2D" uid="uid://cupbb5xeauiub" path="res://assets/Buildings/Blue Buildings/House3.png" id="3_3bgk5"]
-[ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="4_3bgk5"]
-[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="5_f74lx"]
+[ext_resource type="Script" uid="uid://ckbh1s5ed0mfk" path="res://scripts/house.gd" id="1_se78b"]
+[ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="2_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="3_f74lx"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_ptc3g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8vq"]
 size = Vector2(78, 39)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptc3g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikdiq"]
 size = Vector2(111, 157)
 
-[node name="house" type="StaticBody2D" unique_id=1715711342]
+[node name="House" type="StaticBody2D" unique_id=1028856893]
 y_sort_enabled = true
-script = ExtResource("1_f74lx")
+script = ExtResource("1_se78b")
 
-[node name="House1" type="Sprite2D" parent="." unique_id=1727123810]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=739628180]
 position = Vector2(0, -68)
-texture = ExtResource("1_rk7hg")
+texture = ExtResource("2_3bgk5")
 
-[node name="House2" type="Sprite2D" parent="." unique_id=965853223]
-visible = false
-position = Vector2(0, -66)
-texture = ExtResource("2_se78b")
-
-[node name="House3" type="Sprite2D" parent="." unique_id=577299783]
-visible = false
-position = Vector2(0, -66)
-texture = ExtResource("3_3bgk5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821181112]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]
 position = Vector2(0, -20.5)
-shape = SubResource("RectangleShape2D_b1lj4")
+shape = SubResource("RectangleShape2D_ny8vq")
 
-[node name="UIHouse" type="CanvasLayer" parent="." unique_id=840554855]
+[node name="UIHouse" type="CanvasLayer" parent="." unique_id=319192006]
 visible = false
 
-[node name="Control" type="Control" parent="UIHouse" unique_id=1415983151]
+[node name="Control" type="Control" parent="UIHouse" unique_id=1010859882]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UIHouse/Control" unique_id=1328500621]
+[node name="PanelContainer" type="PanelContainer" parent="UIHouse/Control" unique_id=1466655824]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -59,36 +46,35 @@ offset_right = 431.0
 offset_bottom = -93.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHouse/Control/PanelContainer" unique_id=1367510026]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHouse/Control/PanelContainer" unique_id=174938596]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1970751393]
+[node name="Label" type="Label" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1687767729]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Health : "
 
-[node name="PawnButton" type="Button" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1318357809]
+[node name="PawnButton" type="Button" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=347408774]
 layout_mode = 2
-icon = ExtResource("4_3bgk5")
+icon = ExtResource("3_f74lx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=570469816]
+[node name="Area2D" type="Area2D" parent="." unique_id=1510916706]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1455006845]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105599579]
 position = Vector2(-0.5, -69.5)
-shape = SubResource("RectangleShape2D_ptc3g")
+shape = SubResource("RectangleShape2D_ikdiq")
 
-[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=405222671]
+[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=529611033]
 visible = false
 z_index = 5
 z_as_relative = false
 position = Vector2(-1.9073486e-06, -62)
 scale = Vector2(1.3833007, 1.3833007)
-texture = ExtResource("5_f74lx")
+texture = ExtResource("4_ptc3g")
 
-[node name="Spawn" type="Marker2D" parent="." unique_id=1047519547]
+[node name="Spawn" type="Marker2D" parent="." unique_id=883563034]
 position = Vector2(0, 7)
 
-[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="UIHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]
