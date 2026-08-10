@@ -1050,6 +1050,7 @@ animations = [{
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
+hp = 100
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
 z_index = 1
@@ -1108,7 +1109,7 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="0" unique_id=256160179]
+[node name="HPLabel" type="Label" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="0" unique_id=256160179]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -1126,8 +1127,8 @@ icon = ExtResource("24_ldq0g")
 layout_mode = 2
 icon = ExtResource("25_85cqe")
 
-[connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
 [connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
 [connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]
 [connection signal="timeout" from="BuildingTimer" to="." method="_on_building_timer_timeout"]

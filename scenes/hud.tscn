@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://8snaubhxf3os" path="res://assets/Terrain/Resources/Meat/Meat Resource/Meat Resource.png" id="5_5pdws"]
 [ext_resource type="Texture2D" uid="uid://cao3mn1goi662" path="res://assets/UI Elements/UI Elements/Icons/Icon_11.png" id="6_5pdws"]
 [ext_resource type="Texture2D" uid="uid://dydg2jjbo5sb4" path="res://assets/UI Elements/UI Elements/Icons/Icon_09.png" id="8_hd3ao"]
-[ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="9_0i1j5"]
 [ext_resource type="Script" uid="uid://b02ms0ufpon8m" path="res://scripts/minimap.gd" id="9_mphia"]
+[ext_resource type="Texture2D" uid="uid://by0ub7sw5x7xu" path="res://assets/UI Elements/UI Elements/Icons/Icon_01.png" id="10_0m4u7"]
+[ext_resource type="Texture2D" uid="uid://cgjsrn1p0araq" path="res://assets/UI Elements/UI Elements/Icons/Icon_05.png" id="11_apjy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i1j5"]
 font_size = 25
@@ -154,15 +155,31 @@ offset_top = 248.0
 offset_right = 120.0
 offset_bottom = 355.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer4" unique_id=1553415065]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer4" unique_id=1637351730]
 layout_mode = 2
 
-[node name="PawnIcon" type="TextureRect" parent="Control/PanelContainer4/VBoxContainer" unique_id=97576773]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer4/HBoxContainer" unique_id=1553415065]
 layout_mode = 2
-texture = ExtResource("9_0i1j5")
-expand_mode = 4
 
-[node name="PawnCountLabel" type="Label" parent="Control/PanelContainer4/VBoxContainer" unique_id=2087666774]
+[node name="PawnIcon" type="TextureRect" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer2" unique_id=97576773]
+layout_mode = 2
+texture = ExtResource("10_0m4u7")
+
+[node name="PawnCountLabel" type="Label" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer2" unique_id=2087666774]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0i1j5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer4/HBoxContainer" unique_id=2104955629]
+layout_mode = 2
+
+[node name="MilitiaIcon" type="TextureRect" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer" unique_id=692443371]
+layout_mode = 2
+texture = ExtResource("11_apjy4")
+
+[node name="MilitiaCountLabel" type="Label" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer" unique_id=513313241]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_0i1j5")

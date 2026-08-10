@@ -48,13 +48,13 @@ func _unhandled_input(event):
 			cancel_placement()
 			
 func confirm_placement():
-	var position = get_global_mouse_position()
+	var target = get_global_mouse_position()
 	is_placing = false
 	ghost.queue_free()
 	ghost = null
 	input_manager.set_enabled(true)
-
-	selected_pawn.assign_command(BuildCommand.new(building_scene, position))
+	selected_pawn.owner_player.pay_building(building_scene)
+	selected_pawn.assign_command(BuildCommand.new(building_scene, target))
 
 func cancel_placement():
 	is_placing = false

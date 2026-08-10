@@ -15,12 +15,14 @@ var is_building : bool = false
 @onready var building_timer: Timer = $BuildingTimer
 
 @onready var ui_pawn: CanvasLayer = $UIPawn
+@onready var hp_label: Label = $UIPawn/Control/PanelContainer/HBoxContainer/HPLabel
 
-
+@export var hp: int
 
 func _ready() -> void:
 	super._ready()
 	selection_icon.visible = false
+	hp_label.text = "Health : "+str(hp)
 
 
 func _physics_process(_delta: float) -> void:
@@ -50,7 +52,7 @@ func toggle_selection(value:bool):
 	super.toggle_selection(value)
 	ui_pawn.visible = value
 
-func start_building(building_scene: PackedScene, position: Vector2):
+func start_building(_building_scene: PackedScene, _target: Vector2):
 	is_building = true
 	building_timer.start()
 	
@@ -58,9 +60,9 @@ func _on_building_timer_timeout() -> void:
 	if current_command is BuildCommand:
 		current_command.on_building_tick(self)
 
-func finish_building(building_scene: PackedScene, position: Vector2):
+func finish_building(building_scene: PackedScene, target: Vector2):
 	var new_building = building_scene.instantiate()
-	new_building.global_position = position
+	new_building.global_position = target
 	new_building.owner_player = owner_player
 	owner_player.add_building(new_building)
 	stop_building()

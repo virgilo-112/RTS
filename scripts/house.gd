@@ -26,4 +26,5 @@ func _on_pawn_button_pressed() -> void:
 	new_pawn.global_position = spawn.global_position
 	pawn_container.add_child(new_pawn)
 	new_pawn.owner_player = owner_player
+	print(owner_player)
 	owner_player.add_pawn(1)

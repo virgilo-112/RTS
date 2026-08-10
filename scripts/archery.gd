@@ -26,3 +26,4 @@ func _on_archer_button_pressed() -> void:
 	new_archer.global_position = spawn.global_position
 	archer_container.add_child(new_archer)
 	new_archer.owner_player = owner_player
+	owner_player.add_militia(1)

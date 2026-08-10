@@ -5185,6 +5185,9 @@ sources/4 = SubResource("TileSetAtlasSource_yq6so")
 
 [node name="Player1" type="Node" parent="Players" unique_id=1207673994]
 script = ExtResource("1_gqmmt")
+house_price = 100
+casern_price = 300
+archery_price = 200
 
 [node name="World" type="Node2D" parent="." unique_id=1369622977]
 y_sort_enabled = true

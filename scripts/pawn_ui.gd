@@ -8,11 +8,16 @@ extends Control
 @onready var pawn: Pawn = $"../.."
 @onready var placement_manager = get_tree().current_scene.get_node("PlacementManager")
 
+
 func _ready():
 	house_button.pressed.connect(_on_building_pressed.bind("house"))
 	casern_button.pressed.connect(_on_building_pressed.bind("casern"))
 	archery_button.pressed.connect(_on_building_pressed.bind("archery"))
 
 
+
 func _on_building_pressed(building_type: String):
-	placement_manager.start_placement(building_type, pawn)
+	if pawn.owner_player.is_building_affordable(building_type) == true :
+		placement_manager.start_placement(building_type, pawn)
+	else :
+		return

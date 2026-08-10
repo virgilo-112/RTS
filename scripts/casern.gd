@@ -33,8 +33,10 @@ func _on_unit_button_pressed(unit):
 			new_warrior.global_position = spawn.global_position
 			warrior_container.add_child(new_warrior)
 			new_warrior.owner_player = owner_player
+			owner_player.add_militia(1)
 		"lancer":
 			var new_lancer = preload("res://scenes/lancer.tscn").instantiate()
 			new_lancer.global_position = spawn.global_position
 			lancer_container.add_child(new_lancer)
 			new_lancer.owner_player = owner_player
+			owner_player.add_militia(1)
