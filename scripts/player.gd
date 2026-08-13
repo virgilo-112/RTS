@@ -90,18 +90,18 @@ func is_building_affordable(building_type : String) :
 			else :
 				return true
 
-func pay_building(building_scene: PackedScene):
+func pay_building(building_scene: String):
 
 	match building_scene:
-		preload("res://scenes/house.tscn"):
+		"house":
 			wood -= house_price
 			wood_changed.emit(wood)
 			
-		preload("res://scenes/casern.tscn"):
+		"casern":
 			wood -= casern_price
 			wood_changed.emit(wood)
 			
-		preload("res://scenes/archery.tscn"):
+		"archery":
 			wood -= archery_price
 			wood_changed.emit(wood)
 

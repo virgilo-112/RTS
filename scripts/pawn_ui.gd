@@ -17,7 +17,5 @@ func _ready():
 
 
 func _on_building_pressed(building_type: String):
-	if pawn.owner_player.is_building_affordable(building_type) == true :
-		placement_manager.start_placement(building_type, pawn)
-	else :
-		return
+	if pawn.owner_player.is_building_affordable(building_type):
+		placement_manager.start_placement(building_type)

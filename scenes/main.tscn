@@ -5186,6 +5186,8 @@ sources/4 = SubResource("TileSetAtlasSource_yq6so")
 
 [node name="Player1" type="Node" parent="Players" unique_id=1207673994 node_paths=PackedStringArray("casern_container", "archery_container", "house_container", "warriors", "lancers", "archers", "pawns")]
 script = ExtResource("1_gqmmt")
+wood = 1000
+food = 1000
 house_price = 100
 casern_price = 300
 archery_price = 200

@@ -1,11 +1,11 @@
 class_name BuildCommand
 extends Command
 
-var building : PackedScene
+var building
 var pos : Vector2
 
-func _init(building_scene, position):
-	building = building_scene
+func _init(building_instance, position):
+	building = building_instance
 	pos = position
 
 func start(unit):
@@ -17,5 +17,5 @@ func start(unit):
 func on_arrived(unit):
 	unit.start_building(building, pos)
 
-func on_building_tick(unit):
-	unit.finish_building(building, pos)
+func on_building_timeout(unit):
+	unit.finish_building(building)
