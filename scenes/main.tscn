@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://5uq61jjuk5w"]
 
 [ext_resource type="Script" uid="uid://d3w2h33gnq2he" path="res://scripts/player.gd" id="1_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://bjed7rq65fw0g" path="res://scenes/pawn.tscn" id="2_jscy8"]
 [ext_resource type="PackedScene" uid="uid://do2tnx0wm38rj" path="res://scenes/hud.tscn" id="2_yc10j"]
 [ext_resource type="Script" uid="uid://baganaa60cjjn" path="res://scripts/input_manager.gd" id="3_jscy8"]
 [ext_resource type="Texture2D" uid="uid://d1yv7y66co5jc" path="res://assets/Terrain/Tileset/Shadow.png" id="5_y6deb"]
@@ -5183,11 +5184,26 @@ sources/4 = SubResource("TileSetAtlasSource_yq6so")
 
 [node name="Players" type="Node" parent="." unique_id=1190371335]
 
-[node name="Player1" type="Node" parent="Players" unique_id=1207673994]
+[node name="Player1" type="Node" parent="Players" unique_id=1207673994 node_paths=PackedStringArray("casern_container", "archery_container", "house_container", "warriors", "lancers", "archers", "pawns")]
 script = ExtResource("1_gqmmt")
 house_price = 100
 casern_price = 300
 archery_price = 200
+pawn_food_price = 50
+lancer_food_price = 50
+archer_food_price = 50
+warrior_food_price = 100
+warrior_gold_price = 75
+lancer_gold_price = 50
+archer_gold_price = 100
+casern_container = NodePath("../../World/Buildings/Caserns")
+archery_container = NodePath("../../World/Buildings/Archeries")
+house_container = NodePath("../../World/Buildings/Houses")
+warriors = NodePath("../../World/Units/Warriors")
+lancers = NodePath("../../World/Units/Lancers")
+archers = NodePath("../../World/Units/Archers")
+pawns = NodePath("../../World/Units/Pawns")
+queue_time = 5
 
 [node name="World" type="Node2D" parent="." unique_id=1369622977]
 y_sort_enabled = true
@@ -5268,6 +5284,10 @@ y_sort_enabled = true
 
 [node name="Pawns" type="Node2D" parent="World/Units" unique_id=576111445]
 y_sort_enabled = true
+
+[node name="Pawn" parent="World/Units/Pawns" unique_id=1256312482 node_paths=PackedStringArray("owner_player") instance=ExtResource("2_jscy8")]
+position = Vector2(-2207, 1209)
+owner_player = NodePath("../../../../Players/Player1")
 
 [node name="Archers" type="Node2D" parent="World/Units" unique_id=1075325648]
 y_sort_enabled = true

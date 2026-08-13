@@ -2,29 +2,41 @@ extends Node
 
 class_name Player
 
-var gold := 0
-var wood := 0
-var food := 0
-var pawn_count := 0
-var militia_count := 0
+@export var gold : int
+@export var wood : int
+@export var food : int
+@export var pawn_count := 1
+@export var militia_count := 0
 
 @export var house_price : int
 @export var casern_price : int
 @export var archery_price : int
 
-@onready var casern_container: Node2D = $"../../World/Buildings/Caserns"
-@onready var archery_container: Node2D = $"../../World/Buildings/Archeries"
-@onready var house_container: Node2D = $"../../World/Buildings/Houses"
-@onready var warriors: Node2D = $"../../World/Units/Warriors"
-@onready var lancers: Node2D = $"../../World/Units/Lancers"
-@onready var archers: Node2D = $"../../World/Units/Archers"
-@onready var pawns: Node2D = $"../../World/Units/Pawns"
+@export var pawn_food_price : int
+@export var lancer_food_price : int
+@export var archer_food_price : int
+@export var warrior_food_price : int
+
+@export var warrior_gold_price : int
+@export var lancer_gold_price : int
+@export var archer_gold_price : int
+
+@export var casern_container: Node2D
+@export var archery_container: Node2D
+@export var house_container: Node2D
+@export var warriors: Node2D
+@export var lancers: Node2D
+@export var archers: Node2D
+@export var pawns: Node2D
+
+@export var queue_time: int
 
 signal wood_changed(new_amount)
 signal gold_changed(new_amount)
 signal food_changed(new_amount)
 signal pawn_count_changed(new_amount)
 signal militia_count_changed(new_amount)
+signal unit_queued(unit_type, queue_time)
 
 func add_gold(amount: int):
 	gold += amount
@@ -92,3 +104,56 @@ func pay_building(building_scene: PackedScene):
 		preload("res://scenes/archery.tscn"):
 			wood -= archery_price
 			wood_changed.emit(wood)
+
+
+func is_unit_affordable(unit_type : String) :
+	match unit_type:
+		"pawn":
+			if food < pawn_food_price :
+				return false
+			else :
+				return true
+		"lancer":
+			if food < lancer_food_price or gold < lancer_gold_price :
+				return false
+			else :
+				return true
+		"warrior":
+			if food < warrior_food_price or gold < warrior_gold_price :
+				return false
+			else :
+				return true
+		"archer":
+			if food < archer_food_price or gold < archer_gold_price :
+				return false
+			else :
+				return true
+
+func pay_unit(unit_type : String):
+	match unit_type:
+		"pawn":
+			food -= pawn_food_price
+			food_changed.emit(food)
+			unit_queued.emit("pawn", queue_time)
+
+		"lancer":
+			food -= lancer_food_price
+			food_changed.emit(food)
+			gold -= lancer_gold_price
+			gold_changed.emit(gold)
+			unit_queued.emit("lancer", queue_time)
+			
+		"warrior":
+			food -= warrior_food_price
+			food_changed.emit(food)
+			gold -= warrior_gold_price
+			gold_changed.emit(gold)
+			unit_queued.emit("warrior", queue_time)
+			
+		"archer":
+			food -= archer_food_price
+			food_changed.emit(food)
+			gold -= archer_gold_price
+			gold_changed.emit(gold)
+			unit_queued.emit("archer", queue_time)
+			

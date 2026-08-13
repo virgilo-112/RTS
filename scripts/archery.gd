@@ -22,8 +22,21 @@ func toggle_selection(value:bool):
 
 
 func _on_archer_button_pressed() -> void:
-	var new_archer = preload("res://scenes/archer.tscn").instantiate()
-	new_archer.global_position = spawn.global_position
-	archer_container.add_child(new_archer)
-	new_archer.owner_player = owner_player
-	owner_player.add_militia(1)
+	if owner_player.is_unit_affordable("archer"):
+		var production_timer = Timer.new()
+		production_timer.wait_time = 5
+		production_timer.one_shot = true
+		self.add_child(production_timer)
+		production_timer.start()
+		owner_player.pay_unit("archer")
+		
+		await production_timer.timeout
+		production_timer.queue_free()
+		
+		var new_archer = preload("res://scenes/archer.tscn").instantiate()
+		new_archer.global_position = spawn.global_position
+		archer_container.add_child(new_archer)
+		new_archer.owner_player = owner_player
+		owner_player.add_militia(1)
+	else : 
+		return

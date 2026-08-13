@@ -186,4 +186,16 @@ label_settings = SubResource("LabelSettings_0i1j5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PanelContainerUnitQueue" type="PanelContainer" parent="." unique_id=961466941]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.125
+offset_right = 33.125
+offset_bottom = 62.0
+grow_horizontal = 2
+
+[node name="HBoxUnitQueue" type="HBoxContainer" parent="PanelContainerUnitQueue" unique_id=608195196]
+layout_mode = 2
+
 [connection signal="pressed" from="Control/PanelContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
