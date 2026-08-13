@@ -193,10 +193,12 @@ collision_mask = 0
 script = ExtResource("1_55m3e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753518160]
+position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_5g05w")
 animation = &"Run"
 autoplay = "Idle"
 frame_progress = 0.5456283
+offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078052094]
 position = Vector2(-1, -4)

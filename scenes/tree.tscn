@@ -288,30 +288,30 @@ shape = SubResource("CapsuleShape2D_m26wl")
 
 [node name="Tree1" type="AnimatedSprite2D" parent="." unique_id=1478166530]
 visible = false
-position = Vector2(0, -106)
 sprite_frames = SubResource("SpriteFrames_223ge")
 autoplay = "default"
 frame_progress = 0.7803295
+offset = Vector2(0, -106)
 
 [node name="Tree2" type="AnimatedSprite2D" parent="." unique_id=570129336]
 visible = false
-position = Vector2(0, -111)
 sprite_frames = SubResource("SpriteFrames_d1r0r")
 autoplay = "default"
 frame_progress = 0.34350467
+offset = Vector2(0, -111)
 
 [node name="Tree3" type="AnimatedSprite2D" parent="." unique_id=1475574681]
 visible = false
-position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_ubrq3")
 autoplay = "default"
 frame_progress = 0.95769
+offset = Vector2(0, -70)
 
 [node name="Tree4" type="AnimatedSprite2D" parent="." unique_id=491931797]
 visible = false
-position = Vector2(-2, -66)
 sprite_frames = SubResource("SpriteFrames_1k76w")
 autoplay = "default"
+offset = Vector2(-2, -66)
 
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
 

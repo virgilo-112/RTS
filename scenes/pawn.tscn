@@ -1062,11 +1062,11 @@ z_as_relative = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=258526720]
 y_sort_enabled = true
-position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_w61pg")
 animation = &"Knife_Interact"
 autoplay = "Idle"
 frame_progress = 0.13954918
+offset = Vector2(0, -30)
 
 [node name="MiningTimer" type="Timer" parent="." index="5" unique_id=1796811755]
 wait_time = 0.15

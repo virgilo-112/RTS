@@ -149,7 +149,7 @@ script = ExtResource("2_5etia")
 abilities = Array[String](["move", "attack"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1153652307]
-position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_xvnkd")
 animation = &"Idle"
 autoplay = "Idle"
+offset = Vector2(0, -30)

@@ -346,10 +346,10 @@ id = 1
 
 [node name="Gold1" type="AnimatedSprite2D" parent="." unique_id=1693634492]
 visible = false
-position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_b530g")
 autoplay = "default"
 frame_progress = 0.18793276
+offset = Vector2(0, -12)
 
 [node name="Gold1Collision" type="CollisionShape2D" parent="." unique_id=561090580]
 visible = false
@@ -359,10 +359,10 @@ shape = SubResource("CapsuleShape2D_m26wl")
 
 [node name="Gold2" type="AnimatedSprite2D" parent="." unique_id=941634382]
 visible = false
-position = Vector2(-1, -12)
 sprite_frames = SubResource("SpriteFrames_p1srp")
 autoplay = "default"
 frame_progress = 0.16048959
+offset = Vector2(-1, -12)
 
 [node name="Gold2Collision" type="CollisionShape2D" parent="." unique_id=640331526]
 visible = false
@@ -372,10 +372,10 @@ shape = SubResource("CapsuleShape2D_uloe6")
 
 [node name="Gold3" type="AnimatedSprite2D" parent="." unique_id=424304429]
 visible = false
-position = Vector2(1, -20)
 sprite_frames = SubResource("SpriteFrames_bbwpp")
 autoplay = "default"
 frame_progress = 0.3898548
+offset = Vector2(1, -20)
 
 [node name="Gold3Collision" type="CollisionShape2D" parent="." unique_id=622890156]
 visible = false
@@ -385,9 +385,9 @@ shape = SubResource("CapsuleShape2D_obxtg")
 
 [node name="Gold4" type="AnimatedSprite2D" parent="." unique_id=1461118411]
 visible = false
-position = Vector2(-2, -19)
 sprite_frames = SubResource("SpriteFrames_dccmq")
 autoplay = "default"
+offset = Vector2(-2, -19)
 
 [node name="Gold4Collision" type="CollisionShape2D" parent="." unique_id=1406796191]
 visible = false
@@ -397,9 +397,9 @@ shape = SubResource("CapsuleShape2D_27hw6")
 
 [node name="Gold5" type="AnimatedSprite2D" parent="." unique_id=954895916]
 visible = false
-position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_mfqum")
 autoplay = "default"
+offset = Vector2(0, -27)
 
 [node name="Gold5Collision" type="CollisionShape2D" parent="." unique_id=1964782719]
 visible = false
@@ -409,10 +409,10 @@ shape = SubResource("CapsuleShape2D_yptph")
 
 [node name="Gold6" type="AnimatedSprite2D" parent="." unique_id=1799287188]
 visible = false
-position = Vector2(1, -25)
 sprite_frames = SubResource("SpriteFrames_bo7bk")
 autoplay = "default"
 frame_progress = 0.13377097
+offset = Vector2(1, -25)
 
 [node name="Gold6Collision" type="CollisionShape2D" parent="." unique_id=2028032033]
 visible = false

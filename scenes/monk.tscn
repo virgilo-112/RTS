@@ -176,8 +176,9 @@ script = ExtResource("2_lynu3")
 abilities = Array[String](["move"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1951986490]
-position = Vector2(-1, -31)
+position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_ecqyi")
 animation = &"Heal"
 autoplay = "Idle"
 frame_progress = 0.48888513
+offset = Vector2(-1, -36)
