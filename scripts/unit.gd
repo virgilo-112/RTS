@@ -63,6 +63,13 @@ func assign_command(command) :
 	command.start(self)
 
 func _on_navigation_finished() -> void:
+	if current_command == null:
+		return
+
+	if not is_instance_valid(current_command):
+		current_command = null
+		return
+
 	current_command.on_arrived(self)
 	
 

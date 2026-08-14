@@ -77,4 +77,12 @@ texture = ExtResource("4_ptc3g")
 [node name="Spawn" type="Marker2D" parent="." unique_id=883563034]
 position = Vector2(0, 7)
 
+[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=1363877531]
+z_index = 5
+offset_left = -55.0
+offset_top = -154.0
+offset_right = 54.0
+offset_bottom = -148.0
+show_percentage = false
+
 [connection signal="pressed" from="UIHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

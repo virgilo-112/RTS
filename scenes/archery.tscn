@@ -77,4 +77,12 @@ texture = ExtResource("4_6ip5i")
 [node name="Spawn" type="Marker2D" parent="." unique_id=1240952815]
 position = Vector2(43, 6)
 
+[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=798047002]
+z_index = 5
+offset_left = -79.0
+offset_top = -180.0
+offset_right = 80.0
+offset_bottom = -172.0
+show_percentage = false
+
 [connection signal="pressed" from="UIArchery/Control/PanelContainer/HBoxContainer/ArcherButton" to="." method="_on_archer_button_pressed"]

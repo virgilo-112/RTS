@@ -16,6 +16,3 @@ func start(unit):
 
 func on_arrived(unit):
 	unit.start_building(building, pos)
-
-func on_building_timeout(unit):
-	unit.finish_building(building)

@@ -4,7 +4,7 @@ class_name Pawn
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var abilities: Array[String] = []
-var is_pickaxing : bool = false
+var is_mining : bool = false
 var is_choping : bool = false
 var is_knifing : bool = false
 var is_building : bool = false
@@ -18,6 +18,8 @@ var is_building : bool = false
 @onready var hp_label: Label = $UIPawn/Control/PanelContainer/HBoxContainer/HPLabel
 
 @export var hp: int
+
+var current_building : Building = null
 
 func _ready() -> void:
 	super._ready()
@@ -37,7 +39,7 @@ func update_facing(dir):
 func update_anim():
 	if velocity != Vector2.ZERO :
 		animated_sprite_2d.play("Run")
-	elif velocity == Vector2.ZERO and is_pickaxing :
+	elif velocity == Vector2.ZERO and is_mining :
 		animated_sprite_2d.play("Pickaxe_Interact")
 	elif velocity == Vector2.ZERO and is_choping :
 		animated_sprite_2d.play("Axe_Interact")
@@ -52,25 +54,21 @@ func toggle_selection(value:bool):
 	super.toggle_selection(value)
 	ui_pawn.visible = value
 
-func start_building(_building_instance, _target: Vector2):
+func start_building(building_instance, _target: Vector2):
 	is_building = true
-	building_timer.start()
+	building_instance.add_builder(self)
+	current_building = building_instance
 	
-func _on_building_timer_timeout() -> void:
-	if current_command is BuildCommand:
-		current_command.on_building_timeout(self)
-
-func finish_building(building):
-	stop_building()
-	
-	
-func stop_building():
+func stop_building() -> void:
+	if current_building != null:
+		current_building.remove_builder(self)
 	is_building = false
-	current_command = null
+	current_building = null
+	cancel_current_command()
 	update_anim()
 
 func start_mining(stone: GoldStone):
-	is_pickaxing = true
+	is_mining = true
 	if !stone.depleted.is_connected(stop_mining):
 		stone.depleted.connect(stop_mining)
 	mining_timer.start()
@@ -80,9 +78,9 @@ func _on_mining_timer_timeout() -> void:
 		current_command.on_mining_tick(self)
 
 func stop_mining():
-	is_pickaxing = false
+	is_mining = false
 	mining_timer.stop()
-	current_command = null
+	cancel_current_command()
 	update_anim()
 
 
@@ -100,7 +98,7 @@ func _on_choping_timer_timeout() -> void:
 func stop_choping():
 	is_choping = false
 	choping_timer.stop()
-	current_command = null
+	cancel_current_command()
 	update_anim()
 
 func start_knifing(sheep: Sheep):
@@ -117,11 +115,19 @@ func _on_knifing_timer_timeout() -> void:
 func stop_knifing():
 	is_knifing = false
 	knifing_timer.stop()
-	current_command = null
+	cancel_current_command()
 	update_anim()
 
 func reset_action():
-	is_knifing = false
-	is_pickaxing = false
-	is_choping = false
-	is_building = false
+	if is_knifing :
+		stop_knifing()
+	if is_mining :
+		stop_mining()
+	if is_choping :
+		stop_choping()
+	if is_building :
+		stop_building()
+		
+func cancel_current_command() -> void:
+	current_command = null
+	navigation_agent.target_position = global_position

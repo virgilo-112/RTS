@@ -67,7 +67,7 @@ func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 
 	var progress_bar := ProgressBar.new()
 	progress_bar.min_value = 0
-	progress_bar.max_value = 5
+	progress_bar.max_value = duration
 	progress_bar.value = 0
 	progress_bar.show_percentage = false
 

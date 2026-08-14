@@ -29,19 +29,28 @@ func _unhandled_input(event: InputEvent) -> void:
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("mine"):
-							object.assign_command(MineCommand.new(check_if_something_at_position(mouse_pos)))
+							object.assign_command(MineCommand.new(target))
+							
 			elif target is WoodTree :
 				
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("chop"):
-							object.assign_command(ChopCommand.new(check_if_something_at_position(mouse_pos)))
+							object.assign_command(ChopCommand.new(target))
+							
 			elif target is Sheep :
 				
 				for object in selected_objects:
 					if object.can_receive_command():
 						if object.has_ability("chop"):
-							object.assign_command(KnifeCommand.new(check_if_something_at_position(mouse_pos)))
+							object.assign_command(KnifeCommand.new(target))
+							
+			elif target is Building :
+				
+				for object in selected_objects:
+					if object.can_receive_command():
+						if object.has_ability("build"):
+							object.assign_command(BuildCommand.new(target,target.position))
 				
 				
 	# si souris en motion et dragging -> dessin du rectangle

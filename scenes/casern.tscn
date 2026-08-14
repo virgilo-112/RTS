@@ -82,5 +82,13 @@ texture = ExtResource("5_dnq0g")
 [node name="Spawn" type="Marker2D" parent="." unique_id=915140740]
 position = Vector2(0, 7)
 
+[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=791329513]
+z_index = 5
+offset_left = -76.0
+offset_top = -190.0
+offset_right = 77.0
+offset_bottom = -182.0
+show_percentage = false
+
 [connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/WarriorButton" to="." method="_on_warrior_button_pressed"]
 [connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/LancerButton" to="." method="_on_lancer_button_pressed"]
