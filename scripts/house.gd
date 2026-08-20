@@ -6,15 +6,13 @@ class_name House
 @onready var spawn: Marker2D = $Spawn
 @onready var ui_house: CanvasLayer = $UIHouse
 @onready var construction_progress_bar: ProgressBar = $ConstructionProgressBar
-@onready var sprite_2d: Sprite2D = $Sprite2D
 
-@export var owner_player: Player
-@export var pawn_container: Node2D
-@export var build_time := 15.0
+
+var pawn_container: Node2D
+var build_time := 15.0
 
 var build_timer := 0.0
 var is_selected: bool = false
-
 
 var construction_tween: Tween
 
@@ -26,6 +24,7 @@ func _ready() -> void:
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
 	construction_progress_bar.visible = under_construction
+	set_color().visible = true
 
 
 func can_receive_command():
@@ -50,8 +49,8 @@ func _on_pawn_button_pressed() -> void:
 		production_timer.queue_free()
 		var new_pawn = preload("res://scenes/pawn.tscn").instantiate()
 		new_pawn.global_position = spawn.global_position
-		pawn_container.add_child(new_pawn)
 		new_pawn.owner_player = owner_player
+		pawn_container.add_child(new_pawn)
 		owner_player.add_pawn(1)
 	else : 
 		return

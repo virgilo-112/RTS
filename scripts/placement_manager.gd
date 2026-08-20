@@ -16,20 +16,21 @@ var is_placing := false
 @onready var input_manager = get_tree().current_scene.get_node("InputManager")
 
 
-func start_placement(type: String):
+func start_placement(type: String, player: Player):
 	input_manager.set_enabled(false)
 	building_type = type
 	building_scene = buildings[type]
 	is_placing = true
 	var building = building_scene.instantiate()
-	var sprite: Sprite2D = building.get_node("Sprite2D")
+	building.owner_player = player
+	add_child(building)
+	var sprite: Sprite2D = building.set_color()
 	ghost_offset = sprite.offset
 	ghost = Sprite2D.new()
 	ghost.texture = sprite.texture
 	ghost.modulate.a = 0.5
 	add_child(ghost)
 	building.queue_free()
-
 
 func _process(_delta):
 	if not is_placing:

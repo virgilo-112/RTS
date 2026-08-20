@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://bwvfhopk646mt" path="res://scripts/archery.gd" id="1_8e86i"]
 [ext_resource type="Texture2D" uid="uid://dy6e03bppxj1v" path="res://assets/Buildings/Blue Buildings/Archery.png" id="1_ea1b2"]
 [ext_resource type="Texture2D" uid="uid://bxjk0i0ynxe3n" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_03.png" id="3_0woum"]
+[ext_resource type="Texture2D" uid="uid://bdb121ksy1uhl" path="res://assets/Buildings/Red Buildings/Archery.png" id="3_6ip5i"]
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_6ip5i"]
+[ext_resource type="Texture2D" uid="uid://burjim8uhsvay" path="res://assets/Buildings/Yellow Buildings/Archery.png" id="4_nq1ve"]
+[ext_resource type="Texture2D" uid="uid://ch4yw3mfr0vjd" path="res://assets/Buildings/Black Buildings/Archery.png" id="5_cxjy2"]
+[ext_resource type="Texture2D" uid="uid://c5o2en101xiqx" path="res://assets/Buildings/Purple Buildings/Archery.png" id="6_akqfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(157, 69)
@@ -15,8 +19,29 @@ size = Vector2(157, 173)
 y_sort_enabled = true
 script = ExtResource("1_8e86i")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=910439930]
+[node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=910439930]
+visible = false
 texture = ExtResource("1_ea1b2")
+offset = Vector2(0, -104)
+
+[node name="RedSprite2D" type="Sprite2D" parent="." unique_id=939723153]
+visible = false
+texture = ExtResource("3_6ip5i")
+offset = Vector2(0, -104)
+
+[node name="YellowSprite2D" type="Sprite2D" parent="." unique_id=978932776]
+visible = false
+texture = ExtResource("4_nq1ve")
+offset = Vector2(0, -104)
+
+[node name="BlackSprite2D" type="Sprite2D" parent="." unique_id=890976367]
+visible = false
+texture = ExtResource("5_cxjy2")
+offset = Vector2(0, -104)
+
+[node name="PurpleSprite2D" type="Sprite2D" parent="." unique_id=1329470040]
+visible = false
+texture = ExtResource("6_akqfd")
 offset = Vector2(0, -104)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=48283287]

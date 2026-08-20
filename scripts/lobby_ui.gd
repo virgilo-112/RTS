@@ -26,7 +26,7 @@ func _on_start_button_pressed() -> void:
 	for child in players_container.get_children():
 		if child is PlayerRow:
 			if child.slot_type != 0:
-				game_manager.players.append({"type":child.slot_type, "color":child.color_id, "team":child.team_id})
+				game_manager.players.append({"type":child.slot_type, "color_id":child.color_id, "team":child.team_id})
 	print(game_manager.players)
 	
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

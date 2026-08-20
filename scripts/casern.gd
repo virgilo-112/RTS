@@ -4,7 +4,7 @@ class_name Casern
 
 @export var warrior_container: Node2D
 @export var lancer_container: Node2D
-@export var owner_player: Player
+
 
 @onready var selection_icon: Sprite2D = $Area2D/SelectionIcon
 @onready var spawn: Marker2D = $Spawn
@@ -12,7 +12,7 @@ class_name Casern
 @onready var warrior_button: Button = $UICasern/Control/PanelContainer/HBoxContainer/WarriorButton
 @onready var lancer_button: Button = $UICasern/Control/PanelContainer/HBoxContainer/LancerButton
 @onready var construction_progress_bar: ProgressBar = $ConstructionProgressBar
-@onready var sprite_2d: Sprite2D = $Sprite2D
+
 
 var is_selected: bool = false
 @export var build_time := 15.0
@@ -31,7 +31,9 @@ func _ready() -> void:
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
 	construction_progress_bar.visible = under_construction
-	
+	set_color().visible = true
+
+
 func can_receive_command():
 	return false
 
@@ -57,8 +59,8 @@ func _on_unit_button_pressed(unit):
 				
 				var new_warrior = preload("res://scenes/warrior.tscn").instantiate()
 				new_warrior.global_position = spawn.global_position
-				warrior_container.add_child(new_warrior)
 				new_warrior.owner_player = owner_player
+				warrior_container.add_child(new_warrior)
 				owner_player.add_militia(1)
 			else : return
 		"lancer":
@@ -75,8 +77,8 @@ func _on_unit_button_pressed(unit):
 				
 				var new_lancer = preload("res://scenes/lancer.tscn").instantiate()
 				new_lancer.global_position = spawn.global_position
-				lancer_container.add_child(new_lancer)
 				new_lancer.owner_player = owner_player
+				lancer_container.add_child(new_lancer)
 				owner_player.add_militia(1)
 			else : return
 

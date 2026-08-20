@@ -42,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 				for object in selected_objects:
 					if object.can_receive_command():
-						if object.has_ability("chop"):
+						if object.has_ability("knife"):
 							object.assign_command(KnifeCommand.new(target))
 							
 			elif target is Building :

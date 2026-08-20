@@ -21,13 +21,18 @@ var warrior_gold_price : int = 75
 var lancer_gold_price : int = 50
 var archer_gold_price : int = 75
 
-@onready var casern_container: Node2D = %Caserns
-@onready var archery_container: Node2D = %Archeries
-@onready var house_container: Node2D = %Houses
-@onready var warriors: Node2D = %Warriors
-@onready var lancers: Node2D = %Lancers
-@onready var archers: Node2D = %Archers
-@onready var pawns: Node2D = %Pawns
+@onready var casern_container: Node2D = $Buildings/Caserns
+@onready var archery_container: Node2D = $Buildings/Archeries
+@onready var house_container: Node2D = $Buildings/Houses
+
+@onready var warriors: Node2D = $Units/Warriors
+@onready var lancers: Node2D = $Units/Lancers
+@onready var pawns: Node2D = $Units/Pawns
+@onready var archers: Node2D = $Units/Archers
+@onready var monks: Node2D = $Units/Monks
+
+var color : String
+
 
 var queue_time: int = 5
 

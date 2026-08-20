@@ -2,8 +2,9 @@ extends Unit
 
 class_name Pawn
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 @export var abilities: Array[String] = []
+
 var is_mining : bool = false
 var is_choping : bool = false
 var is_knifing : bool = false
@@ -21,10 +22,13 @@ var is_building : bool = false
 
 var current_building : Building = null
 
+
 func _ready() -> void:
 	super._ready()
 	selection_icon.visible = false
 	hp_label.text = "Health : "+str(hp)
+	set_color().visible = true
+	print(abilities)
 
 
 func _physics_process(_delta: float) -> void:
@@ -33,22 +37,23 @@ func _physics_process(_delta: float) -> void:
 func has_ability(ability: String) -> bool:
 	return ability in abilities
 
+
 func update_facing(dir):
-	animated_sprite_2d.flip_h = dir < 0
+	animated_sprite.flip_h = dir < 0
 
 func update_anim():
 	if velocity != Vector2.ZERO :
-		animated_sprite_2d.play("Run")
+		animated_sprite.play("Run")
 	elif velocity == Vector2.ZERO and is_mining :
-		animated_sprite_2d.play("Pickaxe_Interact")
+		animated_sprite.play("Pickaxe_Interact")
 	elif velocity == Vector2.ZERO and is_choping :
-		animated_sprite_2d.play("Axe_Interact")
+		animated_sprite.play("Axe_Interact")
 	elif velocity == Vector2.ZERO and is_knifing :
-		animated_sprite_2d.play("Knife_Interact")
+		animated_sprite.play("Knife_Interact")
 	elif velocity == Vector2.ZERO and is_building :
-		animated_sprite_2d.play("Hammer_Interact")
+		animated_sprite.play("Hammer_Interact")
 	else :
-		animated_sprite_2d.play("Idle")
+		animated_sprite.play("Idle")
 		
 func toggle_selection(value:bool):
 	super.toggle_selection(value)

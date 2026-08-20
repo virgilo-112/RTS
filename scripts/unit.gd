@@ -17,6 +17,12 @@ var facing := 1 # 1 = droite, -1 = gauche
 
 var current_command: Command
 
+@onready var black_animated_sprite_2d: AnimatedSprite2D = $BlackAnimatedSprite2D
+@onready var purple_animated_sprite_2d: AnimatedSprite2D = $PurpleAnimatedSprite2D
+@onready var yellow_animated_sprite_2d: AnimatedSprite2D = $YellowAnimatedSprite2D
+@onready var blue_animated_sprite_2d: AnimatedSprite2D = $BlueAnimatedSprite2D
+@onready var red_animated_sprite_2d: AnimatedSprite2D = $RedAnimatedSprite2D
+var animated_sprite : AnimatedSprite2D
 
 func _ready():
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
@@ -90,3 +96,17 @@ func update_anim():
 	
 func reset_action():
 	pass
+
+func set_color() -> AnimatedSprite2D:
+	match owner_player.color :
+		"blue":
+			animated_sprite = blue_animated_sprite_2d
+		"red":
+			animated_sprite = red_animated_sprite_2d
+		"yellow":
+			animated_sprite = yellow_animated_sprite_2d
+		"black":
+			animated_sprite = black_animated_sprite_2d
+		"purple":
+			animated_sprite = purple_animated_sprite_2d
+	return animated_sprite

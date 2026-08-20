@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ckbh1s5ed0mfk" path="res://scripts/house.gd" id="1_se78b"]
 [ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="2_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://gaa3p62yqqnb" path="res://assets/Buildings/Red Buildings/House1.png" id="3_3bgk5"]
 [ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="3_f74lx"]
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_ptc3g"]
+[ext_resource type="Texture2D" uid="uid://dhlstbrh0lx2k" path="res://assets/Buildings/Yellow Buildings/House1.png" id="4_wcu0q"]
+[ext_resource type="Texture2D" uid="uid://c7uck8mp5gjfs" path="res://assets/Buildings/Black Buildings/House1.png" id="5_bwc8c"]
+[ext_resource type="Texture2D" uid="uid://c51blfy70h7s7" path="res://assets/Buildings/Purple Buildings/House1.png" id="6_mhx8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8vq"]
 size = Vector2(78, 39)
@@ -15,8 +19,29 @@ size = Vector2(111, 157)
 y_sort_enabled = true
 script = ExtResource("1_se78b")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=739628180]
+[node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=739628180]
+visible = false
 texture = ExtResource("2_3bgk5")
+offset = Vector2(0, -68)
+
+[node name="RedSprite2D" type="Sprite2D" parent="." unique_id=1791359096]
+visible = false
+texture = ExtResource("3_3bgk5")
+offset = Vector2(0, -68)
+
+[node name="YellowSprite2D" type="Sprite2D" parent="." unique_id=458099029]
+visible = false
+texture = ExtResource("4_wcu0q")
+offset = Vector2(0, -68)
+
+[node name="BlackSprite2D" type="Sprite2D" parent="." unique_id=977425196]
+visible = false
+texture = ExtResource("5_bwc8c")
+offset = Vector2(0, -68)
+
+[node name="PurpleSprite2D" type="Sprite2D" parent="." unique_id=1013572551]
+visible = false
+texture = ExtResource("6_mhx8p")
 offset = Vector2(0, -68)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]

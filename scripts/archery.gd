@@ -7,9 +7,9 @@ class_name Archery
 @onready var ui_archery: CanvasLayer = $UIArchery
 @onready var construction_progress_bar: ProgressBar = $ConstructionProgressBar
 
-@export var owner_player: Player
+
 @export var archer_container: Node2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+
 
 var is_selected: bool = false
 @export var build_time := 15.0
@@ -25,7 +25,7 @@ func _ready() -> void:
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
 	construction_progress_bar.visible = under_construction
-
+	set_color().visible = true
 
 func can_receive_command():
 	return false
@@ -51,8 +51,8 @@ func _on_archer_button_pressed() -> void:
 		
 		var new_archer = preload("res://scenes/archer.tscn").instantiate()
 		new_archer.global_position = spawn.global_position
-		archer_container.add_child(new_archer)
 		new_archer.owner_player = owner_player
+		archer_container.add_child(new_archer)
 		owner_player.add_militia(1)
 	else : 
 		return
