@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Petit-Empire"
-run/main_scene="uid://5uq61jjuk5w"
+run/main_scene="uid://b8kwd274xxqql"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

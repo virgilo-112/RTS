@@ -2,34 +2,34 @@ extends Node
 
 class_name Player
 
-@export var gold : int
-@export var wood : int
-@export var food : int
-@export var pawn_count := 1
-@export var militia_count := 0
+var gold : int = 0
+var wood : int = 0
+var food : int = 50
+var pawn_count : int = 0
+var militia_count : int = 0
 
-@export var house_price : int
-@export var casern_price : int
-@export var archery_price : int
+var house_price : int = 100
+var casern_price : int = 300
+var archery_price : int = 200
 
-@export var pawn_food_price : int
-@export var lancer_food_price : int
-@export var archer_food_price : int
-@export var warrior_food_price : int
+var pawn_food_price : int = 50
+var lancer_food_price : int = 50
+var archer_food_price : int = 50
+var warrior_food_price : int = 100
 
-@export var warrior_gold_price : int
-@export var lancer_gold_price : int
-@export var archer_gold_price : int
+var warrior_gold_price : int = 75
+var lancer_gold_price : int = 50
+var archer_gold_price : int = 75
 
-@export var casern_container: Node2D
-@export var archery_container: Node2D
-@export var house_container: Node2D
-@export var warriors: Node2D
-@export var lancers: Node2D
-@export var archers: Node2D
-@export var pawns: Node2D
+@onready var casern_container: Node2D = %Caserns
+@onready var archery_container: Node2D = %Archeries
+@onready var house_container: Node2D = %Houses
+@onready var warriors: Node2D = %Warriors
+@onready var lancers: Node2D = %Lancers
+@onready var archers: Node2D = %Archers
+@onready var pawns: Node2D = %Pawns
 
-@export var queue_time: int
+var queue_time: int = 5
 
 signal wood_changed(new_amount)
 signal gold_changed(new_amount)

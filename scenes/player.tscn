@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://csake202bxny8"]
+
+[ext_resource type="Script" uid="uid://d3w2h33gnq2he" path="res://scripts/player.gd" id="1_3vyb7"]
+
+[node name="Player" type="Node" unique_id=724687832]
+script = ExtResource("1_3vyb7")
+
+[node name="Units" type="Node2D" parent="." unique_id=1293064773]
+z_index = 3
+y_sort_enabled = true
+
+[node name="Warriors" type="Node2D" parent="Units" unique_id=397772989]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Lancers" type="Node2D" parent="Units" unique_id=269114356]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Pawns" type="Node2D" parent="Units" unique_id=758991098]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Archers" type="Node2D" parent="Units" unique_id=1881194285]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Monks" type="Node2D" parent="Units" unique_id=1085593122]
+y_sort_enabled = true
+position = Vector2(1, 0)
+
+[node name="Buildings" type="Node2D" parent="." unique_id=50445058]
+z_index = 3
+y_sort_enabled = true
+
+[node name="Caserns" type="Node2D" parent="Buildings" unique_id=1238156863]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Archeries" type="Node2D" parent="Buildings" unique_id=1521662027]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Houses" type="Node2D" parent="Buildings" unique_id=1125818331]
+unique_name_in_owner = true
+y_sort_enabled = true

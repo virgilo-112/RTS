@@ -59,7 +59,7 @@ texture = ExtResource("5_5pdws")
 
 [node name="FoodLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2" unique_id=866923428]
 layout_mode = 2
-text = "0"
+text = "50"
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1746824927]
