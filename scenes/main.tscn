@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://5uq61jjuk5w"]
 
 [ext_resource type="Script" uid="uid://d3w2h33gnq2he" path="res://scripts/player.gd" id="1_gqmmt"]
+[ext_resource type="Script" uid="uid://c4fr41ed3wkgg" path="res://scripts/main.gd" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://bjed7rq65fw0g" path="res://scenes/pawn.tscn" id="2_jscy8"]
 [ext_resource type="PackedScene" uid="uid://do2tnx0wm38rj" path="res://scenes/hud.tscn" id="2_yc10j"]
 [ext_resource type="Script" uid="uid://baganaa60cjjn" path="res://scripts/input_manager.gd" id="3_jscy8"]
@@ -5181,6 +5182,7 @@ sources/3 = SubResource("TileSetAtlasSource_2f3dj")
 sources/4 = SubResource("TileSetAtlasSource_yq6so")
 
 [node name="Main" type="Node" unique_id=279662264]
+script = ExtResource("1_jscy8")
 
 [node name="Players" type="Node" parent="." unique_id=1190371335]
 

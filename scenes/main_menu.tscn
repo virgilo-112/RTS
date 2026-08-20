@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b8kwd274xxqql"]
+
+[ext_resource type="Script" uid="uid://bwc6324yda3fy" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node" unique_id=756366537]
+script = ExtResource("1_l6cm7")
+
+[node name="ButtonManager" type="Control" parent="." unique_id=2067279182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HostGame" type="Button" parent="ButtonManager" unique_id=1635769345]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -499.0
+offset_right = 225.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host Game"
+
+[node name="JoinGame" type="Button" parent="ButtonManager" unique_id=169204890]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -250.0
+offset_right = 225.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Join Game"
+
+[node name="Option" type="Button" parent="ButtonManager" unique_id=999799308]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 5.0
+offset_right = 225.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="ButtonManager" unique_id=551928116]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 264.0
+offset_right = 225.0
+offset_bottom = 464.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="ButtonManager/HostGame" to="." method="_on_host_game_pressed"]
+[connection signal="pressed" from="ButtonManager/JoinGame" to="." method="_on_join_game_pressed"]
+[connection signal="pressed" from="ButtonManager/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]

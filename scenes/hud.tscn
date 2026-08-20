@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://betb65eaor0hk" path="res://assets/UI Elements/UI Elements/Icons/Icon_12.png" id="5_0i1j5"]
 [ext_resource type="Texture2D" uid="uid://8snaubhxf3os" path="res://assets/Terrain/Resources/Meat/Meat Resource/Meat Resource.png" id="5_5pdws"]
 [ext_resource type="Texture2D" uid="uid://cao3mn1goi662" path="res://assets/UI Elements/UI Elements/Icons/Icon_11.png" id="6_5pdws"]
-[ext_resource type="Texture2D" uid="uid://dydg2jjbo5sb4" path="res://assets/UI Elements/UI Elements/Icons/Icon_09.png" id="8_hd3ao"]
 [ext_resource type="Script" uid="uid://b02ms0ufpon8m" path="res://scripts/minimap.gd" id="9_mphia"]
 [ext_resource type="Texture2D" uid="uid://by0ub7sw5x7xu" path="res://assets/UI Elements/UI Elements/Icons/Icon_01.png" id="10_0m4u7"]
 [ext_resource type="Texture2D" uid="uid://cgjsrn1p0araq" path="res://assets/UI Elements/UI Elements/Icons/Icon_05.png" id="11_apjy4"]
@@ -80,10 +79,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -351.0
-offset_top = 43.0
-offset_right = -148.0
-offset_bottom = 107.0
+offset_left = -208.0
+offset_bottom = 72.0
 grow_horizontal = 0
 mouse_filter = 1
 
@@ -98,24 +95,9 @@ texture = ExtResource("5_0i1j5")
 layout_mode = 2
 texture = ExtResource("6_5pdws")
 
-[node name="CogIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=133041771]
+[node name="CogIcon" type="Button" parent="Control/PanelContainer/HBoxContainer" unique_id=1264525627]
 layout_mode = 2
-texture = ExtResource("4_hd3ao")
-
-[node name="PanelContainer2" type="PanelContainer" parent="Control" unique_id=1188267730]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
-mouse_filter = 1
-
-[node name="QuitButton" type="Button" parent="Control/PanelContainer2" unique_id=2103909955]
-layout_mode = 2
-mouse_filter = 1
-icon = ExtResource("8_hd3ao")
+icon = ExtResource("4_hd3ao")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Control" unique_id=1187987218]
 layout_mode = 1
@@ -186,6 +168,24 @@ label_settings = SubResource("LabelSettings_0i1j5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CogMenu" type="PanelContainer" parent="Control" unique_id=302608837]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuButton" type="Button" parent="Control/CogMenu" unique_id=419853861]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="PanelContainerUnitQueue" type="PanelContainer" parent="." unique_id=961466941]
 anchors_preset = 5
 anchor_left = 0.5
@@ -198,4 +198,5 @@ grow_horizontal = 2
 [node name="HBoxUnitQueue" type="HBoxContainer" parent="PanelContainerUnitQueue" unique_id=608195196]
 layout_mode = 2
 
-[connection signal="pressed" from="Control/PanelContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/HBoxContainer/CogIcon" to="." method="_on_cog_icon_pressed"]
+[connection signal="pressed" from="Control/CogMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

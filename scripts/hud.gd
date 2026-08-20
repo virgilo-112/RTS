@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var pawn_count_label: Label = $Control/PanelContainer4/HBoxContainer/VBoxContainer2/PawnCountLabel
 @onready var panel_container_unit_queue: PanelContainer = $PanelContainerUnitQueue
 @onready var h_box_unit_queue: HBoxContainer = $PanelContainerUnitQueue/HBoxUnitQueue
+@onready var cog_menu: PanelContainer = $Control/CogMenu
 
 
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	owner_player.unit_queued.connect(_on_unit_production_queued)
 	
 	panel_container_unit_queue.visible = false
+	cog_menu.visible = false
 	
 	
 func _on_gold_changed(amount):
@@ -87,3 +89,11 @@ func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 
 	panel_container_unit_queue.visible = h_box_unit_queue.get_child_count() > 0
 	
+
+
+func _on_cog_icon_pressed() -> void:
+	cog_menu.visible = true
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
