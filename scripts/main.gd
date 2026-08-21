@@ -16,11 +16,11 @@ var color = {
 
 func _ready() -> void:
 	var i = 0
-	for player_data in game_manager.players:
+	for player_data in NetworkManager.players_data:
 		var player = preload("uid://csake202bxny8").instantiate()
 		player.color = color[player_data.color_id]
 		player_container.add_child(player)
-		if player_data.type == PlayerRow.SlotType.HUMAN :
+		if player_data.type == "human" :
 			hud.set_owner_player(player)
 
 		var house = preload("uid://baf8npqinbyyw").instantiate()

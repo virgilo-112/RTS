@@ -2,7 +2,7 @@ extends Control
 
 @onready var players_container: VBoxContainer = $MarginContainer/VBoxContainer
 
-var player_rows : Array[PlayerRow] = []
+var player_rows: Array[PlayerRow] = []
 
 
 func _ready() -> void:
@@ -10,23 +10,46 @@ func _ready() -> void:
 		if child is PlayerRow:
 			player_rows.append(child)
 
+	NetworkManager.lobby_updated.connect(_on_lobby_updated)
+
+	_refresh_lobby(NetworkManager.players_data)
+
+
+func _on_lobby_updated(data: Array[Dictionary]) -> void:
+	_refresh_lobby(data)
+
+
+func _refresh_lobby(data: Array[Dictionary]) -> void:
 	for row in player_rows:
 		row.set_type(PlayerRow.SlotType.EMPTY)
+		row.player_id = -1
 
-	player_rows[0].set_type(PlayerRow.SlotType.HUMAN)
+	for i in data.size():
+		if i >= player_rows.size():
+			break
+
+		var player_data := data[i]
+		var row := player_rows[i]
+
+		row.player_id = player_data["player_id"]
+		if player_data["peer_id"]==null:
+			row.set_type(PlayerRow.SlotType.AI)
+		else:
+			row.set_type(PlayerRow.SlotType.HUMAN)
+		
+		row.set_team(player_data["team_id"])
+		row.set_color(player_data["color_id"])
+		
+		var taken_colors := NetworkManager.get_taken_colors()
+		row.set_taken_colors(taken_colors, player_data["color_id"])
 
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	NetworkManager.leave_game()
 
 
 func _on_start_button_pressed() -> void:
-	#{ type : (human,ai) color : (rouge,bleu,jaune,violet,noir) team : (1,2,3,4)}
-	game_manager.players.clear()
-	for child in players_container.get_children():
-		if child is PlayerRow:
-			if child.slot_type != 0:
-				game_manager.players.append({"type":child.slot_type, "color_id":child.color_id, "team":child.team_id})
-	print(game_manager.players)
+	NetworkManager.request_start_game.rpc_id(1)
 	
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
+	

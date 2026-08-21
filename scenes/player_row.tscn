@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://tlvd1dudydfs"]
 
 [ext_resource type="Script" uid="uid://32uur4xphgmv" path="res://scripts/player_row.gd" id="1_sfd8u"]
+[ext_resource type="Texture2D" uid="uid://dydg2jjbo5sb4" path="res://assets/UI Elements/UI Elements/Icons/Icon_09.png" id="2_r7ew7"]
 
 [node name="PlayerRow" type="PanelContainer" unique_id=267486443]
 offset_right = 40.0
@@ -23,17 +24,18 @@ text = "Color : "
 
 [node name="ColorSelectionButton" type="OptionButton" parent="HBoxContainer" unique_id=272184255]
 layout_mode = 2
-item_count = 5
-popup/item_0/text = "Red"
+item_count = 6
 popup/item_0/id = 0
-popup/item_1/text = "Blue"
+popup/item_1/text = "Red"
 popup/item_1/id = 1
-popup/item_2/text = "Yellow"
+popup/item_2/text = "Blue"
 popup/item_2/id = 2
-popup/item_3/text = "Black"
+popup/item_3/text = "Yellow"
 popup/item_3/id = 3
-popup/item_4/text = "Purple"
+popup/item_4/text = "Black"
 popup/item_4/id = 4
+popup/item_5/text = "Purple"
+popup/item_5/id = 5
 
 [node name="TeamLabel" type="Label" parent="HBoxContainer" unique_id=1348891821]
 layout_mode = 2
@@ -41,15 +43,16 @@ text = "Team : "
 
 [node name="TeamSelectionButton" type="OptionButton" parent="HBoxContainer" unique_id=1013164540]
 layout_mode = 2
-item_count = 4
-popup/item_0/text = "Team 1"
+item_count = 5
 popup/item_0/id = 0
-popup/item_1/text = "Team 2"
+popup/item_1/text = "Team 1"
 popup/item_1/id = 1
-popup/item_2/text = "Team 3"
+popup/item_2/text = "Team 2"
 popup/item_2/id = 2
-popup/item_3/text = "Team 4"
+popup/item_3/text = "Team 3"
 popup/item_3/id = 3
+popup/item_4/text = "Team 4"
+popup/item_4/id = 4
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer" unique_id=568715634]
 layout_mode = 2
@@ -63,6 +66,17 @@ text = "Invite Player"
 layout_mode = 2
 text = "Add AI"
 
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=853487810]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="DeleteAIButton" type="Button" parent="HBoxContainer" unique_id=1791413360]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+icon = ExtResource("2_r7ew7")
+expand_icon = true
+
 [connection signal="item_selected" from="HBoxContainer/ColorSelectionButton" to="." method="_on_color_selection_button_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/TeamSelectionButton" to="." method="_on_team_selection_button_item_selected"]
 [connection signal="pressed" from="HBoxContainer/AddAIButton" to="." method="_on_add_ai_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DeleteAIButton" to="." method="_on_delete_ai_button_pressed"]
