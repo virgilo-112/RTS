@@ -13,7 +13,7 @@ var ghost: Sprite2D
 var ghost_offset := Vector2.ZERO
 var is_placing := false
 
-@onready var input_manager = get_tree().current_scene.get_node("InputManager")
+@onready var input_manager = get_tree().current_scene.get_node("LocalPlayer/InputManager")
 
 
 func start_placement(type: String, player: Player):

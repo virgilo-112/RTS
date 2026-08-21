@@ -3,6 +3,7 @@ extends Node
 
 @onready var spawns: Node2D = $Spawns
 @onready var player_container : Node2D = $World/Players
+@onready var hud: CanvasLayer = $LocalPlayer/HUD
 
 var color = {
 	0 : "red",
@@ -13,7 +14,6 @@ var color = {
 }
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var i = 0
 	for player_data in game_manager.players:
@@ -21,9 +21,8 @@ func _ready() -> void:
 		player.color = color[player_data.color_id]
 		player_container.add_child(player)
 		if player_data.type == PlayerRow.SlotType.HUMAN :
-			var hud = preload("uid://do2tnx0wm38rj").instantiate()
-			hud.owner_player = player
-			add_child(hud)
+			hud.set_owner_player(player)
+
 		var house = preload("uid://baf8npqinbyyw").instantiate()
 		house.owner_player = player
 		house.pawn_container = player.pawns

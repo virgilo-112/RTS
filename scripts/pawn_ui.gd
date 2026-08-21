@@ -6,8 +6,7 @@ extends Control
 @onready var casern_button: Button = $PanelContainer/HBoxContainer/CasernButton
 @onready var archery_button: Button = $PanelContainer/HBoxContainer/ArcheryButton
 @onready var pawn: Pawn = $"../.."
-@onready var placement_manager = get_tree().current_scene.get_node("PlacementManager")
-
+@onready var placement_manager = get_tree().current_scene.get_node("LocalPlayer/PlacementManager")
 
 func _ready():
 	house_button.pressed.connect(_on_building_pressed.bind("house"))
