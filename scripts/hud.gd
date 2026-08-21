@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var owner_player : Player
+var owner_player : Player
 
 @onready var wood_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer/WoodLabel
 @onready var food_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2/FoodLabel
@@ -14,16 +14,17 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	panel_container_unit_queue.visible = false
+	cog_menu.visible = false
+
+func set_owner_player(player: Player) -> void:
+	owner_player = player
 	owner_player.gold_changed.connect(_on_gold_changed)
 	owner_player.wood_changed.connect(_on_wood_changed)
 	owner_player.food_changed.connect(_on_food_changed)
 	owner_player.pawn_count_changed.connect(_on_pawn_count_changed)
 	owner_player.militia_count_changed.connect(_on_militia_count_changed)
 	owner_player.unit_queued.connect(_on_unit_production_queued)
-	
-	panel_container_unit_queue.visible = false
-	cog_menu.visible = false
-	
 	
 func _on_gold_changed(amount):
 	coin_label.text = str(amount)
