@@ -28,3 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			zoom -= Vector2(zoom_speed, zoom_speed)
 		
 		zoom = zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
+
+func move_camera_to_world_position(pos: Vector2):
+	global_position = pos
+	

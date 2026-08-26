@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dfop3tm6q6fls" path="res://assets/Terrain/Tileset/Tilemap_color3.png" id="10_yq6so"]
 [ext_resource type="Texture2D" uid="uid://bp4jo0rrch2lr" path="res://assets/Terrain/Tileset/Tilemap_color4.png" id="11_fv21b"]
 [ext_resource type="Texture2D" uid="uid://mjryl67t62q7" path="res://assets/Terrain/Tileset/Tilemap_color5.png" id="12_tel4y"]
+[ext_resource type="Script" uid="uid://d1plon6k5bmsq" path="res://scripts/local_player.gd" id="13_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://do2tnx0wm38rj" path="res://scenes/hud.tscn" id="16_jbj1t"]
 [ext_resource type="Script" uid="uid://dn55f6sk0a3cq" path="res://scripts/camera_main.gd" id="17_0ld40"]
+[ext_resource type="PackedScene" uid="uid://c300x60biyea0" path="res://scenes/fog_of_war.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://cgnch0ni7hqta" path="res://scenes/tree.tscn" id="18_fuf3a"]
 [ext_resource type="PackedScene" uid="uid://bbnxql577evxg" path="res://scenes/sheep.tscn" id="19_pibwh"]
 [ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone.tscn" id="20_c6pm6"]
@@ -5330,6 +5332,8 @@ position = Vector2(-2880, -1685)
 position = Vector2(2208, 1347)
 
 [node name="LocalPlayer" type="Node2D" parent="." unique_id=524233268]
+unique_name_in_owner = true
+script = ExtResource("13_dp3eg")
 
 [node name="CameraMain" type="Camera2D" parent="LocalPlayer" unique_id=560710624]
 position = Vector2(2, 1.0000076)
@@ -5351,5 +5355,7 @@ script = ExtResource("3_jscy8")
 
 [node name="PlacementManager" type="Node2D" parent="LocalPlayer" unique_id=667704544]
 script = ExtResource("20_yc10j")
+
+[node name="FogOfWar" parent="LocalPlayer" unique_id=805507006 instance=ExtResource("17_muem4")]
 
 [node name="HUD" parent="LocalPlayer" unique_id=165254352 instance=ExtResource("16_jbj1t")]

@@ -194,7 +194,11 @@ func request_start_game() -> void:
 	# Seul le host peut lancer la partie
 	if sender_id != 1:
 		return
-
+	
+	for player in players_data :
+		if player["team_id"] == 0 or player["color_id"] == 0:
+			return
+	
 	start_game.rpc()
 	
 
@@ -202,4 +206,4 @@ func request_start_game() -> void:
 @rpc("authority", "call_local")
 func start_game() -> void:
 	print(players_data)
-	#get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

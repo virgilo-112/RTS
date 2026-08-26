@@ -2,19 +2,20 @@ extends CanvasLayer
 
 var owner_player : Player
 
-@onready var wood_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer/WoodLabel
-@onready var food_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2/FoodLabel
-@onready var coin_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3/CoinLabel
-@onready var militia_count_label: Label = $Control/PanelContainer4/HBoxContainer/VBoxContainer/MilitiaCountLabel
-@onready var pawn_count_label: Label = $Control/PanelContainer4/HBoxContainer/VBoxContainer2/PawnCountLabel
-@onready var panel_container_unit_queue: PanelContainer = $PanelContainerUnitQueue
-@onready var h_box_unit_queue: HBoxContainer = $PanelContainerUnitQueue/HBoxUnitQueue
+@onready var h_box_unit_queue: HBoxContainer = $UnitQueue/HBoxUnitQueue
 @onready var cog_menu: PanelContainer = $Control/CogMenu
+@onready var unit_queue: PanelContainer = $UnitQueue
+@onready var wood_label: Label = $Control/Resources/VBoxContainer/HBoxContainer/WoodLabel
+@onready var food_label: Label = $Control/Resources/VBoxContainer/HBoxContainer2/FoodLabel
+@onready var coin_label: Label = $Control/Resources/VBoxContainer/HBoxContainer3/CoinLabel
+@onready var pawn_count_label: Label = $Control/UnitCount/HBoxContainer/VBoxContainer2/PawnCountLabel
+@onready var militia_count_label: Label = $Control/UnitCount/HBoxContainer/VBoxContainer/MilitiaCountLabel
+
 
 
 
 func _ready() -> void:
-	panel_container_unit_queue.visible = false
+	unit_queue.visible = false
 	cog_menu.visible = false
 
 func set_owner_player(player: Player) -> void:
@@ -45,8 +46,8 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_unit_production_queued(unit_type: String, duration: int) -> void:
-	if panel_container_unit_queue.visible == false:
-		panel_container_unit_queue.visible = true
+	if unit_queue.visible == false:
+		unit_queue.visible = true
 	var queue_time := Timer.new()
 	queue_time.one_shot = true
 	queue_time.wait_time = duration
@@ -88,7 +89,7 @@ func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 	queue_time.queue_free()
 	await get_tree().process_frame
 
-	panel_container_unit_queue.visible = h_box_unit_queue.get_child_count() > 0
+	unit_queue.visible = h_box_unit_queue.get_child_count() > 0
 	
 
 

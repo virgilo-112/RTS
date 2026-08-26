@@ -4,13 +4,14 @@ extends Node
 @onready var spawns: Node2D = $Spawns
 @onready var player_container : Node2D = $World/Players
 @onready var hud: CanvasLayer = $LocalPlayer/HUD
+@onready var local_player: Node2D = $LocalPlayer
 
 var color = {
-	0 : "red",
-	1 : "blue",
-	2 : "yellow",
-	3 : "black",
-	4 : "purple"
+	1 : "red",
+	2 : "blue",
+	3 : "yellow",
+	4 : "black",
+	5 : "purple"
 }
 
 
@@ -19,6 +20,8 @@ func _ready() -> void:
 	for player_data in NetworkManager.players_data:
 		var player = preload("uid://csake202bxny8").instantiate()
 		player.color = color[player_data.color_id]
+		player.player_id = player_data.player_id
+		player.local_player = local_player
 		player_container.add_child(player)
 		if player_data.type == "human" :
 			hud.set_owner_player(player)

@@ -49,11 +49,7 @@ func _on_archer_button_pressed() -> void:
 		await production_timer.timeout
 		production_timer.queue_free()
 		
-		var new_archer = preload("res://scenes/archer.tscn").instantiate()
-		new_archer.global_position = spawn.global_position
-		new_archer.owner_player = owner_player
-		archer_container.add_child(new_archer)
-		owner_player.add_militia(1)
+		owner_player.spawn_unit("archer", spawn.global_position)
 	else : 
 		return
 

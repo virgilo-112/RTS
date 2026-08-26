@@ -47,11 +47,9 @@ func _on_pawn_button_pressed() -> void:
 		
 		await production_timer.timeout
 		production_timer.queue_free()
-		var new_pawn = preload("res://scenes/pawn.tscn").instantiate()
-		new_pawn.global_position = spawn.global_position
-		new_pawn.owner_player = owner_player
-		pawn_container.add_child(new_pawn)
-		owner_player.add_pawn(1)
+		
+		owner_player.spawn_unit("pawn",spawn.global_position)
+
 	else : 
 		return
 

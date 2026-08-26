@@ -11,6 +11,7 @@ var facing := 1 # 1 = droite, -1 = gauche
 
 @export var owner_player : Player
 
+@export var vision_range := 150.0
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var selection_icon: Sprite2D = $SelectionIcon
@@ -23,6 +24,7 @@ var current_command: Command
 @onready var blue_animated_sprite_2d: AnimatedSprite2D = $BlueAnimatedSprite2D
 @onready var red_animated_sprite_2d: AnimatedSprite2D = $RedAnimatedSprite2D
 var animated_sprite : AnimatedSprite2D
+
 
 func _ready():
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)

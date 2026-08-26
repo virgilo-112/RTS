@@ -2,6 +2,9 @@ extends Node
 
 class_name Player
 
+var player_id : int
+var local_player : Node2D
+
 var gold : int = 0
 var wood : int = 0
 var food : int = 50
@@ -11,7 +14,6 @@ var militia_count : int = 0
 var house_price : int = 100
 var casern_price : int = 300
 var archery_price : int = 200
-
 var pawn_food_price : int = 50
 var lancer_food_price : int = 50
 var archer_food_price : int = 50
@@ -33,6 +35,12 @@ var archer_gold_price : int = 75
 
 var color : String
 
+const UNIT_SCENES := {
+	"warrior": preload("res://scenes/warrior.tscn"),
+	"lancer": preload("res://scenes/lancer.tscn"),
+	"archer": preload("res://scenes/archer.tscn"),
+	"pawn": preload("res://scenes/pawn.tscn")
+}
 
 var queue_time: int = 5
 
@@ -55,13 +63,32 @@ func add_food(amount: int):
 	food += amount
 	food_changed.emit(food)
 
-func add_pawn(amount: int):
-	pawn_count += amount
-	pawn_count_changed.emit(pawn_count)
-
-func add_militia(amount: int):
-	militia_count += amount
-	militia_count_changed.emit(militia_count)
+func spawn_unit(unit_type: String, spawn_position: Vector2) -> Unit:
+	var unit_scene: PackedScene = UNIT_SCENES[unit_type]
+	var unit: Unit = unit_scene.instantiate()
+	
+	unit.global_position = spawn_position
+	unit.owner_player = self
+	
+	match unit_type:
+		"warrior":
+			warriors.add_child(unit)
+		"lancer":
+			lancers.add_child(unit)
+		"archer":
+			archers.add_child(unit)
+		"pawn":
+			pawns.add_child(unit)
+		
+	if unit_type == "pawn":
+		pawn_count =+1
+		pawn_count_changed.emit(pawn_count)
+	else:
+		militia_count += 1
+		militia_count_changed.emit(militia_count)
+	
+	local_player.fog_of_war.register_unit(unit)
+	return unit
 	
 func add_building(building):
 	if building is House:

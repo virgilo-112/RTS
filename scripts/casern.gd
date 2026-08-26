@@ -53,16 +53,14 @@ func _on_unit_button_pressed(unit):
 				self.add_child(production_timer)
 				production_timer.start()
 				owner_player.pay_unit("warrior")
-				
+	
 				await production_timer.timeout
 				production_timer.queue_free()
-				
-				var new_warrior = preload("res://scenes/warrior.tscn").instantiate()
-				new_warrior.global_position = spawn.global_position
-				new_warrior.owner_player = owner_player
-				warrior_container.add_child(new_warrior)
-				owner_player.add_militia(1)
+	
+				owner_player.spawn_unit("warrior", spawn.global_position)
+
 			else : return
+	
 		"lancer":
 			if owner_player.is_unit_affordable("lancer"):
 				var production_timer = Timer.new()
@@ -71,15 +69,12 @@ func _on_unit_button_pressed(unit):
 				self.add_child(production_timer)
 				production_timer.start()
 				owner_player.pay_unit("lancer")
-				
+	
 				await production_timer.timeout
 				production_timer.queue_free()
-				
-				var new_lancer = preload("res://scenes/lancer.tscn").instantiate()
-				new_lancer.global_position = spawn.global_position
-				new_lancer.owner_player = owner_player
-				lancer_container.add_child(new_lancer)
-				owner_player.add_militia(1)
+	
+				owner_player.spawn_unit("lancer", spawn.global_position)
+	
 			else : return
 
 
