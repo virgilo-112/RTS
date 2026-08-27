@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://shgawywsdd2y"]
+
+[ext_resource type="Script" uid="uid://bo85k8xrlf5rk" path="res://scripts/gold_stone.gd" id="1_m41mg"]
+[ext_resource type="Texture2D" uid="uid://bi01itxeurse1" path="res://assets/Terrain/Resources/Gold/Gold Stones/Gold Stone 5_Highlight.png" id="2_m41mg"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="3_v8vdk"]
+[ext_resource type="Texture2D" uid="uid://dw5psooolx8e1" path="res://assets/UI Elements/UI Elements/Icons/Icon_03.png" id="4_jauci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsyy3"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8vdk"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jauci"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igy8g"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxu3o"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkupb"]
+atlas = ExtResource("2_m41mg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsyy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsyy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8vdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jauci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igy8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxu3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkupb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vys01"]
+radius = 17.99058
+height = 63.999203
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pnrn"]
+radius = 37.054016
+
+[node name="GoldStone5_" type="StaticBody2D" unique_id=729183247 node_paths=PackedStringArray("selection_icon", "ui_gold", "gold_count", "interaction_points")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_m41mg")
+selection_icon = NodePath("SelectionArea/SelectionIcon")
+ui_gold = NodePath("UIGold")
+gold_count = NodePath("UIGold/Control/PanelContainer/HBoxContainer/GoldCount")
+interaction_points = NodePath("InteractionPoints")
+
+[node name="Gold5" type="AnimatedSprite2D" parent="." unique_id=1799287188]
+sprite_frames = SubResource("SpriteFrames_wsyy3")
+autoplay = "default"
+frame_progress = 0.34090498
+offset = Vector2(1, -25)
+
+[node name="GoldCollision" type="CollisionShape2D" parent="." unique_id=2028032033]
+position = Vector2(3.7252903e-09, -18)
+rotation = 1.5757769
+shape = SubResource("CapsuleShape2D_vys01")
+
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=660396081]
+
+[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1256829871]
+position = Vector2(-39, 0)
+
+[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1602519216]
+position = Vector2(-48, -15)
+
+[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=1465631765]
+position = Vector2(49, -16)
+
+[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=1858217784]
+position = Vector2(39, 0)
+
+[node name="SelectionArea" type="Area2D" parent="." unique_id=76157974]
+collision_layer = 4
+collision_mask = 0
+
+[node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=900379215]
+visible = false
+z_index = 5
+z_as_relative = false
+position = Vector2(1.9999999, -32.000004)
+scale = Vector2(0.78662103, 0.74141306)
+texture = ExtResource("3_v8vdk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=129888956]
+position = Vector2(2, -32)
+shape = SubResource("CircleShape2D_2pnrn")
+
+[node name="UIGold" type="CanvasLayer" parent="." unique_id=520042579]
+visible = false
+
+[node name="Control" type="Control" parent="UIGold" unique_id=409216445]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="UIGold/Control" unique_id=1431042200]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -145.0
+offset_right = 176.0
+offset_bottom = -81.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIGold/Control/PanelContainer" unique_id=1765474787]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UIGold/Control/PanelContainer/HBoxContainer" unique_id=276708203]
+layout_mode = 2
+texture = ExtResource("4_jauci")
+
+[node name="GoldCount" type="Label" parent="UIGold/Control/PanelContainer/HBoxContainer" unique_id=2043319212]
+layout_mode = 2
+text = ":"

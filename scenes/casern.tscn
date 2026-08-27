@@ -16,9 +16,15 @@ size = Vector2(148, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(157, 173)
 
-[node name="Casern" type="StaticBody2D" unique_id=135393825]
+[node name="Casern" type="StaticBody2D" unique_id=135393825 node_paths=PackedStringArray("spawn", "ui_casern", "warrior_button", "lancer_button", "construction_progress_bar", "selection_icon")]
 y_sort_enabled = true
 script = ExtResource("1_b6g2c")
+spawn = NodePath("Spawn")
+ui_casern = NodePath("UICasern")
+warrior_button = NodePath("UICasern/Control/PanelContainer/HBoxContainer/WarriorButton")
+lancer_button = NodePath("UICasern/Control/PanelContainer/HBoxContainer/LancerButton")
+construction_progress_bar = NodePath("ConstructionProgressBar")
+selection_icon = NodePath("Area2D/SelectionIcon")
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=533730372]
 visible = false

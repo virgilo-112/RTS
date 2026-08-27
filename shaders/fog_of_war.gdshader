@@ -1,14 +1,24 @@
 shader_type canvas_item;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform vec2 object_positions[128];
+uniform float object_radii[128];
+uniform int object_count;
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-}
+	vec2 world_position = UV * vec2(10000.0, 6000.0);
 
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
+	float alpha = 1.0;
+
+	for (int i = 0; i < object_count; i++) {
+		float distance_to_object = distance(
+			world_position,
+			object_positions[i]
+		);
+
+		if (distance_to_object < object_radii[i]) {
+			alpha = 0.0;
+		}
+	}
+
+	COLOR = vec4(0.0, 0.0, 0.0, alpha);
+}

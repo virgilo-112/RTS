@@ -2569,8 +2569,8 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
-abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 hp = 100
+abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
 z_index = 1
@@ -2630,8 +2630,14 @@ wait_time = 0.15
 wait_time = 10.0
 one_shot = true
 
-[node name="UIPawn" type="CanvasLayer" parent="." index="13" unique_id=1553202362]
+[node name="UIPawn" type="CanvasLayer" parent="." index="13" unique_id=1553202362 node_paths=PackedStringArray("pawn", "house_button", "casern_button", "archery_button", "hp_label")]
 visible = false
+script = ExtResource("23_ldq0g")
+pawn = NodePath("..")
+house_button = NodePath("Control/PanelContainer/HBoxContainer/HouseButton")
+casern_button = NodePath("Control/PanelContainer/HBoxContainer/CasernButton")
+archery_button = NodePath("Control/PanelContainer/HBoxContainer/ArcheryButton")
+hp_label = NodePath("Control/PanelContainer/HBoxContainer/HPLabel")
 
 [node name="Control" type="Control" parent="UIPawn" index="0" unique_id=827019391]
 layout_mode = 3
@@ -2641,7 +2647,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("23_ldq0g")
 
 [node name="PanelContainer" type="PanelContainer" parent="UIPawn/Control" index="0" unique_id=2085938729]
 layout_mode = 1

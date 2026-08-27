@@ -28,7 +28,7 @@ avoidance_enabled = true
 [node name="Detect" type="Area2D" parent="." unique_id=1553397965]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=130369885]
-position = Vector2(-1, -29)
+position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_eqwak")
 
 [node name="SelectionIcon" type="Sprite2D" parent="." unique_id=193086596]

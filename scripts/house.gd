@@ -2,39 +2,24 @@ extends Building
 
 class_name House
 
-@onready var selection_icon: Sprite2D = $Area2D/SelectionIcon
-@onready var spawn: Marker2D = $Spawn
-@onready var ui_house: CanvasLayer = $UIHouse
-@onready var construction_progress_bar: ProgressBar = $ConstructionProgressBar
+
+# =================== parameters =================== #
+
+# --------- Produce pawn --------- #
+@export var ui_house: CanvasLayer
 
 
-var pawn_container: Node2D
-var build_time := 15.0
+# =================== functions =================== #
 
-var build_timer := 0.0
-var is_selected: bool = false
-
-var construction_tween: Tween
-
-
-func _ready() -> void:
-	build_timer = build_time
-	construction_progress_bar.min_value = 0
-	construction_progress_bar.max_value = build_time
-	construction_progress_bar.value = 0
-	construction_progress_bar.show_percentage = false
-	construction_progress_bar.visible = under_construction
-	set_color().visible = true
-
-
-func can_receive_command():
-	return false
+# --------- Selection - UI --------- #
 
 func toggle_selection(value:bool):
-	is_selected = value
-	selection_icon.visible = value
+	super(value)
 	if !under_construction:
 		ui_house.visible = value
+
+
+# --------- Produce pawn --------- #
 
 func _on_pawn_button_pressed() -> void:
 	if owner_player.is_unit_affordable("pawn"):
@@ -49,40 +34,5 @@ func _on_pawn_button_pressed() -> void:
 		production_timer.queue_free()
 		
 		owner_player.spawn_unit("pawn",spawn.global_position)
-
 	else : 
 		return
-
-
-func _process(delta: float) -> void:
-	if not under_construction:
-		return
-
-	if builders.is_empty():
-		return
-
-	build_timer -= delta * builders.size()
-	construction_progress_bar.value = abs(build_timer - build_time)
-	if build_timer <= 0.0:
-		build_timer = 0.0
-		finish_construction()
-		construction_progress_bar.queue_free()
-
-		await get_tree().process_frame
-
-
-func start_construction_animation() -> void:
-	if construction_tween:
-		construction_tween.kill()
-	construction_tween = create_tween()
-	construction_tween.set_loops()
-	construction_tween.tween_property(sprite_2d,"scale",Vector2(1.02, 0.98),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	construction_tween.tween_property(sprite_2d,"scale",Vector2(0.98, 1.02),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-
-func stop_construction_animation() -> void:
-	if construction_tween:
-		construction_tween.kill()
-	var tween = create_tween()
-	tween.tween_property(sprite_2d,"scale",Vector2(1.08, 1.08),0.12).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(sprite_2d,"scale",Vector2.ONE,0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)

@@ -15,12 +15,15 @@ size = Vector2(78, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikdiq"]
 size = Vector2(111, 157)
 
-[node name="House" type="StaticBody2D" unique_id=1028856893]
+[node name="House" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("spawn", "ui_house", "construction_progress_bar", "selection_icon")]
 y_sort_enabled = true
 script = ExtResource("1_se78b")
+spawn = NodePath("Spawn")
+ui_house = NodePath("UIHouse")
+construction_progress_bar = NodePath("ConstructionProgressBar")
+selection_icon = NodePath("Area2D/SelectionIcon")
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=739628180]
-visible = false
 texture = ExtResource("2_3bgk5")
 offset = Vector2(0, -68)
 

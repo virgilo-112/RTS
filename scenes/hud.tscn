@@ -14,8 +14,16 @@
 [sub_resource type="LabelSettings" id="LabelSettings_0i1j5"]
 font_size = 25
 
-[node name="HUD" type="CanvasLayer" unique_id=165254352]
+[node name="HUD" type="CanvasLayer" unique_id=165254352 node_paths=PackedStringArray("cog_menu", "wood_label", "food_label", "coin_label", "pawn_count_label", "militia_count_label", "h_box_unit_queue", "unit_queue")]
 script = ExtResource("1_047uy")
+cog_menu = NodePath("Control/CogMenu")
+wood_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer/WoodLabel")
+food_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer2/FoodLabel")
+coin_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer3/CoinLabel")
+pawn_count_label = NodePath("Control/UnitCount/HBoxContainer/VBoxContainer2/PawnCountLabel")
+militia_count_label = NodePath("Control/UnitCount/HBoxContainer/VBoxContainer/MilitiaCountLabel")
+h_box_unit_queue = NodePath("UnitQueue/HBoxUnitQueue")
+unit_queue = NodePath("UnitQueue")
 
 [node name="Control" type="Control" parent="." unique_id=626221473]
 layout_mode = 3

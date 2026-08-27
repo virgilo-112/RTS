@@ -4,6 +4,7 @@ class_name Player
 
 var player_id : int
 var local_player : Node2D
+var fow : Sprite2D
 
 var gold : int = 0
 var wood : int = 0
@@ -87,22 +88,24 @@ func spawn_unit(unit_type: String, spawn_position: Vector2) -> Unit:
 		militia_count += 1
 		militia_count_changed.emit(militia_count)
 	
-	local_player.fog_of_war.register_unit(unit)
+	fow.register_object(unit)
 	return unit
 	
 func add_building(building):
+	
 	if building is House:
 		house_container.add_child(building)
-		building.pawn_container = pawns
+
 
 	elif building is Archery:
 		archery_container.add_child(building)
-		building.archer_container = archers
+
 
 	elif building is Casern:
 		casern_container.add_child(building)
-		building.warrior_container = warriors
-		building.lancer_container = lancers
+
+		
+	fow.register_object(building)
 
 func is_building_affordable(building_type : String) :
 	match building_type:

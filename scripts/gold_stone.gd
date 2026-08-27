@@ -3,58 +3,38 @@ extends StaticBody2D
 class_name GoldStone
 
 
-@export var id : int
-@onready var gold_1: AnimatedSprite2D = $Gold1
-@onready var gold_1_collision: CollisionShape2D = $Gold1Collision
-@onready var gold_2: AnimatedSprite2D = $Gold2
-@onready var gold_2_collision: CollisionShape2D = $Gold2Collision
-@onready var gold_3: AnimatedSprite2D = $Gold3
-@onready var gold_3_collision: CollisionShape2D = $Gold3Collision
-@onready var gold_4: AnimatedSprite2D = $Gold4
-@onready var gold_4_collision: CollisionShape2D = $Gold4Collision
-@onready var gold_5: AnimatedSprite2D = $Gold5
-@onready var gold_5_collision: CollisionShape2D = $Gold5Collision
-@onready var gold_6: AnimatedSprite2D = $Gold6
-@onready var gold_6_collision: CollisionShape2D = $Gold6Collision
+# =================== parameters =================== #
 
-@onready var selection_icon: Sprite2D = $SelectionArea/SelectionIcon
-@onready var interaction_points: Node2D = $InteractionPoints
-@onready var gold_count: Label = $UIGold/Control/PanelContainer/HBoxContainer/GoldCount
-@onready var ui_gold: CanvasLayer = $UIGold
-
-var gold : int 
+# --------- Selection --------- #
+@export var selection_icon: Sprite2D
 var is_selected = false
 
+# --------- Ore UI --------- #
+@export var ui_gold: CanvasLayer
+@export var gold_count: Label
+
+# --------- Ore --------- #
+@export var interaction_points: Node2D
+var gold_quantity : int = 800
+
+# =================== Signals =================== #
+
+# --------- Ore finished --------- #
 signal depleted
 
 
-func _ready() -> void:
-	if id == 1 :
-		gold_1.visible = true
-		gold_1_collision.visible = true
-		gold = 100
-	elif id == 2 :
-		gold_2.visible = true
-		gold_2_collision.visible = true
-		gold = 200
-	elif id == 3 :
-		gold_3.visible = true
-		gold_3_collision.visible = true
-		gold = 300
-	elif id == 4 :
-		gold_4.visible = true
-		gold_4_collision.visible = true
-		gold = 400
-	elif id == 5 :
-		gold_5.visible = true
-		gold_5_collision.visible = true
-		gold = 600
-	else :
-		gold_6.visible = true
-		gold_6_collision.visible = true
-		gold = 800
-	gold_count.text = ": "+var_to_str(gold)
+# =================== functions =================== #
 
+
+func _ready() -> void:
+	gold_count.text = ": "+var_to_str(gold_quantity)
+
+
+func can_receive_command():
+	return false
+
+
+# --------- Mine --------- #
 
 func get_closest_point(unit_pos):
 	var best = null
@@ -66,20 +46,20 @@ func get_closest_point(unit_pos):
 			best = point
 	return best.global_position
 
-func can_receive_command():
-	return false
+
+func mine(amount : int) -> int :
+	var mined = min(amount, gold_quantity)
+	gold_quantity -= mined
+	gold_count.text = ": "+var_to_str(gold_quantity)
+	if gold_quantity == 0 :
+		depleted.emit()
+		queue_free()
+	return mined
+
+
+# --------- Selection - UI --------- #
 
 func toggle_selection(value:bool):
 	is_selected = value
 	selection_icon.visible = value
 	ui_gold.visible = value
-
-
-func mine(amount : int) -> int :
-	var mined = min(amount, gold)
-	gold -= mined
-	gold_count.text = ": "+var_to_str(gold)
-	if gold == 0 :
-		depleted.emit()
-		queue_free()
-	return mined

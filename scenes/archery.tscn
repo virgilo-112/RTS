@@ -15,9 +15,13 @@ size = Vector2(157, 69)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjcxb"]
 size = Vector2(157, 173)
 
-[node name="Archery" type="StaticBody2D" unique_id=1408408083]
+[node name="Archery" type="StaticBody2D" unique_id=1408408083 node_paths=PackedStringArray("ui_archery", "construction_progress_bar", "selection_icon", "spawn")]
 y_sort_enabled = true
 script = ExtResource("1_8e86i")
+ui_archery = NodePath("UIArchery")
+construction_progress_bar = NodePath("ConstructionProgressBar")
+selection_icon = NodePath("Area2D/SelectionIcon")
+spawn = NodePath("Spawn")
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=910439930]
 visible = false

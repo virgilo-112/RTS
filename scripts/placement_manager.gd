@@ -30,6 +30,7 @@ func start_placement(type: String, player: Player):
 	ghost.texture = sprite.texture
 	ghost.modulate.a = 0.5
 	add_child(ghost)
+	ghost.z_index = 4
 	building.queue_free()
 
 func _process(_delta):
@@ -56,7 +57,7 @@ func confirm_placement():
 	input_manager.set_enabled(true)
 	var selected_pawns := []
 	for object in input_manager.selected_objects:
-		if object is Pawn and object.can_receive_command():
+		if object is Pawn :
 			selected_pawns.append(object)
 	if selected_pawns.is_empty():
 		return

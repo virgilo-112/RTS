@@ -1,22 +1,35 @@
 extends CanvasLayer
 
+
+# =================== parameters =================== #
+
+# --------- Player --------- #
 var owner_player : Player
 
-@onready var h_box_unit_queue: HBoxContainer = $UnitQueue/HBoxUnitQueue
-@onready var cog_menu: PanelContainer = $Control/CogMenu
-@onready var unit_queue: PanelContainer = $UnitQueue
-@onready var wood_label: Label = $Control/Resources/VBoxContainer/HBoxContainer/WoodLabel
-@onready var food_label: Label = $Control/Resources/VBoxContainer/HBoxContainer2/FoodLabel
-@onready var coin_label: Label = $Control/Resources/VBoxContainer/HBoxContainer3/CoinLabel
-@onready var pawn_count_label: Label = $Control/UnitCount/HBoxContainer/VBoxContainer2/PawnCountLabel
-@onready var militia_count_label: Label = $Control/UnitCount/HBoxContainer/VBoxContainer/MilitiaCountLabel
+# --------- Menu UI --------- #
+@export var cog_menu: PanelContainer
+
+# --------- Resources Count --------- #
+@export var wood_label: Label
+@export var food_label: Label
+@export var coin_label: Label
+
+# --------- Unit Count --------- #
+@export var pawn_count_label: Label
+@export var militia_count_label: Label
+
+# --------- Queue --------- #
+@export var h_box_unit_queue: HBoxContainer
+@export var unit_queue: PanelContainer
 
 
-
+# =================== functions =================== #
 
 func _ready() -> void:
 	unit_queue.visible = false
 	cog_menu.visible = false
+
+# --------- Connect player and HUD --------- #
 
 func set_owner_player(player: Player) -> void:
 	owner_player = player
@@ -26,24 +39,47 @@ func set_owner_player(player: Player) -> void:
 	owner_player.pawn_count_changed.connect(_on_pawn_count_changed)
 	owner_player.militia_count_changed.connect(_on_militia_count_changed)
 	owner_player.unit_queued.connect(_on_unit_production_queued)
-	
+
+
+# --------- Resources count --------- #
+
 func _on_gold_changed(amount):
 	coin_label.text = str(amount)
+
 
 func _on_wood_changed(amount):
 	wood_label.text = str(amount)
 
+
 func _on_food_changed(amount):
 	food_label.text = str(amount)
+
+
+# --------- Units count --------- #
 
 func _on_pawn_count_changed(amount):
 	pawn_count_label.text = str(amount)
 
+
 func _on_militia_count_changed(amount):
 	militia_count_label.text = str(amount)
 
+
+# --------- Menu --------- #
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_cog_icon_pressed() -> void:
+	cog_menu.visible = true
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+# --------- Queue --------- #
 
 func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 	if unit_queue.visible == false:
@@ -90,12 +126,3 @@ func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 	await get_tree().process_frame
 
 	unit_queue.visible = h_box_unit_queue.get_child_count() > 0
-	
-
-
-func _on_cog_icon_pressed() -> void:
-	cog_menu.visible = true
-
-
-func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

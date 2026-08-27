@@ -9,14 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://b24gyv7drtj3n" path="res://assets/Terrain/Tileset/Tilemap_color2.png" id="9_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://dfop3tm6q6fls" path="res://assets/Terrain/Tileset/Tilemap_color3.png" id="10_yq6so"]
 [ext_resource type="Texture2D" uid="uid://bp4jo0rrch2lr" path="res://assets/Terrain/Tileset/Tilemap_color4.png" id="11_fv21b"]
+[ext_resource type="PackedScene" uid="uid://b47ltpyakwel5" path="res://scenes/tree4.tscn" id="11_vxglm"]
+[ext_resource type="PackedScene" uid="uid://bhgo1yfathhk0" path="res://scenes/tree3.tscn" id="12_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://mjryl67t62q7" path="res://assets/Terrain/Tileset/Tilemap_color5.png" id="12_tel4y"]
+[ext_resource type="PackedScene" uid="uid://b668vrinnre6b" path="res://scenes/gold_stone_1.tscn" id="12_y6deb"]
+[ext_resource type="Shader" uid="uid://bq1x0awgii7nj" path="res://shaders/fog_of_war.gdshader" id="13_0ld40"]
 [ext_resource type="Script" uid="uid://d1plon6k5bmsq" path="res://scripts/local_player.gd" id="13_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://dm8spdgeiijqd" path="res://scenes/gold_stone_2.tscn" id="13_og1vs"]
+[ext_resource type="PackedScene" uid="uid://c7sctguws3u1x" path="res://scenes/tree2.tscn" id="13_yq6so"]
+[ext_resource type="PackedScene" uid="uid://shgawywsdd2y" path="res://scenes/gold_stone_5.tscn" id="14_2wyq8"]
+[ext_resource type="Script" uid="uid://c7pjhh4t84gwo" path="res://scripts/fow.gd" id="14_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://do2tnx0wm38rj" path="res://scenes/hud.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://dy1vaj3uoyet8" path="res://scenes/gold_stone_4.tscn" id="16_vxglm"]
 [ext_resource type="Script" uid="uid://dn55f6sk0a3cq" path="res://scripts/camera_main.gd" id="17_0ld40"]
-[ext_resource type="PackedScene" uid="uid://c300x60biyea0" path="res://scenes/fog_of_war.tscn" id="17_muem4"]
-[ext_resource type="PackedScene" uid="uid://cgnch0ni7hqta" path="res://scenes/tree.tscn" id="18_fuf3a"]
+[ext_resource type="PackedScene" uid="uid://wogtr7m7bvew" path="res://scenes/gold_stone_3.tscn" id="17_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://cgnch0ni7hqta" path="res://scenes/tree1.tscn" id="18_fuf3a"]
 [ext_resource type="PackedScene" uid="uid://bbnxql577evxg" path="res://scenes/sheep.tscn" id="19_pibwh"]
-[ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone.tscn" id="20_c6pm6"]
+[ext_resource type="PackedScene" uid="uid://b1o7bijk73ojg" path="res://scenes/gold_stone_6.tscn" id="20_c6pm6"]
 [ext_resource type="Script" uid="uid://djr7yof37wx52" path="res://scripts/placement_manager.gd" id="20_yc10j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5poiv"]
@@ -5177,6 +5186,12 @@ sources/2 = SubResource("TileSetAtlasSource_vxglm")
 sources/3 = SubResource("TileSetAtlasSource_2f3dj")
 sources/4 = SubResource("TileSetAtlasSource_yq6so")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcu0q"]
+shader = ExtResource("13_0ld40")
+shader_parameter/object_positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/object_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/object_count = 0
+
 [node name="Main" type="Node" unique_id=279662264]
 script = ExtResource("1_jscy8")
 
@@ -5254,25 +5269,56 @@ y_sort_enabled = true
 [node name="Trees" type="Node2D" parent="World/Resources" unique_id=1633340489]
 y_sort_enabled = true
 
-[node name="Tree" parent="World/Resources/Trees" unique_id=1019794889 instance=ExtResource("18_fuf3a")]
-position = Vector2(-1292, 1113)
-id = 2
+[node name="Tree1_" parent="World/Resources/Trees" unique_id=1019794889 instance=ExtResource("18_fuf3a")]
+position = Vector2(-1270, 763)
 
-[node name="Tree2" parent="World/Resources/Trees" unique_id=549070720 instance=ExtResource("18_fuf3a")]
-position = Vector2(-1295, 621)
-id = 1
+[node name="Tree1_2" parent="World/Resources/Trees" unique_id=1029844850 instance=ExtResource("18_fuf3a")]
+position = Vector2(-1355, 752)
 
-[node name="Tree3" parent="World/Resources/Trees" unique_id=1927940071 instance=ExtResource("18_fuf3a")]
-position = Vector2(-1011, 689)
-id = 4
+[node name="Tree1_3" parent="World/Resources/Trees" unique_id=1455793440 instance=ExtResource("18_fuf3a")]
+position = Vector2(-1299, 703)
 
-[node name="Tree4" parent="World/Resources/Trees" unique_id=29465317 instance=ExtResource("18_fuf3a")]
-position = Vector2(-1158, 738)
-id = 3
+[node name="Tree1_4" parent="World/Resources/Trees" unique_id=147934255 instance=ExtResource("18_fuf3a")]
+position = Vector2(-1236, 721)
 
-[node name="Tree5" parent="World/Resources/Trees" unique_id=1638812160 instance=ExtResource("18_fuf3a")]
-position = Vector2(-1095, 1035)
-id = 4
+[node name="Tree1_5" parent="World/Resources/Trees" unique_id=154614088 instance=ExtResource("18_fuf3a")]
+position = Vector2(-1211, 805)
+
+[node name="Tree2_" parent="World/Resources/Trees" unique_id=1618015362 instance=ExtResource("13_yq6so")]
+position = Vector2(-1306, 845)
+
+[node name="Tree2_2" parent="World/Resources/Trees" unique_id=962916115 instance=ExtResource("13_yq6so")]
+position = Vector2(-1189, 680)
+
+[node name="Tree2_3" parent="World/Resources/Trees" unique_id=2000306313 instance=ExtResource("13_yq6so")]
+position = Vector2(-1073, 776)
+
+[node name="Tree2_4" parent="World/Resources/Trees" unique_id=525487618 instance=ExtResource("13_yq6so")]
+position = Vector2(-1125, 866)
+
+[node name="Tree3_" parent="World/Resources/Trees" unique_id=2079663242 instance=ExtResource("12_2f3dj")]
+position = Vector2(-1688, -195)
+
+[node name="Tree4_" parent="World/Resources/Trees" unique_id=778650778 instance=ExtResource("11_vxglm")]
+position = Vector2(-1458, -77)
+
+[node name="Tree3_2" parent="World/Resources/Trees" unique_id=1328459428 instance=ExtResource("12_2f3dj")]
+position = Vector2(-1638, -225)
+
+[node name="Tree3_3" parent="World/Resources/Trees" unique_id=1382933912 instance=ExtResource("12_2f3dj")]
+position = Vector2(-1580, -179)
+
+[node name="Tree4_2" parent="World/Resources/Trees" unique_id=213022948 instance=ExtResource("11_vxglm")]
+position = Vector2(-1408, -102)
+
+[node name="Tree3_4" parent="World/Resources/Trees" unique_id=1416653907 instance=ExtResource("12_2f3dj")]
+position = Vector2(-2257, 1348)
+
+[node name="Tree4_3" parent="World/Resources/Trees" unique_id=1303839512 instance=ExtResource("11_vxglm")]
+position = Vector2(-2346, 1290)
+
+[node name="Tree3_5" parent="World/Resources/Trees" unique_id=1419016657 instance=ExtResource("12_2f3dj")]
+position = Vector2(-1103, 1603)
 
 [node name="Sheeps" type="Node2D" parent="World/Resources" unique_id=1433152522]
 y_sort_enabled = true
@@ -5298,24 +5344,67 @@ position = Vector2(-1042, -365)
 [node name="GoldStones" type="Node2D" parent="World/Resources" unique_id=464750378]
 y_sort_enabled = true
 
-[node name="GoldStone" parent="World/Resources/GoldStones" unique_id=729183247 instance=ExtResource("20_c6pm6")]
-position = Vector2(-1606, 576)
+[node name="GoldStone3_" parent="World/Resources/GoldStones" unique_id=729183247 instance=ExtResource("17_2f3dj")]
+position = Vector2(-1627, 1102)
 
-[node name="GoldStone2" parent="World/Resources/GoldStones" unique_id=611354200 instance=ExtResource("20_c6pm6")]
-position = Vector2(-1741, 1228)
-id = 4
+[node name="GoldStone2_" parent="World/Resources/GoldStones" unique_id=1618068550 instance=ExtResource("13_og1vs")]
+position = Vector2(-1605, 1085)
 
-[node name="GoldStone3" parent="World/Resources/GoldStones" unique_id=1072037142 instance=ExtResource("20_c6pm6")]
-position = Vector2(-1587, 558)
-id = 5
+[node name="GoldStone1_" parent="World/Resources/GoldStones" unique_id=1435132874 instance=ExtResource("12_y6deb")]
+position = Vector2(-1635, 1110)
 
-[node name="GoldStone4" parent="World/Resources/GoldStones" unique_id=1536206345 instance=ExtResource("20_c6pm6")]
-position = Vector2(-1697, 1202)
-id = 6
+[node name="GoldStone6_" parent="World/Resources/GoldStones" unique_id=369274064 instance=ExtResource("20_c6pm6")]
+position = Vector2(-2246, 831)
+
+[node name="GoldStone5_" parent="World/Resources/GoldStones" unique_id=1768700668 instance=ExtResource("14_2wyq8")]
+position = Vector2(-2000, 993)
+
+[node name="GoldStone3_2" parent="World/Resources/GoldStones" unique_id=793656622 instance=ExtResource("17_2f3dj")]
+position = Vector2(-2035, 1013)
+
+[node name="GoldStone1_2" parent="World/Resources/GoldStones" unique_id=63978725 instance=ExtResource("12_y6deb")]
+position = Vector2(-2007, 1018)
+
+[node name="GoldStone4_" parent="World/Resources/GoldStones" unique_id=1703979262 instance=ExtResource("16_vxglm")]
+position = Vector2(-2193, 868)
+
+[node name="GoldStone2_2" parent="World/Resources/GoldStones" unique_id=27029057 instance=ExtResource("13_og1vs")]
+position = Vector2(-2290, 833)
+
+[node name="GoldStone6_2" parent="World/Resources/GoldStones" unique_id=1086152314 instance=ExtResource("20_c6pm6")]
+position = Vector2(-1676, 584)
+
+[node name="GoldStone5_2" parent="World/Resources/GoldStones" unique_id=2085516750 instance=ExtResource("14_2wyq8")]
+position = Vector2(-1471, 546)
+
+[node name="GoldStone4_2" parent="World/Resources/GoldStones" unique_id=2088078628 instance=ExtResource("16_vxglm")]
+position = Vector2(-1722, 573)
+
+[node name="GoldStone3_3" parent="World/Resources/GoldStones" unique_id=1629649245 instance=ExtResource("17_2f3dj")]
+position = Vector2(-1630, 587)
+
+[node name="GoldStone1_3" parent="World/Resources/GoldStones" unique_id=1347860862 instance=ExtResource("12_y6deb")]
+position = Vector2(-1651, 590)
+
+[node name="GoldStone1_4" parent="World/Resources/GoldStones" unique_id=1751051707 instance=ExtResource("12_y6deb")]
+position = Vector2(-1610, 596)
+
+[node name="GoldStone3_4" parent="World/Resources/GoldStones" unique_id=1611741769 instance=ExtResource("17_2f3dj")]
+position = Vector2(-1507, 520)
+
+[node name="GoldStone2_3" parent="World/Resources/GoldStones" unique_id=1961954634 instance=ExtResource("13_og1vs")]
+position = Vector2(-1614, 617)
 
 [node name="Players" type="Node2D" parent="World" unique_id=187451039]
 z_index = 3
 y_sort_enabled = true
+
+[node name="FOW" type="Sprite2D" parent="World" unique_id=726471522]
+visible = false
+z_index = 3
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_wcu0q")
+script = ExtResource("14_gqmmt")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=1657723292]
 
@@ -5355,7 +5444,5 @@ script = ExtResource("3_jscy8")
 
 [node name="PlacementManager" type="Node2D" parent="LocalPlayer" unique_id=667704544]
 script = ExtResource("20_yc10j")
-
-[node name="FogOfWar" parent="LocalPlayer" unique_id=805507006 instance=ExtResource("17_muem4")]
 
 [node name="HUD" parent="LocalPlayer" unique_id=165254352 instance=ExtResource("16_jbj1t")]
