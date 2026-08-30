@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b5pr5w7om5hji"]
 
-[ext_resource type="Script" uid="uid://chcd120kfkb03" path="res://scripts/lobby_ui.gd" id="1_5gu6x"]
-[ext_resource type="PackedScene" uid="uid://tlvd1dudydfs" path="res://scenes/player_row.tscn" id="2_q60fs"]
+[ext_resource type="Script" uid="uid://chcd120kfkb03" path="res://scripts/lobby.gd" id="1_5gu6x"]
+[ext_resource type="PackedScene" uid="uid://tlvd1dudydfs" path="res://scenes/player_slot.tscn" id="2_q60fs"]
 
-[node name="Lobby" type="Control" unique_id=1386518521]
+[node name="Lobby" type="Control" unique_id=1386518521 node_paths=PackedStringArray("players_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5gu6x")
+players_container = NodePath("MarginContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=187562138]
 layout_mode = 1
@@ -36,16 +37,16 @@ text = "Players"
 [node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1059744568]
 layout_mode = 2
 
-[node name="PlayerRow1" parent="MarginContainer/VBoxContainer" unique_id=267486443 instance=ExtResource("2_q60fs")]
+[node name="PlayerSlot1" parent="MarginContainer/VBoxContainer" unique_id=267486443 instance=ExtResource("2_q60fs")]
 layout_mode = 2
 
-[node name="PlayerRow2" parent="MarginContainer/VBoxContainer" unique_id=657583702 instance=ExtResource("2_q60fs")]
+[node name="PlayerSlot2" parent="MarginContainer/VBoxContainer" unique_id=657583702 instance=ExtResource("2_q60fs")]
 layout_mode = 2
 
-[node name="PlayerRow3" parent="MarginContainer/VBoxContainer" unique_id=1142271430 instance=ExtResource("2_q60fs")]
+[node name="PlayerSlot3" parent="MarginContainer/VBoxContainer" unique_id=1142271430 instance=ExtResource("2_q60fs")]
 layout_mode = 2
 
-[node name="PlayerRow4" parent="MarginContainer/VBoxContainer" unique_id=491869297 instance=ExtResource("2_q60fs")]
+[node name="PlayerSlot4" parent="MarginContainer/VBoxContainer" unique_id=491869297 instance=ExtResource("2_q60fs")]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=1904326983]

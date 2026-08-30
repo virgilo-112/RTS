@@ -34,10 +34,15 @@ func _ready() -> void:
 func set_owner_player(player: Player) -> void:
 	owner_player = player
 	owner_player.gold_changed.connect(_on_gold_changed)
+	_on_gold_changed(owner_player.gold)
 	owner_player.wood_changed.connect(_on_wood_changed)
+	_on_wood_changed(owner_player.wood)
 	owner_player.food_changed.connect(_on_food_changed)
+	_on_food_changed(owner_player.food)
 	owner_player.pawn_count_changed.connect(_on_pawn_count_changed)
+	_on_pawn_count_changed(owner_player.pawn_count)
 	owner_player.militia_count_changed.connect(_on_militia_count_changed)
+	_on_militia_count_changed(owner_player.militia_count)
 	owner_player.unit_queued.connect(_on_unit_production_queued)
 
 

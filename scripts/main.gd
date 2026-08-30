@@ -1,35 +1,40 @@
 extends Node
 
+# =================== parameters =================== #
 
-@onready var spawns: Node2D = $Spawns
-@onready var player_container : Node2D = $World/Players
-@onready var hud: CanvasLayer = $LocalPlayer/HUD
-@onready var local_player: Node2D = $LocalPlayer
-@onready var fow: Sprite2D = $World/FOW
+# --------- constant parameters --------- #
 
-var color = {
-	1 : "red",
-	2 : "blue",
-	3 : "yellow",
-	4 : "black",
-	5 : "purple"
-}
+@export var spawns: Node2D
+@export var player_container : Node2D
+
+
+# --------- Local player nodes --------- #
+@export var hud: CanvasLayer
+@export var local_player: Node2D
+
+
+# =================== Functions =================== #
 
 
 func _ready() -> void:
-	var i = 0
-	for player_data in NetworkManager.players_data:
-		var player = preload("uid://csake202bxny8").instantiate()
-		player.color = color[player_data.color_id]
-		player.player_id = player_data.player_id
-		player.local_player = local_player
-		player.fow = fow
-		player_container.add_child(player)
-		if player_data.type == "human" :
-			hud.set_owner_player(player)
+	var spawn_index := 0
 
-		var house = preload("uid://baf8npqinbyyw").instantiate()
-		house.owner_player = player
-		house.position = spawns.get_child(i).position
-		player.add_building(house)
-		i+=1
+	for player_data in NetworkManager.players_data:
+		var player := preload("uid://csake202bxny8").instantiate()
+
+		player.setup(player_data)
+		player_container.add_child(player)
+
+		var house : House = player.spawn_building(
+			preload("uid://baf8npqinbyyw"),
+			spawns.get_child(spawn_index).position
+		)
+
+		house.set_construction_status(false)
+		
+		var pawn : Pawn = player.spawn_unit("pawn", spawns.get_child(spawn_index).position + Vector2(64,64))
+
+		if player_data["peer_id"] == multiplayer.get_unique_id():
+			local_player.set_owner_player(player)
+
+		spawn_index += 1

@@ -7,7 +7,7 @@ class_name GoldStone
 
 # --------- Selection --------- #
 @export var selection_icon: Sprite2D
-var is_selected = false
+var is_selected: bool = false
 
 # --------- Ore UI --------- #
 @export var ui_gold: CanvasLayer
@@ -15,7 +15,7 @@ var is_selected = false
 
 # --------- Ore --------- #
 @export var interaction_points: Node2D
-var gold_quantity : int = 800
+@export var gold_quantity: int
 
 # =================== Signals =================== #
 

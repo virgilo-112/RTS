@@ -71,6 +71,7 @@ selection_icon = NodePath("SelectionArea/SelectionIcon")
 ui_gold = NodePath("UIGold")
 gold_count = NodePath("UIGold/Control/PanelContainer/HBoxContainer/GoldCount")
 interaction_points = NodePath("InteractionPoints")
+gold_quantity = 700
 
 [node name="Gold4" type="AnimatedSprite2D" parent="." unique_id=1799287188]
 sprite_frames = SubResource("SpriteFrames_wo3fx")

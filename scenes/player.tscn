@@ -2,37 +2,48 @@
 
 [ext_resource type="Script" uid="uid://d3w2h33gnq2he" path="res://scripts/player.gd" id="1_3vyb7"]
 
-[node name="Player" type="Node2D" unique_id=765454415]
+[node name="Player" type="Node2D" unique_id=765454415 node_paths=PackedStringArray("casern_container", "archery_container", "house_container", "warrior_container", "lancer_container", "pawn_container", "archer_container", "monk_container")]
 y_sort_enabled = true
 script = ExtResource("1_3vyb7")
+gold = 10000
+wood = 10000
+food = 10000
+casern_container = NodePath("Buildings/CasernContainer")
+archery_container = NodePath("Buildings/ArcheryContainer")
+house_container = NodePath("Buildings/HouseContainer")
+warrior_container = NodePath("Units/WarriorContainer")
+lancer_container = NodePath("Units/LancerContainer")
+pawn_container = NodePath("Units/PawnContainer")
+archer_container = NodePath("Units/ArcherContainer")
+monk_container = NodePath("Units/MonkContainer")
 
 [node name="Units" type="Node2D" parent="." unique_id=1293064773]
 y_sort_enabled = true
 
-[node name="Warriors" type="Node2D" parent="Units" unique_id=397772989]
+[node name="WarriorContainer" type="Node2D" parent="Units" unique_id=397772989]
 y_sort_enabled = true
 
-[node name="Lancers" type="Node2D" parent="Units" unique_id=269114356]
+[node name="LancerContainer" type="Node2D" parent="Units" unique_id=269114356]
 y_sort_enabled = true
 
-[node name="Pawns" type="Node2D" parent="Units" unique_id=758991098]
+[node name="PawnContainer" type="Node2D" parent="Units" unique_id=758991098]
 y_sort_enabled = true
 
-[node name="Archers" type="Node2D" parent="Units" unique_id=1881194285]
+[node name="ArcherContainer" type="Node2D" parent="Units" unique_id=1881194285]
 y_sort_enabled = true
 
-[node name="Monks" type="Node2D" parent="Units" unique_id=1085593122]
+[node name="MonkContainer" type="Node2D" parent="Units" unique_id=1085593122]
 y_sort_enabled = true
 position = Vector2(1, 0)
 
 [node name="Buildings" type="Node2D" parent="." unique_id=50445058]
 y_sort_enabled = true
 
-[node name="Caserns" type="Node2D" parent="Buildings" unique_id=1238156863]
+[node name="CasernContainer" type="Node2D" parent="Buildings" unique_id=1238156863]
 y_sort_enabled = true
 
-[node name="Archeries" type="Node2D" parent="Buildings" unique_id=1521662027]
+[node name="ArcheryContainer" type="Node2D" parent="Buildings" unique_id=1521662027]
 y_sort_enabled = true
 
-[node name="Houses" type="Node2D" parent="Buildings" unique_id=1125818331]
+[node name="HouseContainer" type="Node2D" parent="Buildings" unique_id=1125818331]
 y_sort_enabled = true

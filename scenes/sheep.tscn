@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="5_vbo3h"]
 [ext_resource type="Texture2D" uid="uid://8snaubhxf3os" path="res://assets/Terrain/Resources/Meat/Meat Resource/Meat Resource.png" id="7_s32ju"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n2gg"]
+height = 38.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycxms"]
 atlas = ExtResource("3_6qn06")
 region = Rect2(0, 0, 128, 128)
@@ -179,30 +182,32 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jf7pw"]
-radius = 19.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4uhln"]
 radius = 22.0
 height = 44.0
 
-[node name="Sheep" type="CharacterBody2D" unique_id=279528964]
+[node name="Sheep" type="CharacterBody2D" unique_id=279528964 node_paths=PackedStringArray("selection_icon", "ui_sheep", "food_count", "interaction_points")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_55m3e")
+selection_icon = NodePath("SelectionArea/SelectionIcon")
+ui_sheep = NodePath("UISheep")
+food_count = NodePath("UISheep/Control/PanelContainer/HBoxContainer/FoodCount")
+interaction_points = NodePath("InteractionPoints")
+food_quantity = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078052094]
+position = Vector2(-1, -8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4n2gg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753518160]
-position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_5g05w")
 animation = &"Run"
 autoplay = "Idle"
 frame_progress = 0.5456283
-offset = Vector2(0, -15)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078052094]
-position = Vector2(-1, -4)
-shape = SubResource("CircleShape2D_jf7pw")
+offset = Vector2(0, -11)
 
 [node name="Timer" type="Timer" parent="." unique_id=679632084]
 wait_time = 2.0
@@ -211,17 +216,17 @@ autostart = true
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=1926679350]
 
 [node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1195912423]
-position = Vector2(-28, 19)
+position = Vector2(-26, -4)
 
 [node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=222700718]
-position = Vector2(27, 18)
+position = Vector2(26, -5)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=1319957493]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=1761656720]
-position = Vector2(-1, -4)
+position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_4uhln")
 
 [node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=267485068]

@@ -5,6 +5,8 @@ class_name Unit
 
 # =================== parameters =================== #
 
+var unit_id : int
+
 # --------- Player --------- #
 @export var owner_player : Player
 

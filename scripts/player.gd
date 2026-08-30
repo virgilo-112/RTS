@@ -2,39 +2,63 @@ extends Node
 
 class_name Player
 
-var player_id : int
-var local_player : Node2D
-var fow : Sprite2D
 
-var gold : int = 0
-var wood : int = 0
-var food : int = 50
+# =================== parameters =================== #
+
+# --------- Player data --------- #
+var player_id : int
+var color : String
+var peer_id: Variant = null
+var player_type : String
+var team_id : int
+
+# --------- Player resources --------- #
+@export var gold : int
+@export var wood : int
+@export var food : int
+
+# --------- Player units --------- #
 var pawn_count : int = 0
 var militia_count : int = 0
 
-var house_price : int = 100
-var casern_price : int = 300
-var archery_price : int = 200
-var pawn_food_price : int = 50
-var lancer_food_price : int = 50
-var archer_food_price : int = 50
-var warrior_food_price : int = 100
+# --------- Buildings wood price --------- #
+@export var house_price : int = 100
+@export var archery_price : int = 200
+@export var casern_price : int = 300
 
-var warrior_gold_price : int = 75
-var lancer_gold_price : int = 50
-var archer_gold_price : int = 75
+# --------- Units food price --------- #
+@export var pawn_food_price : int = 50
+@export var lancer_food_price : int = 50
+@export var archer_food_price : int = 50
+@export var warrior_food_price : int = 100
 
-@onready var casern_container: Node2D = $Buildings/Caserns
-@onready var archery_container: Node2D = $Buildings/Archeries
-@onready var house_container: Node2D = $Buildings/Houses
+# --------- Units gold price --------- #
+@export var warrior_gold_price : int = 75
+@export var lancer_gold_price : int = 50
+@export var archer_gold_price : int = 75
 
-@onready var warriors: Node2D = $Units/Warriors
-@onready var lancers: Node2D = $Units/Lancers
-@onready var pawns: Node2D = $Units/Pawns
-@onready var archers: Node2D = $Units/Archers
-@onready var monks: Node2D = $Units/Monks
+# --------- Buildings node container --------- #
+@export var casern_container: Node2D
+@export var archery_container: Node2D
+@export var house_container: Node2D
 
-var color : String
+# --------- Units node container --------- #
+@export var warrior_container: Node2D
+@export var lancer_container: Node2D
+@export var pawn_container: Node2D
+@export var archer_container: Node2D
+@export var monk_container: Node2D
+
+# --------- Add unit --------- #
+@export var queue_time: int = 5
+
+const COLOR = {
+	1 : "red",
+	2 : "blue",
+	3 : "yellow",
+	4 : "black",
+	5 : "purple"
+}
 
 const UNIT_SCENES := {
 	"warrior": preload("res://scenes/warrior.tscn"),
@@ -43,14 +67,37 @@ const UNIT_SCENES := {
 	"pawn": preload("res://scenes/pawn.tscn")
 }
 
-var queue_time: int = 5
+
+# =================== Signals =================== #
+
 
 signal wood_changed(new_amount)
 signal gold_changed(new_amount)
 signal food_changed(new_amount)
 signal pawn_count_changed(new_amount)
 signal militia_count_changed(new_amount)
+
+
 signal unit_queued(unit_type, queue_time)
+
+# =================== Testing zone =================== #
+var next_unit_id := 1
+
+func get_next_unit_id() -> int:
+	var id := next_unit_id
+	next_unit_id += 1
+	return id
+
+# =================== functions =================== #
+
+func setup(data: Dictionary) -> void:
+	player_id = data["player_id"]
+	peer_id = data["peer_id"]
+	player_type = data["type"]
+	team_id = data["team_id"]
+	color = COLOR[data["color_id"]]
+
+# --------- Add resources --------- #
 
 func add_gold(amount: int):
 	gold += amount
@@ -64,22 +111,26 @@ func add_food(amount: int):
 	food += amount
 	food_changed.emit(food)
 
+
+# --------- Spawn objects --------- #
+
 func spawn_unit(unit_type: String, spawn_position: Vector2) -> Unit:
 	var unit_scene: PackedScene = UNIT_SCENES[unit_type]
 	var unit: Unit = unit_scene.instantiate()
 	
 	unit.global_position = spawn_position
 	unit.owner_player = self
+	unit.unit_id = get_next_unit_id()
 	
 	match unit_type:
 		"warrior":
-			warriors.add_child(unit)
+			warrior_container.add_child(unit)
 		"lancer":
-			lancers.add_child(unit)
+			lancer_container.add_child(unit)
 		"archer":
-			archers.add_child(unit)
+			archer_container.add_child(unit)
 		"pawn":
-			pawns.add_child(unit)
+			pawn_container.add_child(unit)
 		
 	if unit_type == "pawn":
 		pawn_count =+1
@@ -88,25 +139,29 @@ func spawn_unit(unit_type: String, spawn_position: Vector2) -> Unit:
 		militia_count += 1
 		militia_count_changed.emit(militia_count)
 	
-	fow.register_object(unit)
 	return unit
 	
-func add_building(building):
+func spawn_building(building_scene: PackedScene, placement_position: Vector2) -> Building:
+	
+	var building = building_scene.instantiate()
+	
+	building.set_construction_status(true)
+	building.global_position = placement_position
+	building.owner_player = self
 	
 	if building is House:
 		house_container.add_child(building)
-
-
+		
 	elif building is Archery:
 		archery_container.add_child(building)
-
-
+		
 	elif building is Casern:
 		casern_container.add_child(building)
-
 		
-	fow.register_object(building)
+	return building
 
+
+# --------- Can pay object price? --------- #
 func is_building_affordable(building_type : String) :
 	match building_type:
 		"house":
@@ -124,21 +179,6 @@ func is_building_affordable(building_type : String) :
 				return false
 			else :
 				return true
-
-func pay_building(building_scene: String):
-
-	match building_scene:
-		"house":
-			wood -= house_price
-			wood_changed.emit(wood)
-			
-		"casern":
-			wood -= casern_price
-			wood_changed.emit(wood)
-			
-		"archery":
-			wood -= archery_price
-			wood_changed.emit(wood)
 
 
 func is_unit_affordable(unit_type : String) :
@@ -163,6 +203,24 @@ func is_unit_affordable(unit_type : String) :
 				return false
 			else :
 				return true
+
+
+# --------- Pay object price --------- #
+
+func pay_building(building_scene: String):
+
+	match building_scene:
+		"house":
+			wood -= house_price
+			wood_changed.emit(wood)
+			
+		"casern":
+			wood -= casern_price
+			wood_changed.emit(wood)
+			
+		"archery":
+			wood -= archery_price
+			wood_changed.emit(wood)
 
 func pay_unit(unit_type : String):
 	match unit_type:

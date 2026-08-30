@@ -163,7 +163,7 @@ grow_vertical = 2
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Minimap" type="SubViewportContainer" parent="Control" unique_id=432412868]
+[node name="Minimap" type="SubViewportContainer" parent="Control" unique_id=432412868 node_paths=PackedStringArray("sub_viewport", "camera_minimap", "camera_rect")]
 layout_mode = 0
 offset_left = 1900.0
 offset_top = 913.0
@@ -171,6 +171,9 @@ offset_right = 2498.0
 offset_bottom = 1279.0
 stretch = true
 script = ExtResource("8_0m4u7")
+sub_viewport = NodePath("SubViewport")
+camera_minimap = NodePath("SubViewport/CameraMinimap")
+camera_rect = NodePath("CameraRect")
 
 [node name="SubViewport" type="SubViewport" parent="Control/Minimap" unique_id=1716993114]
 handle_input_locally = false

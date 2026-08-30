@@ -39,7 +39,6 @@ func _ready() -> void:
 	construction_progress_bar.max_value = build_time
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
-	construction_progress_bar.visible = under_construction
 	set_color().visible = true
 
 
@@ -61,13 +60,19 @@ func can_receive_command():
 	return false
 
 
+# --------- Construction state --------- #
+
+func set_construction_status(working : bool):
+	under_construction = working
+	construction_progress_bar.visible = under_construction
+
 # --------- Build --------- #
 
 func add_builder(pawn: Pawn) -> void:
 	if pawn in builders:
 		return
 	builders.append(pawn)
-	start_construction_animation()
+	#start_construction_animation()
 
 
 func remove_builder(pawn: Pawn) -> void:
@@ -78,7 +83,7 @@ func remove_builder(pawn: Pawn) -> void:
 
 func finish_construction() -> void:
 	under_construction = false
-	stop_construction_animation()
+	#stop_construction_animation()
 	for pawn in builders:
 		pawn.stop_building()
 	builders.clear()
@@ -108,18 +113,18 @@ func set_color() -> Sprite2D:
 	return building_sprite
 
 
-func start_construction_animation() -> void:
-	if construction_tween:
-		construction_tween.kill()
-	construction_tween = create_tween()
-	construction_tween.set_loops()
-	construction_tween.tween_property(building_sprite,"scale",Vector2(1.02, 0.98),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	construction_tween.tween_property(building_sprite,"scale",Vector2(0.98, 1.02),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+#func start_construction_animation() -> void:
+	#if construction_tween:
+		#construction_tween.kill()
+	#construction_tween = create_tween()
+	#construction_tween.set_loops()
+	#construction_tween.tween_property(building_sprite,"scale",Vector2(1.02, 0.98),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	#construction_tween.tween_property(building_sprite,"scale",Vector2(0.98, 1.02),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
-func stop_construction_animation() -> void:
-	if construction_tween:
-		construction_tween.kill()
-	var tween = create_tween()
-	tween.tween_property(building_sprite,"scale",Vector2(1.08, 1.08),0.12).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(building_sprite,"scale",Vector2.ONE,0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+#func stop_construction_animation() -> void:
+	#if construction_tween:
+		#construction_tween.kill()
+	#var tween = create_tween()
+	#tween.tween_property(building_sprite,"scale",Vector2(1.08, 1.08),0.12).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	#tween.tween_property(building_sprite,"scale",Vector2.ONE,0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)

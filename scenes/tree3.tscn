@@ -86,6 +86,7 @@ selection_icon = NodePath("SelectionArea/SelectionIcon")
 ui_tree = NodePath("UITree")
 wood_count = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount")
 interaction_points = NodePath("InteractionPoints")
+wood_quantity = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526280546]
 z_index = 1

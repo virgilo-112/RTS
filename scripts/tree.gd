@@ -15,7 +15,7 @@ var is_selected = false
 
 # --------- Tree --------- #
 @export var interaction_points: Node2D
-var wood_quantity : int = 800
+@export var wood_quantity : int
 
 # =================== Signals =================== #
 
