@@ -18,21 +18,15 @@ extends Node
 
 func _ready() -> void:
 	var spawn_index := 0
+	GameManager.setup($World/UnitContainer,$World/BuildingContainer,$PlayerContainer)
 
 	for player_data in NetworkManager.players_data:
-		var player := preload("uid://csake202bxny8").instantiate()
-
+		var player : Player = preload("uid://csake202bxny8").instantiate()
 		player.setup(player_data)
 		player_container.add_child(player)
 
-		var house : House = player.spawn_building(
-			preload("uid://baf8npqinbyyw"),
-			spawns.get_child(spawn_index).position
-		)
-
-		house.set_construction_status(false)
-		
-		var pawn : Pawn = player.spawn_unit("pawn", spawns.get_child(spawn_index).position + Vector2(64,64))
+		if multiplayer.is_server():
+			GameManager.spawn_building(preload("uid://baf8npqinbyyw"),spawns.get_child(spawn_index).position,player,false)
 
 		if player_data["peer_id"] == multiplayer.get_unique_id():
 			local_player.set_owner_player(player)

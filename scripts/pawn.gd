@@ -4,25 +4,17 @@ class_name Pawn
 
 # =================== parameters =================== #
 
-
 # --------- Action --------- #
-var is_mining : bool = false
-var is_choping : bool = false
-var is_knifing : bool = false
-var is_building : bool = false
-var current_building : Building = null
 
-# --------- Pawn info --------- #
-@export var hp: int
+var current_building : Building = null
 
 
 # =================== functions =================== #
 
-
 # --------- Build --------- #
 
 func start_building(building_instance, _target: Vector2):
-	is_building = true
+	action = Action.BUILDING
 	building_instance.add_builder(self)
 	current_building = building_instance
 
@@ -30,7 +22,7 @@ func start_building(building_instance, _target: Vector2):
 func stop_building() -> void:
 	if current_building != null:
 		current_building.remove_builder(self)
-	is_building = false
+	action = Action.IDLE
 	current_building = null
 	update_anim()
 
@@ -38,7 +30,7 @@ func stop_building() -> void:
 # --------- Mine --------- #
 
 func start_mining(stone: GoldStone):
-	is_mining = true
+	action = Action.MINING
 	if !stone.depleted.is_connected(stop_mining):
 		stone.depleted.connect(stop_mining)
 	$MiningTimer.start()
@@ -50,7 +42,7 @@ func _on_mining_timer_timeout() -> void:
 
 
 func stop_mining():
-	is_mining = false
+	action = Action.IDLE
 	$MiningTimer.stop()
 	update_anim()
 
@@ -58,7 +50,7 @@ func stop_mining():
 # --------- Chop --------- #
 
 func start_choping(tree: WoodTree):
-	is_choping = true
+	action = Action.CHOPING
 	if !tree.depleted.is_connected(stop_choping):
 		tree.depleted.connect(stop_choping)
 	$ChopingTimer.start()
@@ -70,7 +62,7 @@ func _on_choping_timer_timeout() -> void:
 
 
 func stop_choping():
-	is_choping = false
+	action = Action.IDLE
 	$ChopingTimer.stop()
 	update_anim()
 
@@ -78,7 +70,7 @@ func stop_choping():
 # --------- Knife --------- #
 
 func start_knifing(sheep: Sheep):
-	is_knifing = true
+	action = Action.KNIFING
 	if !sheep.depleted.is_connected(stop_knifing):
 		sheep.depleted.connect(stop_knifing)
 	$KnifingTimer.start()
@@ -90,7 +82,7 @@ func _on_knifing_timer_timeout() -> void:
 
 
 func stop_knifing():
-	is_knifing = false
+	action = Action.IDLE
 	$KnifingTimer.stop()
 	update_anim()
 
@@ -98,14 +90,15 @@ func stop_knifing():
 # --------- Reset Action --------- #
 
 func reset_action():
-	if is_knifing :
-		stop_knifing()
-	if is_mining :
-		stop_mining()
-	if is_choping :
-		stop_choping()
-	if is_building :
-		stop_building()
+	match action :
+		Action.KNIFING:
+			stop_knifing()
+		Action.MINING:
+			stop_mining()
+		Action.CHOPING:
+			stop_choping()
+		Action.BUILDING:
+			stop_building()
 
 
 func cancel_current_command() -> void:
@@ -116,19 +109,27 @@ func cancel_current_command() -> void:
 # --------- Animation --------- #
 
 func update_anim():
-	if velocity != Vector2.ZERO :
-		animated_sprite.play("Run")
-	elif velocity == Vector2.ZERO and is_mining :
-		animated_sprite.play("Pickaxe_Interact")
-	elif velocity == Vector2.ZERO and is_choping :
-		animated_sprite.play("Axe_Interact")
-	elif velocity == Vector2.ZERO and is_knifing :
-		animated_sprite.play("Knife_Interact")
-	elif velocity == Vector2.ZERO and is_building :
-		animated_sprite.play("Hammer_Interact")
-	else :
-		animated_sprite.play("Idle")
+	if animated_sprite == null:
+		return
 
+	var animation_name: String
+
+	match action:
+		Action.MOVING:
+			animation_name = "Run"
+		Action.MINING:
+			animation_name = "Pickaxe_Interact"
+		Action.CHOPING:
+			animation_name = "Axe_Interact"
+		Action.KNIFING:
+			animation_name = "Knife_Interact"
+		Action.BUILDING:
+			animation_name = "Hammer_Interact"
+		_:
+			animation_name = "Idle"
+
+	if animated_sprite.animation != animation_name:
+		animated_sprite.play(animation_name)
 
 func toggle_selection(value:bool):
 	super.toggle_selection(value)

@@ -2569,15 +2569,14 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
-hp = 100
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
-[node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
+[node name="CollisionShape2D" parent="." index="1" unique_id=398875827]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="Detect" parent="." index="2" unique_id=1553397965]
+[node name="Detect" parent="." index="3" unique_id=1553397965]
 z_as_relative = false
 
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=359465923]

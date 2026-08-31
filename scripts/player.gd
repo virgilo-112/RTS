@@ -12,6 +12,14 @@ var peer_id: Variant = null
 var player_type : String
 var team_id : int
 
+const COLOR = {
+	1 : "red",
+	2 : "blue",
+	3 : "yellow",
+	4 : "black",
+	5 : "purple"
+}
+
 # --------- Player resources --------- #
 @export var gold : int
 @export var wood : int
@@ -37,39 +45,11 @@ var militia_count : int = 0
 @export var lancer_gold_price : int = 50
 @export var archer_gold_price : int = 75
 
-# --------- Buildings node container --------- #
-@export var casern_container: Node2D
-@export var archery_container: Node2D
-@export var house_container: Node2D
-
-# --------- Units node container --------- #
-@export var warrior_container: Node2D
-@export var lancer_container: Node2D
-@export var pawn_container: Node2D
-@export var archer_container: Node2D
-@export var monk_container: Node2D
-
 # --------- Add unit --------- #
 @export var queue_time: int = 5
 
-const COLOR = {
-	1 : "red",
-	2 : "blue",
-	3 : "yellow",
-	4 : "black",
-	5 : "purple"
-}
-
-const UNIT_SCENES := {
-	"warrior": preload("res://scenes/warrior.tscn"),
-	"lancer": preload("res://scenes/lancer.tscn"),
-	"archer": preload("res://scenes/archer.tscn"),
-	"pawn": preload("res://scenes/pawn.tscn")
-}
-
 
 # =================== Signals =================== #
-
 
 signal wood_changed(new_amount)
 signal gold_changed(new_amount)
@@ -77,16 +57,9 @@ signal food_changed(new_amount)
 signal pawn_count_changed(new_amount)
 signal militia_count_changed(new_amount)
 
-
 signal unit_queued(unit_type, queue_time)
 
 # =================== Testing zone =================== #
-var next_unit_id := 1
-
-func get_next_unit_id() -> int:
-	var id := next_unit_id
-	next_unit_id += 1
-	return id
 
 # =================== functions =================== #
 
@@ -96,6 +69,16 @@ func setup(data: Dictionary) -> void:
 	player_type = data["type"]
 	team_id = data["team_id"]
 	color = COLOR[data["color_id"]]
+	name = "Player_%d" % player_id
+
+
+func add_unit(unit_type: String) -> void:
+	if unit_type == "pawn":
+		pawn_count += 1
+		pawn_count_changed.emit(pawn_count)
+	else:
+		militia_count += 1
+		militia_count_changed.emit(militia_count)
 
 # --------- Add resources --------- #
 
@@ -112,56 +95,8 @@ func add_food(amount: int):
 	food_changed.emit(food)
 
 
-# --------- Spawn objects --------- #
-
-func spawn_unit(unit_type: String, spawn_position: Vector2) -> Unit:
-	var unit_scene: PackedScene = UNIT_SCENES[unit_type]
-	var unit: Unit = unit_scene.instantiate()
-	
-	unit.global_position = spawn_position
-	unit.owner_player = self
-	unit.unit_id = get_next_unit_id()
-	
-	match unit_type:
-		"warrior":
-			warrior_container.add_child(unit)
-		"lancer":
-			lancer_container.add_child(unit)
-		"archer":
-			archer_container.add_child(unit)
-		"pawn":
-			pawn_container.add_child(unit)
-		
-	if unit_type == "pawn":
-		pawn_count =+1
-		pawn_count_changed.emit(pawn_count)
-	else:
-		militia_count += 1
-		militia_count_changed.emit(militia_count)
-	
-	return unit
-	
-func spawn_building(building_scene: PackedScene, placement_position: Vector2) -> Building:
-	
-	var building = building_scene.instantiate()
-	
-	building.set_construction_status(true)
-	building.global_position = placement_position
-	building.owner_player = self
-	
-	if building is House:
-		house_container.add_child(building)
-		
-	elif building is Archery:
-		archery_container.add_child(building)
-		
-	elif building is Casern:
-		casern_container.add_child(building)
-		
-	return building
-
-
 # --------- Can pay object price? --------- #
+
 func is_building_affordable(building_type : String) :
 	match building_type:
 		"house":
@@ -249,4 +184,3 @@ func pay_unit(unit_type : String):
 			gold -= archer_gold_price
 			gold_changed.emit(gold)
 			unit_queued.emit("archer", queue_time)
-			

@@ -2,6 +2,8 @@ extends Node2D
 
 # =================== parameters =================== #
 
+var owner_player : Player
+
 # --------- Build --------- #
 
 var buildings = {
@@ -30,6 +32,9 @@ func _process(_delta):
 	ghost.global_position = get_global_mouse_position() + ghost_offset
 
 
+func set_owner_player(player: Player) -> void:
+	owner_player = player
+
 # --------- Input --------- #
 
 func _unhandled_input(event):
@@ -37,34 +42,42 @@ func _unhandled_input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			confirm_placement()
+			confirm_placement.rpc_id(1)
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			cancel_placement()
 
 
 # --------- Generate ghost --------- #
 
-func start_placement(type: String, player: Player):
+func start_placement(type: String):
 	input_manager.set_enabled(false)
 	building_type = type
 	building_scene = buildings[type]
 	is_placing = true
-	var building = building_scene.instantiate()
-	building.owner_player = player
+
+	var building: Building = building_scene.instantiate()
+	building.owner_player = owner_player
+	building.player_id = owner_player.player_id
 	add_child(building)
-	var sprite: Sprite2D = building.set_color()
+
+	var sprite: Sprite2D = building.get_color_sprite()
+
 	ghost_offset = sprite.offset
+
 	ghost = Sprite2D.new()
 	ghost.texture = sprite.texture
 	ghost.modulate.a = 0.5
 	add_child(ghost)
 	ghost.z_index = 4
-	building.queue_free()
 
+	building.queue_free()
 
 # --------- Building placement --------- #
 
+@rpc("any_peer", "call_local")
 func confirm_placement():
+	if !multiplayer.is_server():
+		return
 	var target = get_global_mouse_position()
 	is_placing = false
 	ghost.queue_free()
@@ -76,9 +89,8 @@ func confirm_placement():
 		if object is Pawn :
 			selected_pawns.append(object)
 	
-	var owner_player = selected_pawns[0].owner_player
 	owner_player.pay_building(building_type)
-	var new_building = owner_player.spawn_building(building_scene, target)
+	var new_building = GameManager.spawn_building(building_scene, target, owner_player, true)
 	
 	for pawn in selected_pawns:
 		pawn.assign_command(BuildCommand.new(new_building, target))

@@ -5,8 +5,12 @@ class_name Building
 
 # =================== parameters =================== #
 
+# --------- Building data --------- #
+@export var hp : int = 1000
+
 # --------- Player --------- #
 var owner_player : Player
+@export var player_id: int
 
 # --------- Build --------- #
 var builders : Array[Pawn] = []
@@ -17,7 +21,6 @@ var build_timer := 0.0
 
 # --------- Visual --------- #
 var building_sprite : Sprite2D
-var construction_tween: Tween
 
 # --------- Select --------- #
 @export var selection_icon: Sprite2D 
@@ -25,9 +28,6 @@ var is_selected: bool = false
 
 # --------- Produce unit --------- #
 @export var spawn: Marker2D
-
-# --------- FOW --------- # *WIP*
-var vision_range : int = 600
 
 
 # =================== functions =================== #
@@ -39,7 +39,7 @@ func _ready() -> void:
 	construction_progress_bar.max_value = build_time
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
-	set_color().visible = true
+	set_color()
 
 
 func _process(delta: float) -> void:
@@ -59,12 +59,12 @@ func _process(delta: float) -> void:
 func can_receive_command():
 	return false
 
-
 # --------- Construction state --------- #
 
 func set_construction_status(working : bool):
 	under_construction = working
 	construction_progress_bar.visible = under_construction
+
 
 # --------- Build --------- #
 
@@ -72,7 +72,6 @@ func add_builder(pawn: Pawn) -> void:
 	if pawn in builders:
 		return
 	builders.append(pawn)
-	#start_construction_animation()
 
 
 func remove_builder(pawn: Pawn) -> void:
@@ -83,11 +82,23 @@ func remove_builder(pawn: Pawn) -> void:
 
 func finish_construction() -> void:
 	under_construction = false
-	#stop_construction_animation()
 	for pawn in builders:
 		pawn.stop_building()
 	builders.clear()
 
+
+# --------- production request to server --------- #
+
+@rpc("any_peer", "call_local")
+func request_unit_production(unit_type: String) -> void:
+	if !multiplayer.is_server():
+		return
+	# Vérifications côté serveur
+	if !owner_player.is_unit_affordable(unit_type):
+		return
+	owner_player.pay_unit(unit_type)
+	await get_tree().create_timer(5.0).timeout
+	GameManager.spawn_unit(unit_type, spawn.global_position, owner_player)
 
 # --------- Selection --------- #
 
@@ -98,8 +109,13 @@ func toggle_selection(value:bool):
 
 # --------- Visuals --------- #
 
-func set_color() -> Sprite2D:
-	match owner_player.color :
+func set_color() -> void:
+	var player := GameManager.get_player(player_id)
+
+	if player == null:
+		return
+
+	match player.color:
 		"blue":
 			building_sprite = $BlueSprite2D
 		"red":
@@ -110,21 +126,29 @@ func set_color() -> Sprite2D:
 			building_sprite = $BlackSprite2D
 		"purple":
 			building_sprite = $PurpleSprite2D
-	return building_sprite
+
+	$BlueSprite2D.visible = false
+	$RedSprite2D.visible = false
+	$YellowSprite2D.visible = false
+	$BlackSprite2D.visible = false
+	$PurpleSprite2D.visible = false
+
+	building_sprite.visible = true
 
 
-#func start_construction_animation() -> void:
-	#if construction_tween:
-		#construction_tween.kill()
-	#construction_tween = create_tween()
-	#construction_tween.set_loops()
-	#construction_tween.tween_property(building_sprite,"scale",Vector2(1.02, 0.98),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	#construction_tween.tween_property(building_sprite,"scale",Vector2(0.98, 1.02),0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+func get_color_sprite() -> Sprite2D:
+	var player := GameManager.get_player(player_id)
 
+	match player.color:
+		"blue":
+			return $BlueSprite2D
+		"red":
+			return $RedSprite2D
+		"yellow":
+			return $YellowSprite2D
+		"black":
+			return $BlackSprite2D
+		"purple":
+			return $PurpleSprite2D
 
-#func stop_construction_animation() -> void:
-	#if construction_tween:
-		#construction_tween.kill()
-	#var tween = create_tween()
-	#tween.tween_property(building_sprite,"scale",Vector2(1.08, 1.08),0.12).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	#tween.tween_property(building_sprite,"scale",Vector2.ONE,0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	return null

@@ -5,19 +5,40 @@ class_name Unit
 
 # =================== parameters =================== #
 
-var unit_id : int
+# --------- Unit data --------- #
+@export var hp: int = 100
 
 # --------- Player --------- #
 @export var owner_player : Player
+@export var player_id : int
 
 # --------- Actions --------- #
 @export var abilities: Array[String] = []
 var current_command: Command
+enum Action {
+	IDLE,
+	MOVING,
+	MINING,
+	CHOPING,
+	KNIFING,
+	BUILDING
+}
+@export var action: Action = Action.IDLE:
+	set(value):
+		action = value
+		if is_node_ready():
+			update_anim()
 
 # --------- Movement --------- #
 var speed = 300
 var destination = Vector2()
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
+@export var facing := 1:
+	set(value):
+		facing = value
+		if is_node_ready():
+			update_facing(facing)
 
 # --------- Selection --------- #
 var mouse_inside = false
@@ -25,14 +46,13 @@ var is_selected = false
 
 # --------- Animation --------- #
 var animated_sprite : AnimatedSprite2D
-var facing := 1 # 1 = droite, -1 = gauche
+
 
 # --------- FOW --------- # *WIP*
 var vision_range : int = 150
 
 
 # =================== functions =================== #
-
 
 func _ready():
 	navigation_agent.velocity_computed.connect(_on_velocity_computed)
@@ -45,12 +65,19 @@ func _ready():
 	navigation_agent.target_desired_distance = 30
 	navigation_agent.avoidance_priority = 0.5
 	$SelectionIcon.visible = false
-	set_color().visible = true
-
+	set_color()
 
 func _physics_process(_delta: float) -> void:
 	move()
 
+func can_receive_command():
+	return true
+
+
+# --------- Get Player --------- #
+
+func get_owner_player() -> Player:
+	return GameManager.get_player(player_id)
 
 # --------- Movement --------- #
 
@@ -72,18 +99,20 @@ func move():
 func _on_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	move_and_slide()
-	update_anim()
-	if velocity.x > 0.1:
-		facing = 1
-	elif velocity.x < -0.1:
-		facing = -1
-	update_facing(facing)
+
+	if multiplayer.is_server():
+		if velocity != Vector2.ZERO:
+			action = Action.MOVING
+		elif action == Action.MOVING:
+			action = Action.IDLE
+
+		if velocity.x > 0.1:
+			facing = 1
+		elif velocity.x < -0.1:
+			facing = -1
 
 
 # --------- Actions --------- #
-
-func can_receive_command():
-	return true
 
 func has_ability(ability: String) -> bool:
 	return ability in abilities
@@ -117,6 +146,8 @@ func toggle_selection(value:bool):
 # --------- Animation --------- #
 
 func update_facing(dir):
+	if animated_sprite == null:
+		return
 	animated_sprite.flip_h = dir < 0
 
 
@@ -124,8 +155,21 @@ func update_anim():
 	pass
 
 
-func set_color() -> AnimatedSprite2D:
-	match owner_player.color :
+func set_color() -> void:
+	var player := GameManager.get_player(player_id)
+
+	if player == null:
+		return
+
+	var color := player.color
+
+	$BlueAnimatedSprite2D.visible = false
+	$RedAnimatedSprite2D.visible = false
+	$YellowAnimatedSprite2D.visible = false
+	$BlackAnimatedSprite2D.visible = false
+	$PurpleAnimatedSprite2D.visible = false
+
+	match color:
 		"blue":
 			animated_sprite = $BlueAnimatedSprite2D
 		"red":
@@ -136,4 +180,7 @@ func set_color() -> AnimatedSprite2D:
 			animated_sprite = $BlackAnimatedSprite2D
 		"purple":
 			animated_sprite = $PurpleAnimatedSprite2D
-	return animated_sprite
+
+	animated_sprite.visible = true
+	update_anim()
+	update_facing(facing)

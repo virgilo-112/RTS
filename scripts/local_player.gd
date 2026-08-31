@@ -12,6 +12,7 @@ var peer : int
 
 func set_owner_player(player: Player) -> void:
 	owner_player = player
-
+	hud.set_owner_player(player)
+	placement_manager.set_owner_player(player)
 
 	

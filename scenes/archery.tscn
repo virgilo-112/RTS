@@ -15,6 +15,17 @@ size = Vector2(157, 69)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjcxb"]
 size = Vector2(157, 173)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nq1ve"]
+properties/0/path = NodePath(".:hp")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:player_id")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Archery" type="StaticBody2D" unique_id=1408408083 node_paths=PackedStringArray("ui_archery", "construction_progress_bar", "selection_icon", "spawn")]
 y_sort_enabled = true
 script = ExtResource("1_8e86i")
@@ -107,11 +118,15 @@ texture = ExtResource("4_6ip5i")
 position = Vector2(43, 6)
 
 [node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=798047002]
+visible = false
 z_index = 5
 offset_left = -79.0
 offset_top = -180.0
 offset_right = 80.0
 offset_bottom = -172.0
 show_percentage = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1578467223]
+replication_config = SubResource("SceneReplicationConfig_nq1ve")
 
 [connection signal="pressed" from="UIArchery/Control/PanelContainer/HBoxContainer/ArcherButton" to="." method="_on_archer_button_pressed"]
