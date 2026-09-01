@@ -22,13 +22,13 @@ const threshold: int = 50
 
 func _process(_delta: float) -> void:
 	var local_mouse_pos = get_viewport().get_mouse_position()
-	if local_mouse_pos.x > viewport_size.x - threshold:
+	if local_mouse_pos.x > viewport_size.x - threshold and position.x < 5000:
 		position.x += step
-	elif local_mouse_pos.x < threshold:
+	elif local_mouse_pos.x < threshold and position.x > -5000:
 		position.x -= step
-	elif local_mouse_pos.y > viewport_size.y - threshold:
+	elif local_mouse_pos.y > viewport_size.y - threshold and position.y < 3000:
 		position.y += step
-	elif local_mouse_pos.y < threshold:
+	elif local_mouse_pos.y < threshold and position.y > -3000:
 		position.y -= step
 
 
