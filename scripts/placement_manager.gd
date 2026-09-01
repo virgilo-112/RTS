@@ -2,7 +2,7 @@ extends Node2D
 
 # =================== parameters =================== #
 
-var owner_player : Player
+var player_id : int
 
 # --------- Build --------- #
 
@@ -31,10 +31,6 @@ func _process(_delta):
 		return
 	ghost.global_position = get_global_mouse_position() + ghost_offset
 
-
-func set_owner_player(player: Player) -> void:
-	owner_player = player
-
 # --------- Input --------- #
 
 func _unhandled_input(event):
@@ -46,7 +42,8 @@ func _unhandled_input(event):
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			cancel_placement()
 
-
+func setup(player: Player):
+	player_id = player.player_id
 # --------- Generate ghost --------- #
 
 func start_placement(type: String):
@@ -56,8 +53,7 @@ func start_placement(type: String):
 	is_placing = true
 
 	var building: Building = building_scene.instantiate()
-	building.owner_player = owner_player
-	building.player_id = owner_player.player_id
+	building.player_id = player_id
 	add_child(building)
 
 	var sprite: Sprite2D = building.get_color_sprite()
@@ -88,7 +84,7 @@ func confirm_placement():
 	for object in input_manager.selected_objects:
 		if object is Pawn :
 			selected_pawns.append(object)
-	
+	var owner_player : Player = GameManager.get_player(player_id)
 	owner_player.pay_building(building_type)
 	var new_building = GameManager.spawn_building(building_scene, target, owner_player, true)
 	

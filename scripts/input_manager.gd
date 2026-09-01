@@ -10,7 +10,7 @@ var drag_start:Vector2
 var is_dragging:bool = false
 var selected_objects:Array =[]
 var selection_rectangle:RectangleShape2D = RectangleShape2D.new()
-
+var player_id : int
 
 # =================== Functions =================== #
 

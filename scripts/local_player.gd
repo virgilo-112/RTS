@@ -6,13 +6,10 @@ extends Node2D
 @onready var hud: CanvasLayer = $HUD
 
 
-var owner_player: Player
-var id : int
-var peer : int
+var player_id : int
 
-func set_owner_player(player: Player) -> void:
-	owner_player = player
-	hud.set_owner_player(player)
-	placement_manager.set_owner_player(player)
 
-	
+func setup(player: Player) -> void:
+	player_id = player.player_id
+	hud.setup(player)
+	placement_manager.setup(player)

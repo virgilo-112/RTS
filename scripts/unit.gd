@@ -9,7 +9,6 @@ class_name Unit
 @export var hp: int = 100
 
 # --------- Player --------- #
-@export var owner_player : Player
 @export var player_id : int
 
 # --------- Actions --------- #

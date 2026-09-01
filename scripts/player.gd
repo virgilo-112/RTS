@@ -21,13 +21,40 @@ const COLOR = {
 }
 
 # --------- Player resources --------- #
-@export var gold : int
-@export var wood : int
-@export var food : int
+@export var gold: int = 0:
+	set(value):
+		gold = value
+
+		if is_node_ready():
+			gold_changed.emit(gold)
+
+@export var wood: int = 0:
+	set(value):
+		wood = value
+
+		if is_node_ready():
+			wood_changed.emit(wood)
+
+@export var food: int = 0:
+	set(value):
+		food = value
+
+		if is_node_ready():
+			food_changed.emit(food)
+
 
 # --------- Player units --------- #
-var pawn_count : int = 0
-var militia_count : int = 0
+@export var pawn_count : int = 0:
+	set(value):
+		pawn_count = value
+		if is_node_ready():
+			pawn_count_changed.emit(pawn_count)
+
+@export var militia_count : int = 0:
+	set(value):
+		militia_count = value
+		if is_node_ready():
+			militia_count_changed.emit(militia_count)
 
 # --------- Buildings wood price --------- #
 @export var house_price : int = 100

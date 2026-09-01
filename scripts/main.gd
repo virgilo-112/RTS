@@ -29,6 +29,6 @@ func _ready() -> void:
 			GameManager.spawn_building(preload("uid://baf8npqinbyyw"),spawns.get_child(spawn_index).position,player,false)
 
 		if player_data["peer_id"] == multiplayer.get_unique_id():
-			local_player.set_owner_player(player)
+			local_player.setup(player)
 
 		spawn_index += 1

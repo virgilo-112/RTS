@@ -9,7 +9,6 @@ class_name Building
 @export var hp : int = 1000
 
 # --------- Player --------- #
-var owner_player : Player
 @export var player_id: int
 
 # --------- Build --------- #
@@ -59,6 +58,10 @@ func _process(delta: float) -> void:
 func can_receive_command():
 	return false
 
+func get_owner_player() -> Player:
+	return GameManager.get_player(player_id)
+
+
 # --------- Construction state --------- #
 
 func set_construction_status(working : bool):
@@ -94,11 +97,11 @@ func request_unit_production(unit_type: String) -> void:
 	if !multiplayer.is_server():
 		return
 	# Vérifications côté serveur
-	if !owner_player.is_unit_affordable(unit_type):
+	if !get_owner_player().is_unit_affordable(unit_type):
 		return
-	owner_player.pay_unit(unit_type)
+	get_owner_player().pay_unit(unit_type)
 	await get_tree().create_timer(5.0).timeout
-	GameManager.spawn_unit(unit_type, spawn.global_position, owner_player)
+	GameManager.spawn_unit(unit_type, spawn.global_position, get_owner_player())
 
 # --------- Selection --------- #
 

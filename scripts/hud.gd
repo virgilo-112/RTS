@@ -4,7 +4,7 @@ extends CanvasLayer
 # =================== parameters =================== #
 
 # --------- Player --------- #
-var owner_player : Player
+var player_id : int
 
 # --------- Menu UI --------- #
 @export var cog_menu: PanelContainer
@@ -31,20 +31,20 @@ func _ready() -> void:
 
 # --------- Connect player and HUD --------- #
 
-func set_owner_player(player: Player) -> void:
-	owner_player = player
-	owner_player.gold_changed.connect(_on_gold_changed)
-	_on_gold_changed(owner_player.gold)
-	owner_player.wood_changed.connect(_on_wood_changed)
-	_on_wood_changed(owner_player.wood)
-	owner_player.food_changed.connect(_on_food_changed)
-	_on_food_changed(owner_player.food)
-	owner_player.pawn_count_changed.connect(_on_pawn_count_changed)
-	_on_pawn_count_changed(owner_player.pawn_count)
-	owner_player.militia_count_changed.connect(_on_militia_count_changed)
-	_on_militia_count_changed(owner_player.militia_count)
-	owner_player.unit_queued.connect(_on_unit_production_queued)
-
+func setup(player: Player) -> void:
+	player_id = player.player_id
+	player.gold_changed.connect(_on_gold_changed)
+	_on_gold_changed(player.gold)
+	player.wood_changed.connect(_on_wood_changed)
+	_on_wood_changed(player.wood)
+	player.food_changed.connect(_on_food_changed)
+	_on_food_changed(player.food)
+	player.pawn_count_changed.connect(_on_pawn_count_changed)
+	_on_pawn_count_changed(player.pawn_count)
+	player.militia_count_changed.connect(_on_militia_count_changed)
+	_on_militia_count_changed(player.militia_count)
+	player.unit_queued.connect(_on_unit_production_queued)
+	
 
 # --------- Resources count --------- #
 

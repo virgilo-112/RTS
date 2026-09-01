@@ -53,7 +53,6 @@ func spawn_unit(unit_type: String,spawn_position: Vector2, player: Player) -> Un
 	unit.name = "Unit_%d" % next_unit_id
 	next_unit_id += 1
 	unit.global_position = spawn_position
-	unit.owner_player = player
 	unit.player_id = player.player_id
 	unit_container.add_child(unit, true)
 	player.add_unit(unit_type)
@@ -65,7 +64,6 @@ func spawn_building(building_scene: PackedScene, placement_position: Vector2, pl
 	building.name = "Building_%d" % next_building_id
 	next_building_id += 1
 	building.global_position = placement_position
-	building.owner_player = player
 	building.player_id = player.player_id
 	building_container.add_child(building, true)
 	building.set_construction_status(under_construction)
