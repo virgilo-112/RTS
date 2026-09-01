@@ -21,8 +21,11 @@ var build_timer := 0.0
 # --------- Visual --------- #
 var building_sprite : Sprite2D
 
-# --------- Select --------- #
-@export var selection_icon: Sprite2D 
+# --------- Select - UI --------- #
+@export var ui_building: CanvasLayer
+@export var data_container: VBoxContainer
+@export var button_container: HBoxContainer
+@export var selection_icon: Sprite2D
 var is_selected: bool = false
 
 # --------- Produce unit --------- #
@@ -103,11 +106,14 @@ func request_unit_production(unit_type: String) -> void:
 	await get_tree().create_timer(5.0).timeout
 	GameManager.spawn_unit(unit_type, spawn.global_position, get_owner_player())
 
-# --------- Selection --------- #
+# --------- Selection - UI --------- #
 
-func toggle_selection(value:bool):
+func toggle_selection(value:bool, can_interact: bool):
 	is_selected = value
 	selection_icon.visible = value
+	if !under_construction :
+		ui_building.visible = value
+	button_container.visible = can_interact
 
 
 # --------- Visuals --------- #

@@ -39,16 +39,15 @@ var destination = Vector2()
 		if is_node_ready():
 			update_facing(facing)
 
-# --------- Selection --------- #
+# --------- Selection - UI --------- #
 var mouse_inside = false
 var is_selected = false
-
+@export var ui_unit : CanvasLayer
+@export var data_container : VBoxContainer
+@export var button_container : HBoxContainer
+@export var selection_icon: Sprite2D
 # --------- Animation --------- #
 var animated_sprite : AnimatedSprite2D
-
-
-# --------- FOW --------- # *WIP*
-var vision_range : int = 150
 
 
 # =================== functions =================== #
@@ -65,7 +64,12 @@ func _ready():
 	navigation_agent.avoidance_priority = 0.5
 	$SelectionIcon.visible = false
 	set_color()
-
+	print(
+	name,
+	" pos=", position,
+	" z=", z_index,
+	" relative=", z_as_relative)
+	
 func _physics_process(_delta: float) -> void:
 	move()
 
@@ -137,9 +141,12 @@ func reset_action():
 
 # --------- Selection --------- #
 
-func toggle_selection(value:bool):
+func toggle_selection(value: bool, can_interact: bool):
 	is_selected = value
-	$SelectionIcon.visible = value
+	ui_unit.visible = value
+	selection_icon.visible = value
+	button_container.visible = can_interact
+	
 
 
 # --------- Animation --------- #

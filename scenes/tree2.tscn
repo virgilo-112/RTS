@@ -77,6 +77,14 @@ animations = [{
 radius = 36.0
 height = 194.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m2fij"]
+properties/0/path = NodePath(".:wood_quantity")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Tree2_" type="StaticBody2D" unique_id=1019794889 node_paths=PackedStringArray("selection_icon", "ui_tree", "wood_count", "interaction_points")]
 y_sort_enabled = true
 collision_layer = 4
@@ -168,3 +176,6 @@ texture = ExtResource("7_0b23a")
 layout_mode = 2
 text = " :"
 vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1751447428]
+replication_config = SubResource("SceneReplicationConfig_m2fij")

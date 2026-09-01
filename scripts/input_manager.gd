@@ -3,8 +3,6 @@ extends Node2D
 
 # =================== parameters =================== #
 
-@onready var local_player = %LocalPlayer
-
 # --------- Selection tool --------- #
 var drag_start:Vector2
 var is_dragging:bool = false
@@ -20,6 +18,9 @@ func set_enabled(value: bool) -> void:
 	set_process_input(value)
 	set_process_unhandled_input(value)
 
+
+func setup(player: Player):
+	player_id = player.player_id
 
 # --------- Input --------- #
 
@@ -47,29 +48,30 @@ func issue_command(target: Node2D, mouse_pos: Vector2) -> void:
 			var unit : Unit = object
 			if target == null:
 				if unit.has_ability("move"):
-					unit.assign_command(MoveCommand.new(mouse_pos))
-
+					GameManager.request_move.rpc_id(1, player_id, unit.get_path(), mouse_pos)
+					
 			if target is GoldStone:
 				if unit.has_ability("mine"):
-					unit.assign_command(MineCommand.new(target))
-
+					GameManager.request_mine.rpc_id(1, player_id, unit.get_path(), target.get_path())
+					
 			if target is WoodTree:
 				if unit.has_ability("chop"):
-					unit.assign_command(ChopCommand.new(target))
-
+					GameManager.request_chop.rpc_id(1, player_id, unit.get_path(), target.get_path())
+					
 			if target is Sheep:
 				if unit.has_ability("knife"):
-					object.assign_command(KnifeCommand.new(target))
-
+					GameManager.request_knife.rpc_id(1, player_id, unit.get_path(), target.get_path())
+					
 			if target is Building:
 				if unit.has_ability("build"):
-					unit.assign_command(BuildCommand.new(target, target.position))
+					GameManager.request_build.rpc_id(1, player_id, unit.get_path(), target.get_path())
 
 
 # --------- Selection tool --------- #
 
 func selection(event) -> void:
 	selected_objects = selected_objects.filter(is_instance_valid)
+	var can_interact := false
 	if event.pressed :
 		# check si on clique sur un objet
 		var result = object_at_position(get_global_mouse_position())
@@ -77,7 +79,7 @@ func selection(event) -> void:
 		if result == null :
 			for object in selected_objects :
 				if is_instance_valid(object):
-					object.toggle_selection(false)
+					object.toggle_selection(false, false)
 			selected_objects = []
 			# commence le dragging
 			is_dragging = true
@@ -89,14 +91,17 @@ func selection(event) -> void:
 			if !is_selected or (is_selected and selected_objects.size()>1):
 				for object in selected_objects :
 					if is_instance_valid(object):
-						object.toggle_selection(false)
+						object.toggle_selection(false, false)
 				selected_objects = []
-				result.toggle_selection(true)
+				if is_instance_valid(result):
+					if result is Unit or result is Building :
+						can_interact = result.player_id == player_id
+				result.toggle_selection(true, can_interact)
 				selected_objects.append(result)
 			# si sélectionné mais unique -> déselection
 			elif is_selected and selected_objects.size() == 1 :
 				if is_instance_valid(selected_objects[0]):
-					selected_objects[0].toggle_selection(false)
+					selected_objects[0].toggle_selection(false, false)
 				selected_objects = []
 	# si on lache la souris -> fin du dragging, dessine le rectangle, sélectionne les units dans le rectangle
 	elif is_dragging :
@@ -105,7 +110,10 @@ func selection(event) -> void:
 		var drag_end = get_global_mouse_position()
 		selected_objects = rectangular_selection(drag_start,drag_end)
 		for object in selected_objects:
-			object.toggle_selection(true)
+			if is_instance_valid(object):
+				if object is Unit or object is Building :
+					can_interact = object.player_id == player_id
+			object.toggle_selection(true, can_interact)
 
 
 # --------- Selection tool colliding --------- #

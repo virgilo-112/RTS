@@ -2571,12 +2571,12 @@ animations = [{
 script = ExtResource("2_w61pg")
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=398875827]
+[node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 
-[node name="Detect" parent="." index="3" unique_id=1553397965]
+[node name="Detect" parent="." index="2" unique_id=1553397965]
 z_as_relative = false
 
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=359465923]
@@ -2629,60 +2629,29 @@ wait_time = 0.15
 wait_time = 10.0
 one_shot = true
 
-[node name="UIPawn" type="CanvasLayer" parent="." index="13" unique_id=1553202362 node_paths=PackedStringArray("pawn", "house_button", "casern_button", "archery_button", "hp_label")]
-visible = false
+[node name="UIUnit" parent="." index="13" unique_id=1976206270 node_paths=PackedStringArray("pawn", "house_button", "casern_button", "archery_button", "hp_label")]
 script = ExtResource("23_ldq0g")
 pawn = NodePath("..")
-house_button = NodePath("Control/PanelContainer/HBoxContainer/HouseButton")
-casern_button = NodePath("Control/PanelContainer/HBoxContainer/CasernButton")
-archery_button = NodePath("Control/PanelContainer/HBoxContainer/ArcheryButton")
-hp_label = NodePath("Control/PanelContainer/HBoxContainer/HPLabel")
+house_button = NodePath("Control/PanelContainer/HSplitContainer/ButtonContainer/HouseButton")
+casern_button = NodePath("Control/PanelContainer/HSplitContainer/ButtonContainer/CasernButton")
+archery_button = NodePath("Control/PanelContainer/HSplitContainer/ButtonContainer/ArcheryButton")
+hp_label = NodePath("Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")
 
-[node name="Control" type="Control" parent="UIPawn" index="0" unique_id=827019391]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UIPawn/Control" index="0" unique_id=2085938729]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = -202.0
-offset_right = 431.0
-offset_bottom = -93.0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIPawn/Control/PanelContainer" index="0" unique_id=224834680]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="HPLabel" type="Label" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="0" unique_id=256160179]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Health : "
-
-[node name="HouseButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="1" unique_id=1624925792]
+[node name="HouseButton" type="Button" parent="UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(445252662) index="0" unique_id=1624925792]
 layout_mode = 2
 icon = ExtResource("23_h1om1")
 
-[node name="CasernButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="2" unique_id=652075344]
+[node name="CasernButton" type="Button" parent="UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(445252662) index="1" unique_id=652075344]
 layout_mode = 2
 icon = ExtResource("24_ldq0g")
 
-[node name="ArcheryButton" type="Button" parent="UIPawn/Control/PanelContainer/HBoxContainer" index="3" unique_id=112460513]
+[node name="ArcheryButton" type="Button" parent="UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(445252662) index="2" unique_id=112460513]
 layout_mode = 2
 icon = ExtResource("25_85cqe")
 
-[connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
+[connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
 [connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]
 [connection signal="timeout" from="BuildingTimer" to="." method="_on_building_timer_timeout"]
-[connection signal="pressed" from="UIPawn/Control/PanelContainer/HBoxContainer/HouseButton" to="." method="_on_house_button_pressed"]
+[connection signal="pressed" from="UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer/HouseButton" to="." method="_on_house_button_pressed"]

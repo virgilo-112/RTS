@@ -59,7 +59,7 @@ func mine(amount : int) -> int :
 
 # --------- Selection - UI --------- #
 
-func toggle_selection(value:bool):
+func toggle_selection(value:bool, _can_interact: bool):
 	is_selected = value
 	selection_icon.visible = value
 	ui_gold.visible = value

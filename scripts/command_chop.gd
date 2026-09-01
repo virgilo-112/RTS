@@ -18,4 +18,4 @@ func on_arrived(unit):
 func on_choping_tick(unit):
 	if is_instance_valid(tree):
 		var choped = tree.chop(1)
-		unit.owner_player.add_wood(choped)
+		unit.get_owner_player().add_wood(choped)

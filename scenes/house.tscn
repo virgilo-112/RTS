@@ -1,132 +1,50 @@
-[gd_scene format=3 uid="uid://baf8npqinbyyw"]
+[gd_scene format=3 uid="uid://dv6ey04phogsy"]
 
 [ext_resource type="Script" uid="uid://ckbh1s5ed0mfk" path="res://scripts/house.gd" id="1_se78b"]
+[ext_resource type="PackedScene" uid="uid://csir1mpofo5ah" path="res://scenes/building.tscn" id="1_wcu0q"]
 [ext_resource type="Texture2D" uid="uid://ce3rjgmp18p4o" path="res://assets/Buildings/Blue Buildings/House1.png" id="2_3bgk5"]
 [ext_resource type="Texture2D" uid="uid://gaa3p62yqqnb" path="res://assets/Buildings/Red Buildings/House1.png" id="3_3bgk5"]
 [ext_resource type="Texture2D" uid="uid://c6le8jpusgoyi" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_05.png" id="3_f74lx"]
-[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_ptc3g"]
 [ext_resource type="Texture2D" uid="uid://dhlstbrh0lx2k" path="res://assets/Buildings/Yellow Buildings/House1.png" id="4_wcu0q"]
 [ext_resource type="Texture2D" uid="uid://c7uck8mp5gjfs" path="res://assets/Buildings/Black Buildings/House1.png" id="5_bwc8c"]
 [ext_resource type="Texture2D" uid="uid://c51blfy70h7s7" path="res://assets/Buildings/Purple Buildings/House1.png" id="6_mhx8p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8vq"]
-size = Vector2(78, 39)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikdiq"]
-size = Vector2(111, 157)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wcu0q"]
-properties/0/path = NodePath(".:hp")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:position")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:player_id")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
-[node name="House" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("ui_house", "construction_progress_bar", "selection_icon", "spawn")]
-y_sort_enabled = true
+[node name="House" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn") instance=ExtResource("1_wcu0q")]
 script = ExtResource("1_se78b")
-ui_house = NodePath("UIHouse")
 construction_progress_bar = NodePath("ConstructionProgressBar")
+ui_building = NodePath("UIBuilding")
+data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
+button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
 selection_icon = NodePath("Area2D/SelectionIcon")
 spawn = NodePath("Spawn")
 
-[node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=739628180]
+[node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=990723670]
 visible = false
 texture = ExtResource("2_3bgk5")
 offset = Vector2(0, -68)
 
-[node name="RedSprite2D" type="Sprite2D" parent="." unique_id=1791359096]
+[node name="RedSprite2D" type="Sprite2D" parent="." index="1" unique_id=676114439]
 visible = false
 texture = ExtResource("3_3bgk5")
 offset = Vector2(0, -68)
 
-[node name="YellowSprite2D" type="Sprite2D" parent="." unique_id=458099029]
+[node name="YellowSprite2D" type="Sprite2D" parent="." index="2" unique_id=1911963131]
 visible = false
 texture = ExtResource("4_wcu0q")
 offset = Vector2(0, -68)
 
-[node name="BlackSprite2D" type="Sprite2D" parent="." unique_id=977425196]
+[node name="BlackSprite2D" type="Sprite2D" parent="." index="3" unique_id=1892791150]
 visible = false
 texture = ExtResource("5_bwc8c")
 offset = Vector2(0, -68)
 
-[node name="PurpleSprite2D" type="Sprite2D" parent="." unique_id=1013572551]
+[node name="PurpleSprite2D" type="Sprite2D" parent="." index="4" unique_id=882800954]
 visible = false
 texture = ExtResource("6_mhx8p")
 offset = Vector2(0, -68)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]
-position = Vector2(0, -20.5)
-shape = SubResource("RectangleShape2D_ny8vq")
-
-[node name="UIHouse" type="CanvasLayer" parent="." unique_id=319192006]
-visible = false
-
-[node name="Control" type="Control" parent="UIHouse" unique_id=1010859882]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UIHouse/Control" unique_id=1466655824]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = -202.0
-offset_right = 431.0
-offset_bottom = -93.0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHouse/Control/PanelContainer" unique_id=174938596]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Label" type="Label" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=1687767729]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Health : "
-
-[node name="PawnButton" type="Button" parent="UIHouse/Control/PanelContainer/HBoxContainer" unique_id=347408774]
+[node name="PawnButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=525117875]
 layout_mode = 2
 icon = ExtResource("3_f74lx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1510916706]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105599579]
-position = Vector2(-0.5, -69.5)
-shape = SubResource("RectangleShape2D_ikdiq")
-
-[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=529611033]
-visible = false
-z_index = 5
-z_as_relative = false
-position = Vector2(-1.9073486e-06, -62)
-scale = Vector2(1.3833007, 1.3833007)
-texture = ExtResource("4_ptc3g")
-
-[node name="Spawn" type="Marker2D" parent="." unique_id=883563034]
-position = Vector2(0, 7)
-
-[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=1363877531]
-visible = false
-z_index = 5
-offset_left = -55.0
-offset_top = -154.0
-offset_right = 54.0
-offset_bottom = -148.0
-show_percentage = false
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1137524180]
-replication_config = SubResource("SceneReplicationConfig_wcu0q")
-
-[connection signal="pressed" from="UIHouse/Control/PanelContainer/HBoxContainer/PawnButton" to="." method="_on_pawn_button_pressed"]
+[connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

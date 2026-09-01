@@ -130,7 +130,3 @@ func update_anim():
 
 	if animated_sprite.animation != animation_name:
 		animated_sprite.play(animation_name)
-
-func toggle_selection(value:bool):
-	super.toggle_selection(value)
-	$UIPawn.visible = value

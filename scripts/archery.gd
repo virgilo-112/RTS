@@ -5,18 +5,7 @@ class_name Archery
 
 # =================== parameters =================== #
 
-# --------- Produce archer --------- #
-@export var ui_archery: CanvasLayer
-
-
 # =================== functions =================== #
-
-# --------- Selection - UI --------- #
-
-func toggle_selection(value:bool):
-	super(value)
-	if !under_construction:
-		ui_archery.visible = value
 
 
 # --------- Produce archer --------- #

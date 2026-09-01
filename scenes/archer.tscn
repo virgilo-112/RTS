@@ -738,9 +738,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Archer" unique_id=1256312482 instance=ExtResource("1_orquw")]
+[node name="Archer" unique_id=1256312482 node_paths=PackedStringArray("selection_icon") instance=ExtResource("1_orquw")]
 script = ExtResource("2_ejvcm")
 abilities = Array[String](["move", "attack"])
+selection_icon = NodePath("SelectionIcon")
 
 [node name="NavigationAgent2D" parent="." index="1" unique_id=805899648]
 radius = 20.0

@@ -13,3 +13,4 @@ func setup(player: Player) -> void:
 	player_id = player.player_id
 	hud.setup(player)
 	placement_manager.setup(player)
+	input_manager.setup(player)

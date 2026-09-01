@@ -186,6 +186,14 @@ animations = [{
 radius = 22.0
 height = 44.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vrdyb"]
+properties/0/path = NodePath(".:food_quantity")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("UISheep/Control/PanelContainer/HBoxContainer/FoodCount:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Sheep" type="CharacterBody2D" unique_id=279528964 node_paths=PackedStringArray("selection_icon", "ui_sheep", "food_count", "interaction_points")]
 y_sort_enabled = true
 collision_layer = 4
@@ -233,7 +241,7 @@ shape = SubResource("CapsuleShape2D_4uhln")
 visible = false
 z_index = 5
 z_as_relative = false
-position = Vector2(-1.9073486e-06, -4.344629)
+position = Vector2(1, -17)
 scale = Vector2(0.359375, 0.38038486)
 texture = ExtResource("5_vbo3h")
 
@@ -273,5 +281,8 @@ texture = ExtResource("7_s32ju")
 layout_mode = 2
 text = " :"
 vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=311761455]
+replication_config = SubResource("SceneReplicationConfig_vrdyb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

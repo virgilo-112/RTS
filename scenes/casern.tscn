@@ -1,145 +1,63 @@
-[gd_scene format=3 uid="uid://i1eqsvs1jhnn"]
+[gd_scene format=3 uid="uid://b1t0exk8kibco"]
 
 [ext_resource type="Texture2D" uid="uid://bp6osmwq42ygy" path="res://assets/Buildings/Blue Buildings/Barracks.png" id="1_a2mic"]
 [ext_resource type="Script" uid="uid://8srn4m8x7xqq" path="res://scripts/casern.gd" id="1_b6g2c"]
+[ext_resource type="PackedScene" uid="uid://csir1mpofo5ah" path="res://scenes/building.tscn" id="1_hor2h"]
 [ext_resource type="Texture2D" uid="uid://cuijancw6yvod" path="res://assets/Buildings/Red Buildings/Barracks.png" id="2_5rnh4"]
 [ext_resource type="Texture2D" uid="uid://btosrp6ava74g" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="3_7xwg8"]
 [ext_resource type="Texture2D" uid="uid://1k0tx44rnko0" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_02.png" id="4_6l34y"]
 [ext_resource type="Texture2D" uid="uid://c8jnl0n3tim2d" path="res://assets/Buildings/Yellow Buildings/Barracks.png" id="4_hor2h"]
 [ext_resource type="Texture2D" uid="uid://d2t5b125615t6" path="res://assets/Buildings/Black Buildings/Barracks.png" id="5_bvy6d"]
-[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="5_dnq0g"]
 [ext_resource type="Texture2D" uid="uid://cy4n8ctcay3ty" path="res://assets/Buildings/Purple Buildings/Barracks.png" id="6_uc63c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(148, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
-size = Vector2(157, 173)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hor2h"]
-properties/0/path = NodePath(".:hp")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:position")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:player_id")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
-[node name="Casern" type="StaticBody2D" unique_id=135393825 node_paths=PackedStringArray("ui_casern", "warrior_button", "lancer_button", "construction_progress_bar", "selection_icon", "spawn")]
-y_sort_enabled = true
+[node name="Casern" unique_id=1028856893 node_paths=PackedStringArray("warrior_button", "lancer_button", "construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn") instance=ExtResource("1_hor2h")]
 script = ExtResource("1_b6g2c")
-ui_casern = NodePath("UICasern")
-warrior_button = NodePath("UICasern/Control/PanelContainer/HBoxContainer/WarriorButton")
-lancer_button = NodePath("UICasern/Control/PanelContainer/HBoxContainer/LancerButton")
+warrior_button = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/WarriorButton")
+lancer_button = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/LancerButton")
 construction_progress_bar = NodePath("ConstructionProgressBar")
+ui_building = NodePath("UIBuilding")
+data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
+button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
 selection_icon = NodePath("Area2D/SelectionIcon")
 spawn = NodePath("Spawn")
 
-[node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=533730372]
+[node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=1411100073]
 visible = false
 position = Vector2(1, 1)
 texture = ExtResource("1_a2mic")
 offset = Vector2(0, -108)
 
-[node name="RedSprite2D" type="Sprite2D" parent="." unique_id=753337046]
+[node name="RedSprite2D" type="Sprite2D" parent="." index="1" unique_id=686325641]
 visible = false
 position = Vector2(1, 1)
 texture = ExtResource("2_5rnh4")
 offset = Vector2(0, -108)
 
-[node name="YellowSprite2D" type="Sprite2D" parent="." unique_id=1987078543]
+[node name="YellowSprite2D" type="Sprite2D" parent="." index="2" unique_id=571711189]
 visible = false
 position = Vector2(1, 1)
 texture = ExtResource("4_hor2h")
 offset = Vector2(0, -108)
 
-[node name="BlackSprite2D" type="Sprite2D" parent="." unique_id=183903403]
+[node name="BlackSprite2D" type="Sprite2D" parent="." index="3" unique_id=196150976]
 visible = false
 position = Vector2(1, 1)
 texture = ExtResource("5_bvy6d")
 offset = Vector2(0, -108)
 
-[node name="PurpleSprite2D" type="Sprite2D" parent="." unique_id=944741950]
+[node name="PurpleSprite2D" type="Sprite2D" parent="." index="4" unique_id=1352522203]
 visible = false
 position = Vector2(1, 1)
 texture = ExtResource("6_uc63c")
 offset = Vector2(0, -108)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=387298432]
-position = Vector2(0, -34)
-shape = SubResource("RectangleShape2D_xrivr")
-
-[node name="UICasern" type="CanvasLayer" parent="." unique_id=1963882660]
-visible = false
-
-[node name="Control" type="Control" parent="UICasern" unique_id=1959797082]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UICasern/Control" unique_id=1448787311]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = -202.0
-offset_right = 431.0
-offset_bottom = -93.0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UICasern/Control/PanelContainer" unique_id=1769665768]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Label" type="Label" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=868394151]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Health : "
-
-[node name="WarriorButton" type="Button" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=157944498]
+[node name="WarriorButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=1144457423]
 layout_mode = 2
 icon = ExtResource("3_7xwg8")
 
-[node name="LancerButton" type="Button" parent="UICasern/Control/PanelContainer/HBoxContainer" unique_id=212932430]
+[node name="LancerButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="1" unique_id=1042703452]
 layout_mode = 2
 icon = ExtResource("4_6l34y")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2042489339]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=911513003]
-position = Vector2(0.5, -86.5)
-shape = SubResource("RectangleShape2D_13qdw")
-
-[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=1308359525]
-visible = false
-z_index = 5
-z_as_relative = false
-position = Vector2(-1.7881393e-07, -87)
-scale = Vector2(1.7822263, 1.7822263)
-texture = ExtResource("5_dnq0g")
-
-[node name="Spawn" type="Marker2D" parent="." unique_id=915140740]
-position = Vector2(0, 7)
-
-[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=791329513]
-visible = false
-z_index = 5
-offset_left = -76.0
-offset_top = -190.0
-offset_right = 77.0
-offset_bottom = -182.0
-show_percentage = false
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=612663603]
-replication_config = SubResource("SceneReplicationConfig_hor2h")
-
-[connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/WarriorButton" to="." method="_on_warrior_button_pressed"]
-[connection signal="pressed" from="UICasern/Control/PanelContainer/HBoxContainer/LancerButton" to="." method="_on_lancer_button_pressed"]
+[node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
+visible = true

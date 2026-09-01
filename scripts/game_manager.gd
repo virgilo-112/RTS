@@ -68,3 +68,59 @@ func spawn_building(building_scene: PackedScene, placement_position: Vector2, pl
 	building_container.add_child(building, true)
 	building.set_construction_status(under_construction)
 	return building
+
+
+# --------- Unit actions  --------- #
+
+@rpc("any_peer", "call_local")
+func request_move(player_id : int, unit_path: NodePath, target: Vector2) -> void:
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	if unit.player_id != player_id :
+		return
+	unit.assign_command(MoveCommand.new(target))
+
+
+@rpc("any_peer", "call_local")
+func request_mine(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var gold_stone := get_node(target_path) as GoldStone
+	if unit.player_id != player_id :
+		return
+	unit.assign_command(MineCommand.new(gold_stone))
+
+
+@rpc("any_peer", "call_local")
+func request_chop(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var wood_tree := get_node(target_path) as WoodTree
+	if unit.player_id != player_id :
+		return
+	unit.assign_command(ChopCommand.new(wood_tree))
+
+
+@rpc("any_peer", "call_local")
+func request_knife(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var sheep := get_node(target_path) as Sheep
+	if unit.player_id != player_id :
+		return
+	unit.assign_command(KnifeCommand.new(sheep))
+
+
+@rpc("any_peer", "call_local")
+func request_build(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var building := get_node(target_path) as Building
+	if unit.player_id != player_id :
+		return
+	unit.assign_command(BuildCommand.new(building, building.position))
