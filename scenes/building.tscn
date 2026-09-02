@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="3_lm2ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8vq"]
-size = Vector2(78, 39)
+size = Vector2(148, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikdiq"]
-size = Vector2(111, 157)
+size = Vector2(154, 157)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wcu0q"]
 properties/0/path = NodePath(".:hp")
@@ -31,7 +31,7 @@ selection_icon = NodePath("Area2D/SelectionIcon")
 spawn = NodePath("Spawn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]
-position = Vector2(0, -20.5)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_ny8vq")
 
 [node name="UIBuilding" type="CanvasLayer" parent="." unique_id=319192006]
@@ -76,7 +76,7 @@ size_flags_horizontal = 8
 [node name="Area2D" type="Area2D" parent="." unique_id=1510916706]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105599579]
-position = Vector2(-0.5, -69.5)
+position = Vector2(0, -71)
 shape = SubResource("RectangleShape2D_ikdiq")
 
 [node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=529611033]

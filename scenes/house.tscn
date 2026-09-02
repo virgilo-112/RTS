@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://c7uck8mp5gjfs" path="res://assets/Buildings/Black Buildings/House1.png" id="5_bwc8c"]
 [ext_resource type="Texture2D" uid="uid://c51blfy70h7s7" path="res://assets/Buildings/Purple Buildings/House1.png" id="6_mhx8p"]
 
-[node name="House" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn") instance=ExtResource("1_wcu0q")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcu0q"]
+size = Vector2(84, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwc8c"]
+size = Vector2(102, 157)
+
+[node name="House" unique_id=1028856893 instance=ExtResource("1_wcu0q")]
 script = ExtResource("1_se78b")
-construction_progress_bar = NodePath("ConstructionProgressBar")
-ui_building = NodePath("UIBuilding")
-data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
-button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
-selection_icon = NodePath("Area2D/SelectionIcon")
-spawn = NodePath("Spawn")
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=990723670]
 visible = false
@@ -43,8 +43,18 @@ visible = false
 texture = ExtResource("6_mhx8p")
 offset = Vector2(0, -68)
 
+[node name="CollisionShape2D" parent="." index="5" unique_id=772849535]
+position = Vector2(1, -20)
+shape = SubResource("RectangleShape2D_wcu0q")
+
 [node name="PawnButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=525117875]
 layout_mode = 2
 icon = ExtResource("3_f74lx")
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="0" unique_id=2105599579]
+shape = SubResource("RectangleShape2D_bwc8c")
+
+[node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
+visible = true
 
 [connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

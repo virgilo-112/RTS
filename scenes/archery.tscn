@@ -9,14 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ch4yw3mfr0vjd" path="res://assets/Buildings/Black Buildings/Archery.png" id="5_cxjy2"]
 [ext_resource type="Texture2D" uid="uid://c5o2en101xiqx" path="res://assets/Buildings/Purple Buildings/Archery.png" id="6_akqfd"]
 
-[node name="Archery" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn") instance=ExtResource("1_nq1ve")]
+[node name="Archery" unique_id=1028856893 instance=ExtResource("1_nq1ve")]
 script = ExtResource("1_8e86i")
-construction_progress_bar = NodePath("ConstructionProgressBar")
-ui_building = NodePath("UIBuilding")
-data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
-button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
-selection_icon = NodePath("Area2D/SelectionIcon")
-spawn = NodePath("Spawn")
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=1760202893]
 visible = false
@@ -46,5 +40,13 @@ offset = Vector2(0, -104)
 [node name="ArcherButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=818920996]
 layout_mode = 2
 icon = ExtResource("3_0woum")
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="0" unique_id=2105599579]
+position = Vector2(0, -81)
+
+[node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
+visible = true
+position = Vector2(-7.999998, -78)
+scale = Vector2(1.7229003, 1.7229003)
 
 [connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/ArcherButton" to="." method="_on_archer_button_pressed"]
