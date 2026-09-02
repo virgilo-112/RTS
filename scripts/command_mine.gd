@@ -18,4 +18,4 @@ func on_arrived(unit):
 func on_mining_tick(unit):
 	if is_instance_valid(gold_stone):
 		var mined = gold_stone.mine(1)
-		unit.owner_player.add_gold(mined)
+		unit.get_owner_player().add_gold(mined)

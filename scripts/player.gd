@@ -2,46 +2,112 @@ extends Node
 
 class_name Player
 
-var gold : int = 0
-var wood : int = 0
-var food : int = 50
-var pawn_count : int = 0
-var militia_count : int = 0
 
-var house_price : int = 100
-var casern_price : int = 300
-var archery_price : int = 200
+# =================== parameters =================== #
 
-var pawn_food_price : int = 50
-var lancer_food_price : int = 50
-var archer_food_price : int = 50
-var warrior_food_price : int = 100
-
-var warrior_gold_price : int = 75
-var lancer_gold_price : int = 50
-var archer_gold_price : int = 75
-
-@onready var casern_container: Node2D = $Buildings/Caserns
-@onready var archery_container: Node2D = $Buildings/Archeries
-@onready var house_container: Node2D = $Buildings/Houses
-
-@onready var warriors: Node2D = $Units/Warriors
-@onready var lancers: Node2D = $Units/Lancers
-@onready var pawns: Node2D = $Units/Pawns
-@onready var archers: Node2D = $Units/Archers
-@onready var monks: Node2D = $Units/Monks
-
+# --------- Player data --------- #
+var player_id : int
 var color : String
+var peer_id: Variant = null
+var player_type : String
+var team_id : int
+
+const COLOR = {
+	1 : "red",
+	2 : "blue",
+	3 : "yellow",
+	4 : "black",
+	5 : "purple"
+}
+
+# --------- Player resources --------- #
+@export var gold: int = 0:
+	set(value):
+		gold = value
+
+		if is_node_ready():
+			gold_changed.emit(gold)
+
+@export var wood: int = 0:
+	set(value):
+		wood = value
+
+		if is_node_ready():
+			wood_changed.emit(wood)
+
+@export var food: int = 0:
+	set(value):
+		food = value
+
+		if is_node_ready():
+			food_changed.emit(food)
 
 
-var queue_time: int = 5
+# --------- Player units --------- #
+@export var pawn_count : int = 0:
+	set(value):
+		pawn_count = value
+		if is_node_ready():
+			pawn_count_changed.emit(pawn_count)
+
+@export var militia_count : int = 0:
+	set(value):
+		militia_count = value
+		if is_node_ready():
+			militia_count_changed.emit(militia_count)
+
+# --------- Buildings wood price --------- #
+@export var house_price : int = 100
+@export var archery_price : int = 200
+@export var casern_price : int = 300
+
+# --------- Units food price --------- #
+@export var pawn_food_price : int = 50
+@export var lancer_food_price : int = 50
+@export var archer_food_price : int = 50
+@export var warrior_food_price : int = 100
+
+# --------- Units gold price --------- #
+@export var warrior_gold_price : int = 75
+@export var lancer_gold_price : int = 50
+@export var archer_gold_price : int = 75
+
+# --------- Add unit --------- #
+@export var queue_time: int = 5
+
+
+# =================== Signals =================== #
 
 signal wood_changed(new_amount)
 signal gold_changed(new_amount)
 signal food_changed(new_amount)
 signal pawn_count_changed(new_amount)
 signal militia_count_changed(new_amount)
+
 signal unit_queued(unit_type, queue_time)
+
+# =================== Testing zone =================== #
+
+# =================== functions =================== #
+
+func setup(data: Dictionary) -> void:
+	player_id = data["player_id"]
+	peer_id = data["peer_id"]
+	player_type = data["type"]
+	team_id = data["team_id"]
+	color = COLOR[data["color_id"]]
+	name = "Player_%d" % player_id
+
+
+func add_unit(unit_type: String) -> void:
+	if unit_type == "pawn":
+		pawn_count += 1
+		pawn_count_changed.emit(pawn_count)
+	else:
+		militia_count += 1
+		militia_count_changed.emit(militia_count)
+
+# --------- Add resources --------- #
 
 func add_gold(amount: int):
 	gold += amount
@@ -55,27 +121,8 @@ func add_food(amount: int):
 	food += amount
 	food_changed.emit(food)
 
-func add_pawn(amount: int):
-	pawn_count += amount
-	pawn_count_changed.emit(pawn_count)
 
-func add_militia(amount: int):
-	militia_count += amount
-	militia_count_changed.emit(militia_count)
-	
-func add_building(building):
-	if building is House:
-		house_container.add_child(building)
-		building.pawn_container = pawns
-
-	elif building is Archery:
-		archery_container.add_child(building)
-		building.archer_container = archers
-
-	elif building is Casern:
-		casern_container.add_child(building)
-		building.warrior_container = warriors
-		building.lancer_container = lancers
+# --------- Can pay object price? --------- #
 
 func is_building_affordable(building_type : String) :
 	match building_type:
@@ -94,21 +141,6 @@ func is_building_affordable(building_type : String) :
 				return false
 			else :
 				return true
-
-func pay_building(building_scene: String):
-
-	match building_scene:
-		"house":
-			wood -= house_price
-			wood_changed.emit(wood)
-			
-		"casern":
-			wood -= casern_price
-			wood_changed.emit(wood)
-			
-		"archery":
-			wood -= archery_price
-			wood_changed.emit(wood)
 
 
 func is_unit_affordable(unit_type : String) :
@@ -133,6 +165,24 @@ func is_unit_affordable(unit_type : String) :
 				return false
 			else :
 				return true
+
+
+# --------- Pay object price --------- #
+
+func pay_building(building_scene: String):
+
+	match building_scene:
+		"house":
+			wood -= house_price
+			wood_changed.emit(wood)
+			
+		"casern":
+			wood -= casern_price
+			wood_changed.emit(wood)
+			
+		"archery":
+			wood -= archery_price
+			wood_changed.emit(wood)
 
 func pay_unit(unit_type : String):
 	match unit_type:
@@ -161,4 +211,3 @@ func pay_unit(unit_type : String):
 			gold -= archer_gold_price
 			gold_changed.emit(gold)
 			unit_queued.emit("archer", queue_time)
-			

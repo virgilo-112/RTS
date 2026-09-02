@@ -2,112 +2,49 @@
 
 [ext_resource type="Script" uid="uid://bwvfhopk646mt" path="res://scripts/archery.gd" id="1_8e86i"]
 [ext_resource type="Texture2D" uid="uid://dy6e03bppxj1v" path="res://assets/Buildings/Blue Buildings/Archery.png" id="1_ea1b2"]
+[ext_resource type="PackedScene" uid="uid://csir1mpofo5ah" path="res://scenes/building.tscn" id="1_nq1ve"]
 [ext_resource type="Texture2D" uid="uid://bxjk0i0ynxe3n" path="res://assets/UI Elements/UI Elements/Human Avatars/Avatars_03.png" id="3_0woum"]
 [ext_resource type="Texture2D" uid="uid://bdb121ksy1uhl" path="res://assets/Buildings/Red Buildings/Archery.png" id="3_6ip5i"]
-[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="4_6ip5i"]
 [ext_resource type="Texture2D" uid="uid://burjim8uhsvay" path="res://assets/Buildings/Yellow Buildings/Archery.png" id="4_nq1ve"]
 [ext_resource type="Texture2D" uid="uid://ch4yw3mfr0vjd" path="res://assets/Buildings/Black Buildings/Archery.png" id="5_cxjy2"]
 [ext_resource type="Texture2D" uid="uid://c5o2en101xiqx" path="res://assets/Buildings/Purple Buildings/Archery.png" id="6_akqfd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
-size = Vector2(157, 69)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjcxb"]
-size = Vector2(157, 173)
-
-[node name="Archery" type="StaticBody2D" unique_id=1408408083]
-y_sort_enabled = true
+[node name="Archery" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn") instance=ExtResource("1_nq1ve")]
 script = ExtResource("1_8e86i")
+construction_progress_bar = NodePath("ConstructionProgressBar")
+ui_building = NodePath("UIBuilding")
+data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
+button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
+selection_icon = NodePath("Area2D/SelectionIcon")
+spawn = NodePath("Spawn")
 
-[node name="BlueSprite2D" type="Sprite2D" parent="." unique_id=910439930]
+[node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=1760202893]
 visible = false
 texture = ExtResource("1_ea1b2")
 offset = Vector2(0, -104)
 
-[node name="RedSprite2D" type="Sprite2D" parent="." unique_id=939723153]
+[node name="RedSprite2D" type="Sprite2D" parent="." index="1" unique_id=1883381891]
 visible = false
 texture = ExtResource("3_6ip5i")
 offset = Vector2(0, -104)
 
-[node name="YellowSprite2D" type="Sprite2D" parent="." unique_id=978932776]
+[node name="YellowSprite2D" type="Sprite2D" parent="." index="2" unique_id=968681605]
 visible = false
 texture = ExtResource("4_nq1ve")
 offset = Vector2(0, -104)
 
-[node name="BlackSprite2D" type="Sprite2D" parent="." unique_id=890976367]
+[node name="BlackSprite2D" type="Sprite2D" parent="." index="3" unique_id=409373312]
 visible = false
 texture = ExtResource("5_cxjy2")
 offset = Vector2(0, -104)
 
-[node name="PurpleSprite2D" type="Sprite2D" parent="." unique_id=1329470040]
+[node name="PurpleSprite2D" type="Sprite2D" parent="." index="4" unique_id=1131785802]
 visible = false
 texture = ExtResource("6_akqfd")
 offset = Vector2(0, -104)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=48283287]
-position = Vector2(-5.5, -35.5)
-shape = SubResource("RectangleShape2D_13qdw")
-
-[node name="UIArchery" type="CanvasLayer" parent="." unique_id=1949146341]
-visible = false
-
-[node name="Control" type="Control" parent="UIArchery" unique_id=1661188532]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="UIArchery/Control" unique_id=1711292685]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = -202.0
-offset_right = 431.0
-offset_bottom = -93.0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIArchery/Control/PanelContainer" unique_id=995981285]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Label" type="Label" parent="UIArchery/Control/PanelContainer/HBoxContainer" unique_id=1887502622]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Health : "
-
-[node name="ArcherButton" type="Button" parent="UIArchery/Control/PanelContainer/HBoxContainer" unique_id=64791136]
+[node name="ArcherButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=818920996]
 layout_mode = 2
 icon = ExtResource("3_0woum")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1309696989]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1980492885]
-position = Vector2(0.5, -86.5)
-shape = SubResource("RectangleShape2D_rjcxb")
-
-[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=925949586]
-visible = false
-z_index = 5
-z_as_relative = false
-position = Vector2(-1.7881393e-07, -87)
-scale = Vector2(1.7822263, 1.7822263)
-texture = ExtResource("4_6ip5i")
-
-[node name="Spawn" type="Marker2D" parent="." unique_id=1240952815]
-position = Vector2(43, 6)
-
-[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=798047002]
-z_index = 5
-offset_left = -79.0
-offset_top = -180.0
-offset_right = 80.0
-offset_bottom = -172.0
-show_percentage = false
-
-[connection signal="pressed" from="UIArchery/Control/PanelContainer/HBoxContainer/ArcherButton" to="." method="_on_archer_button_pressed"]
+[connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/ArcherButton" to="." method="_on_archer_button_pressed"]

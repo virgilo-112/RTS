@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://bhgo1yfathhk0"]
+
+[ext_resource type="Script" uid="uid://biyoerp5mnfc0" path="res://scripts/tree.gd" id="1_d25hq"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="3_o7wgu"]
+[ext_resource type="Texture2D" uid="uid://dl37ye8byh571" path="res://assets/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="4_s5865"]
+[ext_resource type="Texture2D" uid="uid://drlfj7nv6vl0g" path="res://assets/Terrain/Resources/Wood/Trees/Tree3.png" id="4_w5c47"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m26wl"]
+radius = 5.0179625
+height = 18.109907
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2prkv"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fmic"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlnmx"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiv35"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wumrw"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6msse"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvlkt"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcsm8"]
+atlas = ExtResource("4_w5c47")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubrq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2prkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fmic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlnmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiv35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wumrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6msse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvlkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcsm8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xprpn"]
+radius = 20.0
+height = 134.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d25hq"]
+properties/0/path = NodePath(".:wood_quantity")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Tree3_" type="StaticBody2D" unique_id=1019794889 node_paths=PackedStringArray("selection_icon", "ui_tree", "wood_count", "interaction_points")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_d25hq")
+selection_icon = NodePath("SelectionArea/SelectionIcon")
+ui_tree = NodePath("UITree")
+wood_count = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount")
+interaction_points = NodePath("InteractionPoints")
+wood_quantity = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526280546]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(2.980232e-08, -8)
+rotation = 1.5519438
+shape = SubResource("CapsuleShape2D_m26wl")
+
+[node name="Tree3" type="AnimatedSprite2D" parent="." unique_id=1475574681]
+sprite_frames = SubResource("SpriteFrames_ubrq3")
+autoplay = "default"
+frame_progress = 0.95769
+offset = Vector2(0, -70)
+
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
+
+[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1745904542]
+position = Vector2(-22, -2)
+
+[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1966604128]
+position = Vector2(-25, -13)
+
+[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=81506307]
+position = Vector2(23, -13)
+
+[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=753779127]
+position = Vector2(20, -2)
+
+[node name="SelectionArea" type="Area2D" parent="." unique_id=313827255]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=1244780675]
+position = Vector2(0, -67)
+shape = SubResource("CapsuleShape2D_xprpn")
+
+[node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=1365704985]
+visible = false
+z_index = 5
+z_as_relative = false
+position = Vector2(-1, -71.5)
+scale = Vector2(1, 1.2890625)
+texture = ExtResource("3_o7wgu")
+
+[node name="UITree" type="CanvasLayer" parent="." unique_id=1461014969]
+visible = false
+
+[node name="Control" type="Control" parent="UITree" unique_id=1651481108]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="UITree/Control" unique_id=1546965289]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -145.0
+offset_right = 176.0
+offset_bottom = -81.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UITree/Control/PanelContainer" unique_id=621401953]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=160850238]
+layout_mode = 2
+texture = ExtResource("4_s5865")
+
+[node name="WoodCount" type="Label" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=1633092796]
+layout_mode = 2
+text = " :"
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=60700899]
+replication_config = SubResource("SceneReplicationConfig_d25hq")

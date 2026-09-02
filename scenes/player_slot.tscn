@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://tlvd1dudydfs"]
+
+[ext_resource type="Script" uid="uid://32uur4xphgmv" path="res://scripts/player_slot.gd" id="1_sfd8u"]
+[ext_resource type="Texture2D" uid="uid://dydg2jjbo5sb4" path="res://assets/UI Elements/UI Elements/Icons/Icon_09.png" id="2_r7ew7"]
+
+[node name="PlayerSlot" type="PanelContainer" unique_id=267486443 node_paths=PackedStringArray("h_box_container", "title_label", "color_label", "color_selection_button", "team_label", "team_selection_button", "status_label", "invite_player_button", "add_ai_button", "delete_ai_button")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sfd8u")
+h_box_container = NodePath("HBoxContainer")
+title_label = NodePath("HBoxContainer/TitleLabel")
+color_label = NodePath("HBoxContainer/ColorLabel")
+color_selection_button = NodePath("HBoxContainer/ColorSelectionButton")
+team_label = NodePath("HBoxContainer/TeamLabel")
+team_selection_button = NodePath("HBoxContainer/TeamSelectionButton")
+status_label = NodePath("HBoxContainer/StatusLabel")
+invite_player_button = NodePath("HBoxContainer/InvitePlayerButton")
+add_ai_button = NodePath("HBoxContainer/AddAIButton")
+delete_ai_button = NodePath("HBoxContainer/DeleteAIButton")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2138509313]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer" unique_id=1367734329]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1364550796]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ColorLabel" type="Label" parent="HBoxContainer" unique_id=1812025744]
+layout_mode = 2
+text = "Color : "
+
+[node name="ColorSelectionButton" type="OptionButton" parent="HBoxContainer" unique_id=272184255]
+layout_mode = 2
+item_count = 6
+popup/item_0/id = 0
+popup/item_1/text = "Red"
+popup/item_1/id = 1
+popup/item_2/text = "Blue"
+popup/item_2/id = 2
+popup/item_3/text = "Yellow"
+popup/item_3/id = 3
+popup/item_4/text = "Black"
+popup/item_4/id = 4
+popup/item_5/text = "Purple"
+popup/item_5/id = 5
+
+[node name="TeamLabel" type="Label" parent="HBoxContainer" unique_id=1348891821]
+layout_mode = 2
+text = "Team : "
+
+[node name="TeamSelectionButton" type="OptionButton" parent="HBoxContainer" unique_id=1013164540]
+layout_mode = 2
+item_count = 5
+popup/item_0/id = 0
+popup/item_1/text = "Team 1"
+popup/item_1/id = 1
+popup/item_2/text = "Team 2"
+popup/item_2/id = 2
+popup/item_3/text = "Team 3"
+popup/item_3/id = 3
+popup/item_4/text = "Team 4"
+popup/item_4/id = 4
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer" unique_id=568715634]
+layout_mode = 2
+text = "Host"
+
+[node name="InvitePlayerButton" type="Button" parent="HBoxContainer" unique_id=1898350765]
+layout_mode = 2
+text = "Invite Player"
+
+[node name="AddAIButton" type="Button" parent="HBoxContainer" unique_id=1733944076]
+layout_mode = 2
+text = "Add AI"
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=853487810]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="DeleteAIButton" type="Button" parent="HBoxContainer" unique_id=1791413360]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+icon = ExtResource("2_r7ew7")
+expand_icon = true
+
+[connection signal="item_selected" from="HBoxContainer/ColorSelectionButton" to="." method="_on_color_selection_button_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/TeamSelectionButton" to="." method="_on_team_selection_button_item_selected"]
+[connection signal="pressed" from="HBoxContainer/AddAIButton" to="." method="_on_add_ai_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DeleteAIButton" to="." method="_on_delete_ai_button_pressed"]

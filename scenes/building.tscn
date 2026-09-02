@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://csir1mpofo5ah"]
+
+[ext_resource type="Script" uid="uid://c43b10siwhdq8" path="res://scripts/building.gd" id="1_ejq8p"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="3_lm2ef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8vq"]
+size = Vector2(78, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikdiq"]
+size = Vector2(111, 157)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wcu0q"]
+properties/0/path = NodePath(".:hp")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:player_id")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Building" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "spawn")]
+y_sort_enabled = true
+script = ExtResource("1_ejq8p")
+construction_progress_bar = NodePath("ConstructionProgressBar")
+ui_building = NodePath("UIBuilding")
+data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer")
+button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
+selection_icon = NodePath("Area2D/SelectionIcon")
+spawn = NodePath("Spawn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]
+position = Vector2(0, -20.5)
+shape = SubResource("RectangleShape2D_ny8vq")
+
+[node name="UIBuilding" type="CanvasLayer" parent="." unique_id=319192006]
+visible = false
+
+[node name="Control" type="Control" parent="UIBuilding" unique_id=1010859882]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UIBuilding/Control" unique_id=1466655824]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -202.0
+offset_right = 431.0
+offset_bottom = -93.0
+grow_vertical = 0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="UIBuilding/Control/PanelContainer" unique_id=1435438893]
+layout_mode = 2
+
+[node name="DataContainer" type="VBoxContainer" parent="UIBuilding/Control/PanelContainer/HSplitContainer" unique_id=902512837]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer" unique_id=1687767729]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Health : "
+
+[node name="ButtonContainer" type="HBoxContainer" parent="UIBuilding/Control/PanelContainer/HSplitContainer" unique_id=174938596]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1510916706]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105599579]
+position = Vector2(-0.5, -69.5)
+shape = SubResource("RectangleShape2D_ikdiq")
+
+[node name="SelectionIcon" type="Sprite2D" parent="Area2D" unique_id=529611033]
+visible = false
+z_index = 5
+z_as_relative = false
+position = Vector2(-1.9073486e-06, -62)
+scale = Vector2(1.3833007, 1.3833007)
+texture = ExtResource("3_lm2ef")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=593759463]
+position = Vector2(0, 7)
+
+[node name="ConstructionProgressBar" type="ProgressBar" parent="." unique_id=1363877531]
+visible = false
+z_index = 5
+offset_left = -55.0
+offset_top = -154.0
+offset_right = 54.0
+offset_bottom = -148.0
+show_percentage = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1137524180]
+replication_config = SubResource("SceneReplicationConfig_wcu0q")

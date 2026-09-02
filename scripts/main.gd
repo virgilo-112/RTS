@@ -1,31 +1,34 @@
 extends Node
 
+# =================== parameters =================== #
 
-@onready var spawns: Node2D = $Spawns
-@onready var player_container : Node2D = $World/Players
-@onready var hud: CanvasLayer = $LocalPlayer/HUD
+# --------- constant parameters --------- #
 
-var color = {
-	0 : "red",
-	1 : "blue",
-	2 : "yellow",
-	3 : "black",
-	4 : "purple"
-}
+@export var spawns: Node2D
+@export var player_container : Node2D
+const HOUSE = preload("uid://dv6ey04phogsy")
+
+# --------- Local player nodes --------- #
+@export var hud: CanvasLayer
+@export var local_player: Node2D
+
+
+# =================== Functions =================== #
 
 
 func _ready() -> void:
-	var i = 0
-	for player_data in game_manager.players:
-		var player = preload("uid://csake202bxny8").instantiate()
-		player.color = color[player_data.color_id]
-		player_container.add_child(player)
-		if player_data.type == PlayerRow.SlotType.HUMAN :
-			hud.set_owner_player(player)
+	var spawn_index := 0
+	GameManager.setup($World/UnitContainer,$World/BuildingContainer,$PlayerContainer)
 
-		var house = preload("uid://baf8npqinbyyw").instantiate()
-		house.owner_player = player
-		house.pawn_container = player.pawns
-		house.position = spawns.get_child(i).position
-		player.house_container.add_child(house)
-		i+=1
+	for player_data in NetworkManager.players_data:
+		var player : Player = preload("uid://csake202bxny8").instantiate()
+		player.setup(player_data)
+		player_container.add_child(player)
+
+		if multiplayer.is_server():
+			GameManager.spawn_building(HOUSE,spawns.get_child(spawn_index).position,player,false)
+
+		if player_data["peer_id"] == multiplayer.get_unique_id():
+			local_player.setup(player)
+
+		spawn_index += 1

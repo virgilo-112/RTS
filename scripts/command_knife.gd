@@ -18,4 +18,4 @@ func on_arrived(unit):
 func on_knifing_tick(unit):
 	if is_instance_valid(sheep):
 		var knifed = sheep.knife(1)
-		unit.owner_player.add_food(knifed)
+		unit.get_owner_player().add_food(knifed)

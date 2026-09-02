@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://c7sctguws3u1x"]
+
+[ext_resource type="Script" uid="uid://biyoerp5mnfc0" path="res://scripts/tree.gd" id="1_mralw"]
+[ext_resource type="Texture2D" uid="uid://cbb6enb7fxjl0" path="res://assets/Terrain/Resources/Wood/Trees/Tree2.png" id="3_5ehab"]
+[ext_resource type="Texture2D" uid="uid://te68cunjq5ex" path="res://assets/UI Elements/UI Elements/Cursors/Cursor_04.png" id="6_va2rk"]
+[ext_resource type="Texture2D" uid="uid://dl37ye8byh571" path="res://assets/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="7_0b23a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m26wl"]
+radius = 7.999666
+height = 33.993954
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtdfa"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyqri"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61e73"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6xsx"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(576, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6hh2"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(768, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7apv"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(960, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35k80"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(1152, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpj3y"]
+atlas = ExtResource("3_5ehab")
+region = Rect2(1344, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1r0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtdfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyqri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61e73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6xsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6hh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7apv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35k80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpj3y")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xprpn"]
+radius = 36.0
+height = 194.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m2fij"]
+properties/0/path = NodePath(".:wood_quantity")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Tree2_" type="StaticBody2D" unique_id=1019794889 node_paths=PackedStringArray("selection_icon", "ui_tree", "wood_count", "interaction_points")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mralw")
+selection_icon = NodePath("SelectionArea/SelectionIcon")
+ui_tree = NodePath("UITree")
+wood_count = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount")
+interaction_points = NodePath("InteractionPoints")
+wood_quantity = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526280546]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(2.980232e-08, -8)
+rotation = 1.5519438
+shape = SubResource("CapsuleShape2D_m26wl")
+
+[node name="Tree2" type="AnimatedSprite2D" parent="." unique_id=570129336]
+sprite_frames = SubResource("SpriteFrames_d1r0r")
+autoplay = "default"
+frame_progress = 0.34350467
+offset = Vector2(0, -111)
+
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
+
+[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1745904542]
+position = Vector2(-17, 13)
+
+[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1966604128]
+position = Vector2(-33, 0)
+
+[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=81506307]
+position = Vector2(34, 0)
+
+[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=753779127]
+position = Vector2(15, 14)
+
+[node name="SelectionArea" type="Area2D" parent="." unique_id=313827255]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea" unique_id=1244780675]
+position = Vector2(0, -96)
+shape = SubResource("CapsuleShape2D_xprpn")
+
+[node name="SelectionIcon" type="Sprite2D" parent="SelectionArea" unique_id=1365704985]
+visible = false
+z_index = 5
+z_as_relative = false
+position = Vector2(-2, -89.75)
+scale = Vector2(1.1015625, 1.5273438)
+texture = ExtResource("6_va2rk")
+
+[node name="UITree" type="CanvasLayer" parent="." unique_id=1461014969]
+visible = false
+
+[node name="Control" type="Control" parent="UITree" unique_id=1651481108]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="UITree/Control" unique_id=1546965289]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -145.0
+offset_right = 176.0
+offset_bottom = -81.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UITree/Control/PanelContainer" unique_id=621401953]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=160850238]
+layout_mode = 2
+texture = ExtResource("7_0b23a")
+
+[node name="WoodCount" type="Label" parent="UITree/Control/PanelContainer/HBoxContainer" unique_id=1633092796]
+layout_mode = 2
+text = " :"
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1751447428]
+replication_config = SubResource("SceneReplicationConfig_m2fij")

@@ -7,15 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://betb65eaor0hk" path="res://assets/UI Elements/UI Elements/Icons/Icon_12.png" id="5_0i1j5"]
 [ext_resource type="Texture2D" uid="uid://8snaubhxf3os" path="res://assets/Terrain/Resources/Meat/Meat Resource/Meat Resource.png" id="5_5pdws"]
 [ext_resource type="Texture2D" uid="uid://cao3mn1goi662" path="res://assets/UI Elements/UI Elements/Icons/Icon_11.png" id="6_5pdws"]
-[ext_resource type="Script" uid="uid://b02ms0ufpon8m" path="res://scripts/minimap.gd" id="9_mphia"]
+[ext_resource type="Script" uid="uid://bbprm1k5tnonb" path="res://scripts/minimap.gd" id="8_0m4u7"]
 [ext_resource type="Texture2D" uid="uid://by0ub7sw5x7xu" path="res://assets/UI Elements/UI Elements/Icons/Icon_01.png" id="10_0m4u7"]
 [ext_resource type="Texture2D" uid="uid://cgjsrn1p0araq" path="res://assets/UI Elements/UI Elements/Icons/Icon_05.png" id="11_apjy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i1j5"]
 font_size = 25
 
-[node name="HUD" type="CanvasLayer" unique_id=165254352]
+[node name="HUD" type="CanvasLayer" unique_id=165254352 node_paths=PackedStringArray("cog_menu", "wood_label", "food_label", "coin_label", "pawn_count_label", "militia_count_label", "h_box_unit_queue", "unit_queue")]
 script = ExtResource("1_047uy")
+cog_menu = NodePath("Control/CogMenu")
+wood_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer/WoodLabel")
+food_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer2/FoodLabel")
+coin_label = NodePath("Control/Resources/VBoxContainer/HBoxContainer3/CoinLabel")
+pawn_count_label = NodePath("Control/UnitCount/HBoxContainer/VBoxContainer2/PawnCountLabel")
+militia_count_label = NodePath("Control/UnitCount/HBoxContainer/VBoxContainer/MilitiaCountLabel")
+h_box_unit_queue = NodePath("UnitQueue/HBoxUnitQueue")
+unit_queue = NodePath("UnitQueue")
 
 [node name="Control" type="Control" parent="." unique_id=626221473]
 layout_mode = 3
@@ -27,7 +35,7 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
 
-[node name="ResourcePanelContainer" type="PanelContainer" parent="Control" unique_id=1178892659]
+[node name="Resources" type="PanelContainer" parent="Control" unique_id=1178892659]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 30.0
@@ -35,46 +43,46 @@ offset_right = 216.0
 offset_bottom = 230.0
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ResourcePanelContainer" unique_id=1796861253]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Resources" unique_id=1796861253]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1061810623]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Resources/VBoxContainer" unique_id=1061810623]
 layout_mode = 2
 
-[node name="WoodIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer" unique_id=394474417]
+[node name="WoodIcon" type="TextureRect" parent="Control/Resources/VBoxContainer/HBoxContainer" unique_id=394474417]
 layout_mode = 2
 texture = ExtResource("4_047uy")
 
-[node name="WoodLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer" unique_id=174799534]
+[node name="WoodLabel" type="Label" parent="Control/Resources/VBoxContainer/HBoxContainer" unique_id=174799534]
 layout_mode = 2
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1437313777]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Resources/VBoxContainer" unique_id=1437313777]
 layout_mode = 2
 
-[node name="FoodIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2" unique_id=427715681]
+[node name="FoodIcon" type="TextureRect" parent="Control/Resources/VBoxContainer/HBoxContainer2" unique_id=427715681]
 layout_mode = 2
 texture = ExtResource("5_5pdws")
 
-[node name="FoodLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2" unique_id=866923428]
+[node name="FoodLabel" type="Label" parent="Control/Resources/VBoxContainer/HBoxContainer2" unique_id=866923428]
 layout_mode = 2
 text = "50"
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/ResourcePanelContainer/VBoxContainer" unique_id=1746824927]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Resources/VBoxContainer" unique_id=1746824927]
 layout_mode = 2
 
-[node name="CoinIcon" type="TextureRect" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3" unique_id=1193261330]
+[node name="CoinIcon" type="TextureRect" parent="Control/Resources/VBoxContainer/HBoxContainer3" unique_id=1193261330]
 layout_mode = 2
 texture = ExtResource("2_047uy")
 
-[node name="CoinLabel" type="Label" parent="Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3" unique_id=309903628]
+[node name="CoinLabel" type="Label" parent="Control/Resources/VBoxContainer/HBoxContainer3" unique_id=309903628]
 layout_mode = 2
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1030766979]
+[node name="Settings" type="PanelContainer" parent="Control" unique_id=1030766979]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -84,84 +92,53 @@ offset_bottom = 72.0
 grow_horizontal = 0
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer" unique_id=1361906961]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Settings" unique_id=1361906961]
 layout_mode = 2
 
-[node name="MusicIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=795329756]
+[node name="MusicIcon" type="TextureRect" parent="Control/Settings/HBoxContainer" unique_id=795329756]
 layout_mode = 2
 texture = ExtResource("5_0i1j5")
 
-[node name="InfoIcon" type="TextureRect" parent="Control/PanelContainer/HBoxContainer" unique_id=324648074]
+[node name="InfoIcon" type="TextureRect" parent="Control/Settings/HBoxContainer" unique_id=324648074]
 layout_mode = 2
 texture = ExtResource("6_5pdws")
 
-[node name="CogIcon" type="Button" parent="Control/PanelContainer/HBoxContainer" unique_id=1264525627]
+[node name="CogIcon" type="Button" parent="Control/Settings/HBoxContainer" unique_id=1264525627]
 layout_mode = 2
 icon = ExtResource("4_hd3ao")
 
-[node name="PanelContainer3" type="PanelContainer" parent="Control" unique_id=1187987218]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -660.0
-offset_top = -427.0
-offset_right = -62.0
-offset_bottom = -61.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/PanelContainer3" unique_id=432412868]
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Control/PanelContainer3/SubViewportContainer" unique_id=1716993114]
-handle_input_locally = false
-size = Vector2i(598, 366)
-render_target_update_mode = 4
-script = ExtResource("9_mphia")
-
-[node name="CameraMinimap" type="Camera2D" parent="Control/PanelContainer3/SubViewportContainer/SubViewport" unique_id=1782544262]
-position = Vector2(-31, -18)
-zoom = Vector2(0.08, 0.08)
-
-[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer3" unique_id=1754843843]
-layout_mode = 2
-
-[node name="PanelContainer4" type="PanelContainer" parent="Control" unique_id=752303708]
+[node name="UnitCount" type="PanelContainer" parent="Control" unique_id=752303708]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 248.0
 offset_right = 120.0
 offset_bottom = 355.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer4" unique_id=1637351730]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/UnitCount" unique_id=1637351730]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer4/HBoxContainer" unique_id=1553415065]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/UnitCount/HBoxContainer" unique_id=1553415065]
 layout_mode = 2
 
-[node name="PawnIcon" type="TextureRect" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer2" unique_id=97576773]
+[node name="PawnIcon" type="TextureRect" parent="Control/UnitCount/HBoxContainer/VBoxContainer2" unique_id=97576773]
 layout_mode = 2
 texture = ExtResource("10_0m4u7")
 
-[node name="PawnCountLabel" type="Label" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer2" unique_id=2087666774]
+[node name="PawnCountLabel" type="Label" parent="Control/UnitCount/HBoxContainer/VBoxContainer2" unique_id=2087666774]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_0i1j5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer4/HBoxContainer" unique_id=2104955629]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/UnitCount/HBoxContainer" unique_id=2104955629]
 layout_mode = 2
 
-[node name="MilitiaIcon" type="TextureRect" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer" unique_id=692443371]
+[node name="MilitiaIcon" type="TextureRect" parent="Control/UnitCount/HBoxContainer/VBoxContainer" unique_id=692443371]
 layout_mode = 2
 texture = ExtResource("11_apjy4")
 
-[node name="MilitiaCountLabel" type="Label" parent="Control/PanelContainer4/HBoxContainer/VBoxContainer" unique_id=513313241]
+[node name="MilitiaCountLabel" type="Label" parent="Control/UnitCount/HBoxContainer/VBoxContainer" unique_id=513313241]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_0i1j5")
@@ -186,7 +163,30 @@ grow_vertical = 2
 layout_mode = 2
 text = "Main Menu"
 
-[node name="PanelContainerUnitQueue" type="PanelContainer" parent="." unique_id=961466941]
+[node name="Minimap" type="SubViewportContainer" parent="Control" unique_id=432412868 node_paths=PackedStringArray("sub_viewport", "camera_minimap", "camera_rect")]
+layout_mode = 0
+offset_left = 1900.0
+offset_top = 913.0
+offset_right = 2498.0
+offset_bottom = 1279.0
+stretch = true
+script = ExtResource("8_0m4u7")
+sub_viewport = NodePath("SubViewport")
+camera_minimap = NodePath("SubViewport/CameraMinimap")
+camera_rect = NodePath("CameraRect")
+
+[node name="SubViewport" type="SubViewport" parent="Control/Minimap" unique_id=1716993114]
+handle_input_locally = false
+size = Vector2i(598, 366)
+render_target_update_mode = 4
+
+[node name="CameraMinimap" type="Camera2D" parent="Control/Minimap/SubViewport" unique_id=1782544262]
+zoom = Vector2(0.08, 0.08)
+
+[node name="CameraRect" type="Panel" parent="Control/Minimap" unique_id=2125525050]
+layout_mode = 2
+
+[node name="UnitQueue" type="PanelContainer" parent="." unique_id=961466941]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -195,8 +195,8 @@ offset_right = 33.125
 offset_bottom = 62.0
 grow_horizontal = 2
 
-[node name="HBoxUnitQueue" type="HBoxContainer" parent="PanelContainerUnitQueue" unique_id=608195196]
+[node name="HBoxUnitQueue" type="HBoxContainer" parent="UnitQueue" unique_id=608195196]
 layout_mode = 2
 
-[connection signal="pressed" from="Control/PanelContainer/HBoxContainer/CogIcon" to="." method="_on_cog_icon_pressed"]
+[connection signal="pressed" from="Control/Settings/HBoxContainer/CogIcon" to="." method="_on_cog_icon_pressed"]
 [connection signal="pressed" from="Control/CogMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

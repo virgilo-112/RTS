@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d4l3s4iv7tbc"]
 
 [ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/Unit.tscn" id="1_3q81k"]
-[ext_resource type="Script" uid="uid://crdmilotub6mw" path="res://scripts/monk.gd" id="2_lynu3"]
 [ext_resource type="Texture2D" uid="uid://cihjqoyw463cd" path="res://assets/Units/Blue Units/Monk/Heal.png" id="2_pa8bx"]
 [ext_resource type="Texture2D" uid="uid://s62b6g4mvxe4" path="res://assets/Units/Blue Units/Monk/Idle.png" id="3_lynu3"]
 [ext_resource type="Texture2D" uid="uid://dl53k7ycuw827" path="res://assets/Units/Blue Units/Monk/Run.png" id="4_ye332"]
@@ -172,8 +171,7 @@ animations = [{
 }]
 
 [node name="Monk" unique_id=1256312482 instance=ExtResource("1_3q81k")]
-script = ExtResource("2_lynu3")
-abilities = Array[String](["move"])
+script = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1951986490]
 position = Vector2(0, 5)

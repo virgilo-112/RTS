@@ -1,52 +1,94 @@
 extends CanvasLayer
 
-var owner_player : Player
 
-@onready var wood_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer/WoodLabel
-@onready var food_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer2/FoodLabel
-@onready var coin_label: Label = $Control/ResourcePanelContainer/VBoxContainer/HBoxContainer3/CoinLabel
-@onready var militia_count_label: Label = $Control/PanelContainer4/HBoxContainer/VBoxContainer/MilitiaCountLabel
-@onready var pawn_count_label: Label = $Control/PanelContainer4/HBoxContainer/VBoxContainer2/PawnCountLabel
-@onready var panel_container_unit_queue: PanelContainer = $PanelContainerUnitQueue
-@onready var h_box_unit_queue: HBoxContainer = $PanelContainerUnitQueue/HBoxUnitQueue
-@onready var cog_menu: PanelContainer = $Control/CogMenu
+# =================== parameters =================== #
+
+# --------- Player --------- #
+var player_id : int
+
+# --------- Menu UI --------- #
+@export var cog_menu: PanelContainer
+
+# --------- Resources Count --------- #
+@export var wood_label: Label
+@export var food_label: Label
+@export var coin_label: Label
+
+# --------- Unit Count --------- #
+@export var pawn_count_label: Label
+@export var militia_count_label: Label
+
+# --------- Queue --------- #
+@export var h_box_unit_queue: HBoxContainer
+@export var unit_queue: PanelContainer
 
 
+# =================== functions =================== #
 
 func _ready() -> void:
-	panel_container_unit_queue.visible = false
+	unit_queue.visible = false
 	cog_menu.visible = false
 
-func set_owner_player(player: Player) -> void:
-	owner_player = player
-	owner_player.gold_changed.connect(_on_gold_changed)
-	owner_player.wood_changed.connect(_on_wood_changed)
-	owner_player.food_changed.connect(_on_food_changed)
-	owner_player.pawn_count_changed.connect(_on_pawn_count_changed)
-	owner_player.militia_count_changed.connect(_on_militia_count_changed)
-	owner_player.unit_queued.connect(_on_unit_production_queued)
+# --------- Connect player and HUD --------- #
+
+func setup(player: Player) -> void:
+	player_id = player.player_id
+	player.gold_changed.connect(_on_gold_changed)
+	_on_gold_changed(player.gold)
+	player.wood_changed.connect(_on_wood_changed)
+	_on_wood_changed(player.wood)
+	player.food_changed.connect(_on_food_changed)
+	_on_food_changed(player.food)
+	player.pawn_count_changed.connect(_on_pawn_count_changed)
+	_on_pawn_count_changed(player.pawn_count)
+	player.militia_count_changed.connect(_on_militia_count_changed)
+	_on_militia_count_changed(player.militia_count)
+	player.unit_queued.connect(_on_unit_production_queued)
 	
+
+# --------- Resources count --------- #
+
 func _on_gold_changed(amount):
 	coin_label.text = str(amount)
+
 
 func _on_wood_changed(amount):
 	wood_label.text = str(amount)
 
+
 func _on_food_changed(amount):
 	food_label.text = str(amount)
+
+
+# --------- Units count --------- #
 
 func _on_pawn_count_changed(amount):
 	pawn_count_label.text = str(amount)
 
+
 func _on_militia_count_changed(amount):
 	militia_count_label.text = str(amount)
+
+
+# --------- Menu --------- #
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
+
+func _on_cog_icon_pressed() -> void:
+	cog_menu.visible = true
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+# --------- Queue --------- #
+
 func _on_unit_production_queued(unit_type: String, duration: int) -> void:
-	if panel_container_unit_queue.visible == false:
-		panel_container_unit_queue.visible = true
+	if unit_queue.visible == false:
+		unit_queue.visible = true
 	var queue_time := Timer.new()
 	queue_time.one_shot = true
 	queue_time.wait_time = duration
@@ -88,13 +130,4 @@ func _on_unit_production_queued(unit_type: String, duration: int) -> void:
 	queue_time.queue_free()
 	await get_tree().process_frame
 
-	panel_container_unit_queue.visible = h_box_unit_queue.get_child_count() > 0
-	
-
-
-func _on_cog_icon_pressed() -> void:
-	cog_menu.visible = true
-
-
-func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	unit_queue.visible = h_box_unit_queue.get_child_count() > 0
