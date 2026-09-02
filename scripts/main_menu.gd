@@ -13,7 +13,7 @@ func _on_host_game_pressed() -> void:
 # --------- Join game --------- #
 
 func _on_join_game_pressed() -> void:
-	NetworkManager.join_game("127.0.0.1")
+	NetworkManager.join_game("100.88.129.105")
 	
 	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 
