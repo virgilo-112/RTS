@@ -5414,7 +5414,7 @@ y_sort_enabled = true
 position = Vector2(-2863, 965)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1230836675]
-position = Vector2(3226, -1921)
+position = Vector2(-1203, 1062)
 
 [node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=818496019]
 position = Vector2(-2880, -1685)

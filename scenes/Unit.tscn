@@ -27,7 +27,7 @@ properties/4/path = NodePath(".:facing")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Unit" type="CharacterBody2D" unique_id=1256312482 node_paths=PackedStringArray("ui_unit", "data_container", "button_container", "selection_icon")]
+[node name="Unit" type="CharacterBody2D" unique_id=1256312482 node_paths=PackedStringArray("ui_unit", "data_container", "button_container", "selection_icon", "hp_label", "interaction_points")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 13
@@ -36,6 +36,8 @@ ui_unit = NodePath("UIUnit")
 data_container = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/DataContainer")
 button_container = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer")
 selection_icon = NodePath("SelectionIcon")
+hp_label = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")
+interaction_points = NodePath("InteractionPoints")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=398875827]
 position = Vector2(0, -7)
@@ -102,6 +104,14 @@ size_flags_horizontal = 8
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=950184620]
 replication_config = SubResource("SceneReplicationConfig_fqlnf")
+
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=911530671]
+
+[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=555780794]
+position = Vector2(-21, 0)
+
+[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=2076700523]
+position = Vector2(20, 0)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

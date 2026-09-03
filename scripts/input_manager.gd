@@ -65,6 +65,10 @@ func issue_command(target: Node2D, mouse_pos: Vector2) -> void:
 			if target is Building:
 				if unit.has_ability("build"):
 					GameManager.request_build.rpc_id(1, player_id, unit.get_path(), target.get_path())
+			if target is Unit:
+				if unit.has_ability("attack"):
+					print("target:"+ str(target))
+					GameManager.request_attack_unit.rpc_id(1, player_id, unit.get_path(), target.get_path())
 
 
 # --------- Selection tool --------- #

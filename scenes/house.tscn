@@ -54,7 +54,4 @@ icon = ExtResource("3_f74lx")
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="0" unique_id=2105599579]
 shape = SubResource("RectangleShape2D_bwc8c")
 
-[node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
-visible = true
-
 [connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

@@ -101,11 +101,6 @@ func reset_action():
 			stop_building()
 
 
-func cancel_current_command() -> void:
-	current_command = null
-	navigation_agent.target_position = global_position
-
-
 # --------- Animation --------- #
 
 func update_anim():

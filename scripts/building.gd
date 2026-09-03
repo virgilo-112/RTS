@@ -27,10 +27,15 @@ var building_sprite : Sprite2D
 @export var button_container: HBoxContainer
 @export var selection_icon: Sprite2D
 var is_selected: bool = false
+@export var hp_label: Label
+
 
 # --------- Produce unit --------- #
 @export var spawn: Marker2D
 
+
+@export var interaction_points: Node2D
+signal destroyed
 
 # =================== functions =================== #
 
@@ -114,6 +119,29 @@ func toggle_selection(value:bool, can_interact: bool):
 	if !under_construction :
 		ui_building.visible = value
 	button_container.visible = can_interact
+
+
+func take_damage(dmg: int):
+	var dmg_taken = min(dmg, hp)
+	hp -= dmg_taken
+	hp_label.text = ": "+var_to_str(hp)
+	if hp == 0 :
+		destroyed.emit()
+		queue_free()
+	return dmg_taken
+
+
+
+func get_closest_point(unit_pos):
+	var best = null
+	var best_distance = INF
+	for point in interaction_points.get_children():
+		var d = point.global_position.distance_to(unit_pos)
+		if d < best_distance :
+			best_distance = d
+			best = point
+	return best.global_position
+
 
 
 # --------- Visuals --------- #

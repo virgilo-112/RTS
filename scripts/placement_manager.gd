@@ -6,11 +6,7 @@ var player_id : int
 
 # --------- Build --------- #
 
-var buildings = {
-	"house": preload("res://scenes/house.tscn"),
-	"casern": preload("res://scenes/casern.tscn"),
-	"archery": preload("res://scenes/archery.tscn")
-}
+
 var building_scene: PackedScene
 var building_type: String
 
@@ -38,18 +34,19 @@ func _unhandled_input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			confirm_placement.rpc_id(1)
+			confirm_placement()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			cancel_placement()
 
 func setup(player: Player):
 	player_id = player.player_id
+
 # --------- Generate ghost --------- #
 
 func start_placement(type: String):
 	input_manager.set_enabled(false)
 	building_type = type
-	building_scene = buildings[type]
+	building_scene = GameManager.buildings[type]
 	is_placing = true
 
 	var building: Building = building_scene.instantiate()
@@ -70,26 +67,21 @@ func start_placement(type: String):
 
 # --------- Building placement --------- #
 
-@rpc("any_peer", "call_local")
 func confirm_placement():
-	if !multiplayer.is_server():
-		return
-	var target = get_global_mouse_position()
+	var target := get_global_mouse_position()
+
 	is_placing = false
 	ghost.queue_free()
 	ghost = null
 	input_manager.set_enabled(true)
-	var selected_pawns := []
-	
+
+	var selected_pawn_paths: Array[NodePath] = []
+
 	for object in input_manager.selected_objects:
-		if object is Pawn :
-			selected_pawns.append(object)
-	var owner_player : Player = GameManager.get_player(player_id)
-	owner_player.pay_building(building_type)
-	var new_building = GameManager.spawn_building(building_scene, target, owner_player, true)
-	
-	for pawn in selected_pawns:
-		pawn.assign_command(BuildCommand.new(new_building, target))
+		if object is Pawn:
+			selected_pawn_paths.append(object.get_path())
+
+	GameManager.request_placement.rpc_id(1, player_id, building_type, target, selected_pawn_paths)
 
 
 func cancel_placement():

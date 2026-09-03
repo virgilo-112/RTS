@@ -722,9 +722,8 @@ offset = Vector2(0, -30)
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=28085824]
 visible = false
 sprite_frames = SubResource("SpriteFrames_13qdw")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.18697135
 offset = Vector2(0, -30)
 
 [node name="BlackAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=824298540]

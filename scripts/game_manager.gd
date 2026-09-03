@@ -11,6 +11,11 @@ const UNIT_SCENES := {
 	"pawn": preload("res://scenes/pawn.tscn")
 }
 
+var buildings = {
+	"house": preload("res://scenes/house.tscn"),
+	"casern": preload("res://scenes/casern.tscn"),
+	"archery": preload("res://scenes/archery.tscn")
+}
 # --------- Buildings node container --------- #
 var building_container : Node2D
 
@@ -124,3 +129,47 @@ func request_build(player_id: int, unit_path: NodePath, target_path: NodePath) -
 	if unit.player_id != player_id :
 		return
 	unit.assign_command(BuildCommand.new(building, building.position))
+
+
+@rpc("any_peer", "call_local")
+func request_attack_unit(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var target := get_node(target_path) as Unit
+	if unit.player_id != player_id :
+		return
+	if target.get_owner_player().team_id == unit.get_owner_player().team_id:
+		return
+	unit.assign_command(AttackCommand.new(target))
+	print("is attacking")
+
+
+@rpc("any_peer", "call_local")
+func request_attack_building(player_id: int, unit_path: NodePath, target_path: NodePath) -> void :
+	if !multiplayer.is_server():
+		return
+	var unit := get_node(unit_path) as Unit
+	var target := get_node(target_path) as Building
+	if unit.player_id != player_id :
+		return
+	if target.get_owner_player().team_id == unit.get_owner_player().team_id:
+		return
+	unit.assign_command(AttackCommand.new(target))
+
+
+@rpc("any_peer", "call_local")
+func request_placement(player_id: int, type: String, target: Vector2, pawn_paths: Array[NodePath]) -> void:
+	if !multiplayer.is_server():
+		return
+	var owner_player: Player = GameManager.get_player(player_id)
+	var scene: PackedScene = buildings[type]
+	owner_player.pay_building(type)
+	var new_building = GameManager.spawn_building(scene, target, owner_player, true)
+	for pawn_path in pawn_paths:
+		var pawn := get_node(pawn_path) as Pawn
+		if pawn == null:
+			continue
+		if pawn.player_id != player_id:
+			continue
+		pawn.assign_command(BuildCommand.new(new_building, target))

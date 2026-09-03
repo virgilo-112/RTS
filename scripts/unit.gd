@@ -20,7 +20,8 @@ enum Action {
 	MINING,
 	CHOPING,
 	KNIFING,
-	BUILDING
+	BUILDING,
+	ATTACKING
 }
 @export var action: Action = Action.IDLE:
 	set(value):
@@ -46,9 +47,14 @@ var is_selected = false
 @export var data_container : VBoxContainer
 @export var button_container : HBoxContainer
 @export var selection_icon: Sprite2D
+@export var hp_label: Label
+
 # --------- Animation --------- #
 var animated_sprite : AnimatedSprite2D
 
+
+@export var interaction_points: Node2D
+signal destroyed
 
 # =================== functions =================== #
 
@@ -139,6 +145,31 @@ func reset_action():
 	pass
 
 
+func cancel_current_command() -> void:
+	current_command = null
+	navigation_agent.target_position = global_position
+
+
+func take_damage(dmg: int):
+	var dmg_taken = min(dmg, hp)
+	hp -= dmg_taken
+	hp_label.text = ": "+var_to_str(hp)
+	if hp == 0 :
+		destroyed.emit()
+		queue_free()
+	return dmg_taken
+
+func get_closest_point(unit_pos):
+	var best = null
+	var best_distance = INF
+	for point in interaction_points.get_children():
+		var d = point.global_position.distance_to(unit_pos)
+		if d < best_distance :
+			best_distance = d
+			best = point
+	return best.global_position
+
+	
 # --------- Selection --------- #
 
 func toggle_selection(value: bool, can_interact: bool):

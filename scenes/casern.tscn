@@ -54,6 +54,5 @@ layout_mode = 2
 icon = ExtResource("4_6l34y")
 
 [node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
-visible = true
 position = Vector2(0.99999905, -87)
 scale = Vector2(1.8575438, 1.8575438)

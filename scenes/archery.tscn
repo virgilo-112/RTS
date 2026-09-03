@@ -45,7 +45,6 @@ icon = ExtResource("3_0woum")
 position = Vector2(0, -81)
 
 [node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
-visible = true
 position = Vector2(-7.999998, -78)
 scale = Vector2(1.7229003, 1.7229003)
 

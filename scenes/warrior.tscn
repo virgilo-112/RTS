@@ -44,19 +44,19 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("3_bwxyh")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wc5ks"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hslil"]
 atlas = ExtResource("4_hqs1p")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8tj7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgprv"]
 atlas = ExtResource("4_hqs1p")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5f3y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnaix"]
 atlas = ExtResource("4_hqs1p")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2fkv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xylnh"]
 atlas = ExtResource("4_hqs1p")
 region = Rect2(576, 0, 192, 192)
 
@@ -154,26 +154,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_38v7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hslil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgprv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnaix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xylnh")
 }],
 "loop": 1,
-"name": &"Attack1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wc5ks")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8tj7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5f3y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t2fkv")
-}],
-"loop": 1,
-"name": &"Attack2",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -268,19 +263,19 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("8_pow82")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywqte"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_65q7y"]
 atlas = ExtResource("9_kwvqs")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34q7n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7e71"]
 atlas = ExtResource("9_kwvqs")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s52nu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg4uq"]
 atlas = ExtResource("9_kwvqs")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_03psi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u37hl"]
 atlas = ExtResource("9_kwvqs")
 region = Rect2(576, 0, 192, 192)
 
@@ -378,26 +373,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y53p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65q7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7e71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg4uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u37hl")
 }],
 "loop": 1,
-"name": &"Attack1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywqte")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_34q7n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s52nu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_03psi")
-}],
-"loop": 1,
-"name": &"Attack2",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -492,19 +482,19 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("13_irh1o")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hc4v5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywqte"]
 atlas = ExtResource("14_i3guq")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4v6gv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_34q7n"]
 atlas = ExtResource("14_i3guq")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6x6d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s52nu"]
 atlas = ExtResource("14_i3guq")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hd6tv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_03psi"]
 atlas = ExtResource("14_i3guq")
 region = Rect2(576, 0, 192, 192)
 
@@ -602,26 +592,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r7a5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywqte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34q7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s52nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03psi")
 }],
 "loop": 1,
-"name": &"Attack1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hc4v5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4v6gv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6x6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hd6tv")
-}],
-"loop": 1,
-"name": &"Attack2",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -716,19 +701,19 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("18_pg4uq")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7jhd7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc4v5"]
 atlas = ExtResource("19_u37hl")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1n6td"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6gv"]
 atlas = ExtResource("19_u37hl")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_upycm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6x6d"]
 atlas = ExtResource("19_u37hl")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bff4m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd6tv"]
 atlas = ExtResource("19_u37hl")
 region = Rect2(576, 0, 192, 192)
 
@@ -826,26 +811,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kl1uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc4v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v6gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6x6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd6tv")
 }],
 "loop": 1,
-"name": &"Attack1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7jhd7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1n6td")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_upycm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bff4m")
-}],
-"loop": 1,
-"name": &"Attack2",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -940,19 +920,19 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("8_8m2sp")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65q7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jhd7"]
 atlas = ExtResource("9_mmtbg")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d7e71"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n6td"]
 atlas = ExtResource("9_mmtbg")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pg4uq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_upycm"]
 atlas = ExtResource("9_mmtbg")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u37hl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bff4m"]
 atlas = ExtResource("9_mmtbg")
 region = Rect2(576, 0, 192, 192)
 
@@ -1050,26 +1030,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ycyxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jhd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n6td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upycm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bff4m")
 }],
 "loop": 1,
-"name": &"Attack1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_65q7y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d7e71")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pg4uq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u37hl")
-}],
-"loop": 1,
-"name": &"Attack2",
+"name": &"Attack",
 "speed": 10.0
 }, {
 "frames": [{
@@ -1155,36 +1130,43 @@ abilities = Array[String](["move", "attack"])
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1548176055]
 visible = false
 sprite_frames = SubResource("SpriteFrames_64u8w")
-animation = &"Guard"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.78720737
+frame_progress = 0.050255124
 offset = Vector2(0, -30)
 
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=1955923670]
 visible = false
 sprite_frames = SubResource("SpriteFrames_13qdw")
-animation = &"Attack1"
+animation = &"Attack"
 autoplay = "Idle"
+frame_progress = 0.18669337
 offset = Vector2(0, -30)
 
 [node name="PurpleAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=913007600]
 visible = false
 sprite_frames = SubResource("SpriteFrames_njqwk")
-animation = &"Run"
+animation = &"Attack"
 autoplay = "Idle"
+frame_progress = 0.89461166
 offset = Vector2(0, -30)
 
 [node name="BlackAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7" unique_id=1387318295]
 visible = false
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"Attack1"
+animation = &"Attack"
 autoplay = "Idle"
+frame_progress = 0.21078636
 offset = Vector2(0, -30)
 
 [node name="RedAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="8" unique_id=374673346]
 visible = false
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"Guard"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.88397557
+frame_progress = 0.03191716
 offset = Vector2(0, -30)
+
+[node name="AttackTimer" type="Timer" parent="." index="11" unique_id=1269687436]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
