@@ -2,23 +2,32 @@ extends Unit
 
 
 # =================== functions =================== #
-
+func _ready() -> void:
+	super()
+	animated_sprite.frame_changed.connect(_on_attack_frame_changed)
 
 func start_attack(enemy : Node2D):
 	action = Action.ATTACKING
 	if !enemy.destroyed.is_connected(stop_attacking):
 		enemy.destroyed.connect(stop_attacking)
-	$AttackTimer.start()
 
 
-func _on_attack_timer_timeout() -> void:
-	if current_command is AttackCommand:
-		current_command.on_attack_tick(self)
+func _on_attack_frame_changed() -> void:
+	if action != Action.ATTACKING:
+		return
+
+	if current_command == null:
+		return
+
+	if animated_sprite.animation != "Attack":
+		return
+
+	if animated_sprite.frame == 2 or animated_sprite.frame == 6:
+		current_command.deal_damage()
 
 
 func stop_attacking():
 	action = Action.IDLE
-	$AttackTimer.stop()
 	update_anim()
 
 

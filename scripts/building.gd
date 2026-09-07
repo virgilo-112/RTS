@@ -13,7 +13,7 @@ class_name Building
 
 # --------- Build --------- #
 var builders : Array[Pawn] = []
-var under_construction : bool = false
+@export var under_construction : bool = false
 @export var build_time := 15.0
 @export var construction_progress_bar: ProgressBar
 var build_timer := 0.0
@@ -47,7 +47,7 @@ func _ready() -> void:
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
 	set_color()
-
+	
 
 func _process(delta: float) -> void:
 	if not under_construction:

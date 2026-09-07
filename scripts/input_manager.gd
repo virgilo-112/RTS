@@ -42,6 +42,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func issue_command(target: Node2D, mouse_pos: Vector2) -> void:
 	for object in selected_objects:
+		if !is_instance_valid(object):
+			return
 		if not object.can_receive_command():
 			continue
 		if object is Unit :

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3ojixovxl1lo"]
 
-[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/Unit.tscn" id="1_orquw"]
+[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/unit.tscn" id="1_orquw"]
 [ext_resource type="Texture2D" uid="uid://bqp518mfe77aw" path="res://assets/Units/Blue Units/Archer/Archer_Idle.png" id="2_cctdm"]
 [ext_resource type="Script" uid="uid://bglufig1ruldn" path="res://scripts/archer.gd" id="2_ejvcm"]
 [ext_resource type="Texture2D" uid="uid://d2nv3hhe0fx4" path="res://assets/Units/Blue Units/Archer/Archer_Run.png" id="3_ejvcm"]
@@ -738,10 +738,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Archer" unique_id=1256312482 node_paths=PackedStringArray("selection_icon") instance=ExtResource("1_orquw")]
+[node name="Archer" unique_id=1256312482 instance=ExtResource("1_orquw")]
 script = ExtResource("2_ejvcm")
 abilities = Array[String](["move", "attack"])
-selection_icon = NodePath("SelectionIcon")
 
 [node name="NavigationAgent2D" parent="." index="1" unique_id=805899648]
 radius = 20.0

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjed7rq65fw0g"]
 
 [ext_resource type="Texture2D" uid="uid://rdamx1fspvhs" path="res://assets/Units/Blue Units/Pawn/Pawn_Idle.png" id="1_ccfo0"]
-[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/Unit.tscn" id="1_eqwak"]
+[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/unit.tscn" id="1_eqwak"]
 [ext_resource type="Texture2D" uid="uid://6fn2w3tgqwap" path="res://assets/Units/Blue Units/Pawn/Pawn_Run.png" id="2_eqwak"]
 [ext_resource type="Script" uid="uid://dttl8bl5n80tl" path="res://scripts/pawn.gd" id="2_w61pg"]
 [ext_resource type="Texture2D" uid="uid://sh7u48btyrwo" path="res://assets/Units/Blue Units/Pawn/Pawn_Idle Axe.png" id="3_4hrlu"]
@@ -2569,6 +2569,7 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
+hp = 1000
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
@@ -2649,8 +2650,8 @@ icon = ExtResource("24_ldq0g")
 layout_mode = 2
 icon = ExtResource("25_85cqe")
 
-[connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
 [connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]
 [connection signal="timeout" from="ChopingTimer" to="." method="_on_choping_timer_timeout"]
 [connection signal="timeout" from="KnifingTimer" to="." method="_on_knifing_timer_timeout"]
 [connection signal="timeout" from="BuildingTimer" to="." method="_on_building_timer_timeout"]

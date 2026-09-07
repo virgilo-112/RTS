@@ -6,7 +6,7 @@ class_name Unit
 # =================== parameters =================== #
 
 # --------- Unit data --------- #
-@export var hp: int = 100
+@export var hp: int = 1000
 
 # --------- Player --------- #
 @export var player_id : int
@@ -69,15 +69,16 @@ func _ready():
 	navigation_agent.target_desired_distance = 30
 	navigation_agent.avoidance_priority = 0.5
 	$SelectionIcon.visible = false
+	$HealthBar.max_value = hp
+	$HealthBar.value = $HealthBar.max_value
 	set_color()
-	print(
-	name,
-	" pos=", position,
-	" z=", z_index,
-	" relative=", z_as_relative)
-	
-func _physics_process(_delta: float) -> void:
+
+
+func _physics_process(delta: float) -> void:
 	move()
+	if current_command != null:
+		current_command.update(self, delta)
+
 
 func can_receive_command():
 	return true
@@ -154,6 +155,7 @@ func take_damage(dmg: int):
 	var dmg_taken = min(dmg, hp)
 	hp -= dmg_taken
 	hp_label.text = ": "+var_to_str(hp)
+	$HealthBar.value = hp
 	if hp == 0 :
 		destroyed.emit()
 		queue_free()

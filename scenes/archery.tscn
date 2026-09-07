@@ -48,4 +48,8 @@ position = Vector2(0, -81)
 position = Vector2(-7.999998, -78)
 scale = Vector2(1.7229003, 1.7229003)
 
+[node name="ConstructionProgressBar" parent="." index="9" unique_id=1363877531]
+offset_top = -190.0
+offset_bottom = -183.94495
+
 [connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/ArcherButton" to="." method="_on_archer_button_pressed"]

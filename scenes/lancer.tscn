@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5slc284xtkuu"]
 
-[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/Unit.tscn" id="1_ho7g4"]
+[ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/unit.tscn" id="1_ho7g4"]
 [ext_resource type="Script" uid="uid://hgjuglxicdk7" path="res://scripts/lancer.gd" id="2_5etia"]
 [ext_resource type="Texture2D" uid="uid://bah4848ysg4vb" path="res://assets/Units/Blue Units/Lancer/Lancer_Idle.png" id="2_smn33"]
 [ext_resource type="Texture2D" uid="uid://ctxbepb7gv6n8" path="res://assets/Units/Blue Units/Lancer/Lancer_Run.png" id="3_5etia"]
