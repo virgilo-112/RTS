@@ -113,11 +113,13 @@ func finish_construction() -> void:
 func request_unit_production(unit_type: String) -> void:
 	if !multiplayer.is_server():
 		return
-	# Vérifications côté serveur
-	if !get_owner_player().is_unit_affordable(unit_type):
+	var player := get_owner_player()
+	var queue_time := 5.0
+	if !player.is_unit_affordable(unit_type):
 		return
-	get_owner_player().pay_unit(unit_type)
-	await get_tree().create_timer(5.0).timeout
+	player.pay_unit(unit_type)
+	player.notify_unit_queued.rpc_id(player.peer_id, unit_type, queue_time)
+	await get_tree().create_timer(queue_time).timeout
 	GameManager.spawn_unit(unit_type, spawn.global_position, get_owner_player())
 
 # --------- Selection - UI --------- #

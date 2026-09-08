@@ -184,30 +184,29 @@ func pay_building(building_scene: String):
 			wood -= archery_price
 			wood_changed.emit(wood)
 
+
+@rpc("authority", "call_local")
+func notify_unit_queued(unit_type: String, duration: int) -> void:
+	unit_queued.emit(unit_type, duration)
+
+
 func pay_unit(unit_type : String):
 	match unit_type:
 		"pawn":
 			food -= pawn_food_price
 			food_changed.emit(food)
-			unit_queued.emit("pawn", queue_time)
 
 		"lancer":
 			food -= lancer_food_price
 			food_changed.emit(food)
 			gold -= lancer_gold_price
-			gold_changed.emit(gold)
-			unit_queued.emit("lancer", queue_time)
-			
+
 		"warrior":
 			food -= warrior_food_price
 			food_changed.emit(food)
 			gold -= warrior_gold_price
-			gold_changed.emit(gold)
-			unit_queued.emit("warrior", queue_time)
-			
+
 		"archer":
 			food -= archer_food_price
 			food_changed.emit(food)
 			gold -= archer_gold_price
-			gold_changed.emit(gold)
-			unit_queued.emit("archer", queue_time)

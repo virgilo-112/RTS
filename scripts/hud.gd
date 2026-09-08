@@ -44,6 +44,7 @@ func setup(player: Player) -> void:
 	player.militia_count_changed.connect(_on_militia_count_changed)
 	_on_militia_count_changed(player.militia_count)
 	player.unit_queued.connect(_on_unit_production_queued)
+	print("signal connected")
 	
 
 # --------- Resources count --------- #
@@ -87,6 +88,7 @@ func _on_main_menu_button_pressed() -> void:
 # --------- Queue --------- #
 
 func _on_unit_production_queued(unit_type: String, duration: int) -> void:
+	print("signal received")
 	if unit_queue.visible == false:
 		unit_queue.visible = true
 	var queue_time := Timer.new()
