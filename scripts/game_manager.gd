@@ -70,8 +70,8 @@ func spawn_building(building_scene: PackedScene, placement_position: Vector2, pl
 	next_building_id += 1
 	building.global_position = placement_position
 	building.player_id = player.player_id
+	building.under_construction = under_construction
 	building_container.add_child(building, true)
-	building.set_construction_status(under_construction)
 	return building
 
 

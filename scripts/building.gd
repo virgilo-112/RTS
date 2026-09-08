@@ -13,6 +13,7 @@ class_name Building
 
 # --------- Build --------- #
 var builders : Array[Pawn] = []
+@export var builder_count : int = 0
 @export var under_construction : bool = false
 @export var build_time := 15.0
 @export var construction_progress_bar: ProgressBar
@@ -47,20 +48,24 @@ func _ready() -> void:
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
 	set_color()
+	set_construction_status(under_construction)
 	
 
 func _process(delta: float) -> void:
 	if not under_construction:
 		return
-	if builders.is_empty():
+
+	if builder_count == 0:
 		return
-	build_timer -= delta * builders.size()
-	construction_progress_bar.value = abs(build_timer - build_time)
+
+	build_timer -= delta * builder_count
+
 	if build_timer <= 0.0:
 		build_timer = 0.0
 		finish_construction()
-		construction_progress_bar.queue_free()
-		await get_tree().process_frame
+		return
+
+	construction_progress_bar.value = abs(build_timer - build_time)
 
 
 func can_receive_command():
@@ -83,16 +88,20 @@ func add_builder(pawn: Pawn) -> void:
 	if pawn in builders:
 		return
 	builders.append(pawn)
+	builder_count = builders.size()
 
 
 func remove_builder(pawn: Pawn) -> void:
 	if pawn not in builders:
 		return
 	builders.erase(pawn)
+	builder_count = builders.size()
 
-
+	# reste de ta logique...
 func finish_construction() -> void:
 	under_construction = false
+	if is_instance_valid(construction_progress_bar):
+		construction_progress_bar.queue_free()
 	for pawn in builders:
 		pawn.stop_building()
 	builders.clear()

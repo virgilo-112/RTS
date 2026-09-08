@@ -22,6 +22,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath(".:under_construction")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:builder_count")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [node name="Building" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "hp_label", "spawn")]
 y_sort_enabled = true
