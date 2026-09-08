@@ -1123,16 +1123,21 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Warrior" unique_id=1256312482 instance=ExtResource("1_fvbna")]
+[node name="Warrior" unique_id=1256312482 node_paths=PackedStringArray("attack_area") instance=ExtResource("1_fvbna")]
 script = ExtResource("2_kkak1")
 abilities = Array[String](["move", "attack"])
+attack_area = NodePath("AttackArea")
+
+[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
+visible = false
 
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1548176055]
+visible = false
+position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_64u8w")
 animation = &"Attack"
 autoplay = "Idle"
-frame = 7
-frame_progress = 0.799562
+frame_progress = 0.26066107
 offset = Vector2(0, -30)
 
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=1955923670]
@@ -1167,8 +1172,13 @@ autoplay = "Idle"
 frame_progress = 0.03191716
 offset = Vector2(0, -30)
 
-[node name="HealthBar" parent="." index="12" unique_id=66763620]
-z_index = 5
-z_as_relative = false
+[node name="HealthBar" parent="." index="11" unique_id=66763620]
 offset_top = -83.0
 offset_bottom = -79.0
+
+[node name="AttackArea" type="Area2D" parent="." index="12" unique_id=112322405]
+position = Vector2(-3, 24)
+collision_mask = 4
+
+[node name="AttackRange" type="CollisionPolygon2D" parent="AttackArea" index="0" unique_id=549404588]
+polygon = PackedVector2Array(0, 0, 37, -9, 62, -43, 54, -75, 21, -91, 48, -61, 39, -32, 12, -11, -9.819244, -8.888458, -39, -32, -48, -61, -21, -91, -21, -91, -54, -75, -62, -43, -37, -9)

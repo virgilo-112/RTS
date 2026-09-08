@@ -6,7 +6,7 @@ class_name Unit
 # =================== parameters =================== #
 
 # --------- Unit data --------- #
-@export var hp: int = 1000
+@export var hp: int = 500
 
 # --------- Player --------- #
 @export var player_id : int
@@ -51,9 +51,7 @@ var is_selected = false
 
 # --------- Animation --------- #
 var animated_sprite : AnimatedSprite2D
-
-
-@export var interaction_points: Node2D
+@export var attack_area: Area2D
 signal destroyed
 
 # =================== functions =================== #
@@ -83,6 +81,10 @@ func _physics_process(delta: float) -> void:
 func can_receive_command():
 	return true
 
+
+func stop_moving():
+	navigation_agent.target_position = global_position
+	velocity = Vector2.ZERO
 
 # --------- Get Player --------- #
 
@@ -160,16 +162,6 @@ func take_damage(dmg: int):
 		destroyed.emit()
 		queue_free()
 	return dmg_taken
-
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
 
 	
 # --------- Selection --------- #

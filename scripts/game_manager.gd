@@ -142,7 +142,7 @@ func request_attack_unit(player_id: int, unit_path: NodePath, target_path: NodeP
 	if target.get_owner_player().team_id == unit.get_owner_player().team_id:
 		return
 	unit.assign_command(AttackCommand.new(target))
-	print("is attacking")
+
 
 
 @rpc("any_peer", "call_local")

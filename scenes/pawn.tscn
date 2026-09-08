@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cwt5ggvjbwe4f" path="res://assets/Units/Blue Units/Pawn/Pawn_Interact Pickaxe.png" id="5_otoq7"]
 [ext_resource type="Texture2D" uid="uid://w30vhiartg7j" path="res://assets/Units/Red Units/Pawn/Pawn_Run Axe.png" id="5_se7s4"]
 [ext_resource type="Texture2D" uid="uid://bd72vpa5hehtj" path="res://assets/Units/Blue Units/Pawn/Pawn_Run Axe.png" id="5_yhwah"]
+[ext_resource type="Texture2D" uid="uid://bjrfv4l50rth8" path="res://assets/Particle FX/Dust_02.png" id="6_7uuo2"]
 [ext_resource type="Texture2D" uid="uid://nm0gjp5ikfuf" path="res://assets/Units/Red Units/Pawn/Pawn_Idle Gold.png" id="6_h5pfm"]
 [ext_resource type="Texture2D" uid="uid://dvle4bs85kvr1" path="res://assets/Units/Blue Units/Pawn/Pawn_Run Pickaxe.png" id="6_vvra3"]
 [ext_resource type="Texture2D" uid="uid://bqm2sshc75k6r" path="res://assets/Units/Red Units/Pawn/Pawn_Run Gold.png" id="7_un8l5"]
@@ -138,6 +139,46 @@ region = Rect2(768, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6w6d3"]
 atlas = ExtResource("5_yhwah")
 region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuaxp"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0u7k"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ths1"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlfrf"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l4bh"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqnvk"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83fic"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlif3"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04tjs"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qstm"]
+atlas = ExtResource("6_7uuo2")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iayjo"]
 atlas = ExtResource("8_85cqe")
@@ -490,6 +531,41 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Axe_Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
 "speed": 10.0
 }, {
 "frames": [{
@@ -914,6 +990,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ctyen")
 }, {
 "duration": 1.0,
@@ -1178,6 +1289,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_d0e3m")
 }, {
 "duration": 1.0,
@@ -1438,6 +1584,41 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Axe_Interact",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
 "speed": 10.0
 }, {
 "frames": [{
@@ -2150,6 +2331,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j4ypq")
 }, {
 "duration": 1.0,
@@ -2569,7 +2785,6 @@ animations = [{
 
 [node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
-hp = 1000
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
@@ -2583,28 +2798,28 @@ z_as_relative = false
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=359465923]
 visible = false
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"Idle"
+animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
 [node name="PurpleAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=1048379819]
 visible = false
 sprite_frames = SubResource("SpriteFrames_13qdw")
-animation = &"Pickaxe_Interact"
+animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
 [node name="BlackAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=213485476]
 visible = false
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"Run"
+animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7" unique_id=1037822867]
 visible = false
 sprite_frames = SubResource("SpriteFrames_njqwk")
-animation = &"Run"
+animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
@@ -2612,9 +2827,8 @@ offset = Vector2(0, -30)
 visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_w61pg")
-animation = &"Idle"
+animation = &"Death_Poof"
 autoplay = "Idle"
-frame_progress = 0.080267526
 offset = Vector2(0, -30)
 
 [node name="MiningTimer" type="Timer" parent="." index="9" unique_id=1796811755]

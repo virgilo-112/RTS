@@ -40,7 +40,7 @@ data_container = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/DataCon
 button_container = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer")
 selection_icon = NodePath("SelectionIcon")
 hp_label = NodePath("UIUnit/Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")
-interaction_points = NodePath("InteractionPoints")
+interaction_points = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=398875827]
 position = Vector2(0, -7)
@@ -56,6 +56,7 @@ avoidance_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect" unique_id=130369885]
 position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_eqwak")
+debug_color = Color(0, 0.64705884, 0.27058825, 0.41960785)
 
 [node name="SelectionIcon" type="Sprite2D" parent="." unique_id=193086596]
 z_index = 5
@@ -107,17 +108,6 @@ size_flags_horizontal = 8
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=950184620]
 replication_config = SubResource("SceneReplicationConfig_fqlnf")
-
-[node name="InteractionPoints" type="Node2D" parent="." unique_id=911530671]
-
-[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=555780794]
-position = Vector2(-21, 0)
-
-[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=2076700523]
-position = Vector2(20, 0)
-
-[node name="N" type="Marker2D" parent="InteractionPoints" unique_id=1071742108]
-position = Vector2(0, -57)
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=66763620]
 z_index = 5

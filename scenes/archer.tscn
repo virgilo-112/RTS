@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://kb4mkivev3mv" path="res://scenes/unit.tscn" id="1_orquw"]
 [ext_resource type="Texture2D" uid="uid://bqp518mfe77aw" path="res://assets/Units/Blue Units/Archer/Archer_Idle.png" id="2_cctdm"]
 [ext_resource type="Script" uid="uid://bglufig1ruldn" path="res://scripts/archer.gd" id="2_ejvcm"]
+[ext_resource type="Texture2D" uid="uid://bjrfv4l50rth8" path="res://assets/Particle FX/Dust_02.png" id="3_3krgg"]
 [ext_resource type="Texture2D" uid="uid://d2nv3hhe0fx4" path="res://assets/Units/Blue Units/Archer/Archer_Run.png" id="3_ejvcm"]
 [ext_resource type="Texture2D" uid="uid://dhskdeoo1y5pg" path="res://assets/Units/Blue Units/Archer/Archer_Shoot.png" id="5_ejvcm"]
 [ext_resource type="Texture2D" uid="uid://ckiyoi1852g50" path="res://assets/Units/Red Units/Archer/Archer_Idle.png" id="6_d71b8"]
@@ -17,6 +18,46 @@
 [ext_resource type="Texture2D" uid="uid://cdd6n4abmpoxc" path="res://assets/Units/Yellow Units/Archer/Archer_Idle.png" id="12_t7ncp"]
 [ext_resource type="Texture2D" uid="uid://ce6su8ws1l73x" path="res://assets/Units/Yellow Units/Archer/Archer_Run.png" id="13_qh5tp"]
 [ext_resource type="Texture2D" uid="uid://gepkevunp8ng" path="res://assets/Units/Yellow Units/Archer/Archer_Shoot.png" id="14_swy27"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuaxp"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0u7k"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ths1"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlfrf"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l4bh"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqnvk"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83fic"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlif3"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04tjs"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qstm"]
+atlas = ExtResource("3_3krgg")
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c85qa"]
 atlas = ExtResource("2_cctdm")
@@ -92,6 +133,41 @@ region = Rect2(1344, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gnfv7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c85qa")
@@ -238,6 +314,41 @@ region = Rect2(1344, 0, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6i0ur")
 }, {
 "duration": 1.0,
@@ -380,6 +491,41 @@ region = Rect2(1344, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b1lj4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ikhyn")
@@ -526,6 +672,41 @@ region = Rect2(1344, 0, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ljxnq")
 }, {
 "duration": 1.0,
@@ -670,6 +851,41 @@ region = Rect2(1344, 0, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yuaxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0u7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ths1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlfrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l4bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqnvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83fic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04tjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qstm")
+}],
+"loop": 0,
+"name": &"Death_Poof",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qh5tp")
 }, {
 "duration": 1.0,
@@ -749,38 +965,34 @@ neighbor_distance = 60.0
 [node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1723388655]
 visible = false
 sprite_frames = SubResource("SpriteFrames_gnfv7")
-animation = &"Idle"
+animation = &"Death_Poof"
 autoplay = "Idle"
-frame_progress = 0.70386803
 offset = Vector2(0, -30)
 
 [node name="PurpleAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=323294432]
 visible = false
 sprite_frames = SubResource("SpriteFrames_13qdw")
-animation = &"Shoot"
+animation = &"Death_Poof"
 autoplay = "Idle"
-frame_progress = 0.7298095
 offset = Vector2(0, -30)
 
 [node name="BlackAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6" unique_id=975523357]
 visible = false
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"Shoot"
+animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7" unique_id=2115345002]
 visible = false
 sprite_frames = SubResource("SpriteFrames_njqwk")
-animation = &"Shoot"
+animation = &"Death_Poof"
 autoplay = "Idle"
-frame_progress = 0.53719
 offset = Vector2(0, -30)
 
 [node name="RedAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="8" unique_id=142360111]
 visible = false
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"Idle"
+animation = &"Death_Poof"
 autoplay = "Idle"
-frame_progress = 0.93827367
 offset = Vector2(0, -30)
