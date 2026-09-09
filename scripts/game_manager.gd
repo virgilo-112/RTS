@@ -72,6 +72,8 @@ func spawn_building(building_scene: PackedScene, placement_position: Vector2, pl
 	building.player_id = player.player_id
 	building.under_construction = under_construction
 	building_container.add_child(building, true)
+	if under_construction:
+		building.call_deferred("notify_construction_status")
 	return building
 
 
@@ -126,6 +128,8 @@ func request_build(player_id: int, unit_path: NodePath, target_path: NodePath) -
 		return
 	var unit := get_node(unit_path) as Unit
 	var building := get_node(target_path) as Building
+	if building.under_construction == false :
+		return
 	if unit.player_id != player_id :
 		return
 	unit.assign_command(BuildCommand.new(building, building.position))

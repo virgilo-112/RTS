@@ -29,7 +29,7 @@ var building_sprite : Sprite2D
 @export var selection_icon: Sprite2D
 var is_selected: bool = false
 @export var hp_label: Label
-
+var peer : int
 
 # --------- Produce unit --------- #
 @export var spawn: Marker2D
@@ -47,8 +47,8 @@ func _ready() -> void:
 	construction_progress_bar.max_value = build_time
 	construction_progress_bar.value = 0
 	construction_progress_bar.show_percentage = false
+	construction_progress_bar.visible = false
 	set_color()
-	set_construction_status(under_construction)
 	
 
 func _process(delta: float) -> void:
@@ -77,6 +77,13 @@ func get_owner_player() -> Player:
 
 # --------- Construction state --------- #
 
+func notify_construction_status() -> void:
+	var player := GameManager.get_player(player_id)
+	if player == null:
+		return
+	set_construction_status.rpc_id(player.peer_id, under_construction)
+
+@rpc("any_peer", "call_local")
 func set_construction_status(working : bool):
 	under_construction = working
 	construction_progress_bar.visible = under_construction
@@ -140,19 +147,6 @@ func take_damage(dmg: int):
 		destroyed.emit()
 		queue_free()
 	return dmg_taken
-
-
-
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
-
 
 
 # --------- Visuals --------- #

@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ch4yw3mfr0vjd" path="res://assets/Buildings/Black Buildings/Archery.png" id="5_cxjy2"]
 [ext_resource type="Texture2D" uid="uid://c5o2en101xiqx" path="res://assets/Buildings/Purple Buildings/Archery.png" id="6_akqfd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq1ve"]
+size = Vector2(148, 80.5)
+
 [node name="Archery" unique_id=1028856893 instance=ExtResource("1_nq1ve")]
 script = ExtResource("1_8e86i")
 
@@ -36,6 +39,10 @@ offset = Vector2(0, -104)
 visible = false
 texture = ExtResource("6_akqfd")
 offset = Vector2(0, -104)
+
+[node name="CollisionShape2D" parent="." index="5" unique_id=772849535]
+position = Vector2(0, -40.75)
+shape = SubResource("RectangleShape2D_nq1ve")
 
 [node name="ArcherButton" type="Button" parent="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(174938596) index="0" unique_id=818920996]
 layout_mode = 2
