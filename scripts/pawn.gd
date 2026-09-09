@@ -5,6 +5,10 @@ class_name Pawn
 # =================== parameters =================== #
 
 # --------- Action --------- #
+@export var knife_area : Area2D
+@export var hammer_area : Area2D
+@export var pickaxe_area : Area2D
+@export var axe_area : Area2D
 
 var current_building : Building = null
 
@@ -17,6 +21,7 @@ func start_building(building_instance, _target: Vector2):
 	action = Action.BUILDING
 	building_instance.add_builder(self)
 	current_building = building_instance
+
 
 
 func stop_building() -> void:
@@ -34,6 +39,7 @@ func start_mining(stone: GoldStone):
 	if !stone.depleted.is_connected(stop_mining):
 		stone.depleted.connect(stop_mining)
 	$MiningTimer.start()
+	print("start mining")
 
 
 func _on_mining_timer_timeout() -> void:

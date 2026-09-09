@@ -194,7 +194,7 @@ properties/1/path = NodePath("UISheep/Control/PanelContainer/HBoxContainer/FoodC
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Sheep" type="CharacterBody2D" unique_id=279528964 node_paths=PackedStringArray("selection_icon", "ui_sheep", "food_count", "interaction_points")]
+[node name="Sheep" type="CharacterBody2D" unique_id=279528964 node_paths=PackedStringArray("selection_icon", "ui_sheep", "food_count")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -202,7 +202,6 @@ script = ExtResource("1_55m3e")
 selection_icon = NodePath("SelectionArea/SelectionIcon")
 ui_sheep = NodePath("UISheep")
 food_count = NodePath("UISheep/Control/PanelContainer/HBoxContainer/FoodCount")
-interaction_points = NodePath("InteractionPoints")
 food_quantity = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078052094]
@@ -220,14 +219,6 @@ offset = Vector2(0, -11)
 [node name="Timer" type="Timer" parent="." unique_id=679632084]
 wait_time = 2.0
 autostart = true
-
-[node name="InteractionPoints" type="Node2D" parent="." unique_id=1926679350]
-
-[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1195912423]
-position = Vector2(-26, -4)
-
-[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=222700718]
-position = Vector2(26, -5)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=1319957493]
 collision_layer = 4

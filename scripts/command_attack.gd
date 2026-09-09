@@ -25,7 +25,7 @@ func update(unit, _delta):
 		unit.cancel_current_command()
 		return
 
-	if unit.attack_area.get_overlapping_bodies().has(enemy):
+	if unit.attack_area.overlaps_body(enemy):
 		unit.stop_moving()
 		return
 

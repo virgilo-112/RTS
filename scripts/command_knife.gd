@@ -9,8 +9,19 @@ func _init(target):
 func start(unit):
 	if not unit.has_ability("knife"):
 		return
-	unit.set_destination(sheep.get_closest_point(unit.global_position))
+	unit.set_destination(sheep.global_position)
 	unit.reset_action()
+
+
+func update(unit, _delta):
+	if !is_instance_valid(sheep):
+		unit.cancel_current_command()
+		return
+
+	if unit.knife_area.overlaps_body(sheep):
+		unit.stop_moving()
+		return
+
 
 func on_arrived(unit):
 	unit.start_knifing(sheep)

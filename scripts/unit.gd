@@ -83,8 +83,11 @@ func can_receive_command():
 
 
 func stop_moving():
-	navigation_agent.target_position = global_position
-	velocity = Vector2.ZERO
+	if navigation_agent.target_position != global_position :
+		navigation_agent.target_position = global_position
+		velocity = Vector2.ZERO
+	else :
+		return
 
 # --------- Get Player --------- #
 

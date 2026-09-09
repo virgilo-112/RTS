@@ -9,8 +9,19 @@ func _init(target):
 func start(unit):
 	if not unit.has_ability("chop"):
 		return
-	unit.set_destination(tree.get_closest_point(unit.global_position))
+	unit.set_destination(tree.global_position)
 	unit.reset_action()
+
+
+func update(unit, _delta):
+	if !is_instance_valid(tree):
+		unit.cancel_current_command()
+		return
+
+	if unit.axe_area.overlaps_body(tree):
+		unit.stop_moving()
+		return
+
 
 func on_arrived(unit):
 	unit.start_choping(tree)

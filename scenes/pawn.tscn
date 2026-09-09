@@ -2783,8 +2783,24 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Pawn" unique_id=1256312482 instance=ExtResource("1_eqwak")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
+radius = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13qdw"]
+radius = 21.213203
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(118, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1lj4"]
+radius = 41.0
+
+[node name="Pawn" unique_id=1256312482 node_paths=PackedStringArray("knife_area", "hammer_area", "pickaxe_area", "axe_area") instance=ExtResource("1_eqwak")]
 script = ExtResource("2_w61pg")
+knife_area = NodePath("KnifeArea")
+hammer_area = NodePath("HammerArea")
+pickaxe_area = NodePath("PickaxeArea")
+axe_area = NodePath("AxeArea")
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]
@@ -2795,10 +2811,12 @@ y_sort_enabled = true
 [node name="Detect" parent="." index="2" unique_id=1553397965]
 z_as_relative = false
 
-[node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=359465923]
+[node name="SelectionIcon" parent="." index="3" unique_id=193086596]
 visible = false
+
+[node name="BlueAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=359465923]
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"Death_Poof"
+animation = &"Idle"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
@@ -2827,7 +2845,7 @@ offset = Vector2(0, -30)
 visible = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_w61pg")
-animation = &"Death_Poof"
+animation = &"Hammer_Idle"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
@@ -2863,6 +2881,64 @@ icon = ExtResource("24_ldq0g")
 [node name="ArcheryButton" type="Button" parent="UIUnit/Control/PanelContainer/HSplitContainer/ButtonContainer" parent_id_path=PackedInt32Array(445252662) index="2" unique_id=112460513]
 layout_mode = 2
 icon = ExtResource("25_85cqe")
+
+[node name="KnifeArea" type="Area2D" parent="." index="16" unique_id=475037087]
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KnifeArea" index="0" unique_id=475814641]
+position = Vector2(3, -3)
+polygon = PackedVector2Array(27, 15, 31, 21, 49, -1, 36, -12, 22, 9, 24, 12)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="KnifeArea" index="1" unique_id=833987598]
+position = Vector2(-4, -4)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(27, 15, 31, 21, 49, -1, 36, -12, 22, 9, 24, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnifeArea" index="2" unique_id=482031894]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_xrivr")
+debug_color = Color(0.59505516, 0.5420619, 0.18664843, 0.41960785)
+
+[node name="AxeArea" type="Area2D" parent="." index="17" unique_id=957296749]
+position = Vector2(3, -7)
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AxeArea" index="0" unique_id=972627755]
+polygon = PackedVector2Array(52, -3, 34, 10, -3, 2, 23, -4, 31, -15, 56, -15)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="AxeArea" index="1" unique_id=602609766]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(52, -3, 34, 10, 3, 2, 23, -4, 31, -15, 56, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeArea" index="2" unique_id=279179910]
+position = Vector2(-3, -6)
+shape = SubResource("CircleShape2D_13qdw")
+debug_color = Color(0.62635905, 0.34982732, 1, 0.41960785)
+
+[node name="HammerArea" type="Area2D" parent="." index="18" unique_id=1007280492]
+position = Vector2(3, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerArea" index="0" unique_id=1333118384]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_xrivr")
+debug_color = Color(0.791367, 0.42416114, 0.16583565, 0.41960785)
+
+[node name="PickaxeArea" type="Area2D" parent="." index="19" unique_id=481928171]
+position = Vector2(1, -7)
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PickaxeArea" index="0" unique_id=1833192319]
+polygon = PackedVector2Array(40, 15, 56, 9, 59, -11, 40, -5)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PickaxeArea" index="1" unique_id=1656971500]
+position = Vector2(-2, 0)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(40, 15, 56, 9, 59, -11, 40, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickaxeArea" index="2" unique_id=1115388324]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_b1lj4")
+debug_color = Color(0.84815675, 0.27321622, 0.65397435, 0.41960785)
 
 [connection signal="timeout" from="MiningTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MiningTimer" to="." method="_on_mining_timer_timeout"]

@@ -8,6 +8,7 @@ class_name Sheep
 # --------- Selection --------- #
 @export var selection_icon: Sprite2D
 var is_selected: bool = false
+@onready var selection_area: Area2D = $SelectionArea
 
 # --------- Movement --------- #
 const SPEED = 30.0
@@ -18,7 +19,6 @@ var direction: int = 1
 @export var food_count: Label
 
 # --------- Sheep --------- #
-@export var interaction_points: Node2D
 @export var food_quantity: int
 
 
@@ -39,25 +39,20 @@ func can_receive_command():
 
 # --------- Knife --------- #
 
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
-
 
 func knife(amount: int) -> int:
 	var knifed = min(amount, food_quantity)
 	food_quantity -= knifed
 	food_count.text = ": "+var_to_str(food_quantity)
 	if food_quantity == 0 :
-		depleted.emit()
-		queue_free()
+		deplete_resource.rpc()
 	return knifed
+
+
+@rpc("any_peer", "call_local")
+func deplete_resource() -> void:
+	depleted.emit()
+	queue_free()
 
 
 # --------- Selection - UI --------- #

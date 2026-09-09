@@ -14,7 +14,6 @@ var is_selected = false
 @export var wood_count: Label
 
 # --------- Tree --------- #
-@export var interaction_points: Node2D
 @export var wood_quantity : int
 
 # =================== Signals =================== #
@@ -36,26 +35,20 @@ func can_receive_command():
 
 # --------- Chop --------- #
 
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
-
 
 func chop(amount : int) -> int :
 	var choped = min(amount, wood_quantity)
 	wood_quantity -= choped
 	wood_count.text = ": "+var_to_str(wood_quantity)
 	if wood_quantity == 0 :
-		depleted.emit()
-		queue_free()
+		deplete_resource.rpc()
 	return choped
 
+
+@rpc("any_peer", "call_local")
+func deplete_resource() -> void:
+	depleted.emit()
+	queue_free()
 
 # --------- Selection - UI --------- #
 

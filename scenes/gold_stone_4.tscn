@@ -70,7 +70,7 @@ properties/1/path = NodePath("UIGold/Control/PanelContainer/HBoxContainer/GoldCo
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="GoldStone4_" type="StaticBody2D" unique_id=729183247 node_paths=PackedStringArray("selection_icon", "ui_gold", "gold_count", "interaction_points")]
+[node name="GoldStone4_" type="StaticBody2D" unique_id=729183247 node_paths=PackedStringArray("selection_icon", "ui_gold", "gold_count")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -78,7 +78,6 @@ script = ExtResource("1_wo3fx")
 selection_icon = NodePath("SelectionArea/SelectionIcon")
 ui_gold = NodePath("UIGold")
 gold_count = NodePath("UIGold/Control/PanelContainer/HBoxContainer/GoldCount")
-interaction_points = NodePath("InteractionPoints")
 gold_quantity = 700
 
 [node name="Gold4" type="AnimatedSprite2D" parent="." unique_id=1799287188]
@@ -90,20 +89,6 @@ offset = Vector2(-2, -18)
 position = Vector2(2, -12)
 rotation = 1.5757769
 shape = SubResource("CapsuleShape2D_vys01")
-
-[node name="InteractionPoints" type="Node2D" parent="." unique_id=660396081]
-
-[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1256829871]
-position = Vector2(-26, -3)
-
-[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1602519216]
-position = Vector2(-36, -16)
-
-[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=1465631765]
-position = Vector2(35, -16)
-
-[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=1858217784]
-position = Vector2(27, -3)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=76157974]
 collision_layer = 4

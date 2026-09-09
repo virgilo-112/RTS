@@ -85,7 +85,7 @@ properties/1/path = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCo
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Tree3_" type="StaticBody2D" unique_id=1019794889 node_paths=PackedStringArray("selection_icon", "ui_tree", "wood_count", "interaction_points")]
+[node name="Tree3_" type="StaticBody2D" unique_id=1019794889 node_paths=PackedStringArray("selection_icon", "ui_tree", "wood_count")]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
@@ -93,7 +93,6 @@ script = ExtResource("1_d25hq")
 selection_icon = NodePath("SelectionArea/SelectionIcon")
 ui_tree = NodePath("UITree")
 wood_count = NodePath("UITree/Control/PanelContainer/HBoxContainer/WoodCount")
-interaction_points = NodePath("InteractionPoints")
 wood_quantity = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526280546]
@@ -109,20 +108,6 @@ sprite_frames = SubResource("SpriteFrames_ubrq3")
 autoplay = "default"
 frame_progress = 0.95769
 offset = Vector2(0, -70)
-
-[node name="InteractionPoints" type="Node2D" parent="." unique_id=321546787]
-
-[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=1745904542]
-position = Vector2(-22, -2)
-
-[node name="W" type="Marker2D" parent="InteractionPoints" unique_id=1966604128]
-position = Vector2(-25, -13)
-
-[node name="E" type="Marker2D" parent="InteractionPoints" unique_id=81506307]
-position = Vector2(23, -13)
-
-[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=753779127]
-position = Vector2(20, -2)
 
 [node name="SelectionArea" type="Area2D" parent="." unique_id=313827255]
 collision_layer = 4

@@ -12,9 +12,9 @@ var is_selected: bool = false
 # --------- Ore UI --------- #
 @export var ui_gold: CanvasLayer
 @export var gold_count: Label
+@onready var selection_area: Area2D = $SelectionArea
 
 # --------- Ore --------- #
-@export var interaction_points: Node2D
 @export var gold_quantity: int
 
 # =================== Signals =================== #
@@ -36,25 +36,19 @@ func can_receive_command():
 
 # --------- Mine --------- #
 
-func get_closest_point(unit_pos):
-	var best = null
-	var best_distance = INF
-	for point in interaction_points.get_children():
-		var d = point.global_position.distance_to(unit_pos)
-		if d < best_distance :
-			best_distance = d
-			best = point
-	return best.global_position
-
-
-func mine(amount : int) -> int :
+func mine(amount: int) -> int:
 	var mined = min(amount, gold_quantity)
 	gold_quantity -= mined
-	gold_count.text = ": "+var_to_str(gold_quantity)
-	if gold_quantity == 0 :
-		depleted.emit()
-		queue_free()
+	gold_count.text = ": " + str(gold_quantity)
+	if gold_quantity == 0:
+		deplete_resource.rpc()
 	return mined
+
+
+@rpc("any_peer", "call_local")
+func deplete_resource() -> void:
+	depleted.emit()
+	queue_free()
 
 
 # --------- Selection - UI --------- #

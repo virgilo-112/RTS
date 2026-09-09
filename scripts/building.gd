@@ -97,7 +97,7 @@ func remove_builder(pawn: Pawn) -> void:
 	builders.erase(pawn)
 	builder_count = builders.size()
 
-	# reste de ta logique...
+
 func finish_construction() -> void:
 	under_construction = false
 	if is_instance_valid(construction_progress_bar):
