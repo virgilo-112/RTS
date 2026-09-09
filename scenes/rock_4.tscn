@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d00c0sjpgtd2h"]
+
+[ext_resource type="Texture2D" uid="uid://c7aiuekrv1mpu" path="res://assets/Terrain/Decorations/Rocks/Rock4.png" id="1_lng14"]
+
+[node name="Rock4" type="Sprite2D" unique_id=1290674419]
+texture = ExtResource("1_lng14")
+offset = Vector2(0, -20)

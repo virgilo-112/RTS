@@ -6,7 +6,7 @@ class_name Building
 # =================== parameters =================== #
 
 # --------- Building data --------- #
-@export var hp : int = 1000
+@export var hp : int
 
 # --------- Player --------- #
 @export var player_id: int
@@ -30,12 +30,11 @@ var building_sprite : Sprite2D
 var is_selected: bool = false
 @export var hp_label: Label
 var peer : int
+@export var area_2d: Area2D
 
 # --------- Produce unit --------- #
 @export var spawn: Marker2D
 
-
-@export var interaction_points: Node2D
 signal destroyed
 
 # =================== functions =================== #
@@ -49,7 +48,7 @@ func _ready() -> void:
 	construction_progress_bar.show_percentage = false
 	construction_progress_bar.visible = false
 	set_color()
-	
+	hp_label.text = "Health : "+ str(hp)
 
 func _process(delta: float) -> void:
 	if not under_construction:

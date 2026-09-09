@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bq4rkqlkithgt"]
+
+[ext_resource type="Texture2D" uid="uid://bjui47whvy264" path="res://assets/Terrain/Decorations/Bushes/Bushe3.png" id="1_drdte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kq64"]
+atlas = ExtResource("1_drdte")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naih8"]
+atlas = ExtResource("1_drdte")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urbr1"]
+atlas = ExtResource("1_drdte")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jc20"]
+atlas = ExtResource("1_drdte")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d8f7"]
+atlas = ExtResource("1_drdte")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0us87"]
+atlas = ExtResource("1_drdte")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbkx7"]
+atlas = ExtResource("1_drdte")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n0aa"]
+atlas = ExtResource("1_drdte")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kq64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naih8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urbr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jc20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d8f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0us87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbkx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n0aa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Bush3" type="AnimatedSprite2D" unique_id=525400323]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_xrivr")
+autoplay = "default"
+frame_progress = 0.2210751
+offset = Vector2(0, -16)

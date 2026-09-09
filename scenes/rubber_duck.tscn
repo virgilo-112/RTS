@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://chn862ljyl2e4"]
+
+[ext_resource type="Texture2D" uid="uid://5j51h3l4pes1" path="res://assets/Terrain/Decorations/Rubber Duck/Rubber duck.png" id="1_khygq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp6a7"]
+atlas = ExtResource("1_khygq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o66le"]
+atlas = ExtResource("1_khygq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2tj"]
+atlas = ExtResource("1_khygq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp6a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o66le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h2tj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RubberDuck" type="AnimatedSprite2D" unique_id=1124108751]
+sprite_frames = SubResource("SpriteFrames_xrivr")
+autoplay = "default"
+frame_progress = 0.5242817
+offset = Vector2(0, -8)

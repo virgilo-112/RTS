@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c3errukr2g2wm" path="res://assets/Units/Red Units/Lancer/Lancer_Right_Attack.png" id="23_ojmo2"]
 [ext_resource type="Texture2D" uid="uid://caq5lk6k8lp0c" path="res://assets/Units/Red Units/Lancer/Lancer_DownRight_Attack.png" id="24_ngqpl"]
 [ext_resource type="Texture2D" uid="uid://q2yf4m2x6qbd" path="res://assets/Units/Red Units/Lancer/Lancer_UpRight_Attack.png" id="25_i484v"]
+[ext_resource type="Script" uid="uid://dqpkio8wt7g1a" path="res://scenes/ui_unit.gd" id="29_wysdi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ya60"]
 atlas = ExtResource("3_edjuc")
@@ -1357,9 +1358,9 @@ radius = 28.01785
 
 [node name="Lancer" unique_id=1256312482 node_paths=PackedStringArray("attack_area") instance=ExtResource("1_ho7g4")]
 script = ExtResource("2_5etia")
-vertical_position = 0
+vertical_position = 200
 abilities = Array[String](["move", "attack"])
-attack_area = NodePath("Area2D")
+attack_area = NodePath("AttackArea")
 
 [node name="SelectionIcon" parent="." index="3" unique_id=193086596]
 visible = false
@@ -1372,6 +1373,7 @@ autoplay = "Idle"
 offset = Vector2(0, -30)
 
 [node name="YellowAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=28085824]
+visible = false
 sprite_frames = SubResource("SpriteFrames_13qdw")
 animation = &"Attack_Up"
 autoplay = "Idle"
@@ -1398,36 +1400,42 @@ animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
 
+[node name="UIUnit" parent="." index="9" unique_id=1976206270 node_paths=PackedStringArray("unit", "hp_label")]
+script = ExtResource("29_wysdi")
+unit = NodePath("..")
+hp_label = NodePath("Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")
+
 [node name="MultiplayerSynchronizer" parent="." index="10" unique_id=950184620]
 replication_config = SubResource("SceneReplicationConfig_edjuc")
 
-[node name="Area2D" type="Area2D" parent="." index="12" unique_id=1901428105]
+[node name="AttackArea" type="Area2D" parent="." index="12" unique_id=1901428105]
+z_as_relative = false
 collision_mask = 4
 
-[node name="E" type="CollisionPolygon2D" parent="Area2D" index="0" unique_id=1745804552]
+[node name="E" type="CollisionPolygon2D" parent="AttackArea" index="0" unique_id=1745804552]
 polygon = PackedVector2Array(3, -16, 108.310486, -8.537048, 130, -7, 147, -18, 130, -26)
 
-[node name="NE" type="CollisionPolygon2D" parent="Area2D" index="1" unique_id=1137385850]
+[node name="NE" type="CollisionPolygon2D" parent="AttackArea" index="1" unique_id=1137385850]
 rotation = -0.6632251
 polygon = PackedVector2Array(128.4055, -8.5455, 142.867, -20.37195, 125.99839, -22.481272, 9.234921, -11.82016)
 
-[node name="NW" type="CollisionPolygon2D" parent="Area2D" index="2" unique_id=750512019]
+[node name="NW" type="CollisionPolygon2D" parent="AttackArea" index="2" unique_id=750512019]
 rotation = -2.2340214
 polygon = PackedVector2Array(14.184194, 11.081906, 128.4055, -8.5455, 142.867, -20.37195, 125.99839, -22.481272)
 
-[node name="W" type="CollisionPolygon2D" parent="Area2D" index="3" unique_id=18290266]
+[node name="W" type="CollisionPolygon2D" parent="AttackArea" index="3" unique_id=18290266]
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(130, -7, 147, -18, 130, -26, -2, -18)
 
-[node name="SE" type="CollisionPolygon2D" parent="Area2D" index="4" unique_id=400509022]
+[node name="SE" type="CollisionPolygon2D" parent="AttackArea" index="4" unique_id=400509022]
 rotation = 0.87266463
 polygon = PackedVector2Array(-10.451605, -13.991568, 105.81427, 0.21464539, 122.814255, -10.785355, 105.81427, -18.785355)
 
-[node name="SW" type="CollisionPolygon2D" parent="Area2D" index="5" unique_id=736711715]
+[node name="SW" type="CollisionPolygon2D" parent="AttackArea" index="5" unique_id=736711715]
 rotation = 2.443461
 polygon = PackedVector2Array(105.81427, 0.21464539, 122.814255, -10.785355, 105.81427, -18.785355, -11.050647, 11.613923)
 
-[node name="Around" type="CollisionShape2D" parent="Area2D" index="6" unique_id=940232674]
+[node name="Around" type="CollisionShape2D" parent="AttackArea" index="6" unique_id=940232674]
 position = Vector2(1, -22)
 shape = SubResource("CircleShape2D_pow82")
 debug_color = Color(0.9852844, 0.07294289, 0.24985558, 0.41960785)

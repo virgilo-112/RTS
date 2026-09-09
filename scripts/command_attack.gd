@@ -1,20 +1,17 @@
 class_name AttackCommand
 extends Command
 
-var enemy : Node2D
+var enemy : Unit
+var last_target_position := Vector2.ZERO
+
 
 func _init(target):
-	if target is Unit or target is Building:
-		enemy = target
-	else:
-		return
+	enemy = target
 
-var last_target_position := Vector2.ZERO
 
 func start(unit):
 	if not unit.has_ability("attack"):
 		return
-
 	last_target_position = enemy.global_position
 	unit.set_destination(last_target_position)
 	unit.reset_action()

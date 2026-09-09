@@ -13,10 +13,11 @@
 size = Vector2(84, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwc8c"]
-size = Vector2(102, 157)
+size = Vector2(102, 122.5)
 
 [node name="House" unique_id=1028856893 instance=ExtResource("1_wcu0q")]
 script = ExtResource("1_se78b")
+hp = 5000
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=990723670]
 visible = false
@@ -52,6 +53,7 @@ layout_mode = 2
 icon = ExtResource("3_f74lx")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="0" unique_id=2105599579]
+position = Vector2(0, -53.75)
 shape = SubResource("RectangleShape2D_bwc8c")
 
 [connection signal="pressed" from="UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer/PawnButton" to="." method="_on_pawn_button_pressed"]

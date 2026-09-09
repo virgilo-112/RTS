@@ -2801,6 +2801,7 @@ knife_area = NodePath("KnifeArea")
 hammer_area = NodePath("HammerArea")
 pickaxe_area = NodePath("PickaxeArea")
 axe_area = NodePath("AxeArea")
+hp = 100
 abilities = Array[String](["move", "mine", "build", "chop", "knife"])
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=398875827]

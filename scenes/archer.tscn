@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cdd6n4abmpoxc" path="res://assets/Units/Yellow Units/Archer/Archer_Idle.png" id="12_t7ncp"]
 [ext_resource type="Texture2D" uid="uid://ce6su8ws1l73x" path="res://assets/Units/Yellow Units/Archer/Archer_Run.png" id="13_qh5tp"]
 [ext_resource type="Texture2D" uid="uid://gepkevunp8ng" path="res://assets/Units/Yellow Units/Archer/Archer_Shoot.png" id="14_swy27"]
+[ext_resource type="Script" uid="uid://dqpkio8wt7g1a" path="res://scenes/ui_unit.gd" id="19_811sq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuaxp"]
 atlas = ExtResource("3_3krgg")
@@ -956,6 +957,7 @@ animations = [{
 
 [node name="Archer" unique_id=1256312482 instance=ExtResource("1_orquw")]
 script = ExtResource("2_ejvcm")
+hp = 130
 abilities = Array[String](["move", "attack"])
 
 [node name="NavigationAgent2D" parent="." index="1" unique_id=805899648]
@@ -996,3 +998,8 @@ sprite_frames = SubResource("SpriteFrames_xrivr")
 animation = &"Death_Poof"
 autoplay = "Idle"
 offset = Vector2(0, -30)
+
+[node name="UIUnit" parent="." index="9" unique_id=1976206270 node_paths=PackedStringArray("unit", "hp_label")]
+script = ExtResource("19_811sq")
+unit = NodePath("..")
+hp_label = NodePath("Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")

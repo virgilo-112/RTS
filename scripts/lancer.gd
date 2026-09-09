@@ -10,12 +10,22 @@ func _ready() -> void:
 	animated_sprite.frame_changed.connect(_on_attack_frame_changed)
 
 func start_attack(enemy : Node2D):
-	if enemy.position.y > position.y + 40 :
-		vertical_position = 1
-	elif enemy.position.y < position.y - 40 :
-		vertical_position = -1
-	else :
-		vertical_position = 0
+	if enemy is Unit :
+		if enemy.position.y > position.y + 40 :
+			vertical_position = 1
+		elif enemy.position.y < position.y - 40 :
+			vertical_position = -1
+		else :
+			vertical_position = 0
+
+	elif enemy is Building :
+		if enemy.position.y > position.y + 80 :
+			vertical_position = 1
+		elif enemy.position.y < position.y - 80 :
+			vertical_position = -1
+		else :
+			vertical_position = 0
+			
 	action = Action.ATTACKING
 	if !enemy.destroyed.is_connected(stop_attacking):
 		enemy.destroyed.connect(stop_attacking)
@@ -32,8 +42,7 @@ func _on_attack_frame_changed() -> void:
 		return
 
 	if animated_sprite.frame == 1:
-		if current_command is AttackCommand:
-			(current_command as AttackCommand).deal_damage()
+		current_command.deal_damage()
 
 
 func stop_attacking():

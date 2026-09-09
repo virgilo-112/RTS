@@ -26,8 +26,9 @@ properties/4/path = NodePath(".:builder_count")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Building" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "hp_label", "spawn")]
+[node name="Building" type="StaticBody2D" unique_id=1028856893 node_paths=PackedStringArray("construction_progress_bar", "ui_building", "data_container", "button_container", "selection_icon", "hp_label", "area_2d", "spawn")]
 y_sort_enabled = true
+collision_layer = 4
 script = ExtResource("1_ejq8p")
 construction_progress_bar = NodePath("ConstructionProgressBar")
 ui_building = NodePath("UIBuilding")
@@ -35,6 +36,7 @@ data_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/Dat
 button_container = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/ButtonContainer")
 selection_icon = NodePath("Area2D/SelectionIcon")
 hp_label = NodePath("UIBuilding/Control/PanelContainer/HSplitContainer/DataContainer/HPLabel")
+area_2d = NodePath("Area2D")
 spawn = NodePath("Spawn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772849535]
@@ -81,6 +83,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1510916706]
+z_as_relative = false
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105599579]
 position = Vector2(0, -71)
@@ -107,17 +111,3 @@ show_percentage = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1137524180]
 replication_config = SubResource("SceneReplicationConfig_wcu0q")
-
-[node name="InteractionPoints" type="Node2D" parent="." unique_id=594275088]
-
-[node name="SW" type="Marker2D" parent="InteractionPoints" unique_id=649756043]
-position = Vector2(-95, 0)
-
-[node name="SE" type="Marker2D" parent="InteractionPoints" unique_id=648378934]
-position = Vector2(96, 0)
-
-[node name="NE" type="Marker2D" parent="InteractionPoints" unique_id=258642741]
-position = Vector2(96, -35)
-
-[node name="NW" type="Marker2D" parent="InteractionPoints" unique_id=733031445]
-position = Vector2(-95, -36)

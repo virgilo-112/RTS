@@ -12,8 +12,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq1ve"]
 size = Vector2(148, 80.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxjy2"]
+size = Vector2(154, 134.5)
+
 [node name="Archery" unique_id=1028856893 instance=ExtResource("1_nq1ve")]
 script = ExtResource("1_8e86i")
+hp = 7000
 
 [node name="BlueSprite2D" type="Sprite2D" parent="." index="0" unique_id=1760202893]
 visible = false
@@ -21,7 +25,6 @@ texture = ExtResource("1_ea1b2")
 offset = Vector2(0, -104)
 
 [node name="RedSprite2D" type="Sprite2D" parent="." index="1" unique_id=1883381891]
-visible = false
 texture = ExtResource("3_6ip5i")
 offset = Vector2(0, -104)
 
@@ -49,7 +52,8 @@ layout_mode = 2
 icon = ExtResource("3_0woum")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="0" unique_id=2105599579]
-position = Vector2(0, -81)
+position = Vector2(0, -69.75)
+shape = SubResource("RectangleShape2D_cxjy2")
 
 [node name="SelectionIcon" parent="Area2D" parent_id_path=PackedInt32Array(1510916706) index="1" unique_id=529611033]
 position = Vector2(-7.999998, -78)
