@@ -43,7 +43,7 @@ func _on_attack_frame_changed() -> void:
 
 	if animated_sprite.frame == 1:
 		current_command.deal_damage()
-
+#k,dfn
 
 func stop_attacking():
 	action = Action.IDLE
